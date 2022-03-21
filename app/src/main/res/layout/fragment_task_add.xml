@@ -99,7 +99,9 @@
             app:layout_constraintBottom_toTopOf="@id/glBottom"
             app:layout_constraintTop_toBottomOf="@id/spImportance"
             app:layout_constraintStart_toEndOf="@id/glStart"
-            app:layout_constraintEnd_toStartOf="@id/ibDate"/>
+            app:layout_constraintEnd_toStartOf="@id/ibDate"
+            android:labelFor="@id/ibDate"
+            android:inputType="date" />
 
     <ImageButton
             android:layout_width="wrap_content"
@@ -109,7 +111,8 @@
             app:layout_constraintStart_toEndOf="@id/etDate"
             app:layout_constraintEnd_toStartOf="@id/glEnd"
             android:src="@drawable/ic_date"
-            android:id="@+id/ibDate" />
+            android:id="@+id/ibDate"
+            android:contentDescription="@string/ibDate_contentDescription" />
     <!--endregion-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
