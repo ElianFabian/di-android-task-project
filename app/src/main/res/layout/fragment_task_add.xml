@@ -101,6 +101,7 @@
             app:layout_constraintStart_toEndOf="@id/glStart"
             app:layout_constraintEnd_toStartOf="@id/ibDate"
             android:labelFor="@id/ibDate"
+            android:focusable="false"
             android:inputType="date" />
 
     <ImageButton
