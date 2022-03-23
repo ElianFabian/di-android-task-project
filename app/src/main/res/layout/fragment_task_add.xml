@@ -117,6 +117,7 @@
             android:contentDescription="@string/ibDate_contentDescription" />
     <!--endregion-->
 
+    <!--region FAB-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -126,5 +127,6 @@
             android:layout_margin="@dimen/fab_layout_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+    <!--endregion-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
