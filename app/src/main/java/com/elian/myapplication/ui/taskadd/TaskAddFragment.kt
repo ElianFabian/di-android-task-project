@@ -36,7 +36,7 @@ class TaskAddFragment : Fragment()
             android.R.layout.simple_spinner_dropdown_item,
             resources.getStringArray(R.array.importance)
         )
-    
+
         binding.spImportance.adapter = spinnerAdapter
     }
 }
