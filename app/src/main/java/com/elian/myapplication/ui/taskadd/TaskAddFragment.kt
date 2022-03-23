@@ -26,17 +26,17 @@ class TaskAddFragment : Fragment()
     {
         super.onStart()
 
-        initSpinnerAdapter()
+//        initSpinnerAdapter()
     }
 
-    private fun initSpinnerAdapter()
-    {
-        val spinnerAdapter = ArrayAdapter(
-            activity as Context,
-            android.R.layout.simple_spinner_dropdown_item,
-            resources.getStringArray(R.array.importance)
-        )
-
-        binding.spImportance.adapter = spinnerAdapter
-    }
+//    private fun initSpinnerAdapter()
+//    {
+//        val spinnerAdapter = ArrayAdapter(
+//            activity as Context,
+//            android.R.layout.simple_spinner_dropdown_item,
+//            resources.getStringArray(R.array.importance)
+//        )
+//
+//        binding.spImportance.adapter = spinnerAdapter
+//    }
 }
