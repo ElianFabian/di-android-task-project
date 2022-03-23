@@ -28,7 +28,12 @@ class DatePickerFragment(val listener: (year: Int, month: Int, dayOfMonth: Int) 
         val month = calendar.get(Calendar.MONTH)
         val year = calendar.get(Calendar.YEAR)
         
+        // Creates a DatePickerDialog with an initial date (the current date in this case).
         val picker = DatePickerDialog(activity as Context, this, year, month, day)
+        
+//        // Set the available range in the Dialog.
+//        picker.datePicker.minDate = calendar.timeInMillis
+//        picker.datePicker.minDate = calendar.timeInMillis
         
         return picker
     }
