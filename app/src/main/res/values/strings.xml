@@ -5,6 +5,8 @@
     <string name="tieDescription_hint">Description</string>
     <string name="tieName_hint">Name</string>
     <string name="ibDate_contentDescription">Button to select a date.</string>
+    <string name="taskListFragment_label">Task List</string>
+    <string name="taskAddFragment_label">Task Add</string>
 
     <string-array name="importance">
         <item>Low</item>

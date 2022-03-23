@@ -8,7 +8,7 @@
     <fragment
             android:id="@+id/taskListFragment"
             android:name="com.elian.myapplication.ui.tasklist.TaskListFragment"
-            android:label="fragment_task_list"
+            android:label="@string/taskListFragment_label"
             tools:layout="@layout/fragment_task_list" >
         <action
                 android:id="@+id/action_taskListFragment_to_taskAddFragment"
@@ -17,7 +17,7 @@
     <fragment
             android:id="@+id/taskAddFragment"
             android:name="com.elian.myapplication.ui.taskadd.TaskAddFragment"
-            android:label="fragment_task_add"
+            android:label="@string/taskAddFragment_label"
             tools:layout="@layout/fragment_task_add" >
         <action
                 android:id="@+id/action_taskAddFragment_to_taskListFragment"
