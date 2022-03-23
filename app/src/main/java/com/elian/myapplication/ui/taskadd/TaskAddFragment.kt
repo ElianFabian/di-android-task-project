@@ -64,6 +64,8 @@ class TaskAddFragment : Fragment()
         binding.etDate.setText("$year/$month/$dayOfMonth")
     }
 
+////  As we use android:entries in the Spinner we don't have to use this function,
+////  but if we want more functionality we can then use it.
 //    private fun initSpinnerAdapter()
 //    {
 //        val spinnerAdapter = ArrayAdapter(
