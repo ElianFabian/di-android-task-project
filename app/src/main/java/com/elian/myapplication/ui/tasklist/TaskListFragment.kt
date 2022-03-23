@@ -20,4 +20,14 @@ class TaskListFragment : Fragment()
         binding = FragmentTaskListBinding.inflate(inflater)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.fab.setOnClickListener()
+        {
+            NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
+        }
+    }
 }
