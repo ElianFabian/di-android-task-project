@@ -103,7 +103,7 @@
             android:labelFor="@id/ibDate"
             android:focusable="false"
             android:inputType="date"
-            app:layout_constraintVertical_bias="0.32999998" />
+            app:layout_constraintVertical_bias="0.33" />
 
     <ImageButton
             android:layout_width="wrap_content"
