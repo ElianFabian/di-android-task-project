@@ -27,7 +27,7 @@ class TaskListFragment : Fragment()
         
         binding.fab.setOnClickListener()
         {
-            NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
+            NavHostFragment.findNavController(this).navigateUp()
         }
     }
 }
