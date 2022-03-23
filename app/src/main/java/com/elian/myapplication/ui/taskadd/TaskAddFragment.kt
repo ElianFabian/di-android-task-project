@@ -22,9 +22,9 @@ class TaskAddFragment : Fragment()
         return binding.root
     }
 
-    override fun onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
-        super.onStart()
+        super.onViewCreated(view, savedInstanceState)
 
 //        initSpinnerAdapter()
     }
