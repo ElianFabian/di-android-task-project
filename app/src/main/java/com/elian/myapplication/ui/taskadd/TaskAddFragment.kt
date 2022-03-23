@@ -29,7 +29,6 @@ class TaskAddFragment : Fragment()
         initSpinnerAdapter()
     }
 
-    // This function should be called on onStart()
     private fun initSpinnerAdapter()
     {
         val spinnerAdapter = ArrayAdapter(
