@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.myapplication.R
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
+import com.elian.myapplication.ui.datepicker.DatePickerFragment
 
 class TaskAddFragment : Fragment()
 {
@@ -42,6 +43,21 @@ class TaskAddFragment : Fragment()
     //region Methods
 
     private fun showDatePickerDialog()
+    {
+        val datePicker = DatePickerFragment(::onDateSelected)
+        
+        datePicker.show(parentFragmentManager, "datePicker")
+
+////      This is another way of doing it.
+//        val datePicker = DatePickerFragment()
+//        {
+//            year, month, dayOfMonth ->
+//
+//            onDateSelected(year, month, dayOfMonth)
+//        }
+    }
+
+    private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int): Unit
     {
         
     }
