@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.NavHostFragment
 import com.elian.myapplication.R
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 
@@ -25,8 +26,13 @@ class TaskAddFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        
+        // initSpinnerAdapter()
 
-//        initSpinnerAdapter()
+        binding.fab.setOnClickListener()
+        {
+            NavHostFragment.findNavController(this).navigateUp()
+        }
     }
 
 //    private fun initSpinnerAdapter()
