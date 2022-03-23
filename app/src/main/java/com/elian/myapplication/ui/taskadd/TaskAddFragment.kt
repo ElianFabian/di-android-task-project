@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.myapplication.R
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
@@ -31,11 +32,13 @@ class TaskAddFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         // initSpinnerAdapter()
-
+        
         binding.fab.setOnClickListener()
         {
             NavHostFragment.findNavController(this).navigateUp()
         }
+        
+        binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
 
     //endregion
@@ -45,13 +48,12 @@ class TaskAddFragment : Fragment()
     private fun showDatePickerDialog()
     {
         val datePicker = DatePickerFragment(::onDateSelected)
-        
-        datePicker.show(parentFragmentManager, "datePicker")
 
+        datePicker.show(parentFragmentManager, "datePicker")
+        
 ////      This is another way of doing it.
 //        val datePicker = DatePickerFragment()
-//        {
-//            year, month, dayOfMonth ->
+//        { year, month, dayOfMonth ->
 //
 //            onDateSelected(year, month, dayOfMonth)
 //        }
@@ -59,10 +61,10 @@ class TaskAddFragment : Fragment()
 
     private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int): Unit
     {
-        
+        binding.etDate.setText("$year/$month/$dayOfMonth")
     }
 
-    //    private fun initSpinnerAdapter()
+//    private fun initSpinnerAdapter()
 //    {
 //        val spinnerAdapter = ArrayAdapter(
 //            activity as Context,
