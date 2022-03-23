@@ -15,6 +15,8 @@ class TaskAddFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskAddBinding
 
+    //region Fragment Methods
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View
@@ -26,7 +28,7 @@ class TaskAddFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        
+
         // initSpinnerAdapter()
 
         binding.fab.setOnClickListener()
@@ -35,7 +37,16 @@ class TaskAddFragment : Fragment()
         }
     }
 
-//    private fun initSpinnerAdapter()
+    //endregion
+
+    //region Methods
+
+    private fun showDatePickerDialog()
+    {
+        
+    }
+
+    //    private fun initSpinnerAdapter()
 //    {
 //        val spinnerAdapter = ArrayAdapter(
 //            activity as Context,
@@ -45,4 +56,6 @@ class TaskAddFragment : Fragment()
 //
 //        binding.spImportance.adapter = spinnerAdapter
 //    }
+
+    //endregion
 }
