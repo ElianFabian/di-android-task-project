@@ -42,7 +42,7 @@ class TaskAddFragment : Fragment()
     }
 
     //endregion
-
+    
     //region Methods
 
     private fun showDatePickerDialog()
@@ -59,7 +59,7 @@ class TaskAddFragment : Fragment()
 //        }
     }
 
-    private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int): Unit
+    private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
     {
         binding.etDate.setText("$year/$month/$dayOfMonth")
     }
