@@ -16,7 +16,7 @@ class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
     
-    lateinit var taskAdapter: TaskAdapter
+    private lateinit var taskAdapter: TaskAdapter
 
     //region Fragment Methods
 
