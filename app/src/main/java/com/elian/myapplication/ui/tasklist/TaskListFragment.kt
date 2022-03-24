@@ -16,8 +16,6 @@ class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
 
-    private lateinit var adapter: TaskAdapter
-
     //region Fragment Methods
 
     override fun onCreateView(
@@ -31,7 +29,7 @@ class TaskListFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        
+
         initRecyclerViewAdapter()
 
         binding.fab.setOnClickListener()
@@ -39,19 +37,19 @@ class TaskListFragment : Fragment()
             NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
         }
     }
-    
+
     //endregion
-    
+
     //region Methods
-     
-     private fun initRecyclerViewAdapter()
-     {
-         adapter = TaskAdapter(listOf())
-         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-     
-         binding.rvTasks.layoutManager = layoutManager
-         binding.rvTasks.adapter = adapter
-     }
-    
+
+    private fun initRecyclerViewAdapter()
+    {
+        val adapter = TaskAdapter(listOf())
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+        binding.rvTasks.layoutManager = layoutManager
+        binding.rvTasks.adapter = adapter
+    }
+
     //endregion
 }
