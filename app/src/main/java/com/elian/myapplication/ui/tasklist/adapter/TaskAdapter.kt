@@ -12,7 +12,15 @@ class TaskAdapter(
     private val tasks: ArrayList<Task>,
 ) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()
-{ 
+{
+    public fun load(list: List<Task>)
+    {
+        tasks.clear()
+        tasks.addAll(list)
+
+        notifyDataSetChanged()
+    }
+
     //region RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder
