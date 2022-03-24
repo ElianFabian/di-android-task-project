@@ -28,17 +28,17 @@ class TaskAddFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         // initSpinnerAdapter()
-        
+
         binding.fab.setOnClickListener()
         {
             NavHostFragment.findNavController(this).navigateUp()
         }
-        
+
         binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
 
     //endregion
-    
+
     //region Methods
 
     private fun showDatePickerDialog()
@@ -46,7 +46,7 @@ class TaskAddFragment : Fragment()
         val datePicker = DatePickerFragment(::onDateSelected)
 
         datePicker.show(parentFragmentManager, "datePicker")
-        
+
 ////      This is another way of doing it.
 //        val datePicker = DatePickerFragment()
 //        { year, month, dayOfMonth ->
