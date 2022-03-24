@@ -13,6 +13,8 @@ class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
 
+    //region Fragment Methods
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View
@@ -30,4 +32,12 @@ class TaskListFragment : Fragment()
             NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
         }
     }
+    
+    //endregion
+    
+    //region Methods
+    
+     
+    
+    //endregion
 }
