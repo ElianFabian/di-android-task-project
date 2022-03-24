@@ -47,7 +47,7 @@ class TaskAddFragment : Fragment()
 
         datePicker.show(parentFragmentManager, "datePicker")
         
-      // This is another way of doing it.
+////      This is another way of doing it.
 //        val datePicker = DatePickerFragment()
 //        { year, month, dayOfMonth ->
 //
@@ -60,8 +60,8 @@ class TaskAddFragment : Fragment()
         binding.etDate.setText("$year/$month/$dayOfMonth")
     }
 
-    // As we use android:entries in the Spinner we don't have to use this function,
-    // but if we want more functionality we can then use it.
+////  As we use android:entries in the Spinner we don't have to use this function,
+////  but if we want more functionality we can then use it.
 //    private fun initSpinnerAdapter()
 //    {
 //        val spinnerAdapter = ArrayAdapter(
