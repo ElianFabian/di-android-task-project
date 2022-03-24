@@ -31,6 +31,8 @@ class TaskListFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        
+        initRecyclerViewAdapter()
 
         binding.fab.setOnClickListener()
         {
@@ -42,7 +44,7 @@ class TaskListFragment : Fragment()
     
     //region Methods
      
-     private fun initAdapter()
+     private fun initRecyclerViewAdapter()
      {
          adapter = TaskAdapter(listOf())
          val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
