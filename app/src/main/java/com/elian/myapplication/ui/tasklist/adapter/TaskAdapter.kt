@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.ItemTaskBinding
+import java.util.*
 
 class TaskAdapter(
     private val tasks: List<Task>,
@@ -39,7 +40,9 @@ class TaskAdapter(
 
         fun render(task: Task) = with(binding)
         {
-
+            tvName.text = task.name
+            tvImportance.text = task.importance.toString()
+            swEndDate.isChecked = task.endDate <= Calendar.getInstance().timeInMillis
         }
     }
 }
