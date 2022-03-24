@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
 import com.elian.myapplication.databinding.FragmentTaskListBinding
+import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
+
+    private lateinit var adapter: TaskAdapter
 
     //region Fragment Methods
 
@@ -36,8 +41,15 @@ class TaskListFragment : Fragment()
     //endregion
     
     //region Methods
-    
      
+     private fun initAdapter()
+     {
+         adapter = TaskAdapter(listOf())
+         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+     
+         binding.rvTasks.layoutManager = layoutManager
+         binding.rvTasks.adapter = adapter
+     }
     
     //endregion
 }
