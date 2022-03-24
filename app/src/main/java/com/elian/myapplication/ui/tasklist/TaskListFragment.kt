@@ -46,7 +46,7 @@ class TaskListFragment : Fragment()
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter= TaskAdapter(listOf())
+        taskAdapter = TaskAdapter(arrayListOf())
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding.rvTasks.layoutManager = layoutManager
