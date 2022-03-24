@@ -15,6 +15,8 @@ import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
+    
+    lateinit var taskAdapter: TaskAdapter
 
     //region Fragment Methods
 
@@ -44,11 +46,11 @@ class TaskListFragment : Fragment()
 
     private fun initRecyclerViewAdapter()
     {
-        val adapter = TaskAdapter(listOf())
+        taskAdapter= TaskAdapter(listOf())
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding.rvTasks.layoutManager = layoutManager
-        binding.rvTasks.adapter = adapter
+        binding.rvTasks.adapter = taskAdapter
     }
 
     //endregion
