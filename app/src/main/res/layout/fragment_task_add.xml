@@ -53,7 +53,8 @@
                 android:id="@+id/tieName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tieName_hint" />
+                android:hint="@string/tieName_hint"
+                android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
 
@@ -73,7 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
-                android:hint="@string/tieDescription_hint" />
+                android:hint="@string/tieDescription_hint"
+                android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
 
@@ -87,7 +89,8 @@
             app:layout_constraintEnd_toStartOf="@id/glEnd"
             android:layout_height="wrap_content"
             android:entries="@array/importance"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintVertical_bias="0.15"
+            android:minHeight="48dp" />
     <!--endregion-->
 
     <!--region Forecast end date-->
@@ -102,7 +105,8 @@
             android:labelFor="@id/ibDate"
             android:focusable="false"
             android:inputType="date"
-            app:layout_constraintVertical_bias="0.33" />
+            app:layout_constraintVertical_bias="0.33"
+            android:minHeight="48dp" />
 
     <ImageButton
             android:id="@+id/ibDate"
@@ -125,7 +129,8 @@
             app:srcCompat="@drawable/ic_check"
             android:layout_margin="@dimen/fab_layout_margin"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/task_add__fab_contentDescription" />
     <!--endregion-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
