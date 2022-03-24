@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
+import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
+import java.text.SimpleDateFormat
 
 class TaskAddFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskAddBinding
+
+    private val dateFormat = SimpleDateFormat("yyyy/MM/dd")
 
     //region Fragment Methods
 
@@ -58,6 +62,19 @@ class TaskAddFragment : Fragment()
     private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
     {
         binding.etDate.setText("$year/$month/$dayOfMonth")
+    }
+
+    private fun createTask()
+    {
+        with(binding)
+        {
+            Task(
+                name = tieName.text.toString(),
+                description = tieDescription.text.toString(),
+                importance = Task.Importance.valueOf(spImportance.selectedItem.toString()),
+                endDate = dateFormat.parse(etDate.text.toString())!!.time
+            )
+        }
     }
 
 ////  As we use android:entries in the Spinner we don't have to use this function,
