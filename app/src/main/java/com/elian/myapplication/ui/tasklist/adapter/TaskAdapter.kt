@@ -51,9 +51,9 @@ class TaskAdapter(
         {
             binding.tvName.text = task.name
             binding.tvImportance.text = task.importance.toString()
-            
+
             val isEndDate = task.endDate < Calendar.getInstance().timeInMillis
-            
+
             binding.swEndDate.isChecked = isEndDate
         }
     }
