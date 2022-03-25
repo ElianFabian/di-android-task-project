@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.ItemTaskBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
@@ -32,22 +34,27 @@ class TaskAdapter(
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int)
     {
-       val taskItem = tasks[position]
-        
+        val taskItem = tasks[position]
+
         holder.render(taskItem)
     }
 
     override fun getItemCount(): Int = tasks.size
-    
+
     //endregion
-    
+
     class TaskViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
         private val binding = ItemTaskBinding.bind(view)
-        
+
         fun render(task: Task) = with(binding)
         {
-             
+            binding.tvName.text = task.name
+            binding.tvImportance.text = task.importance.toString()
+            
+            val isEndDate = task.endDate < Calendar.getInstance().timeInMillis
+            
+            binding.swEndDate.isChecked = isEndDate
         }
     }
 }
