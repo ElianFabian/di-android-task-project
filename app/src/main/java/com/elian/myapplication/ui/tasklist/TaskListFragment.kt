@@ -15,7 +15,7 @@ import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 class TaskListFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskListBinding
-    
+
     private lateinit var taskAdapter: TaskAdapter
 
     //region Fragment Methods
@@ -32,6 +32,15 @@ class TaskListFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
+        initUI()
+    }
+
+    //endregion
+
+    //region Methods
+
+    private fun initUI()
+    {
         initRecyclerViewAdapter()
 
         binding.fab.setOnClickListener()
@@ -39,10 +48,6 @@ class TaskListFragment : Fragment()
             NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
         }
     }
-
-    //endregion
-
-    //region Methods
 
     private fun initRecyclerViewAdapter()
     {
