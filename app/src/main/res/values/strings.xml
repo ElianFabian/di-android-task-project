@@ -6,8 +6,8 @@
     <string name="ibDate_contentDescription">Button to select a date.</string>
     <string name="taskListFragment_label" translatable="false">Task List</string>
     <string name="taskAddFragment_label" translatable="false">Task Add</string>
-    <string name="task_add__fab_contentDescription">Floating button to add the task.</string>
-    <string name="etDate_contentDescription">Text field where the date is shown when it\'s selected by the date picker.</string>
+    <string name="task_add__fab_contentDescription" translatable="false">Floating button to add the task.</string>
+    <string name="etDate_contentDescription" translatable="false">Text field where the date is shown when it\'s selected by the date picker.</string>
 
     <string-array name="importance">
         <item>Low</item>
