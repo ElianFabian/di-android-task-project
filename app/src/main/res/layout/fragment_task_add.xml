@@ -47,7 +47,8 @@
             app:layout_constraintTop_toBottomOf="@+id/glTop"
             app:layout_constraintStart_toEndOf="@+id/glStart"
             app:layout_constraintHorizontal_bias="0.60"
-            app:layout_constraintVertical_bias="0.14">
+            app:layout_constraintVertical_bias="0.14"
+            android:foreground="@drawable/shape_round_stroke">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieName"
@@ -67,7 +68,8 @@
             app:layout_constraintBottom_toTopOf="@+id/glBottom"
             app:layout_constraintTop_toBottomOf="@+id/tilName"
             app:layout_constraintStart_toEndOf="@+id/glStart"
-            app:layout_constraintVertical_bias="0.08">
+            app:layout_constraintVertical_bias="0.08"
+            android:foreground="@drawable/shape_round_stroke">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieDescription"
