@@ -31,6 +31,15 @@ class TaskAddFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
+        initUI();
+    }
+
+    //endregion
+
+    //region Methods
+
+    private fun initUI()
+    {
         // initSpinnerAdapter()
 
         binding.fab.setOnClickListener()
@@ -40,10 +49,6 @@ class TaskAddFragment : Fragment()
 
         binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
-
-    //endregion
-
-    //region Methods
 
     private fun showDatePickerDialog()
     {
