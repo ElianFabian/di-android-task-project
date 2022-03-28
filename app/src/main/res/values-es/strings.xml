@@ -7,4 +7,5 @@
     <string name="tieName_hint">Nombre</string>
     <string name="ibDate_contentDescription">Botón para seleccionar una fecha</string>
     <string name="tieDescription_hint">Descripción</string>
+    <string name="spImportance_prompt">Importancia</string>
 </resources>
