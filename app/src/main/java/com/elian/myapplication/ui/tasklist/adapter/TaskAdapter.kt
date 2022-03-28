@@ -50,7 +50,7 @@ class TaskAdapter(
         fun render(task: Task) = with(binding)
         {
             binding.tvName.text = task.name
-            binding.tvImportance.text = task.importance.toString()
+            binding.tvImportance.text = task.importance.toString().lowercase()
 
             val isEndDate = task.endDate < Calendar.getInstance().timeInMillis
 
