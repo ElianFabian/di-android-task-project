@@ -10,6 +10,8 @@ import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 
 class TaskAddFragment : Fragment()
 {
@@ -66,7 +68,9 @@ class TaskAddFragment : Fragment()
 
     private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
     {
-        binding.etDate.setText("$year/$month/$dayOfMonth")
+        binding.etDate.setText(
+            "$year/${month.toString().format("%02d")}/${dayOfMonth.toString().format("%02d")}"
+        )
     }
 
     private fun createTask()
