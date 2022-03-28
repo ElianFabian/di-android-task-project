@@ -33,7 +33,7 @@ class TaskAddFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        initUI();
+        initUI()
     }
 
     //endregion
