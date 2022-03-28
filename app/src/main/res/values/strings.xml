@@ -8,6 +8,7 @@
     <string name="taskAddFragment_label" translatable="false">Task Add</string>
     <string name="task_add__fab_contentDescription" translatable="false">Floating button to add the task.</string>
     <string name="etDate_contentDescription" translatable="false">Text field where the date is shown when it\'s selected by the date picker.</string>
+    <string name="spImportance_prompt">Importance</string>
 
     <string-array name="importance">
         <item>Low</item>
