@@ -15,7 +15,7 @@ class TaskAdapter(
 ) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()
 {
-    public fun load(list: List<Task>)
+    fun load(list: List<Task>)
     {
         tasks.clear()
         tasks.addAll(list)
