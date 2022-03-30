@@ -49,9 +49,9 @@ class TaskStaticRepository
     fun getList() = taskList
 
     /**
-     * Returns a date from now until 10 years ago.
+     * Returns a date from now until the indicated years back.
      */
-    private fun getRandomDate(): Long = calendar.timeInMillis - (0.. 31_556_900_000 * 10).random()
+    private fun getRandomDate(years: Long = 10): Long = calendar.timeInMillis - (years * 0.. 31_556_900_000).random()
 
     //endregion
 }
