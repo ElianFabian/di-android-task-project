@@ -15,6 +15,24 @@ class TaskStaticRepository
             description = "es una tarea",
             importance = Task.Importance.values().random(),
             endDate = 12345678
+        ),
+        Task(
+            name = "tarea2",
+            description = "es una tarea",
+            importance = Task.Importance.values().random(),
+            endDate = 12345678
+        ),
+        Task(
+            name = "tarea3",
+            description = "es una tarea",
+            importance = Task.Importance.values().random(),
+            endDate = 12345678
+        ),
+        Task(
+            name = "tarea4",
+            description = "es una tarea",
+            importance = Task.Importance.values().random(),
+            endDate = 12345678
         )
     )
 
