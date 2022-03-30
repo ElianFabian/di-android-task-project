@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
 ) :
-    RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()
+    RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
 //    fun load(list: List<Task>)
 //    {
@@ -25,16 +25,16 @@ class TaskAdapter(
 
     //region RecyclerView.Adapter
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val view = layoutInflater.inflate(R.layout.item_task, parent, false)
 
-        return TaskViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TaskViewHolder, position: Int)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val taskItem = tasks[position]
 
@@ -45,7 +45,7 @@ class TaskAdapter(
 
     //endregion
 
-    class TaskViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
         private val binding = ItemTaskBinding.bind(view)
 
