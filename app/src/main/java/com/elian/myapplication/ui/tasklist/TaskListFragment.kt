@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
+import com.elian.myapplication.data.repository.TaskStaticRepository
 import com.elian.myapplication.databinding.FragmentTaskListBinding
 import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
@@ -51,7 +52,7 @@ class TaskListFragment : Fragment()
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(arrayListOf())
+        taskAdapter = TaskAdapter(TaskStaticRepository.instance.getList())
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding.rvTasks.layoutManager = layoutManager
