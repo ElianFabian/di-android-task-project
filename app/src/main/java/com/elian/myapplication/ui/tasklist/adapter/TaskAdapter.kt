@@ -15,13 +15,13 @@ class TaskAdapter(
 ) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()
 {
-    fun load(list: List<Task>)
-    {
-        tasks.clear()
-        tasks.addAll(list)
-
-        notifyDataSetChanged()
-    }
+//    fun load(list: List<Task>)
+//    {
+//        tasks.clear()
+//        tasks.addAll(list)
+//
+//        notifyDataSetChanged()
+//    }
 
     //region RecyclerView.Adapter
 
