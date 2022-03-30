@@ -27,9 +27,11 @@
             android:layout_marginTop="12dp" />
 
     <Switch
+            android:id="@+id/swEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/swEndDate"
+            android:text="Is end date?"
+            android:focusable="false"
             app:layout_constraintStart_toEndOf="@+id/tvName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvName"
