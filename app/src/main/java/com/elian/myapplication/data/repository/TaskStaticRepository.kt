@@ -6,7 +6,7 @@ class TaskStaticRepository
 {
     companion object
     {
-        public val instance = TaskStaticRepository()
+        val instance = TaskStaticRepository()
     }
 
     private val taskList = arrayListOf(
