@@ -1,5 +1,5 @@
 package com.elian.myapplication.ui.taskadd
 
-interface TaskAddContract
+interface ITaskAddContract
 {
 }
