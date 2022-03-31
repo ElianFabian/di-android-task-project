@@ -93,6 +93,7 @@
             android:entries="@array/importance"
             android:spinnerMode="dialog"
             android:prompt="@string/spImportance_prompt"
+            android:foreground="@drawable/shape_round_stroke"
             app:layout_constraintVertical_bias="0.15"
             android:minHeight="48dp" />
     <!--endregion-->
