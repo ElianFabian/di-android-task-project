@@ -66,8 +66,11 @@ class TaskAddFragment : Fragment()
 
     private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
     {
+        val monthWithFormat = month.toString().format("%02d")
+        val dayOfMonthWithFormat = dayOfMonth.toString().format("%02d")
+        
         binding.etDate.setText(
-            "$year/${month.toString().format("%02d")}/${dayOfMonth.toString().format("%02d")}"
+            "$year/${monthWithFormat}/${dayOfMonthWithFormat}"
         )
     }
 
