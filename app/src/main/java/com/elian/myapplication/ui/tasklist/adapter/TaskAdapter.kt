@@ -11,7 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class TaskAdapter(
-    private val tasks: ArrayList<Task>, private val listener: View.OnClickListener
+    private val tasks: ArrayList<Task>, private val listener: View.OnClickListener,
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
@@ -30,7 +30,7 @@ class TaskAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val view = layoutInflater.inflate(R.layout.item_task, parent, false)
-        
+
         view.setOnClickListener(listener)
 
         return ViewHolder(view)
@@ -58,7 +58,7 @@ class TaskAdapter(
 
             val isEndDate = task.endDate < Calendar.getInstance().timeInMillis
 
-            binding.swEndDate.isChecked = isEndDate
+            binding.swIsEndDate.isChecked = isEndDate
         }
     }
 }
