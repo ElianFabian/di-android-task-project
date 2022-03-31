@@ -11,7 +11,7 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A82962FF">
+            android:background="#B00091EA">
 
         <TextView
                 android:id="@+id/tvName"
@@ -20,7 +20,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="40dp"/>
 
         <TextView
                 android:id="@+id/tvImportance"
@@ -30,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="6dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="40dp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/swIsEndDate"
