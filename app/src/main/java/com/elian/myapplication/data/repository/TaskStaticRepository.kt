@@ -9,7 +9,7 @@ class TaskStaticRepository
     {
         val instance = TaskStaticRepository()
         
-        private var calendar = Calendar.getInstance()
+        private lateinit var calendar: Calendar
     }
     
     init
