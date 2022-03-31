@@ -40,6 +40,5 @@
                 android:text="@string/item_task__swIsEndDate_text"
                 android:clickable="false" />
 
-
     </FrameLayout>
 </androidx.cardview.widget.CardView>
