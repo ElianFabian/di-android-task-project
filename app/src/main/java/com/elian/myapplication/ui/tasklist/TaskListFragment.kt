@@ -58,7 +58,8 @@ class TaskListFragment : Fragment()
             View.OnClickListener {
                 Toast.makeText(context,
                     "You pressed a task.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         )
 
