@@ -11,7 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class TaskAdapter(
-    private val tasks: ArrayList<Task>,
+    private val tasks: ArrayList<Task>, listener: View.OnClickListener
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {

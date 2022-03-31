@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,15 @@ class TaskListFragment : Fragment()
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(TaskStaticRepository.instance.getList())
+        taskAdapter = TaskAdapter(
+            TaskStaticRepository.instance.getList(),
+            View.OnClickListener {
+                Toast.makeText(context,
+                    "You pressed a task.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        )
+
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding.rvTasks.layoutManager = layoutManager

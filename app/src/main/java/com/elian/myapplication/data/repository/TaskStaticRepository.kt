@@ -9,7 +9,12 @@ class TaskStaticRepository
     {
         val instance = TaskStaticRepository()
         
-        private val calendar = Calendar.getInstance()
+        private var calendar = Calendar.getInstance()
+    }
+    
+    init
+    {
+         calendar = Calendar.getInstance()
     }
 
     private val taskList = arrayListOf(
