@@ -19,26 +19,26 @@ class TaskStaticRepository
 
     private val taskList = arrayListOf(
         Task(
-            name = "tarea1",
-            description = "es una tarea",
+            name = "task1",
+            description = "es una task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
-            name = "tarea2",
-            description = "es una tarea",
+            name = "task2",
+            description = "es una task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
-            name = "tarea3",
-            description = "es una tarea",
+            name = "task3",
+            description = "es una task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
-            name = "tarea4",
-            description = "es una tarea",
+            name = "task4",
+            description = "es una task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         )
@@ -54,9 +54,9 @@ class TaskStaticRepository
     fun getList() = taskList
 
     /**
-     * Returns a date from now until the indicated years back.
+     * Returns a random date from the current date before or after the indicated amount of years.
      */
-    private fun getRandomDate(years: Long = 10): Long = calendar.timeInMillis - (years * 0.. 31_556_900_000).random()
+    private fun getRandomDate(years: Long = 10): Long = calendar.timeInMillis - (years * - 31_556_900_000.. 31_556_900_000).random()
 
     //endregion
 }
