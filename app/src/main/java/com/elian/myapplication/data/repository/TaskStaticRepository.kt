@@ -20,25 +20,25 @@ class TaskStaticRepository
     private val taskList = arrayListOf(
         Task(
             name = "task1",
-            description = "es una task",
+            description = "It's a task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
             name = "task2",
-            description = "es una task",
+            description = "It's a task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
             name = "task3",
-            description = "es una task",
+            description = "It's a task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         ),
         Task(
             name = "task4",
-            description = "es una task",
+            description = "It's a task",
             importance = Task.Importance.values().random(),
             endDate = getRandomDate()
         )
