@@ -55,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/tieName_hint"
-                android:background="@color/white"
                 android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
@@ -78,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:hint="@string/tieDescription_hint"
-                android:background="@color/white"
                 android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
