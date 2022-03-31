@@ -56,7 +56,8 @@ class TaskListFragment : Fragment()
         taskAdapter = TaskAdapter(
             TaskStaticRepository.instance.getList(),
             View.OnClickListener {
-                Toast.makeText(context,
+                Toast.makeText(
+                    context,
                     "You pressed a task.",
                     Toast.LENGTH_SHORT
                 ).show()
