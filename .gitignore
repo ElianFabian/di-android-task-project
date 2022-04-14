@@ -4,6 +4,7 @@
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
+/.idea/misc.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
@@ -13,5 +14,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-*.*~
+*.xml~
+.idea/codeStyles/Project.xml
+.idea/codeStyles/codeStyleConfig.xml
