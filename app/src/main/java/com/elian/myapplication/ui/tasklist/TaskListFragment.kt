@@ -14,7 +14,7 @@ import com.elian.myapplication.data.repository.TaskStaticRepository
 import com.elian.myapplication.databinding.FragmentTaskListBinding
 import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
-class TaskListFragment : Fragment()
+class TaskListFragment : Fragment(), ITaskListContract.IView
 {
     private lateinit var binding: FragmentTaskListBinding
 
@@ -68,6 +68,21 @@ class TaskListFragment : Fragment()
         binding.rvTasks.layoutManager = layoutManager
         binding.rvTasks.adapter = taskAdapter
     }
+
+    //region ITaskListContract.IView
+
+    override fun showProgress()
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun hideProgress()
+    {
+        TODO("Not yet implemented")
+    }
+
+    //endregion
+
 
     //endregion
 }
