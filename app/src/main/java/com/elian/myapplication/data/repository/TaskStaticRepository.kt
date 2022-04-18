@@ -1,9 +1,10 @@
 package com.elian.myapplication.data.repository
 
 import com.elian.myapplication.data.model.Task
+import com.elian.myapplication.ui.tasklist.ITaskListContract
 import java.util.*
 
-class TaskStaticRepository
+class TaskStaticRepository: ITaskListContract.IRepository
 {
     companion object
     {
@@ -57,6 +58,15 @@ class TaskStaticRepository
      * Returns a random date from the current date before or after the indicated amount of years.
      */
     private fun getRandomDate(years: Long = 10): Long = calendar.timeInMillis - (years * - 31_556_900_000.. 31_556_900_000).random()
+
+    //endregion
+
+    //region ITaskListContract.IRepository
+
+    override fun load()
+    {
+        TODO("Not yet implemented")
+    }
 
     //endregion
 }
