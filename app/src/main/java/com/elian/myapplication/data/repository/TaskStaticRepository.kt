@@ -22,25 +22,25 @@ class TaskStaticRepository
             name = "task1",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDate = getRandomDate()
+            endDateEstimated = getRandomDate()
         ),
         Task(
             name = "task2",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDate = getRandomDate()
+            endDateEstimated = getRandomDate()
         ),
         Task(
             name = "task3",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDate = getRandomDate()
+            endDateEstimated = getRandomDate()
         ),
         Task(
             name = "task4",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDate = getRandomDate()
+            endDateEstimated = getRandomDate()
         )
     )
 
