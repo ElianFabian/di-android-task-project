@@ -8,4 +8,5 @@
     <string name="ibDate_contentDescription">Botón para seleccionar una fecha</string>
     <string name="tieDescription_hint">Descripción</string>
     <string name="spImportance_prompt">Importancia</string>
+    <string name="item_task__swIsEndDate_text">¿Es fecha fin?</string>
 </resources>
