@@ -13,4 +13,19 @@ class TaskListInteractor: ITaskListContract.IInteractor, IRepositoryListCallback
     }
 
     //endregion
+    
+    //region IRepositoryListCallback
+
+    override fun onSuccess(list: List<Task>)
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNoData()
+    {
+        TODO("Not yet implemented")
+    }
+    
+    //endregion
+    
 }
