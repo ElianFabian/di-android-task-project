@@ -2,7 +2,7 @@ package com.elian.myapplication.base
 
 import com.elian.myapplication.data.model.Task
 
-interface IRepositoryCallback
+interface IRepositoryListCallback
 {
     fun onSuccess(list: List<Task>)
     fun onNoData()
