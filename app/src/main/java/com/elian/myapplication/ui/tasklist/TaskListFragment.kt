@@ -10,11 +10,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
+import com.elian.myapplication.base.IRepositoryListCallback
+import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.data.repository.TaskStaticRepository
 import com.elian.myapplication.databinding.FragmentTaskListBinding
 import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
-class TaskListFragment : Fragment(), ITaskListContract.IView
+class TaskListFragment : Fragment(), ITaskListContract.IView, IRepositoryListCallback
 {
     private lateinit var binding: FragmentTaskListBinding
 
@@ -83,6 +85,19 @@ class TaskListFragment : Fragment(), ITaskListContract.IView
 
     //endregion
 
+    //region IRepositoryListCallback
+
+    override fun onSuccess(list: List<Task>)
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNoData()
+    {
+        TODO("Not yet implemented")
+    }
+
+    //endregion
 
     //endregion
 }
