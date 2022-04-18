@@ -5,6 +5,7 @@ data class Task(
     val description: String,
     val importance: Importance,
     val endDateEstimated: Long,
+    val endDate: Long
 )
 {
     enum class Importance
