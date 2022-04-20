@@ -15,8 +15,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
         {
             if (name.isEmpty() || description.isEmpty())
             {
-                // TODO
-                //onFailure()
+                onFailure()
                 return
             }
         }
