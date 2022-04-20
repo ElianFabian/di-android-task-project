@@ -27,12 +27,12 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
 
     override fun onSuccess(list: List<Task>)
     {
-        TODO("Not yet implemented")
+        view?.onSuccess(list)
     }
 
     override fun onNoData()
     {
-        TODO("Not yet implemented")
+        view?.onNoData()
     }
 
     //endregion
