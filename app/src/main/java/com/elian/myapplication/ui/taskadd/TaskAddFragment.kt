@@ -92,7 +92,7 @@ class TaskAddFragment : Fragment(),
             Task(
                 name = tieName.text.toString(),
                 description = tieDescription.text.toString(),
-                importance = Task.Importance.valueOf(spImportance.selectedItem.toString()),
+                importance = Task.Importance.values()[spImportance.selectedItemPosition],
                 endDateEstimated = dateFormat.parse(etDate.text.toString())!!.time
             )
         }
