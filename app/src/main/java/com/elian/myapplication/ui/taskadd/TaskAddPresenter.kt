@@ -12,7 +12,7 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
 
     override fun onValidateFields(task: Task)
     {
-        TODO("Not yet implemented")
+        interactor?.validateFields(task)
     }
 
     override fun onDestroy()
