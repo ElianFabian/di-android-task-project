@@ -16,7 +16,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     //endregion
 
-    //region IRepositoryListCallback
+    //region ITaskListContract.IOnRepositoryCallback
 
     override fun onSuccess(list: List<Task>)
     {
