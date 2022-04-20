@@ -52,8 +52,6 @@ class TaskStaticRepository : ITaskListContract.IRepository
         taskList.add(task)
     }
 
-    fun getList() = taskList
-
     /**
      * Returns a random date from the current date before or after the indicated amount of years.
      */
@@ -71,9 +69,9 @@ class TaskStaticRepository : ITaskListContract.IRepository
 
     //region ITaskListContract.IRepository
 
-    override fun load()
+    override fun getTaskList(callback: ITaskListContract.IRepositoryCallback)
     {
-        TODO("Not yet implemented")
+        callback.onSuccess(taskList)
     }
 
     //endregion
