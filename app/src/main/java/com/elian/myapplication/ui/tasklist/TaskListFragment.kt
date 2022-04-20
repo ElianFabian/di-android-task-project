@@ -71,8 +71,7 @@ class TaskListFragment : Fragment(),
         binding.rvTasks.adapter = taskAdapter
     }
     //endregion
-
-
+    
     //region ITaskListContract.IView
 
     override fun showProgress()
