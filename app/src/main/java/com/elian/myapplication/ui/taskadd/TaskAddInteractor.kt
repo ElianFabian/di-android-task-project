@@ -22,10 +22,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
 
     //endregion
 
-    //region IRepositoryListCallback
-
-
-    //endregion
+    //region ITaskAddContract.IOnRepositoryCallback
 
     override fun onSuccess()
     {
@@ -36,4 +33,6 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
     {
         listener.onFailure()
     }
+
+    //endregion
 }
