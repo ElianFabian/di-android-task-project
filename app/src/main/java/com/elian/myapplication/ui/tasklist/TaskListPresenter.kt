@@ -24,7 +24,7 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
 
     //endregion
 
-    //region IRepositoryListCallback
+    //region ITaskListContract.IOnInteractorListener
 
     override fun onSuccess(list: List<Task>)
     {
