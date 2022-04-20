@@ -28,12 +28,12 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
 
     override fun onSuccess()
     {
-        TODO("Not yet implemented")
+        view?.onSuccess()
     }
 
     override fun onFailure()
     {
-        TODO("Not yet implemented")
+        view?.onFailure()
     }
 
     //endregion
