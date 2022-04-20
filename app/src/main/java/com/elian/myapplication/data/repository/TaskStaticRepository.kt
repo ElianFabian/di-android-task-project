@@ -1,10 +1,13 @@
 package com.elian.myapplication.data.repository
 
 import com.elian.myapplication.data.model.Task
+import com.elian.myapplication.ui.taskadd.ITaskAddContract
 import com.elian.myapplication.ui.tasklist.ITaskListContract
 import java.util.*
 
-class TaskStaticRepository : ITaskListContract.IRepository
+class TaskStaticRepository :
+    ITaskListContract.IRepository,
+    ITaskAddContract.IRepository
 {
     companion object
     {
@@ -72,6 +75,15 @@ class TaskStaticRepository : ITaskListContract.IRepository
     override fun getTaskList(callback: ITaskListContract.IOnRepositoryCallback)
     {
         callback.onSuccess(taskList)
+    }
+
+    //endregion
+
+    //region ITaskAddContract.IRepository
+
+    override fun add(callback: ITaskAddContract.IOnRepositoryCallback, task: Task)
+    {
+        TODO("Not yet implemented")
     }
 
     //endregion
