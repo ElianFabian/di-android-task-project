@@ -17,7 +17,7 @@ import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : Fragment(),
     ITaskListContract.IView,
-    IRepositoryListCallback
+    ITaskListContract.IOnRepositoryCallback
 {
     private lateinit var binding: FragmentTaskListBinding
 
@@ -57,7 +57,7 @@ class TaskListFragment : Fragment(),
     private fun initRecyclerViewAdapter()
     {
         taskAdapter = TaskAdapter(
-            TaskStaticRepository.instance.getList()
+            arrayListOf()
         ) {
             Toast.makeText(
                 context,
