@@ -147,7 +147,7 @@ class TaskAddFragment : Fragment(),
 
     override fun onFailure()
     {
-        TODO("Not yet implemented")
+        Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion

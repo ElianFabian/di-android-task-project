@@ -68,7 +68,8 @@ object TaskStaticRepository :
 
     override fun add(callback: ITaskAddContract.IOnRepositoryCallback, task: Task)
     {
-        TODO("Not yet implemented")
+        taskList.add(task)
+        callback.onSuccess()
     }
 
     //endregion
