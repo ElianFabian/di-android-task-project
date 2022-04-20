@@ -23,25 +23,25 @@ class TaskStaticRepository : ITaskListContract.IRepository
             name = "task1",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDate()
+            endDateEstimated = getRandomDateAroundCurrentDate()
         ),
         Task(
             name = "task2",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDate()
+            endDateEstimated = getRandomDateAroundCurrentDate()
         ),
         Task(
             name = "task3",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDate()
+            endDateEstimated = getRandomDateAroundCurrentDate()
         ),
         Task(
             name = "task4",
             description = "It's a task",
             importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDate()
+            endDateEstimated = getRandomDateAroundCurrentDate()
         )
     )
 
@@ -57,7 +57,7 @@ class TaskStaticRepository : ITaskListContract.IRepository
     /**
      * Returns a random date from the current date before or after the indicated amount of years.
      */
-    private fun getRandomDate(years: Long = 10): Long
+    private fun getRandomDateAroundCurrentDate(years: Long = 10): Long
     {
         val oneYearInMillis = 31_556_900_000
         return calendar.timeInMillis - (years * -oneYearInMillis..oneYearInMillis).random()
