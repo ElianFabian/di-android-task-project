@@ -9,7 +9,6 @@ object TaskStaticRepository :
     ITaskListContract.IRepository,
     ITaskAddContract.IRepository
 {
-
     private var calendar: Calendar = Calendar.getInstance()
 
     private val taskList = arrayListOf(
