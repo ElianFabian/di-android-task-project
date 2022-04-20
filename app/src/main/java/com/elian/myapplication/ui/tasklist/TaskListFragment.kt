@@ -71,6 +71,8 @@ class TaskListFragment : Fragment(),
         binding.rvTasks.layoutManager = layoutManager
         binding.rvTasks.adapter = taskAdapter
     }
+    //endregion
+
 
     //region ITaskListContract.IView
 
@@ -97,8 +99,6 @@ class TaskListFragment : Fragment(),
     {
         TODO("Not yet implemented")
     }
-
-    //endregion
 
     //endregion
 }
