@@ -16,8 +16,7 @@ import com.elian.myapplication.databinding.FragmentTaskListBinding
 import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : Fragment(),
-    ITaskListContract.IView,
-    ITaskListContract.IOnRepositoryCallback
+    ITaskListContract.IView
 {
     private lateinit var binding: FragmentTaskListBinding
 
