@@ -10,6 +10,9 @@
     <string name="etDate_contentDescription" translatable="false">Text field where the date is shown when it\'s selected by the date picker.</string>
     <string name="spImportance_prompt">Importance</string>
     <string name="item_task__swIsEndDate_text">Is end date?</string>
+    
+    
+    <string name="error_emptyField">The field can't be empty</string>
 
     <string-array name="importance">
         <item>Low</item>
