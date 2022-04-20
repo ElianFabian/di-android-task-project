@@ -14,7 +14,7 @@
 .externalNativeBuild
 .cxx
 local.properties
-*.xml~
+*.*~
 .idea/codeStyles/Project.xml
 .idea/codeStyles/codeStyleConfig.xml
 .idea/misc.xml
