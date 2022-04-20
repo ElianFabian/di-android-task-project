@@ -60,7 +60,11 @@ class TaskStaticRepository : ITaskListContract.IRepository
     private fun getRandomDateAroundCurrentDate(years: Long = 10): Long
     {
         val oneYearInMillis = 31_556_900_000
-        return calendar.timeInMillis - (years * -oneYearInMillis..oneYearInMillis).random()
+
+        val yearsInMillis = years * oneYearInMillis
+        val range = -yearsInMillis..yearsInMillis
+
+        return calendar.timeInMillis + range.random()
     }
 
     //endregion
