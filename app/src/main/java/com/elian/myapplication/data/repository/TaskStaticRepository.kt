@@ -5,21 +5,12 @@ import com.elian.myapplication.ui.taskadd.ITaskAddContract
 import com.elian.myapplication.ui.tasklist.ITaskListContract
 import java.util.*
 
-class TaskStaticRepository :
+object TaskStaticRepository :
     ITaskListContract.IRepository,
     ITaskAddContract.IRepository
 {
-    companion object
-    {
-        val instance = TaskStaticRepository()
 
-        private lateinit var calendar: Calendar
-    }
-
-    init
-    {
-        calendar = Calendar.getInstance()
-    }
+    private var calendar: Calendar = Calendar.getInstance()
 
     private val taskList = arrayListOf(
         Task(
