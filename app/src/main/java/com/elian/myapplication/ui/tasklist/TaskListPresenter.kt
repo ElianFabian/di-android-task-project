@@ -5,9 +5,9 @@ import com.elian.myapplication.data.model.Task
 
 class TaskListPresenter(private var view: ITaskListContract.IView):
     ITaskListContract.IPresenter,
-    IRepositoryListCallback
+    ITaskListContract.IOnInteractorListener
 {
-    private var interactor: ITaskListContract.IInteractor = TaskListInteractor()
+    private var interactor: ITaskListContract.IInteractor = TaskListInteractor(this)
     
     //region ITaskListContract.IPresenter
 
