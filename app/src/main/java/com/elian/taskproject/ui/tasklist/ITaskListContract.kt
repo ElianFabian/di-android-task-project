@@ -23,7 +23,7 @@ interface ITaskListContract
 
     interface IRepository
     {
-        fun getTaskList(callback: IOnRepositoryCallback)
+        fun getList(callback: IOnRepositoryCallback)
     }
 
     interface IOnRepositoryCallback

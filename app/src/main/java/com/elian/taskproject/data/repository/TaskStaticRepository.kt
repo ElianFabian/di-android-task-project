@@ -31,7 +31,7 @@ object TaskStaticRepository :
 
     //region ITaskListContract.IRepository
 
-    override fun getTaskList(callback: ITaskListContract.IOnRepositoryCallback)
+    override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
         callback.onSuccess(taskList)
     }
