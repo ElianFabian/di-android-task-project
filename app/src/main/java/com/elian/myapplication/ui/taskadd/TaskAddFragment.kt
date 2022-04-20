@@ -131,7 +131,12 @@ class TaskAddFragment : Fragment(),
 
     override fun cleanInputFieldsErrors()
     {
-        TODO("Not yet implemented")
+        with(binding)
+        {
+            tilName.error = null
+            tilDescription.error = null
+            etDate.error = null
+        }
     }
 
     override fun onSuccess()
