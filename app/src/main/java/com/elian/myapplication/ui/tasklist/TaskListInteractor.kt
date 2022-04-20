@@ -3,7 +3,9 @@ package com.elian.myapplication.ui.tasklist
 import com.elian.myapplication.base.IRepositoryListCallback
 import com.elian.myapplication.data.model.Task
 
-class TaskListInteractor: ITaskListContract.IInteractor, IRepositoryListCallback
+class TaskListInteractor :
+    ITaskListContract.IInteractor,
+    IRepositoryListCallback
 {
     //region ITaskListContract.IInteractor
 
@@ -13,7 +15,7 @@ class TaskListInteractor: ITaskListContract.IInteractor, IRepositoryListCallback
     }
 
     //endregion
-    
+
     //region IRepositoryListCallback
 
     override fun onSuccess(list: List<Task>)
@@ -25,7 +27,7 @@ class TaskListInteractor: ITaskListContract.IInteractor, IRepositoryListCallback
     {
         TODO("Not yet implemented")
     }
-    
+
     //endregion
-    
+
 }
