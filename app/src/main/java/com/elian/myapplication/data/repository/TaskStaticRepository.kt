@@ -50,11 +50,6 @@ class TaskStaticRepository :
 
     //region Methods
 
-    fun add(task: Task)
-    {
-        taskList.add(task)
-    }
-
     /**
      * Returns a random date from the current date before or after the indicated amount of years.
      */
