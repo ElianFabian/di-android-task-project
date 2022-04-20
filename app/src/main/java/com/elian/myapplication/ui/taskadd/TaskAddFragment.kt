@@ -11,9 +11,7 @@ import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
-import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
 
 class TaskAddFragment : Fragment(),
     ITaskAddContract.IView
@@ -55,7 +53,7 @@ class TaskAddFragment : Fragment(),
     {
         // initSpinnerAdapter()
 
-        binding.fab.setOnClickListener { presenter.onValidateFields(getTask()) }
+        binding.fab.setOnClickListener { presenter.onValidateFields(getTaskFromFields()) }
 
         binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
@@ -88,7 +86,7 @@ class TaskAddFragment : Fragment(),
     /**
      * Gets a task using the information from the form.
      */
-    private fun getTask(): Task
+    private fun getTaskFromFields(): Task
     {
         return with(binding)
         {
