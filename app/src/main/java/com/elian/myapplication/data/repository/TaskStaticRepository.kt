@@ -11,32 +11,7 @@ object TaskStaticRepository :
 {
     private var calendar: Calendar = Calendar.getInstance()
 
-    private val taskList = arrayListOf(
-        Task(
-            name = "task1",
-            description = "It's a task",
-            importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDateAroundCurrentDate()
-        ),
-        Task(
-            name = "task2",
-            description = "It's a task",
-            importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDateAroundCurrentDate()
-        ),
-        Task(
-            name = "task3",
-            description = "It's a task",
-            importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDateAroundCurrentDate()
-        ),
-        Task(
-            name = "task4",
-            description = "It's a task",
-            importance = Task.Importance.values().random(),
-            endDateEstimated = getRandomDateAroundCurrentDate()
-        )
-    )
+    private val taskList = arrayListOf<Task>()
 
     //region Methods
 
