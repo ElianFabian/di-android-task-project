@@ -76,7 +76,8 @@ class TaskAddFragment : Fragment(),
 
     private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
     {
-        val monthWithFormat = String.format("%02d", month)
+        // 1 is added because month is on range 0 to 11
+        val monthWithFormat = String.format("%02d", month + 1)
         val dayOfMonthWithFormat = String.format("%02d", dayOfMonth)
 
         binding.etDate.setText(
