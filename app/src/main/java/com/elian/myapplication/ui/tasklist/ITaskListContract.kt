@@ -5,7 +5,7 @@ import com.elian.myapplication.data.model.Task
 
 interface ITaskListContract
 {
-    interface IView
+    interface IView : IOnRepositoryCallback
     {
         fun showProgress()
         fun hideProgress()
