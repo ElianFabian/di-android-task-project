@@ -92,7 +92,7 @@ class TaskListFragment : Fragment(),
 
     override fun onSuccess(list: List<Task>)
     {
-        TODO("Not yet implemented")
+        taskAdapter.load(list)
     }
 
     override fun onNoData()
