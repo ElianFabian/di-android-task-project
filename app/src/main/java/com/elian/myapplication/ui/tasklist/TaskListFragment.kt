@@ -97,7 +97,7 @@ class TaskListFragment : Fragment(),
 
     override fun onNoData()
     {
-        TODO("Not yet implemented")
+        Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
