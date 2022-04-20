@@ -36,8 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"
-                android:text="@string/item_task__swIsEndDate_text"
-                android:clickable="false" />
+                android:text="@string/item_task__swIsEndDate_text" />
 
     </FrameLayout>
 </androidx.cardview.widget.CardView>
