@@ -49,7 +49,7 @@ class TaskListFragment : Fragment(),
     override fun onDestroy()
     {
         super.onDestroy()
-        
+
         presenter.onDestroy()
     }
 
@@ -98,18 +98,14 @@ class TaskListFragment : Fragment(),
     {
     }
 
-    //endregion
-
-    //region IRepositoryListCallback
+    override fun onNoData()
+    {
+        Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onSuccess(list: List<Task>)
     {
         taskAdapter.load(list)
-    }
-
-    override fun onNoData()
-    {
-        Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
