@@ -51,12 +51,12 @@ class TaskAdapter(
     {
         private val binding = ItemTaskBinding.bind(view)
 
+        private val importanceStringArray = binding.root.resources.getStringArray(R.array.importance)
+
         fun render(task: Task) = with(binding)
         {
             tvName.text = task.name
-
-            val importanceArray = root.resources.getStringArray(R.array.importance)
-            tvImportance.text = importanceArray[task.importance.ordinal]
+            tvImportance.text = importanceStringArray[task.importance.ordinal]
 
             task.endDateEstimated?.let()
             {
