@@ -11,16 +11,13 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
 
     override fun validateFields(task: Task)
     {
-        with(task)
-        {
-            if (name.isEmpty() || description.isEmpty())
-            {
-                onFailure()
-                return
-            }
-        }
+        var isError = false
 
-        TaskStaticRepository.add(this, task)
+        if (task.name.isEmpty()) listener.onNameEmptyError().let { isError = true }
+        if (task.description.isEmpty()) listener.onDescriptionEmptyError().let { isError = true }
+        if (task.endDateEstimated == null) listener.onDateEmptyError().let { isError = true }
+
+        if (!isError) TaskStaticRepository.add(this, task)
     }
 
     //endregion

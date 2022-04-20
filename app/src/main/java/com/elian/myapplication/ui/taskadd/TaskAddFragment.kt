@@ -11,7 +11,9 @@ import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
+import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.*
 
 class TaskAddFragment : Fragment(),
     ITaskAddContract.IView
@@ -89,11 +91,17 @@ class TaskAddFragment : Fragment(),
     {
         return with(binding)
         {
+            val endDateEstimated: Long? = try
+            {
+                dateFormat.parse(etDate.text.toString())?.time
+            }
+            catch (e: ParseException) { null }
+
             Task(
                 name = tieName.text.toString(),
                 description = tieDescription.text.toString(),
                 importance = Task.Importance.values()[spImportance.selectedItemPosition],
-                endDateEstimated = dateFormat.parse(etDate.text.toString())!!.time
+                endDateEstimated = endDateEstimated
             )
         }
     }
@@ -117,12 +125,12 @@ class TaskAddFragment : Fragment(),
 
     override fun setNameEmptyError()
     {
-        binding.tilName.error = getString(R.string.error_emptyField)
+        binding.tieName.error = getString(R.string.error_emptyField)
     }
 
     override fun setDescriptionEmptyError()
     {
-        binding.tilDescription.error = getString(R.string.error_emptyField)
+        binding.tieDescription.error = getString(R.string.error_emptyField)
     }
 
     override fun setDateEmptyError()

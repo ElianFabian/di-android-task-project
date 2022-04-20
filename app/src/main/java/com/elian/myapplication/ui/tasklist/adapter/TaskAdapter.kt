@@ -56,9 +56,12 @@ class TaskAdapter(
             binding.tvName.text = task.name
             binding.tvImportance.text = task.importance.toString().lowercase()
 
-            val isEndDate = task.endDateEstimated!! < Calendar.getInstance().timeInMillis
+            val isEndDate = task.endDateEstimated?.let { it < Calendar.getInstance().timeInMillis }
 
-            binding.swIsEndDate.isChecked = isEndDate
+            if (isEndDate != null)
+            {
+                binding.swIsEndDate.isChecked = isEndDate
+            }
         }
     }
 }
