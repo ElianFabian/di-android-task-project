@@ -29,5 +29,4 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
     }
 
     //endregion
-
 }
