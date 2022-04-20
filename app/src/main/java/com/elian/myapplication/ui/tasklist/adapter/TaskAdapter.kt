@@ -1,5 +1,6 @@
 package com.elian.myapplication.ui.tasklist.adapter
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,7 @@ class TaskAdapter(
     {
         private val binding = ItemTaskBinding.bind(view)
 
-        private val importanceStringArray = binding.root.resources.getStringArray(R.array.importance)
+        private val importanceStringArray = Resources.getSystem().getStringArray(R.array.importance)
 
         fun render(task: Task) = with(binding)
         {
