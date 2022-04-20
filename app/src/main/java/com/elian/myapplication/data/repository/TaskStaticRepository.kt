@@ -57,8 +57,11 @@ class TaskStaticRepository : ITaskListContract.IRepository
     /**
      * Returns a random date from the current date before or after the indicated amount of years.
      */
-    private fun getRandomDate(years: Long = 10): Long =
-        calendar.timeInMillis - (years * -31_556_900_000..31_556_900_000).random()
+    private fun getRandomDate(years: Long = 10): Long
+    {
+        val oneYearInMillis = 31_556_900_000
+        return calendar.timeInMillis - (years * -oneYearInMillis..oneYearInMillis).random()
+    }
 
     //endregion
 
