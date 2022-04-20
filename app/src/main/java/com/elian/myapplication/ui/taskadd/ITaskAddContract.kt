@@ -1,5 +1,6 @@
 package com.elian.myapplication.ui.taskadd
 
+import com.elian.myapplication.base.IBasePresenter
 import com.elian.myapplication.data.model.Task
 
 interface ITaskAddContract
@@ -12,14 +13,14 @@ interface ITaskAddContract
         fun cleanInputFieldsErrors()
     }
 
-    interface IPresenter
+    interface IPresenter : IBasePresenter
     {
-        
+        fun onValidateFields()
     }
 
     interface IInteractor
     {
-
+        fun validateFields()
     }
 
     interface IRepository
