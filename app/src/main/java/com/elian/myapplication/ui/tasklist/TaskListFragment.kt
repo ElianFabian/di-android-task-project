@@ -19,9 +19,7 @@ class TaskListFragment : Fragment(),
     ITaskListContract.IView
 {
     private lateinit var binding: FragmentTaskListBinding
-
     private lateinit var taskAdapter: TaskAdapter
-    
     private lateinit var presenter: ITaskListContract.IPresenter
 
     //region Fragment Methods
@@ -29,7 +27,7 @@ class TaskListFragment : Fragment(),
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        
+
         presenter = TaskListPresenter(this)
     }
 
@@ -82,7 +80,7 @@ class TaskListFragment : Fragment(),
         binding.rvTasks.adapter = taskAdapter
     }
     //endregion
-    
+
     //region ITaskListContract.IView
 
     override fun showProgress()
