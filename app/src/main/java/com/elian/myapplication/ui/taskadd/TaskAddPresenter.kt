@@ -1,5 +1,7 @@
 package com.elian.myapplication.ui.taskadd
 
+import com.elian.myapplication.data.model.Task
+
 class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
     ITaskAddContract.IPresenter,
     ITaskAddContract.IOnInteractorListener
@@ -8,7 +10,7 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
 
     //region ITaskAddListContract.IPresenter
 
-    override fun onValidateFields()
+    override fun onValidateFields(task: Task)
     {
         TODO("Not yet implemented")
     }

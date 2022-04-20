@@ -5,7 +5,7 @@ import com.elian.myapplication.data.model.Task
 
 interface ITaskAddContract
 {
-    interface IView
+    interface IView : IOnRepositoryCallback
     {
         fun setNameEmptyError()
         fun setDescriptionEmptyError()
@@ -15,7 +15,7 @@ interface ITaskAddContract
 
     interface IPresenter : IBasePresenter
     {
-        fun onValidateFields()
+        fun onValidateFields(task: Task)
     }
 
     interface IInteractor

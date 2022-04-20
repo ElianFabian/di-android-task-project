@@ -51,10 +51,7 @@ class TaskAddFragment : Fragment(),
     {
         // initSpinnerAdapter()
 
-        binding.fab.setOnClickListener()
-        {
-            NavHostFragment.findNavController(this).navigateUp()
-        }
+        binding.fab.setOnClickListener { presenter.onValidateFields(getTask()) }
 
         binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
@@ -83,9 +80,12 @@ class TaskAddFragment : Fragment(),
         )
     }
 
-    private fun createTask()
+    /**
+     * Gets a task using the information from the form.
+     */
+    private fun getTask(): Task
     {
-        with(binding)
+        return with(binding)
         {
             Task(
                 name = tieName.text.toString(),
@@ -129,6 +129,16 @@ class TaskAddFragment : Fragment(),
     }
 
     override fun cleanInputFieldsErrors()
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccess()
+    {
+        NavHostFragment.findNavController(this).navigateUp()
+    }
+
+    override fun onFailure()
     {
         TODO("Not yet implemented")
     }
