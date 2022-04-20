@@ -1,5 +1,7 @@
 package com.elian.myapplication.ui.tasklist
 
+import com.elian.myapplication.base.IRepositoryListCallback
+
 interface ITaskListContract
 {
     interface IView
@@ -22,4 +24,6 @@ interface ITaskListContract
     {
         fun load()
     }
+
+    interface IOnInteractorListener : IRepositoryListCallback
 }
