@@ -51,7 +51,7 @@ class TaskAddFragment : Fragment(),
 
     private fun initUI()
     {
-        // initSpinnerAdapter()
+        //initSpinnerAdapter()
 
         binding.fab.setOnClickListener { presenter.onValidateFields(getTaskFromFields()) }
 
