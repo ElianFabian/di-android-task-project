@@ -78,12 +78,10 @@ class TaskListFragment : Fragment(),
 
     override fun showProgress()
     {
-        TODO("Not yet implemented")
     }
 
     override fun hideProgress()
     {
-        TODO("Not yet implemented")
     }
 
     //endregion
