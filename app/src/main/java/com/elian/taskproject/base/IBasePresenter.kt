@@ -1,4 +1,4 @@
-package com.elian.myapplication.base
+package com.elian.taskproject.base
 
 interface IBasePresenter
 {

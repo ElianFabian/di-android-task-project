@@ -1,6 +1,6 @@
-package com.elian.myapplication.ui.taskadd
+package com.elian.taskproject.ui.taskadd
 
-import com.elian.myapplication.data.model.Task
+import com.elian.taskproject.data.model.Task
 
 class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
     ITaskAddContract.IPresenter,

@@ -1,7 +1,7 @@
-package com.elian.myapplication.ui.taskadd
+package com.elian.taskproject.ui.taskadd
 
-import com.elian.myapplication.data.model.Task
-import com.elian.myapplication.data.repository.TaskStaticRepository
+import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.data.repository.TaskStaticRepository
 
 class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorListener) :
     ITaskAddContract.IInteractor,

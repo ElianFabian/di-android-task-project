@@ -1,7 +1,7 @@
-package com.elian.myapplication.ui.tasklist
+package com.elian.taskproject.ui.tasklist
 
-import com.elian.myapplication.base.IBasePresenter
-import com.elian.myapplication.data.model.Task
+import com.elian.taskproject.base.IBasePresenter
+import com.elian.taskproject.data.model.Task
 
 interface ITaskListContract
 {

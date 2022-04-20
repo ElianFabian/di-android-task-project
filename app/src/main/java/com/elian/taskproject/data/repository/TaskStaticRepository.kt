@@ -1,9 +1,8 @@
-package com.elian.myapplication.data.repository
+package com.elian.taskproject.data.repository
 
-import com.elian.myapplication.data.model.Task
-import com.elian.myapplication.ui.taskadd.ITaskAddContract
-import com.elian.myapplication.ui.tasklist.ITaskListContract
-import java.util.*
+import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.ui.taskadd.ITaskAddContract
+import com.elian.taskproject.ui.tasklist.ITaskListContract
 
 object TaskStaticRepository :
     ITaskListContract.IRepository,

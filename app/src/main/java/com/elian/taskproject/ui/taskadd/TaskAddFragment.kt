@@ -1,4 +1,4 @@
-package com.elian.myapplication.ui.taskadd
+package com.elian.taskproject.ui.taskadd
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
-import com.elian.myapplication.R
-import com.elian.myapplication.data.model.Task
-import com.elian.myapplication.databinding.FragmentTaskAddBinding
-import com.elian.myapplication.ui.datepicker.DatePickerFragment
+import com.elian.taskproject.R
+import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.databinding.FragmentTaskAddBinding
+import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.text.SimpleDateFormat
 
 class TaskAddFragment : Fragment(),

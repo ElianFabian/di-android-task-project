@@ -1,4 +1,4 @@
-package com.elian.myapplication.ui.tasklist
+package com.elian.taskproject.ui.tasklist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,10 @@ import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.elian.myapplication.R
-import com.elian.myapplication.data.model.Task
-import com.elian.myapplication.data.repository.TaskStaticRepository
-import com.elian.myapplication.databinding.FragmentTaskListBinding
-import com.elian.myapplication.ui.tasklist.adapter.TaskAdapter
+import com.elian.taskproject.R
+import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.databinding.FragmentTaskListBinding
+import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : Fragment(),
     ITaskListContract.IView

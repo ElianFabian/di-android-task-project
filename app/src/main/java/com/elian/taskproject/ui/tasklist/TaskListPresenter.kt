@@ -1,6 +1,6 @@
-package com.elian.myapplication.ui.tasklist
+package com.elian.taskproject.ui.tasklist
 
-import com.elian.myapplication.data.model.Task
+import com.elian.taskproject.data.model.Task
 
 class TaskListPresenter(private var view: ITaskListContract.IView?) :
     ITaskListContract.IPresenter,

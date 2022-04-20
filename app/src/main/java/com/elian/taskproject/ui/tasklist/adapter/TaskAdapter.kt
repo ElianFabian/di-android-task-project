@@ -1,13 +1,13 @@
-package com.elian.myapplication.ui.tasklist.adapter
+package com.elian.taskproject.ui.tasklist.adapter
 
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.elian.myapplication.R
-import com.elian.myapplication.data.model.Task
-import com.elian.myapplication.databinding.ItemTaskBinding
+import com.elian.taskproject.R
+import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.databinding.ItemTaskBinding
 import java.util.*
 import kotlin.collections.ArrayList
 

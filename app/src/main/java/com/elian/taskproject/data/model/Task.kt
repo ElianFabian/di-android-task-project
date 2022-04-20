@@ -1,4 +1,4 @@
-package com.elian.myapplication.data.model
+package com.elian.taskproject.data.model
 
 data class Task(
     var name: String,
