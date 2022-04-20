@@ -1,7 +1,6 @@
 package com.elian.myapplication.ui.tasklist
 
 import com.elian.myapplication.base.IBasePresenter
-import com.elian.myapplication.base.IRepositoryListCallback
 
 interface ITaskListContract
 {

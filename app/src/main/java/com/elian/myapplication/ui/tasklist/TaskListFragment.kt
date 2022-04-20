@@ -10,7 +10,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.myapplication.R
-import com.elian.myapplication.base.IRepositoryListCallback
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.data.repository.TaskStaticRepository
 import com.elian.myapplication.databinding.FragmentTaskListBinding
