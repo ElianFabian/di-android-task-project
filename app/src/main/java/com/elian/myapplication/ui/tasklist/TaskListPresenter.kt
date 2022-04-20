@@ -16,6 +16,11 @@ class TaskListPresenter(private var view: ITaskListContract.IView):
         TODO("Not yet implemented")
     }
 
+    override fun onDestroy()
+    {
+        TODO("Not yet implemented")
+    }
+
     //endregion
 
     //region IRepositoryListCallback
