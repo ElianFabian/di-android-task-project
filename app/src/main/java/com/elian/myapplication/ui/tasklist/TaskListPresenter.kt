@@ -2,7 +2,7 @@ package com.elian.myapplication.ui.tasklist
 
 import com.elian.myapplication.data.model.Task
 
-class TaskListPresenter(private var view: ITaskListContract.IView) :
+class TaskListPresenter(private var view: ITaskListContract.IView?) :
     ITaskListContract.IPresenter,
     ITaskListContract.IOnInteractorListener
 {
@@ -12,12 +12,13 @@ class TaskListPresenter(private var view: ITaskListContract.IView) :
 
     override fun load()
     {
-        TODO("Not yet implemented")
+        view?.showProgress()
+        interactor.load()
     }
 
     override fun onDestroy()
     {
-        TODO("Not yet implemented")
+        view = null
     }
 
     //endregion
