@@ -60,10 +60,7 @@ class TaskAdapter(
 
             task.endDateEstimated?.let()
             {
-                it < Calendar.getInstance().timeInMillis
-            }?.let()
-            {
-                swIsEndDate.isChecked = it
+                swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
             }
         }
     }
