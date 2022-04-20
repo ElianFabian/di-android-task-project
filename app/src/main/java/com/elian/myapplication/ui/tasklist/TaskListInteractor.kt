@@ -1,6 +1,7 @@
 package com.elian.myapplication.ui.tasklist
 
 import com.elian.myapplication.data.model.Task
+import com.elian.myapplication.data.repository.TaskStaticRepository
 
 class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
     ITaskListContract.IInteractor,
@@ -10,7 +11,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     override fun load()
     {
-        TODO("Not yet implemented")
+        TaskStaticRepository.instance.getTaskList(this)
     }
 
     //endregion
@@ -19,12 +20,12 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     override fun onSuccess(list: List<Task>)
     {
-        TODO("Not yet implemented")
+        listener.onSuccess(list)
     }
 
     override fun onNoData()
     {
-        TODO("Not yet implemented")
+        listener.onNoData()
     }
 
     //endregion
