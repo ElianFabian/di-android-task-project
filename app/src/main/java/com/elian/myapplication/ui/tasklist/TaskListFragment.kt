@@ -71,14 +71,9 @@ class TaskListFragment : Fragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(
-            arrayListOf()
-        ) {
-            Toast.makeText(
-                context,
-                "You pressed a task.",
-                Toast.LENGTH_SHORT
-            ).show()
+        taskAdapter = TaskAdapter(arrayListOf())
+        {
+            Toast.makeText(context, "You pressed a task.", Toast.LENGTH_SHORT).show()
         }
 
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
