@@ -3,7 +3,7 @@ package com.elian.myapplication.ui.tasklist
 import com.elian.myapplication.base.IRepositoryListCallback
 import com.elian.myapplication.data.model.Task
 
-class TaskListInteractor :
+class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
     ITaskListContract.IInteractor,
     IRepositoryListCallback
 {
