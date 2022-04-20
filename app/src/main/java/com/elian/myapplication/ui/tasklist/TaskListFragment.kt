@@ -56,6 +56,8 @@ class TaskListFragment : Fragment(),
     {
         initRecyclerViewAdapter()
 
+        presenter.load()
+
         binding.fab.setOnClickListener()
         {
             NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
