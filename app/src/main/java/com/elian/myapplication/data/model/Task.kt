@@ -1,11 +1,11 @@
 package com.elian.myapplication.data.model
 
 data class Task(
-    val name: String,
-    val description: String,
-    val importance: Importance,
-    val endDateEstimated: Long,
-    val endDate: Long? = null,
+    var name: String,
+    var description: String,
+    var importance: Importance,
+    var endDateEstimated: Long,
+    var endDate: Long? = null,
 )
 {
     enum class Importance
