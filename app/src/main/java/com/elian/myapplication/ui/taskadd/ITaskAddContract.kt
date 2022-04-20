@@ -20,7 +20,7 @@ interface ITaskAddContract
 
     interface IInteractor
     {
-        fun validateFields()
+        fun validateFields(task: Task)
     }
 
     interface IRepository

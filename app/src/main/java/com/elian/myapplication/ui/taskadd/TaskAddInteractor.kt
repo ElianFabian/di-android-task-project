@@ -1,12 +1,14 @@
 package com.elian.myapplication.ui.taskadd
 
+import com.elian.myapplication.data.model.Task
+
 class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorListener) :
     ITaskAddContract.IInteractor,
     ITaskAddContract.IOnRepositoryCallback
 {
     //region ITaskAddContract.IInteractor
 
-    override fun validateFields()
+    override fun validateFields(task: Task)
     {
         TODO("Not yet implemented")
     }
