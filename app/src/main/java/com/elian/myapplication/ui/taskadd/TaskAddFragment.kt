@@ -11,13 +11,22 @@ import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
 import java.text.SimpleDateFormat
 
-class TaskAddFragment : Fragment()
+class TaskAddFragment : Fragment(),
+    ITaskAddContract.IView
 {
     private lateinit var binding: FragmentTaskAddBinding
+    private lateinit var presenter: ITaskAddContract.IPresenter
 
     private val dateFormat = SimpleDateFormat("yyyy/MM/dd")
 
     //region Fragment Methods
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+
+        presenter = TaskAddPresenter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
@@ -68,7 +77,7 @@ class TaskAddFragment : Fragment()
     {
         val monthWithFormat = month.toString().format("%02d")
         val dayOfMonthWithFormat = dayOfMonth.toString().format("%02d")
-        
+
         binding.etDate.setText(
             "$year/${monthWithFormat}/${dayOfMonthWithFormat}"
         )
@@ -99,6 +108,30 @@ class TaskAddFragment : Fragment()
 //
 //        binding.spImportance.adapter = spinnerAdapter
 //    }
+
+    //endregion
+
+    //region ITaskAddContract.IView
+
+    override fun setNameEmptyError()
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun setDescriptionEmptyError()
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun setDateEmptyError()
+    {
+        TODO("Not yet implemented")
+    }
+
+    override fun cleanInputFieldsErrors()
+    {
+        TODO("Not yet implemented")
+    }
 
     //endregion
 }
