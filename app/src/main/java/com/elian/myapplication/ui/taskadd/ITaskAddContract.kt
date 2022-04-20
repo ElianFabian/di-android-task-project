@@ -1,5 +1,7 @@
 package com.elian.myapplication.ui.taskadd
 
+import com.elian.myapplication.data.model.Task
+
 interface ITaskAddContract
 {
     interface IView
@@ -21,4 +23,12 @@ interface ITaskAddContract
     {
         
     }
+
+    interface IOnRepositoryCallback
+    {
+        fun onSuccess()
+        fun onFailure()
+    }
+
+    interface IOnInteractorListener : IOnRepositoryCallback
 }
