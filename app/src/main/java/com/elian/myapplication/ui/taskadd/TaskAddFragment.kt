@@ -129,15 +129,13 @@ class TaskAddFragment : Fragment(),
         binding.etDate.error = getString(R.string.error_emptyField)
     }
 
-    override fun cleanInputFieldsErrors()
+    override fun cleanInputFieldsErrors() = with(binding)
     {
-        with(binding)
-        {
-            tilName.error = null
-            tilDescription.error = null
-            etDate.error = null
-        }
+        tilName.error = null
+        tilDescription.error = null
+        etDate.error = null
     }
+
 
     override fun onSuccess()
     {
