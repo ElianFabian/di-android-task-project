@@ -28,11 +28,13 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
     override fun onSuccess(list: List<Task>)
     {
         view?.onSuccess(list)
+        view?.hideProgress()
     }
 
     override fun onNoData()
     {
         view?.onNoData()
+        view?.hideProgress()
     }
 
     //endregion
