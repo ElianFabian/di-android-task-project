@@ -91,11 +91,12 @@ class TaskAddFragment : Fragment(),
     {
         return with(binding)
         {
-            val endDateEstimated: Long? = try
+            var endDateEstimated: Long? = null
+
+            if (etDate.text.toString().isNotEmpty())
             {
-                dateFormat.parse(etDate.text.toString())?.time
+                endDateEstimated = dateFormat.parse(etDate.text.toString()).time
             }
-            catch (e: ParseException) { null }
 
             Task(
                 name = tieName.text.toString(),
