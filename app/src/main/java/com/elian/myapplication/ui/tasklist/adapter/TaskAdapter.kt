@@ -53,14 +53,14 @@ class TaskAdapter(
 
         fun render(task: Task) = with(binding)
         {
-            binding.tvName.text = task.name
+            tvName.text = task.name
 
             val importanceArray = root.resources.getStringArray(R.array.importance)
-            binding.tvImportance.text = importanceArray[task.importance.ordinal]
+            tvImportance.text = importanceArray[task.importance.ordinal]
 
             val isEndDate = task.endDateEstimated?.let { it < Calendar.getInstance().timeInMillis }
 
-            binding.swIsEndDate.isChecked = isEndDate ?: false
+            swIsEndDate.isChecked = isEndDate ?: false
         }
     }
 }
