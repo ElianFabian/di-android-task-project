@@ -33,11 +33,11 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
 
     override fun onSuccess()
     {
-        TODO("Not yet implemented")
+        listener.onSuccess()
     }
 
     override fun onFailure()
     {
-        TODO("Not yet implemented")
+        listener.onFailure()
     }
 }
