@@ -26,11 +26,11 @@ interface ITaskListContract
         fun load()
     }
 
-    interface IRepositoryListCallback
+    interface IRepositoryCallback
     {
         fun onSuccess(list: List<Task>)
         fun onNoData()
     }
 
-    interface IOnInteractorListener : IRepositoryListCallback
+    interface IOnInteractorListener : IRepositoryCallback
 }
