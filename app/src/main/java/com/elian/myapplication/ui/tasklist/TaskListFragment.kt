@@ -46,6 +46,13 @@ class TaskListFragment : Fragment(),
         initUI()
     }
 
+    override fun onDestroy()
+    {
+        super.onDestroy()
+        
+        presenter.onDestroy()
+    }
+
     //endregion
 
     //region Methods
