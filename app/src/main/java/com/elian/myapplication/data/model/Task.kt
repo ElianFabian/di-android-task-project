@@ -4,7 +4,7 @@ data class Task(
     var name: String,
     var description: String,
     var importance: Importance,
-    var endDateEstimated: Long,
+    var endDateEstimated: Long?,
     var endDate: Long? = null,
 )
 {
