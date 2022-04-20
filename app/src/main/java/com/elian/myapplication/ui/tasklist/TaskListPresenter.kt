@@ -6,19 +6,20 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
     ITaskListContract.IPresenter,
     ITaskListContract.IOnInteractorListener
 {
-    private var interactor: ITaskListContract.IInteractor = TaskListInteractor(this)
+    private var interactor: ITaskListContract.IInteractor? = TaskListInteractor(this)
 
     //region ITaskListContract.IPresenter
 
     override fun load()
     {
         view?.showProgress()
-        interactor.load()
+        interactor?.load()
     }
 
     override fun onDestroy()
     {
         view = null
+        interactor = null
     }
 
     //endregion
