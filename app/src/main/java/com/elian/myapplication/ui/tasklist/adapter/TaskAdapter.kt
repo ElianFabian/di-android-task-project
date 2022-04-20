@@ -58,7 +58,7 @@ class TaskAdapter(
             val importanceArray = root.resources.getStringArray(R.array.importance)
             tvImportance.text = importanceArray[task.importance.ordinal]
 
-            val isEndDate = task.endDateEstimated?.let()
+            task.endDateEstimated?.let()
             {
                 it < Calendar.getInstance().timeInMillis
             }?.let()
