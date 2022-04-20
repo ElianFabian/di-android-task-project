@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
+import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
 import com.elian.myapplication.databinding.FragmentTaskAddBinding
 import com.elian.myapplication.ui.datepicker.DatePickerFragment
@@ -115,17 +116,17 @@ class TaskAddFragment : Fragment(),
 
     override fun setNameEmptyError()
     {
-        TODO("Not yet implemented")
+        binding.tilName.error = getString(R.string.error_emptyField)
     }
 
     override fun setDescriptionEmptyError()
     {
-        TODO("Not yet implemented")
+        binding.tilDescription.error = getString(R.string.error_emptyField)
     }
 
     override fun setDateEmptyError()
     {
-        TODO("Not yet implemented")
+        binding.etDate.error = getString(R.string.error_emptyField)
     }
 
     override fun cleanInputFieldsErrors()
