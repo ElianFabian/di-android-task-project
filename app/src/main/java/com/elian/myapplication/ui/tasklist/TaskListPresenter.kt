@@ -2,12 +2,12 @@ package com.elian.myapplication.ui.tasklist
 
 import com.elian.myapplication.data.model.Task
 
-class TaskListPresenter(private var view: ITaskListContract.IView):
+class TaskListPresenter(private var view: ITaskListContract.IView) :
     ITaskListContract.IPresenter,
     ITaskListContract.IOnInteractorListener
 {
     private var interactor: ITaskListContract.IInteractor = TaskListInteractor(this)
-    
+
     //region ITaskListContract.IPresenter
 
     override fun load()
