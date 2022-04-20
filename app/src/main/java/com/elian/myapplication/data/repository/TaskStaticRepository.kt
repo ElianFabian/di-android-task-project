@@ -69,7 +69,7 @@ class TaskStaticRepository : ITaskListContract.IRepository
 
     //region ITaskListContract.IRepository
 
-    override fun getTaskList(callback: ITaskListContract.IRepositoryCallback)
+    override fun getTaskList(callback: ITaskListContract.IOnRepositoryCallback)
     {
         callback.onSuccess(taskList)
     }

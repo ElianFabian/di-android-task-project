@@ -4,7 +4,7 @@ import com.elian.myapplication.data.model.Task
 
 class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
     ITaskListContract.IInteractor,
-    ITaskListContract.IRepositoryCallback
+    ITaskListContract.IOnRepositoryCallback
 {
     //region ITaskListContract.IInteractor
 

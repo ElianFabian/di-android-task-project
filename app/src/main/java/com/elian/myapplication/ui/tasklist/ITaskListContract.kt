@@ -23,14 +23,14 @@ interface ITaskListContract
 
     interface IRepository
     {
-        fun getTaskList(callback: IRepositoryCallback)
+        fun getTaskList(callback: IOnRepositoryCallback)
     }
 
-    interface IRepositoryCallback
+    interface IOnRepositoryCallback
     {
         fun onSuccess(list: List<Task>)
         fun onNoData()
     }
 
-    interface IOnInteractorListener : IRepositoryCallback
+    interface IOnInteractorListener : IOnRepositoryCallback
 }
