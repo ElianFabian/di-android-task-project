@@ -21,8 +21,17 @@ class TaskListFragment : Fragment(),
     private lateinit var binding: FragmentTaskListBinding
 
     private lateinit var taskAdapter: TaskAdapter
+    
+    private lateinit var presenter: ITaskListContract.IPresenter
 
     //region Fragment Methods
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        
+        presenter = TaskListPresenter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
