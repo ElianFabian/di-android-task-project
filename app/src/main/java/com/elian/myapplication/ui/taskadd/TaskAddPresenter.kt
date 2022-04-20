@@ -26,6 +26,21 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
 
     //region ITaskAddContract.IOnInteractorListener
 
+    override fun onNameEmptyError()
+    {
+        view?.setNameEmptyError()
+    }
+
+    override fun onDescriptionEmptyError()
+    {
+        view?.setDescriptionEmptyError()
+    }
+
+    override fun onDateEmptyError()
+    {
+        view?.setDateEmptyError()
+    }
+
     override fun onSuccess()
     {
         view?.onSuccess()
