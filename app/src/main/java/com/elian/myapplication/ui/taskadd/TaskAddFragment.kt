@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.myapplication.R
 import com.elian.myapplication.data.model.Task
@@ -140,6 +141,8 @@ class TaskAddFragment : Fragment(),
     override fun onSuccess()
     {
         NavHostFragment.findNavController(this).navigateUp()
+
+        Toast.makeText(context, "The task was successfully added.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFailure()
