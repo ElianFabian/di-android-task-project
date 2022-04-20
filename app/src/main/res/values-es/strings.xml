@@ -10,4 +10,11 @@
     <string name="spImportance_prompt">Importancia</string>
     <string name="item_task__swIsEndDate_text">¿Es fecha fin?</string>
     <string name="error_emptyField">El campo no puede estar vacío</string>
+
+
+    <string-array name="importance">
+        <item>Bajo</item>
+        <item>Medio</item>
+        <item>Alto</item>
+    </string-array>
 </resources>
