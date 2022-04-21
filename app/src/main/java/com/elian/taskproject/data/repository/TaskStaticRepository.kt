@@ -33,7 +33,11 @@ object TaskStaticRepository :
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
-        callback.onSuccess(taskList)
+        if (taskList.size == 0)
+        {
+            callback.onNoData()
+        }
+        else callback.onSuccess(taskList)
     }
 
     //endregion
