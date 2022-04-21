@@ -21,6 +21,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
         }
 
         if (!isError) TaskStaticRepository.add(this, task)
+        else onFailure()
     }
 
     //endregion
