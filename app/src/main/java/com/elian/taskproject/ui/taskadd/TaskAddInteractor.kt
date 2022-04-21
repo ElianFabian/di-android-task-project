@@ -20,8 +20,8 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
             if (task.endDateEstimated == null) onDateEmptyError().let { isError = true }
         }
 
-        if (!isError) TaskStaticRepository.add(this, task)
-        else onFailure()
+        if (isError) onFailure()
+        else TaskStaticRepository.add(this, task)
     }
 
     //endregion
