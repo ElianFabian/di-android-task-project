@@ -1,7 +1,6 @@
 package com.elian.taskproject.ui.tasklist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
+import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
-class TaskListFragment : Fragment(),
+class TaskListFragment : BaseFragment(),
     ITaskListContract.IView
 {
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var presenter: ITaskListContract.IPresenter
+    override lateinit var presenter: ITaskListContract.IPresenter
 
     //region Fragment Methods
 
@@ -43,13 +43,6 @@ class TaskListFragment : Fragment(),
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
-    }
-
-    override fun onDestroy()
-    {
-        super.onDestroy()
-
-        presenter.onDestroy()
     }
 
     //endregion
