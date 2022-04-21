@@ -11,7 +11,7 @@ object TaskStaticRepository :
     private val taskList = arrayListOf<Task>()
 
 //    private var calendar: Calendar = Calendar.getInstance()
-    
+
     //region Methods
 
     /**
