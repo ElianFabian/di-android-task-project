@@ -8,16 +8,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
+import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.databinding.FragmentTaskAddBinding
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.text.SimpleDateFormat
 
-class TaskAddFragment : Fragment(),
+class TaskAddFragment : BaseFragment(),
     ITaskAddContract.IView
 {
     private lateinit var binding: FragmentTaskAddBinding
-    private lateinit var presenter: ITaskAddContract.IPresenter
+    override lateinit var presenter: ITaskAddContract.IPresenter
 
     private val dateFormat = SimpleDateFormat("yyyy/MM/dd")
 
@@ -144,7 +145,6 @@ class TaskAddFragment : Fragment(),
         tilDescription.error = null
         etDate.error = null
     }
-
 
     override fun onSuccess()
     {
