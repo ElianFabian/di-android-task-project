@@ -13,12 +13,12 @@ interface ITaskListContract
 
     interface IPresenter : IBasePresenter
     {
-        fun load()
+        fun loadData()
     }
 
     interface IInteractor
     {
-        fun load()
+        fun loadData()
     }
 
     interface IRepository

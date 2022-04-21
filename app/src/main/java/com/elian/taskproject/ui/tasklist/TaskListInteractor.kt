@@ -9,7 +9,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 {
     //region ITaskListContract.IInteractor
 
-    override fun load()
+    override fun loadData()
     {
         TaskStaticRepository.getList(this)
     }

@@ -10,10 +10,10 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
 
     //region ITaskListContract.IPresenter
 
-    override fun load()
+    override fun loadData()
     {
         view?.showProgress()
-        interactor?.load()
+        interactor?.loadData()
     }
 
     override fun onDestroy()
