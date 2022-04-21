@@ -20,7 +20,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
             if (task.endDateEstimated == null) onDateEmptyError().let { isError = true }
         }
 
-        if (isError) onFailure()
+        if (isError) onError()
         else TaskStaticRepository.add(this, task)
     }
 
@@ -33,9 +33,9 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
         listener.onSuccess()
     }
 
-    override fun onFailure()
+    override fun onError()
     {
-        listener.onFailure()
+        listener.onError()
     }
 
     //endregion

@@ -46,9 +46,9 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
         view?.onSuccess()
     }
 
-    override fun onFailure()
+    override fun onError()
     {
-        view?.onFailure()
+        view?.onError()
     }
 
     //endregion

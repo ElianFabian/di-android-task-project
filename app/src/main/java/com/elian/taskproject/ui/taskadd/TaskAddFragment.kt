@@ -153,7 +153,7 @@ class TaskAddFragment : BaseFragment(),
         Toast.makeText(context, "The task was successfully added.", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onFailure()
+    override fun onError()
     {
         Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
     }

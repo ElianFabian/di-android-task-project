@@ -31,7 +31,7 @@ interface ITaskAddContract
     interface IOnRepositoryCallback
     {
         fun onSuccess()
-        fun onFailure()
+        fun onError()
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback
