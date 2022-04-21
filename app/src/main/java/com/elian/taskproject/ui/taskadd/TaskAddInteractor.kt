@@ -13,7 +13,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
     {
         var isError = false
 
-        with(listener)
+        listener.apply()
         {
             if (task.name.isEmpty()) onNameEmptyError().let { isError = true }
             if (task.description.isEmpty()) onDescriptionEmptyError().let { isError = true }
