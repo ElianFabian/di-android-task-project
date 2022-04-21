@@ -13,9 +13,12 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
     {
         var isError = false
 
-        if (task.name.isEmpty()) listener.onNameEmptyError().let { isError = true }
-        if (task.description.isEmpty()) listener.onDescriptionEmptyError().let { isError = true }
-        if (task.endDateEstimated == null) listener.onDateEmptyError().let { isError = true }
+        with(listener)
+        {
+            if (task.name.isEmpty()) onNameEmptyError().let { isError = true }
+            if (task.description.isEmpty()) onDescriptionEmptyError().let { isError = true }
+            if (task.endDateEstimated == null) onDateEmptyError().let { isError = true }
+        }
 
         if (!isError) TaskStaticRepository.add(this, task)
     }
