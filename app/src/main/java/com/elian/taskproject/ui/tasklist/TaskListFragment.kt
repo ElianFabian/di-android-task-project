@@ -54,7 +54,7 @@ class TaskListFragment : BaseFragment(),
     {
         initRecyclerViewAdapter()
 
-        presenter.loadData()
+        presenter.getList()
 
         binding.fab.setOnClickListener()
         {
