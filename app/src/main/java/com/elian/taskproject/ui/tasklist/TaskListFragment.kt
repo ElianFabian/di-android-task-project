@@ -73,6 +73,7 @@ class TaskListFragment : BaseFragment(),
         binding.rvTasks.layoutManager = layoutManager
         binding.rvTasks.adapter = taskAdapter
     }
+
     //endregion
 
     //region ITaskListContract.IView
