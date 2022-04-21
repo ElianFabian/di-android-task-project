@@ -52,7 +52,7 @@ class TaskAdapter(
     {
         private val binding = ItemTaskBinding.bind(view)
 
-        private val importanceStringArray = Resources.getSystem().getStringArray(R.array.importance)
+        private val importanceStringArray = binding.root.resources.getStringArray(R.array.importance)
 
         fun render(task: Task) = with(binding)
         {
