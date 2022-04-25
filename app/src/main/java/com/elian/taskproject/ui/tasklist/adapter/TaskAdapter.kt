@@ -12,10 +12,12 @@ import kotlin.collections.ArrayList
 
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
-    private val listener: View.OnClickListener,
+    private val listener: IOnClickAndLongClickListener,
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
+    interface IOnClickAndLongClickListener : View.OnClickListener, View.OnLongClickListener
+
     fun load(list: List<Task>)
     {
         tasks.clear()
