@@ -35,6 +35,7 @@ class TaskAdapter(
         val view = layoutInflater.inflate(R.layout.item_task, parent, false)
 
         view.setOnClickListener(listener)
+        view.setOnLongClickListener(listener)
 
         return ViewHolder(view)
     }
