@@ -64,10 +64,18 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(arrayListOf())
+        taskAdapter = TaskAdapter(arrayListOf(), object : TaskAdapter.IOnClickAndLongClickListener
         {
-            Toast.makeText(context, "You pressed a task.", Toast.LENGTH_SHORT).show()
-        }
+            override fun onClick(v: View?)
+            {
+                Toast.makeText(context, "You pressed and item", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onLongClick(v: View?): Boolean
+            {
+                return true
+            }
+        })
 
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
