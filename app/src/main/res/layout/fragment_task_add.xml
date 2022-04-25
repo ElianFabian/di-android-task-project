@@ -54,7 +54,7 @@
                 android:id="@+id/tieName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tieName_hint"
+                android:hint="@string/frgTaskAdd_tieName_hint"
                 android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
-                android:hint="@string/tieDescription_hint"
+                android:hint="@string/frgTaskAdd_tieDescription_hint"
                 android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
     <!--endregion-->
@@ -90,9 +90,9 @@
             app:layout_constraintStart_toEndOf="@id/glStart"
             app:layout_constraintEnd_toStartOf="@id/glEnd"
             android:layout_height="wrap_content"
-            android:entries="@array/importance"
+            android:entries="@array/frgTaskAdd_spImportance_entries"
             android:spinnerMode="dialog"
-            android:prompt="@string/spImportance_prompt"
+            android:prompt="@string/frgTaskAdd_spImportance_prompt"
             android:foreground="@drawable/shape_round_stroke"
             app:layout_constraintVertical_bias="0.15"
             android:minHeight="48dp" />
@@ -111,7 +111,7 @@
             android:focusable="false"
             android:inputType="date"
             app:layout_constraintVertical_bias="0.33"
-            android:contentDescription="@string/etDate_contentDescription"
+            android:contentDescription="@string/frgTaskAdd_etDate_contentDescription"
             android:minHeight="48dp"
             tools:ignore="EditableContentDescCheck" />
 
@@ -124,7 +124,7 @@
             app:layout_constraintStart_toEndOf="@id/etDate"
             app:layout_constraintEnd_toStartOf="@id/glEnd"
             android:src="@drawable/ic_date"
-            android:contentDescription="@string/ibDate_contentDescription" />
+            android:contentDescription="@string/frgTaskAdd_ibDate_contentDescription" />
     <!--endregion-->
 
     <!--region FAB-->
@@ -137,7 +137,7 @@
             android:layout_margin="@dimen/fab_layout_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/task_add__fab_contentDescription" />
+            android:contentDescription="@string/frgTaskAdd_fab_contentDescription" />
     <!--endregion-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

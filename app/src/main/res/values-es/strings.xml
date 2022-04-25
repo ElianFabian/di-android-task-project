@@ -4,15 +4,15 @@
     
     
     
-    <string name="tieName_hint">Nombre</string>
-    <string name="ibDate_contentDescription">Botón para seleccionar una fecha</string>
-    <string name="tieDescription_hint">Descripción</string>
-    <string name="spImportance_prompt">Importancia</string>
+    <string name="frgTaskAdd_tieName_hint">Nombre</string>
+    <string name="frgTaskAdd_ibDate_contentDescription">Botón para seleccionar una fecha</string>
+    <string name="frgTaskAdd_tieDescription_hint">Descripción</string>
+    <string name="frgTaskAdd_spImportance_prompt">Importancia</string>
     <string name="item_task__swIsEndDate_text">¿Es fecha fin?</string>
     <string name="error_emptyField">El campo no puede estar vacío</string>
 
 
-    <string-array name="importance">
+    <string-array name="frgTaskAdd_spImportance_entries">
         <item>Bajo</item>
         <item>Medio</item>
         <item>Alto</item>
