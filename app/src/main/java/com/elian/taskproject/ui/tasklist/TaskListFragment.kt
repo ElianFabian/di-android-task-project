@@ -68,12 +68,12 @@ class TaskListFragment : BaseFragment(),
         {
             override fun onClick(v: View?)
             {
-                Toast.makeText(context, "You pressed and item", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You pressed an item", Toast.LENGTH_SHORT).show()
             }
 
             override fun onLongClick(v: View?): Boolean
             {
-                Toast.makeText(context, "You pressed and item for so long", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You pressed an item for so long", Toast.LENGTH_SHORT).show()
 
                 return true
             }
