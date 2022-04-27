@@ -18,6 +18,12 @@ class TaskAdapter(
 {
     interface IOnClickAndLongClickListener : View.OnClickListener, View.OnLongClickListener
 
+    // https://stackoverflow.com/questions/28296708/get-clicked-item-and-its-position-in-recyclerview
+    interface IRecyclerViewClickListener
+    {
+        fun recyclerViewListClicked(v: View?, task: Task)
+    }
+
     fun load(list: List<Task>)
     {
         tasks.clear()
