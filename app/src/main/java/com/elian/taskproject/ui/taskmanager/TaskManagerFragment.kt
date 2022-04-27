@@ -77,7 +77,6 @@ class TaskManagerFragment : BaseFragment(),
         binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
     }
 
-
     private fun showDatePickerDialog()
     {
         val datePicker = DatePickerFragment(::onDateSelected)
