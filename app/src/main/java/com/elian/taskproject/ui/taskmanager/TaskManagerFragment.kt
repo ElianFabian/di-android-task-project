@@ -42,7 +42,9 @@ class TaskManagerFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         //val selectedTask = arguments?.getSerializable("selectedTask") as Task
-
+        
+        // TODO: implement edit action
+        
         initUI()
         //fillFieldsWithSelectedTask(selectedTask)
     }
