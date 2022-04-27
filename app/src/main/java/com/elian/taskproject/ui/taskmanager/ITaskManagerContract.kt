@@ -1,9 +1,9 @@
-package com.elian.taskproject.ui.taskedit
+package com.elian.taskproject.ui.taskmanager
 
 import com.elian.taskproject.base.IBasePresenter
 import com.elian.taskproject.data.model.Task
 
-interface ITaskEditContract
+interface ITaskManagerContract
 {
     interface IView : IOnRepositoryCallback
     {
@@ -20,11 +20,12 @@ interface ITaskEditContract
 
     interface IInteractor
     {
-        fun onValidateFields(task: Task)
+        fun validateFields(task: Task)
     }
 
     interface IRepository
     {
+        fun add(callback: IOnRepositoryCallback, task: Task)
         fun edit(callback: IOnRepositoryCallback, task: Task)
     }
 

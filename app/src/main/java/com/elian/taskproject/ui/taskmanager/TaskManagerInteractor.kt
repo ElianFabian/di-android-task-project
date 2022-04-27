@@ -1,13 +1,13 @@
-package com.elian.taskproject.ui.taskadd
+package com.elian.taskproject.ui.taskmanager
 
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskStaticRepository
 
-class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorListener) :
-    ITaskAddContract.IInteractor,
-    ITaskAddContract.IOnRepositoryCallback
+class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnInteractorListener) :
+    ITaskManagerContract.IInteractor,
+    ITaskManagerContract.IOnRepositoryCallback
 {
-    //region ITaskAddContract.IInteractor
+    //region ITaskManagerContract.IInteractor
 
     override fun validateFields(task: Task)
     {
@@ -26,7 +26,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
 
     //endregion
 
-    //region ITaskAddContract.IOnRepositoryCallback
+    //region ITaskManagerContract.IOnRepositoryCallback
 
     override fun onSuccess()
     {

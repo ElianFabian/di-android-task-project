@@ -2,7 +2,7 @@
     <string name="app_name">Task Project</string>
 
     <string name="taskListFragment_label" translatable="false">Task List</string>
-    <string name="taskAddFragment_label" translatable="false">Task Add</string>
+    <string name="taskManagerFragment_label" translatable="false">Task Add</string>
 
     <string name="frgTaskAdd_tieDescription_hint">Description</string>
     <string name="frgTaskAdd_tieName_hint">Name</string>
@@ -19,6 +19,4 @@
 
     <string name="error_emptyField">The field can\'t be empty</string>
     <string name="frgTaskAdd_ibDate_contentDescription">Button to select a date</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

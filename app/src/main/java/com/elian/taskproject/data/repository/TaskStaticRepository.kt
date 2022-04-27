@@ -1,12 +1,12 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.taskadd.ITaskAddContract
+import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
 import com.elian.taskproject.ui.tasklist.ITaskListContract
 
 object TaskStaticRepository :
     ITaskListContract.IRepository,
-    ITaskAddContract.IRepository
+    ITaskManagerContract.IRepository
 {
     private val taskList = arrayListOf<Task>()
 
@@ -44,10 +44,15 @@ object TaskStaticRepository :
 
     //region ITaskAddContract.IRepository
 
-    override fun add(callback: ITaskAddContract.IOnRepositoryCallback, task: Task)
+    override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
         taskList.add(task)
         callback.onSuccess()
+    }
+
+    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
+    {
+        
     }
 
     //endregion

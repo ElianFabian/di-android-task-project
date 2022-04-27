@@ -1,14 +1,14 @@
-package com.elian.taskproject.ui.taskadd
+package com.elian.taskproject.ui.taskmanager
 
 import com.elian.taskproject.data.model.Task
 
-class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
-    ITaskAddContract.IPresenter,
-    ITaskAddContract.IOnInteractorListener
+class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
+    ITaskManagerContract.IPresenter,
+    ITaskManagerContract.IOnInteractorListener
 {
-    private var interactor: ITaskAddContract.IInteractor? = TaskAddInteractor(this)
+    private var interactor: ITaskManagerContract.IInteractor? = TaskManagerInteractor(this)
 
-    //region ITaskAddListContract.IPresenter
+    //region ITaskManagerListContract.IPresenter
 
     override fun onValidateFields(task: Task)
     {
@@ -24,7 +24,7 @@ class TaskAddPresenter(private var view: ITaskAddContract.IView?) :
 
     //endregion
 
-    //region ITaskAddContract.IOnInteractorListener
+    //region ITaskManagerContract.IOnInteractorListener
 
     override fun onNameEmptyError()
     {

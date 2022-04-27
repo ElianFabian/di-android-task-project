@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui.taskadd
+package com.elian.taskproject.ui.taskmanager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,15 @@ import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.utils.DataUtils
-import com.elian.taskproject.databinding.FragmentTaskAddBinding
+import com.elian.taskproject.databinding.FragmentTaskManagerBinding
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
+import java.util.*
 
-class TaskAddFragment : BaseFragment(),
-    ITaskAddContract.IView
+class TaskManagerFragment : BaseFragment(),
+    ITaskManagerContract.IView
 {
-    private lateinit var binding: FragmentTaskAddBinding
-    override lateinit var presenter: ITaskAddContract.IPresenter
+    private lateinit var binding: FragmentTaskManagerBinding
+    override lateinit var presenter: ITaskManagerContract.IPresenter
 
     //region Fragment Methods
 
@@ -25,14 +26,14 @@ class TaskAddFragment : BaseFragment(),
     {
         super.onCreate(savedInstanceState)
 
-        presenter = TaskAddPresenter(this)
+        presenter = TaskManagerPresenter(this)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View
     {
-        binding = FragmentTaskAddBinding.inflate(inflater)
+        binding = FragmentTaskManagerBinding.inflate(inflater)
         return binding.root
     }
 
@@ -40,7 +41,10 @@ class TaskAddFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
+        //val selectedTask = arguments?.getSerializable("selectedTask") as Task
+
         initUI()
+        //fillFieldsWithSelectedTask(selectedTask)
     }
 
     //endregion
@@ -76,9 +80,7 @@ class TaskAddFragment : BaseFragment(),
         val monthWithFormat = String.format("%02d", month + 1)
         val dayOfMonthWithFormat = String.format("%02d", dayOfMonth)
 
-        binding.etDate.setText(
-            "$year/${monthWithFormat}/${dayOfMonthWithFormat}"
-        )
+        binding.etDate.setText("$year/$monthWithFormat/$dayOfMonthWithFormat")
     }
 
     /**
@@ -104,6 +106,14 @@ class TaskAddFragment : BaseFragment(),
         }
     }
 
+    private fun fillFieldsWithSelectedTask(task: Task) = with(binding)
+    {
+        tieName.setText(task.name)
+        tieDescription.setText(task.description)
+        spImportance.setSelection(task.importance.ordinal)
+        etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
+    }
+
 ////  As we use android:entries in the Spinner we don't have to use this function,
 ////  but if we want more functionality we can then use it.
 //    private fun initSpinnerAdapter()
@@ -119,7 +129,7 @@ class TaskAddFragment : BaseFragment(),
 
     //endregion
 
-    //region ITaskAddContract.IView
+    //region ITaskManagerContract.IView
 
     override fun setNameEmptyError()
     {

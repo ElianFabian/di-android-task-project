@@ -59,7 +59,7 @@ class TaskListFragment : BaseFragment(),
 
         binding.fab.setOnClickListener()
         {
-            navigate(R.id.action_taskListFragment_to_taskAddFragment)
+            navigate(R.id.action_taskListFragment_to_taskManagerFragment)
         }
     }
 
@@ -75,7 +75,7 @@ class TaskListFragment : BaseFragment(),
 
     private fun sendSelectedTask_To_TaskEditFragment(task: Task)
     {
-        navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
+        navigate(R.id.action_taskListFragment_to_taskManagerFragment, Bundle().apply()
         {
             putSerializable("selectedTask", task)
         })
