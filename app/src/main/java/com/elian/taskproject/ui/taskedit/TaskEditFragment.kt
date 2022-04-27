@@ -28,9 +28,9 @@ class TaskEditFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        
+
         val selectedTask = arguments?.getSerializable("selectedTask") as Task
-        
+
         fillFieldsWithSelectedTask(selectedTask)
     }
 
