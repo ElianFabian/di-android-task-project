@@ -60,7 +60,6 @@ class TaskAdapter(
         View.OnLongClickListener
     {
         private val binding = ItemTaskBinding.bind(view)
-
         private val importanceStringArray = binding.root.resources.getStringArray(R.array.frgTaskAdd_spImportance_entries)
 
         fun render(task: Task) = with(binding)
