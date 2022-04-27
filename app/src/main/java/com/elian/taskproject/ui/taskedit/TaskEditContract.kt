@@ -6,15 +6,21 @@ import com.elian.taskproject.data.model.Task
 interface ITaskEditContract
 {
     interface IView : IOnRepositoryCallback
+    {
+        fun setNameEmptyError()
+        fun setDescriptionEmptyError()
+        fun setDateEmptyError()
+        fun cleanInputFieldsErrors()
+    }
 
     interface IPresenter : IBasePresenter
     {
-        fun onEdit(task: Task)
+        fun onValidateFields(task: Task)
     }
 
     interface IInteractor
     {
-        fun edit(task: Task)
+        fun onValidateFields(task: Task)
     }
 
     interface IRepository
