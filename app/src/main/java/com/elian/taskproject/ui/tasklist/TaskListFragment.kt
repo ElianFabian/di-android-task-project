@@ -107,7 +107,7 @@ class TaskListFragment : BaseFragment(),
 
     //endregion
 
-    //region TaskAdapter.IRecyclerViewClickListener
+    //region TaskAdapter.IRecyclerViewItemListener
 
     override fun onItemClick(v: View?, selectedTask: Task)
     {
