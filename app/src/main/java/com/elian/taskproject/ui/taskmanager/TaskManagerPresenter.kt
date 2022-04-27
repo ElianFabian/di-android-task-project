@@ -10,10 +10,20 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
 
     //region ITaskManagerListContract.IPresenter
 
-    override fun onValidateFields(task: Task)
+    override fun add(task: Task)
     {
-        view?.cleanInputFieldsErrors()
-        interactor?.validateFields(task)
+        if (interactor?.validateFields(task) as Boolean)
+        {
+            interactor?.add(task)
+        }
+    }
+
+    override fun edit(editedTask: Task, position: Int)
+    {
+        if (interactor?.validateFields(editedTask) as Boolean)
+        {
+            interactor?.edit(editedTask, position)
+        }
     }
 
     override fun onDestroy()
@@ -41,14 +51,24 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
         view?.setDateEmptyError()
     }
 
-    override fun onSuccess()
+    override fun onAddSuccess()
     {
-        view?.onSuccess()
+        view?.onAddSuccess()
     }
 
-    override fun onError()
+    override fun onEditSuccess()
     {
-        view?.onError()
+        view?.onEditSuccess()
+    }
+
+    override fun onAddError()
+    {
+        view?.onAddError()
+    }
+
+    override fun onEditError()
+    {
+        view?.onEditError()
     }
 
     //endregion

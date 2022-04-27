@@ -47,12 +47,13 @@ object TaskStaticRepository :
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
         taskList.add(task)
-        callback.onSuccess()
+        callback.onAddSuccess()
     }
 
-    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
+    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
     {
-        
+        taskList[position] = editedTask
+        callback.onEditSuccess()
     }
 
     //endregion

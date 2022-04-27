@@ -9,7 +9,7 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
 {
     //region ITaskManagerContract.IInteractor
 
-    override fun validateFields(task: Task)
+    override fun validateFields(task: Task): Boolean
     {
         var isError = false
 
@@ -20,22 +20,43 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
             if (task.estimatedEndDate == null) onDateEmptyError().let { isError = true }
         }
 
-        if (isError) onError()
-        else TaskStaticRepository.add(this, task)
+        if (isError) onAddError()
+
+        return !isError
+    }
+
+    override fun add(task: Task)
+    {
+        TaskStaticRepository.add(this, task)
+    }
+
+    override fun edit(editedTask: Task, position: Int)
+    {
+        TaskStaticRepository.edit(this, editedTask, position)
     }
 
     //endregion
 
     //region ITaskManagerContract.IOnRepositoryCallback
 
-    override fun onSuccess()
+    override fun onAddSuccess()
     {
-        listener.onSuccess()
+        listener.onAddSuccess()
     }
 
-    override fun onError()
+    override fun onEditSuccess()
     {
-        listener.onError()
+        listener.onEditSuccess()
+    }
+
+    override fun onAddError()
+    {
+        listener.onAddError()
+    }
+
+    override fun onEditError()
+    {
+        listener.onEditError()
     }
 
     //endregion

@@ -41,12 +41,17 @@ class TaskManagerFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
-        //val selectedTask = arguments?.getSerializable("selectedTask") as Task
+        val taskFromBundle = arguments?.getSerializable("selectedTask")
+        val selectedTaskPosition = arguments?.getInt("selectedTask.position")
 
-        // TODO: implement edit action
+        if (taskFromBundle == null) initUIForAddAction()
+        else
+        {
+            val selectedTask = taskFromBundle as Task
 
-        initUI()
-        //fillFieldsWithSelectedTask(selectedTask)
+            fillFieldsWithSelectedTask(selectedTask)
+            initUIForEditAction(selectedTaskPosition as Int)
+        }
     }
 
     //endregion
@@ -57,10 +62,21 @@ class TaskManagerFragment : BaseFragment(),
     {
         //initSpinnerAdapter()
 
-        binding.fab.setOnClickListener { presenter.onValidateFields(getTaskFromFields()) }
-
         binding.ibDate.setOnClickListener { showDatePickerDialog() }
     }
+
+    private fun initUIForAddAction()
+    {
+        initUI()
+        binding.fab.setOnClickListener { presenter.add(getTaskFromFields()) }
+    }
+
+    private fun initUIForEditAction(position: Int)
+    {
+        initUI()
+        binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
+    }
+
 
     private fun showDatePickerDialog()
     {
@@ -152,16 +168,28 @@ class TaskManagerFragment : BaseFragment(),
         etDate.error = null
     }
 
-    override fun onSuccess()
+    override fun onAddSuccess()
     {
         NavHostFragment.findNavController(this).navigateUp()
 
         Toast.makeText(context, "The task was successfully added.", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onError()
+    override fun onEditSuccess()
+    {
+        NavHostFragment.findNavController(this).navigateUp()
+
+        Toast.makeText(context, "The task was successfully edited.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onAddError()
     {
         Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEditError()
+    {
+        Toast.makeText(context, "Error when editing.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion

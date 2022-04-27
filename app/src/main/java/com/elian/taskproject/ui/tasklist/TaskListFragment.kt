@@ -73,11 +73,12 @@ class TaskListFragment : BaseFragment(),
         binding.rvTasks.adapter = taskAdapter
     }
 
-    private fun sendSelectedTask_To_TaskEditFragment(task: Task)
+    private fun sendSelectedTask_To_TaskEditFragment(task: Task, position: Int)
     {
         navigate(R.id.action_taskListFragment_to_taskManagerFragment, Bundle().apply()
         {
             putSerializable("selectedTask", task)
+            putInt("selectedTask.position", position)
         })
     }
 
@@ -109,12 +110,12 @@ class TaskListFragment : BaseFragment(),
 
     //region TaskAdapter.IRecyclerViewItemClickListener
 
-    override fun onItemClick(v: View?, selectedTask: Task)
+    override fun onItemClick(v: View?, selectedTask: Task, position: Int)
     {
-        sendSelectedTask_To_TaskEditFragment(selectedTask)
+        sendSelectedTask_To_TaskEditFragment(selectedTask, position)
     }
 
-    override fun onItemLongClick(v: View?, selectedTask: Task): Boolean
+    override fun onItemLongClick(v: View?, selectedTask: Task, position: Int): Boolean
     {
         // TODO: to implement delete option
 

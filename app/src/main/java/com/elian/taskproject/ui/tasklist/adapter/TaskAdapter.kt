@@ -19,8 +19,8 @@ class TaskAdapter(
     // https://stackoverflow.com/questions/28296708/get-clicked-item-and-its-position-in-recyclerview
     interface IRecyclerViewItemClickListener
     {
-        fun onItemClick(v: View?, selectedTask: Task)
-        fun onItemLongClick(v: View?, selectedTask: Task): Boolean
+        fun onItemClick(v: View?, selectedTask: Task, position: Int)
+        fun onItemLongClick(v: View?, selectedTask: Task, position: Int): Boolean
     }
 
     fun load(list: List<Task>)
@@ -76,12 +76,12 @@ class TaskAdapter(
 
         override fun onClick(v: View?)
         {
-            itemListener.onItemClick(v, tasks[layoutPosition])
+            itemListener.onItemClick(v, tasks[layoutPosition], layoutPosition)
         }
 
         override fun onLongClick(v: View?): Boolean
         {
-            return itemListener.onItemLongClick(v, tasks[layoutPosition])
+            return itemListener.onItemLongClick(v, tasks[layoutPosition], layoutPosition)
         }
     }
 }

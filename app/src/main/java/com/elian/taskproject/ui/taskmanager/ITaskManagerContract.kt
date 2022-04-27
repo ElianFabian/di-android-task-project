@@ -15,24 +15,29 @@ interface ITaskManagerContract
 
     interface IPresenter : IBasePresenter
     {
-        fun onValidateFields(task: Task)
+        fun add(task: Task)
+        fun edit(editedTask: Task, position: Int)
     }
 
     interface IInteractor
     {
-        fun validateFields(task: Task)
+        fun add(task: Task)
+        fun edit(editedTask: Task, position: Int)
+        fun validateFields(task: Task): Boolean
     }
 
     interface IRepository
     {
         fun add(callback: IOnRepositoryCallback, task: Task)
-        fun edit(callback: IOnRepositoryCallback, task: Task)
+        fun edit(callback: IOnRepositoryCallback, editedTask: Task, position: Int)
     }
 
     interface IOnRepositoryCallback
     {
-        fun onSuccess()
-        fun onError()
+        fun onAddSuccess()
+        fun onEditSuccess()
+        fun onAddError()
+        fun onEditError()
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback
