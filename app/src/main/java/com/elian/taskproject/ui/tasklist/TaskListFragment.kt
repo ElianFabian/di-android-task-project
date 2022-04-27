@@ -106,9 +106,9 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDeleteSuccess(list: List<Task>)
+    override fun onDeleteSuccess(modifiedList: List<Task>)
     {
-        taskAdapter.load(list)
+        taskAdapter.load(modifiedList)
 
         Toast.makeText(context, "The task was successfully deleted.", Toast.LENGTH_SHORT).show()
     }

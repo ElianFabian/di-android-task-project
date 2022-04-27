@@ -33,9 +33,9 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
         listener.onNoData()
     }
 
-    override fun onDeleteSuccess(list: List<Task>)
+    override fun onDeleteSuccess(modifiedList: List<Task>)
     {
-        listener.onDeleteSuccess(list)
+        listener.onDeleteSuccess(modifiedList)
     }
 
     //endregion

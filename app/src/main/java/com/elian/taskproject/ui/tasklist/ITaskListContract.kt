@@ -34,7 +34,7 @@ interface ITaskListContract
         fun onListSuccess(list: List<Task>)
         fun onNoData()
         
-        fun onDeleteSuccess(list: List<Task>)
+        fun onDeleteSuccess(modifiedList: List<Task>)
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback
