@@ -16,7 +16,8 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : BaseFragment(),
-    ITaskListContract.IView
+    ITaskListContract.IView,
+    TaskAdapter.IRecyclerViewClickListener
 {
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: TaskAdapter
@@ -109,5 +110,14 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
+    //endregion
+
+    //region TaskAdapter.IRecyclerViewClickListener
+
+    override fun recyclerViewListClicked(v: View?, task: Task)
+    {
+        TODO("Not yet implemented")
+    }
+    
     //endregion
 }
