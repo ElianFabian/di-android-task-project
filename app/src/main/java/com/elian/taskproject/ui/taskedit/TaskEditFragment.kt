@@ -28,6 +28,15 @@ class TaskEditFragment : Fragment()
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
+        super.onViewCreated(view, savedInstanceState)
+        
+        val selectedTask = arguments?.getSerializable("task") as Task
+        
+        fillFieldsWithSelectedTask(selectedTask)
+    }
+
     //endregion
 
     //region Methods
