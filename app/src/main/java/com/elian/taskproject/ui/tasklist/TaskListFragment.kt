@@ -105,7 +105,7 @@ class TaskListFragment : BaseFragment(),
     {
         navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
         {
-            putSerializable("task", selectedTask)
+            putSerializable("selectedTask", selectedTask)
         })
     }
 

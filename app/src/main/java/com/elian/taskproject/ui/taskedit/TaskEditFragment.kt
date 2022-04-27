@@ -32,7 +32,7 @@ class TaskEditFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
         
-        val selectedTask = arguments?.getSerializable("task") as Task
+        val selectedTask = arguments?.getSerializable("selectedTask") as Task
         
         fillFieldsWithSelectedTask(selectedTask)
     }
