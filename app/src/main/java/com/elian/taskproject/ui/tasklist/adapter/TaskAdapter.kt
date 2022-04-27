@@ -12,12 +12,12 @@ import kotlin.collections.ArrayList
 
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
-    private val itemListener: IRecyclerViewItemListener,
+    private val itemListener: IRecyclerViewItemClickListener,
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
     // https://stackoverflow.com/questions/28296708/get-clicked-item-and-its-position-in-recyclerview
-    interface IRecyclerViewItemListener
+    interface IRecyclerViewItemClickListener
     {
         fun onItemClick(v: View?, selectedTask: Task)
         fun onItemLongClick(v: View?, selectedTask: Task): Boolean

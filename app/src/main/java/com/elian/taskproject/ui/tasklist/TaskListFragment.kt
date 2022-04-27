@@ -17,7 +17,7 @@ import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : BaseFragment(),
     ITaskListContract.IView,
-    TaskAdapter.IRecyclerViewItemListener
+    TaskAdapter.IRecyclerViewItemClickListener
 {
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: TaskAdapter
@@ -107,7 +107,7 @@ class TaskListFragment : BaseFragment(),
 
     //endregion
 
-    //region TaskAdapter.IRecyclerViewItemListener
+    //region TaskAdapter.IRecyclerViewItemClickListener
 
     override fun onItemClick(v: View?, selectedTask: Task)
     {
