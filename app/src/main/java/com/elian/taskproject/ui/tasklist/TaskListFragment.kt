@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
@@ -102,11 +101,11 @@ class TaskListFragment : BaseFragment(),
 
     //region TaskAdapter.IRecyclerViewClickListener
 
-    override fun recyclerViewListClicked(v: View?, task: Task)
+    override fun recyclerViewListClicked(v: View?, selectedTask: Task)
     {
         navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
         {
-            putSerializable("task", task)
+            putSerializable("task", selectedTask)
         })
     }
 
