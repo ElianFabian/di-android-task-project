@@ -16,8 +16,6 @@ class TaskAdapter(
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
-    interface IOnClickAndLongClickListener : View.OnClickListener, View.OnLongClickListener
-
     // https://stackoverflow.com/questions/28296708/get-clicked-item-and-its-position-in-recyclerview
     interface IRecyclerViewItemListener
     {
