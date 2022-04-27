@@ -12,9 +12,9 @@ import com.elian.taskproject.databinding.FragmentTaskEditBinding
 class TaskEditFragment : Fragment()
 {
     private lateinit var binding: FragmentTaskEditBinding
-    
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View
     {
         binding = FragmentTaskEditBinding.inflate(inflater)
