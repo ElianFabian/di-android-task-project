@@ -73,6 +73,14 @@ class TaskListFragment : BaseFragment(),
         binding.rvTasks.adapter = taskAdapter
     }
 
+    private fun sendSelectedTask_To_TaskEditFragment(task: Task)
+    {
+        navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
+        {
+            putSerializable("selectedTask", task)
+        })
+    }
+
     //endregion
 
     //region ITaskListContract.IView
@@ -103,10 +111,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun recyclerViewListClicked(v: View?, selectedTask: Task)
     {
-        navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
-        {
-            putSerializable("selectedTask", selectedTask)
-        })
+        sendSelectedTask_To_TaskEditFragment(selectedTask)
     }
 
     //endregion
