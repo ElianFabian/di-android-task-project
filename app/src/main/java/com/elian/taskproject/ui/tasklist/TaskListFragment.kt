@@ -103,7 +103,10 @@ class TaskListFragment : BaseFragment(),
 
     override fun recyclerViewListClicked(v: View?, task: Task)
     {
-        // TODO: implement navigation to TaskEditFragment
+        NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
+        {
+            putSerializable("task", task)
+        })
     }
 
     //endregion
