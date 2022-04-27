@@ -116,7 +116,9 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedTask: Task): Boolean
     {
-        return false // TODO: to implement delete option
+        // TODO: to implement delete option
+
+        return true
     }
 
     //endregion
