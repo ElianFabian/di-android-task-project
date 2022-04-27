@@ -96,7 +96,7 @@ class TaskListFragment : BaseFragment(),
         binding.progressBar.isVisible = false
     }
 
-    override fun onSuccess(list: List<Task>)
+    override fun onListSuccess(list: List<Task>)
     {
         taskAdapter.load(list)
     }
@@ -104,6 +104,13 @@ class TaskListFragment : BaseFragment(),
     override fun onNoData()
     {
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDeleteSuccess(list: List<Task>)
+    {
+        taskAdapter.load(list)
+
+        Toast.makeText(context, "The task was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
@@ -117,7 +124,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedTask: Task, position: Int): Boolean
     {
-        // TODO: to implement delete option
+        presenter.delete(selectedTask)
 
         return true
     }

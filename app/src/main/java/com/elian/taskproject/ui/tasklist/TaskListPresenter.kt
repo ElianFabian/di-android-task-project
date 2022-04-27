@@ -16,6 +16,11 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
         interactor?.getList()
     }
 
+    override fun delete(task: Task)
+    {
+        interactor?.delete(task)
+    }
+
     override fun onDestroy()
     {
         view = null
@@ -26,9 +31,9 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
 
     //region ITaskListContract.IOnInteractorListener
 
-    override fun onSuccess(list: List<Task>)
+    override fun onListSuccess(list: List<Task>)
     {
-        view?.onSuccess(list)
+        view?.onListSuccess(list)
         view?.hideProgress()
     }
 
@@ -36,6 +41,11 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
     {
         view?.onNoData()
         view?.hideProgress()
+    }
+
+    override fun onDeleteSuccess(list: List<Task>)
+    {
+        view?.onDeleteSuccess(list)
     }
 
     //endregion

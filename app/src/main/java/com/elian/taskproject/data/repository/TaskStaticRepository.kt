@@ -37,7 +37,13 @@ object TaskStaticRepository :
         {
             callback.onNoData()
         }
-        else callback.onSuccess(taskList)
+        else callback.onListSuccess(taskList)
+    }
+
+    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
+    {
+        taskList.remove(task)
+        callback.onDeleteSuccess(taskList)
     }
 
     //endregion

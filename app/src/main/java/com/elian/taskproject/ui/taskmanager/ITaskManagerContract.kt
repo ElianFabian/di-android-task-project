@@ -26,7 +26,7 @@ interface ITaskManagerContract
 
         /**
          * Validates the fields from the view given in a Task.
-         * 
+         *
          * @return true if there's no error.
          */
         fun validateFields(task: Task): Boolean
@@ -42,6 +42,7 @@ interface ITaskManagerContract
     {
         fun onAddSuccess()
         fun onEditSuccess()
+
         fun onAddError()
         fun onEditError()
     }
