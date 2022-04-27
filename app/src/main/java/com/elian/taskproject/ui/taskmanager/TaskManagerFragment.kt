@@ -42,9 +42,9 @@ class TaskManagerFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         //val selectedTask = arguments?.getSerializable("selectedTask") as Task
-        
+
         // TODO: implement edit action
-        
+
         initUI()
         //fillFieldsWithSelectedTask(selectedTask)
     }
@@ -88,24 +88,21 @@ class TaskManagerFragment : BaseFragment(),
     /**
      * Gets a task using the information from the form.
      */
-    private fun getTaskFromFields(): Task
+    private fun getTaskFromFields(): Task = with(binding)
     {
-        return with(binding)
+        var endDateEstimated: Long? = null
+
+        if (etDate.text.toString().isNotEmpty())
         {
-            var endDateEstimated: Long? = null
-
-            if (etDate.text.toString().isNotEmpty())
-            {
-                endDateEstimated = DataUtils.dateFormat.parse(etDate.text.toString())?.time
-            }
-
-            Task(
-                name = tieName.text.toString(),
-                description = tieDescription.text.toString(),
-                importance = Task.Importance.values()[spImportance.selectedItemPosition],
-                estimatedEndDate = endDateEstimated
-            )
+            endDateEstimated = DataUtils.dateFormat.parse(etDate.text.toString())?.time
         }
+
+        Task(
+            name = tieName.text.toString(),
+            description = tieDescription.text.toString(),
+            importance = Task.Importance.values()[spImportance.selectedItemPosition],
+            estimatedEndDate = endDateEstimated
+        )
     }
 
     private fun fillFieldsWithSelectedTask(task: Task) = with(binding)
