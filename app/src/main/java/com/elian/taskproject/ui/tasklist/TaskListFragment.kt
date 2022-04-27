@@ -17,7 +17,7 @@ import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : BaseFragment(),
     ITaskListContract.IView,
-    TaskAdapter.IRecyclerViewClickListener
+    TaskAdapter.IRecyclerViewItemListener
 {
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: TaskAdapter
@@ -109,9 +109,14 @@ class TaskListFragment : BaseFragment(),
 
     //region TaskAdapter.IRecyclerViewClickListener
 
-    override fun recyclerViewListClicked(v: View?, selectedTask: Task)
+    override fun onItemClick(v: View?, selectedTask: Task)
     {
         sendSelectedTask_To_TaskEditFragment(selectedTask)
+    }
+
+    override fun onItemLongClick(v: View?, selectedTask: Task): Boolean
+    {
+        return false // TODO: to implement delete option
     }
 
     //endregion

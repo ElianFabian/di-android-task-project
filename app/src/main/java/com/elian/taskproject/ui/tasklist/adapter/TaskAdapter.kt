@@ -12,16 +12,17 @@ import kotlin.collections.ArrayList
 
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
-    private val itemListener: IRecyclerViewClickListener,
+    private val itemListener: IRecyclerViewItemListener,
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
     interface IOnClickAndLongClickListener : View.OnClickListener, View.OnLongClickListener
 
     // https://stackoverflow.com/questions/28296708/get-clicked-item-and-its-position-in-recyclerview
-    interface IRecyclerViewClickListener
+    interface IRecyclerViewItemListener
     {
-        fun recyclerViewListClicked(v: View?, selectedTask: Task)
+        fun onItemClick(v: View?, selectedTask: Task)
+        fun onItemLongClick(v: View?, selectedTask: Task): Boolean
     }
 
     fun load(list: List<Task>)
@@ -54,7 +55,9 @@ class TaskAdapter(
 
     //endregion
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view),
+        View.OnClickListener,
+        View.OnLongClickListener
     {
         private val binding = ItemTaskBinding.bind(view)
 
@@ -63,6 +66,7 @@ class TaskAdapter(
         fun render(task: Task) = with(binding)
         {
             root.setOnClickListener(this@ViewHolder)
+            root.setOnLongClickListener(this@ViewHolder)
 
             tvName.text = task.name
             tvImportance.text = importanceStringArray[task.importance.ordinal]
@@ -75,7 +79,12 @@ class TaskAdapter(
 
         override fun onClick(v: View?)
         {
-            itemListener.recyclerViewListClicked(v, tasks[layoutPosition])
+            itemListener.onItemClick(v, tasks[layoutPosition])
+        }
+
+        override fun onLongClick(v: View?): Boolean
+        {
+            return itemListener.onItemLongClick(v, tasks[layoutPosition])
         }
     }
 }
