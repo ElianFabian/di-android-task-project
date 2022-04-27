@@ -12,7 +12,7 @@ import kotlin.collections.ArrayList
 
 class TaskAdapter(
     private val tasks: ArrayList<Task>,
-    private val listener: IOnClickAndLongClickListener,
+    private val itemListener: IRecyclerViewClickListener
 ) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>()
 {
@@ -40,9 +40,6 @@ class TaskAdapter(
 
         val view = layoutInflater.inflate(R.layout.item_task, parent, false)
 
-        view.setOnClickListener(listener)
-        view.setOnLongClickListener(listener)
-
         return ViewHolder(view)
     }
 
@@ -57,7 +54,7 @@ class TaskAdapter(
 
     //endregion
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener
     {
         private val binding = ItemTaskBinding.bind(view)
 
@@ -65,6 +62,8 @@ class TaskAdapter(
 
         fun render(task: Task) = with(binding)
         {
+            root.setOnClickListener(this@ViewHolder)
+            
             tvName.text = task.name
             tvImportance.text = importanceStringArray[task.importance.ordinal]
 
@@ -72,6 +71,11 @@ class TaskAdapter(
             {
                 swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
             }
+        }
+
+        override fun onClick(v: View?)
+        {
+            itemListener.recyclerViewListClicked(v, tasks[layoutPosition])
         }
     }
 }

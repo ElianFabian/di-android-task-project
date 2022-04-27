@@ -65,20 +65,7 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(arrayListOf(), object : TaskAdapter.IOnClickAndLongClickListener
-        {
-            override fun onClick(v: View?)
-            {
-                Toast.makeText(context, "You pressed an item", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onLongClick(v: View?): Boolean
-            {
-                Toast.makeText(context, "You pressed an item for so long", Toast.LENGTH_SHORT).show()
-
-                return true
-            }
-        })
+        taskAdapter = TaskAdapter(arrayListOf(), this)
 
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
@@ -116,7 +103,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun recyclerViewListClicked(v: View?, task: Task)
     {
-        TODO("Not yet implemented")
+        // TODO: implement navigation to TaskEditFragment
     }
     
     //endregion
