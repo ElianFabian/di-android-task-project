@@ -105,6 +105,6 @@ class TaskListFragment : BaseFragment(),
     {
         // TODO: implement navigation to TaskEditFragment
     }
-    
+
     //endregion
 }
