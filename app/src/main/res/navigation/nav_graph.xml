@@ -13,6 +13,9 @@
         <action
                 android:id="@+id/action_taskListFragment_to_taskAddFragment"
                 app:destination="@id/taskAddFragment" />
+        <action
+                android:id="@+id/action_taskListFragment_to_taskEditFragment"
+                app:destination="@id/taskEditFragment" />
     </fragment>
     <fragment
             android:id="@+id/taskAddFragment"
@@ -21,6 +24,14 @@
             tools:layout="@layout/fragment_task_add" >
         <action
                 android:id="@+id/action_taskAddFragment_to_taskListFragment"
+                app:destination="@id/taskListFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/taskEditFragment"
+            android:name="com.elian.taskproject.ui.taskedit.TaskEditFragment"
+            android:label="TaskEditFragment" >
+        <action
+                android:id="@+id/action_taskEditFragment_to_taskListFragment"
                 app:destination="@id/taskListFragment" />
     </fragment>
 </navigation>
