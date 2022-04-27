@@ -13,6 +13,7 @@ import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.databinding.FragmentTaskListBinding
+import com.elian.taskproject.extensions.navigate
 import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
 
 class TaskListFragment : BaseFragment(),
@@ -59,7 +60,7 @@ class TaskListFragment : BaseFragment(),
 
         binding.fab.setOnClickListener()
         {
-            NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskAddFragment)
+            navigate(R.id.action_taskListFragment_to_taskAddFragment)
         }
     }
 
@@ -103,7 +104,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun recyclerViewListClicked(v: View?, task: Task)
     {
-        NavHostFragment.findNavController(this).navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
+        navigate(R.id.action_taskListFragment_to_taskEditFragment, Bundle().apply()
         {
             putSerializable("task", task)
         })
