@@ -46,7 +46,7 @@ class TaskEditFragment : Fragment()
         tieName.setText(task.name)
         tieDescription.setText(task.description)
         spImportance.setSelection(task.importance.ordinal)
-        etDate.setText(DataUtils.dateFormat.format(Date(task.endDate as Long)))
+        etDate.setText(DataUtils.dateFormat.format(Date(task.endDateEstimated as Long)))
     }
 
     //endregion
