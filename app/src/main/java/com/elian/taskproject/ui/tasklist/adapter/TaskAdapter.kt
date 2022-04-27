@@ -67,7 +67,7 @@ class TaskAdapter(
             tvName.text = task.name
             tvImportance.text = importanceStringArray[task.importance.ordinal]
 
-            task.endDateEstimated?.let()
+            task.estimatedEndDate?.let()
             {
                 swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
             }

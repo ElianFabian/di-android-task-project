@@ -17,7 +17,7 @@ class TaskAddInteractor(private val listener: ITaskAddContract.IOnInteractorList
         {
             if (task.name.isEmpty()) onNameEmptyError().let { isError = true }
             if (task.description.isEmpty()) onDescriptionEmptyError().let { isError = true }
-            if (task.endDateEstimated == null) onDateEmptyError().let { isError = true }
+            if (task.estimatedEndDate == null) onDateEmptyError().let { isError = true }
         }
 
         if (isError) onError()

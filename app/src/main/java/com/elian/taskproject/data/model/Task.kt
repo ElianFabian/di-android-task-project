@@ -6,7 +6,7 @@ data class Task(
     var name: String,
     var description: String,
     var importance: Importance,
-    var endDateEstimated: Long?,
+    var estimatedEndDate: Long?,
     var endDate: Long? = null,
 ) :
     Serializable

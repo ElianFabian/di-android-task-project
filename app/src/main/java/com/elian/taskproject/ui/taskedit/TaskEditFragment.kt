@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.elian.taskproject.R
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.utils.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskEditBinding
-import com.elian.taskproject.ui.taskadd.TaskAddFragment
-import java.time.LocalDate
 import java.util.*
 
 
@@ -46,7 +43,7 @@ class TaskEditFragment : Fragment()
         tieName.setText(task.name)
         tieDescription.setText(task.description)
         spImportance.setSelection(task.importance.ordinal)
-        etDate.setText(DataUtils.dateFormat.format(Date(task.endDateEstimated as Long)))
+        etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
     }
 
     //endregion

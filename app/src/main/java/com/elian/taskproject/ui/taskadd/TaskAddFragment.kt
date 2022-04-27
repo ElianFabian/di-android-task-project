@@ -12,7 +12,6 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.utils.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskAddBinding
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
-import java.text.SimpleDateFormat
 
 class TaskAddFragment : BaseFragment(),
     ITaskAddContract.IView
@@ -100,7 +99,7 @@ class TaskAddFragment : BaseFragment(),
                 name = tieName.text.toString(),
                 description = tieDescription.text.toString(),
                 importance = Task.Importance.values()[spImportance.selectedItemPosition],
-                endDateEstimated = endDateEstimated
+                estimatedEndDate = endDateEstimated
             )
         }
     }
