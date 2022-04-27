@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.data.utils.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskAddBinding
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.text.SimpleDateFormat
@@ -18,8 +19,6 @@ class TaskAddFragment : BaseFragment(),
 {
     private lateinit var binding: FragmentTaskAddBinding
     override lateinit var presenter: ITaskAddContract.IPresenter
-
-    private val dateFormat = SimpleDateFormat("yyyy/MM/dd")
 
     //region Fragment Methods
 
@@ -94,7 +93,7 @@ class TaskAddFragment : BaseFragment(),
 
             if (etDate.text.toString().isNotEmpty())
             {
-                endDateEstimated = dateFormat.parse(etDate.text.toString()).time
+                endDateEstimated = DataUtils.dateFormat.parse(etDate.text.toString())?.time
             }
 
             Task(
