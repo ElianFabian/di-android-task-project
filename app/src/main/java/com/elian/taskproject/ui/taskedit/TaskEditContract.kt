@@ -35,4 +35,9 @@ interface ITaskEditContract
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback
+    {
+        fun onNameEmptyError()
+        fun onDescriptionEmptyError()
+        fun onDateEmptyError()
+    }
 }
