@@ -47,9 +47,7 @@ class TaskManagerFragment : BaseFragment(),
         if (taskFromBundle == null) initUIForAddAction()
         else
         {
-            val selectedTask = taskFromBundle as Task
-
-            fillFieldsWithSelectedTask(selectedTask)
+            fillFieldsWithSelectedTask(taskFromBundle as Task)
             initUIForEditAction(selectedTaskPosition as Int)
         }
     }
