@@ -9,9 +9,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import java.util.*
 
-class DatePickerFragment(private val listener: IOnDateSelectedListener) :
-
-    DialogFragment(), DatePickerDialog.OnDateSetListener
+class DatePickerFragment(private val listener: IOnDateSelectedListener) : DialogFragment(),
+    DatePickerDialog.OnDateSetListener
 {
     interface IOnDateSelectedListener
     {
