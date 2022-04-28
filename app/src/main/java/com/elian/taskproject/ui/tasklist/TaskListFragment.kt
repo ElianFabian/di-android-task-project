@@ -77,8 +77,8 @@ class TaskListFragment : BaseFragment(),
     {
         navigate(R.id.action_taskListFragment_to_taskManagerFragment, Bundle().apply()
         {
-            putSerializable("selectedTask", task)
-            putInt("selectedTask.position", position)
+            putSerializable(getString(R.string.bundleKey_selectedTask), task)
+            putInt(getString(R.string.bundleKey_selectedTask_position), position)
         })
     }
 

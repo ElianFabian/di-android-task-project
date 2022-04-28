@@ -41,9 +41,9 @@ class TaskManagerFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val taskFromBundle = arguments?.getSerializable("selectedTask")
-        val selectedTaskPosition = arguments?.getInt("selectedTask.position")
-        
+        val taskFromBundle = arguments?.getSerializable(getString(R.string.bundleKey_selectedTask))
+        val selectedTaskPosition = arguments?.getInt(getString(R.string.bundleKey_selectedTask_position))
+
         initUI()
 
         if (taskFromBundle == null) initUIForAddAction()
