@@ -43,6 +43,8 @@ class TaskManagerFragment : BaseFragment(),
 
         val taskFromBundle = arguments?.getSerializable("selectedTask")
         val selectedTaskPosition = arguments?.getInt("selectedTask.position")
+        
+        initUI()
 
         if (taskFromBundle == null) initUIForAddAction()
         else
@@ -65,13 +67,11 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForAddAction()
     {
-        initUI()
         binding.fab.setOnClickListener { presenter.add(getTaskFromFields()) }
     }
 
     private fun initUIForEditAction(position: Int)
     {
-        initUI()
         binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
     }
 
