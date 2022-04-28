@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Task Project</string>
-    
-    
-    
+
+
     <string name="frgTaskAdd_tieName_hint">Nombre</string>
     <string name="frgTaskAdd_ibDate_contentDescription">Botón para seleccionar una fecha</string>
     <string name="frgTaskAdd_tieDescription_hint">Descripción</string>
-    <string name="frgTaskAdd_spImportance_prompt">Importancia</string>
+    <string name="frgTaskAdd_spnImportance_prompt">Importancia</string>
     <string name="item_task__swIsEndDate_text">¿Es fecha fin?</string>
     <string name="error_emptyField">El campo no puede estar vacío</string>
 
 
-    <string-array name="frgTaskAdd_spImportance_entries">
+    <string-array name="frgTaskAdd_spnImportance_entries">
         <item>Bajo</item>
         <item>Medio</item>
         <item>Alto</item>

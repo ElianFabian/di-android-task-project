@@ -89,7 +89,7 @@ class TaskManagerFragment : BaseFragment(),
         Task(
             name = tieName.text.toString(),
             description = tieDescription.text.toString(),
-            importance = Task.Importance.values()[spImportance.selectedItemPosition],
+            importance = Task.Importance.values()[spnImportance.selectedItemPosition],
             estimatedEndDate = endDateEstimated
         )
     }
@@ -98,7 +98,7 @@ class TaskManagerFragment : BaseFragment(),
     {
         tieName.setText(task.name)
         tieDescription.setText(task.description)
-        spImportance.setSelection(task.importance.ordinal)
+        spnImportance.setSelection(task.importance.ordinal)
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
     }
 

@@ -11,8 +11,8 @@
     <string name="frgTaskAdd_tieName_hint">Name</string>
     <string name="frgTaskAdd_fab_contentDescription" translatable="false">Floating button to add the task.</string>
     <string name="frgTaskAdd_etDate_contentDescription" translatable="false">Text field where the date is shown when it\'s selected by the date picker.</string>
-    <string name="frgTaskAdd_spImportance_prompt">Importance</string>
-    <string-array name="frgTaskAdd_spImportance_entries">
+    <string name="frgTaskAdd_spnImportance_prompt">Importance</string>
+    <string-array name="frgTaskAdd_spnImportance_entries">
         <item>Low</item>
         <item>Medium</item>
         <item>High</item>
