@@ -73,7 +73,6 @@ class TaskManagerFragment : BaseFragment(),
     {
         binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
         fillFieldsWithSelectedTask(task)
-
     }
 
     private fun showDatePickerDialog()
