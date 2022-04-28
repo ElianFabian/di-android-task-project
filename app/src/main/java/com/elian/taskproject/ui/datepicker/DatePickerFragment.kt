@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import java.util.*
 
 class DatePickerFragment(private val listener: IOnDateSelectedListener) :
@@ -15,6 +16,13 @@ class DatePickerFragment(private val listener: IOnDateSelectedListener) :
     interface IOnDateSelectedListener
     {
         fun onDateSelected(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
+
+        fun showDatePickerDialog(fragment: Fragment)
+        {
+            val datePickerFragment = DatePickerFragment(fragment as IOnDateSelectedListener)
+
+            datePickerFragment.show(fragment.parentFragmentManager, "datePicker")
+        }
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)

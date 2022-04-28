@@ -63,7 +63,7 @@ class TaskManagerFragment : BaseFragment(),
     {
         //initSpinnerAdapter()
 
-        binding.ibDate.setOnClickListener { showDatePickerDialog() }
+        binding.ibDate.setOnClickListener { showDatePickerDialog(this) }
     }
 
     private fun initUIForAddAction()
@@ -100,13 +100,6 @@ class TaskManagerFragment : BaseFragment(),
         tieDescription.setText(task.description)
         spImportance.setSelection(task.importance.ordinal)
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
-    }
-
-    private fun showDatePickerDialog()
-    {
-        val datePicker = DatePickerFragment(this)
-
-        datePicker.show(parentFragmentManager, "datePicker")
     }
 
 ////  As we use android:entries in the Spinner we don't have to use this function,
