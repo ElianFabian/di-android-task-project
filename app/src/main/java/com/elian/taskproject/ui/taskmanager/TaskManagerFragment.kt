@@ -99,7 +99,7 @@ class TaskManagerFragment : BaseFragment(),
     }
 
     /**
-     * Gets a task using the information from the form.
+      * @return A task using the values from the form.
      */
     private fun getTaskFromFields(): Task = with(binding)
     {
