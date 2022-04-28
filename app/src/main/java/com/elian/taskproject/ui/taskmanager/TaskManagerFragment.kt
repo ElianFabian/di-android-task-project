@@ -41,16 +41,16 @@ class TaskManagerFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val taskFromBundle = arguments?.getSerializable(getString(R.string.bundleKey_selectedTask)) as Task?
+        val selectedTask = arguments?.getSerializable(getString(R.string.bundleKey_selectedTask)) as Task?
         val selectedTaskPosition = arguments?.getInt(getString(R.string.bundleKey_selectedTask_position))
 
         initUI()
 
-        if (taskFromBundle == null)
+        if (selectedTask == null)
         {
             initUIForAddAction()
         }
-        else initUIForEditAction(taskFromBundle, selectedTaskPosition!!)
+        else initUIForEditAction(selectedTask, selectedTaskPosition!!)
     }
 
     //endregion
@@ -69,10 +69,10 @@ class TaskManagerFragment : BaseFragment(),
         binding.fab.setOnClickListener { presenter.add(getTaskFromFields()) }
     }
 
-    private fun initUIForEditAction(task: Task, position: Int)
+    private fun initUIForEditAction(selectedTask: Task, position: Int)
     {
         binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
-        fillFieldsWithSelectedTask(task)
+        fillFieldsWithSelectedTask(selectedTask)
     }
 
     private fun showDatePickerDialog()
