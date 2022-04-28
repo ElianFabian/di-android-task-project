@@ -8,16 +8,18 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePickerFragment(val listener: (year: Int, month: Int, dayOfMonth: Int) -> Unit) :
+class DatePickerFragment(private val listener: IOnDateSelectedListener) :
 
     DialogFragment(), DatePickerDialog.OnDateSetListener
 {
-    /**
-     * This method it's called when the user picks a date.
-     */
+    interface IOnDateSelectedListener
+    {
+        fun onDateSelected(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
+    }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
     {
-        listener(year, month, dayOfMonth)
+        listener.onDateSelected(view, year, month, dayOfMonth)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog

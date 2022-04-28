@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
@@ -15,7 +16,8 @@ import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.util.*
 
 class TaskManagerFragment : BaseFragment(),
-    ITaskManagerContract.IView
+    ITaskManagerContract.IView,
+    DatePickerFragment.IOnDateSelectedListener
 {
     private lateinit var binding: FragmentTaskManagerBinding
     override lateinit var presenter: ITaskManagerContract.IPresenter
@@ -75,29 +77,6 @@ class TaskManagerFragment : BaseFragment(),
         fillFieldsWithSelectedTask(selectedTask)
     }
 
-    private fun showDatePickerDialog()
-    {
-        val datePicker = DatePickerFragment(::onDateSelected)
-
-        datePicker.show(parentFragmentManager, "datePicker")
-
-////      This is another way of doing it.
-//        val datePicker = DatePickerFragment()
-//        { year, month, dayOfMonth ->
-//
-//            onDateSelected(year, month, dayOfMonth)
-//        }
-    }
-
-    private fun onDateSelected(year: Int, month: Int, dayOfMonth: Int)
-    {
-        // 1 is added because month is in range 0 to 11
-        val monthWithFormat = String.format("%02d", month + 1)
-        val dayOfMonthWithFormat = String.format("%02d", dayOfMonth)
-
-        binding.etDate.setText("$year/$monthWithFormat/$dayOfMonthWithFormat")
-    }
-
     private fun getTaskFromFields(): Task = with(binding)
     {
         var endDateEstimated: Long? = null
@@ -121,6 +100,13 @@ class TaskManagerFragment : BaseFragment(),
         tieDescription.setText(task.description)
         spImportance.setSelection(task.importance.ordinal)
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
+    }
+
+    private fun showDatePickerDialog()
+    {
+        val datePicker = DatePickerFragment(this)
+
+        datePicker.show(parentFragmentManager, "datePicker")
     }
 
 ////  As we use android:entries in the Spinner we don't have to use this function,
@@ -184,6 +170,19 @@ class TaskManagerFragment : BaseFragment(),
     override fun onEditError()
     {
         Toast.makeText(context, "Error when editing.", Toast.LENGTH_SHORT).show()
+    }
+
+    //endregion
+
+    //region DatePickerFragment.IOnDateSelectedListener
+
+    override fun onDateSelected(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
+    {
+        // 1 is added because month is in range 0 to 11
+        val monthWithFormat = String.format("%02d", month + 1)
+        val dayOfMonthWithFormat = String.format("%02d", dayOfMonth)
+
+        binding.etDate.setText("$year/$monthWithFormat/$dayOfMonthWithFormat")
     }
 
     //endregion
