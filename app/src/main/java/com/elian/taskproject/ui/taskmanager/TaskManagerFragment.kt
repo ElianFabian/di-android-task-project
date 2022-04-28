@@ -98,9 +98,6 @@ class TaskManagerFragment : BaseFragment(),
         binding.etDate.setText("$year/$monthWithFormat/$dayOfMonthWithFormat")
     }
 
-    /**
-      * @return A task using the values from the form.
-     */
     private fun getTaskFromFields(): Task = with(binding)
     {
         var endDateEstimated: Long? = null
