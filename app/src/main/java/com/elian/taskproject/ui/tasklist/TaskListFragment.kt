@@ -117,9 +117,9 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRemoveSuccess(removedTask: Task)
+    override fun onDeleteSuccess(deletedTask: Task)
     {
-        taskAdapter.removeItem(removedTask)
+        taskAdapter.removeItem(deletedTask)
 
         Toast.makeText(context, "The task was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
@@ -157,7 +157,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
     {
-        presenter.remove(selectedItem)
+        presenter.delete(selectedItem)
 
         return true
     }

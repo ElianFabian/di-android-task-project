@@ -40,10 +40,10 @@ object TaskStaticRepository :
         else callback.onListSuccess(taskList)
     }
 
-    override fun remove(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
+    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
     {
         taskList.remove(task)
-        callback.onRemoveSuccess(task)
+        callback.onDeleteSuccess(task)
     }
 
     //endregion
