@@ -14,9 +14,9 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
         TaskStaticRepository.getList(this)
     }
 
-    override fun delete(task: Task)
+    override fun remove(task: Task)
     {
-        TaskStaticRepository.delete(this, task)
+        TaskStaticRepository.remove(this, task)
     }
 
     //endregion
@@ -33,9 +33,9 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
         listener.onNoData()
     }
 
-    override fun onDeleteSuccess(modifiedList: List<Task>)
+    override fun onRemoveSuccess(removedTask: Task)
     {
-        listener.onDeleteSuccess(modifiedList)
+        listener.onRemoveSuccess(removedTask)
     }
 
     //endregion

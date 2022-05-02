@@ -11,17 +11,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.data.utils.RecyclerViewAdapter
 import com.elian.taskproject.databinding.FragmentTaskListBinding
+import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.extensions.navigate
-import com.elian.taskproject.ui.tasklist.adapter.TaskAdapter
+import java.util.*
 
 class TaskListFragment : BaseFragment(),
     ITaskListContract.IView,
-    TaskAdapter.IRecyclerViewItemClickListener
+    RecyclerViewAdapter.OnBindViewHolderListener<Task>,
+    RecyclerViewAdapter.OnItemClickListener<Task>,
+    RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
     private lateinit var binding: FragmentTaskListBinding
-    private lateinit var taskAdapter: TaskAdapter
+    private lateinit var taskAdapter: RecyclerViewAdapter<Task>
     override lateinit var presenter: ITaskListContract.IPresenter
+
+    private lateinit var importanceStringArray: Array<String>
 
     //region Fragment Methods
 
@@ -53,6 +59,8 @@ class TaskListFragment : BaseFragment(),
 
     private fun initUI()
     {
+        importanceStringArray = resources.getStringArray(R.array.frgTaskAdd_spnImportance_entries)
+
         initRecyclerViewAdapter()
 
         presenter.getList()
@@ -65,12 +73,15 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = TaskAdapter(arrayListOf(), this)
-
-        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-
-        binding.rvTasks.layoutManager = layoutManager
-        binding.rvTasks.adapter = taskAdapter
+        taskAdapter = RecyclerViewAdapter(
+            recyclerView = binding.rvTasks,
+            itemLayout = R.layout.item_task,
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        )
+        
+        taskAdapter.setOnBindViewHolderListener(this)
+        taskAdapter.setOnItemClickListener(this)
+        taskAdapter.setOnItemLongClickListener(this)
     }
 
     private fun sendSelectedTask_To_TaskEditFragment(task: Task, position: Int)
@@ -98,7 +109,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListSuccess(list: List<Task>)
     {
-        taskAdapter.load(list)
+        taskAdapter.replaceList(list)
     }
 
     override fun onNoData()
@@ -106,25 +117,47 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDeleteSuccess(modifiedList: List<Task>)
+    override fun onRemoveSuccess(removedTask: Task)
     {
-        taskAdapter.load(modifiedList)
+        taskAdapter.removeItem(removedTask)
 
         Toast.makeText(context, "The task was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
 
-    //region TaskAdapter.IRecyclerViewItemClickListener
+    //region RecyclerViewAdapter.OnBindViewHolderListener<>
 
-    override fun onItemClick(v: View?, selectedTask: Task, position: Int)
+    override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
-        sendSelectedTask_To_TaskEditFragment(selectedTask, position)
+        ItemTaskBinding.bind(view).apply()
+        {
+            tvName.text = item.name
+            tvImportance.text = importanceStringArray[item.importance.ordinal]
+
+            item.estimatedEndDate?.let()
+            {
+                swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
+            }
+        }
     }
 
-    override fun onItemLongClick(v: View?, selectedTask: Task, position: Int): Boolean
+    //endregion
+
+    //region RecyclerViewAdapter.OnItemClickListener<>
+
+    override fun onItemClick(v: View?, selectedItem: Task, position: Int)
     {
-        presenter.delete(selectedTask)
+        sendSelectedTask_To_TaskEditFragment(selectedItem, position)
+    }
+
+    //endregion
+
+    //region RecyclerViewAdapter.OnItemLongClickListener<>
+
+    override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
+    {
+        presenter.remove(selectedItem)
 
         return true
     }

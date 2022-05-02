@@ -14,19 +14,19 @@ interface ITaskListContract
     interface IPresenter : IBasePresenter
     {
         fun getList()
-        fun delete(task: Task)
+        fun remove(task: Task)
     }
 
     interface IInteractor
     {
         fun getList()
-        fun delete(task: Task)
+        fun remove(task: Task)
     }
 
     interface IRepository
     {
         fun getList(callback: IOnRepositoryCallback)
-        fun delete(callback: IOnRepositoryCallback, task: Task)
+        fun remove(callback: IOnRepositoryCallback, task: Task)
     }
 
     interface IOnRepositoryCallback
@@ -34,7 +34,7 @@ interface ITaskListContract
         fun onListSuccess(list: List<Task>)
         fun onNoData()
         
-        fun onDeleteSuccess(modifiedList: List<Task>)
+        fun onRemoveSuccess(removedTask: Task)
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback
