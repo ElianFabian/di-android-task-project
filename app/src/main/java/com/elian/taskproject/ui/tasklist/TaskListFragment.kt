@@ -78,7 +78,7 @@ class TaskListFragment : BaseFragment(),
             itemLayout = R.layout.item_task,
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         )
-        
+
         taskAdapter.setOnBindViewHolderListener(this)
         taskAdapter.setOnItemClickListener(this)
         taskAdapter.setOnItemLongClickListener(this)
