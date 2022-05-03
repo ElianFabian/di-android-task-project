@@ -139,6 +139,14 @@ class TaskListFragment : BaseFragment(),
             {
                 swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
             }
+
+//            swIsEndDate.setOnClickListener()
+//            {
+//                val timeInMillis = Calendar.getInstance().timeInMillis
+//
+//                if (swIsEndDate.isChecked || item.estimatedEndDate!! > timeInMillis) item.endDate = timeInMillis
+//                else item.endDate = null
+//            }
         }
     }
 
