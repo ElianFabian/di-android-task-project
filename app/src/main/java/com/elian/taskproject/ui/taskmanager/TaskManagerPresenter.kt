@@ -61,14 +61,14 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
         view?.onEditSuccess()
     }
 
-    override fun onAddError()
+    override fun onAddFailure()
     {
-        view?.onAddError()
+        view?.onAddFailure()
     }
 
-    override fun onEditError()
+    override fun onEditFailure()
     {
-        view?.onEditError()
+        view?.onEditFailure()
     }
 
     //endregion

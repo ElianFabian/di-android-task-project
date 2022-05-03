@@ -43,8 +43,8 @@ interface ITaskManagerContract
         fun onAddSuccess()
         fun onEditSuccess()
 
-        fun onAddError()
-        fun onEditError()
+        fun onAddFailure()
+        fun onEditFailure()
     }
 
     interface IOnInteractorListener : IOnRepositoryCallback

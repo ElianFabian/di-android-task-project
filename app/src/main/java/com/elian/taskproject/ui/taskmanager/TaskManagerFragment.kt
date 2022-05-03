@@ -155,12 +155,12 @@ class TaskManagerFragment : BaseFragment(),
         Toast.makeText(context, "The task was successfully edited.", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onAddError()
+    override fun onAddFailure()
     {
         Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onEditError()
+    override fun onEditFailure()
     {
         Toast.makeText(context, "Error when editing.", Toast.LENGTH_SHORT).show()
     }

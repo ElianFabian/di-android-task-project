@@ -20,7 +20,7 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
             if (task.estimatedEndDate == null) onDateEmptyError().let { isError = true }
         }
 
-        if (isError) onAddError()
+        if (isError) onAddFailure()
 
         return !isError
     }
@@ -49,14 +49,14 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
         listener.onEditSuccess()
     }
 
-    override fun onAddError()
+    override fun onAddFailure()
     {
-        listener.onAddError()
+        listener.onAddFailure()
     }
 
-    override fun onEditError()
+    override fun onEditFailure()
     {
-        listener.onEditError()
+        listener.onEditFailure()
     }
 
     //endregion
