@@ -9,6 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTasks"
+            tools:listitem="@layout/item_task"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
