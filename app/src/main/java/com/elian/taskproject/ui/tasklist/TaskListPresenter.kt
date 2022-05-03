@@ -43,9 +43,9 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
         view?.hideProgress()
     }
 
-    override fun onDeleteSuccess(deletedTask: Task)
+    override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
-        view?.onDeleteSuccess(deletedTask)
+        view?.onDeleteSuccess(deletedTask, position)
     }
 
     //endregion

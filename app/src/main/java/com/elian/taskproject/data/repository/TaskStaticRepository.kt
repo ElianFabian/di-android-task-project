@@ -42,8 +42,10 @@ object TaskStaticRepository :
 
     override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
     {
+        val position = taskList.indexOf(task)
+
         taskList.remove(task)
-        callback.onDeleteSuccess(task)
+        callback.onDeleteSuccess(task, position)
     }
 
     //endregion

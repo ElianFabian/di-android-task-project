@@ -117,11 +117,11 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDeleteSuccess(deletedTask: Task)
+    override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         taskAdapter.removeItem(deletedTask)
 
-        Toast.makeText(context, "The task was successfully deleted.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
