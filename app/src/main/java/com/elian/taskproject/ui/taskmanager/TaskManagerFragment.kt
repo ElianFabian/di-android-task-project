@@ -87,8 +87,8 @@ class TaskManagerFragment : BaseFragment(),
         }
 
         Task(
-            name = tieName.text.toString(),
-            description = tieDescription.text.toString(),
+            name = tieName.text.toString().trim(),
+            description = tieDescription.text.toString().trim(),
             importance = Task.Importance.values()[spnImportance.selectedItemPosition],
             estimatedEndDate = endDateEstimated
         )
