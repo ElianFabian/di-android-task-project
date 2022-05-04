@@ -1,9 +1,11 @@
 package com.elian.taskproject.ui.tasklist
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,6 +95,16 @@ class TaskListFragment : BaseFragment(),
         })
     }
 
+    private fun showNoDataImage()
+    {
+        binding.ivNoData.visibility = ImageView.VISIBLE
+    }
+
+    private fun hideNoDataImage()
+    {
+        binding.ivNoData.visibility = ImageView.GONE
+    }
+
     //endregion
 
     //region ITaskListContract.IView
@@ -109,17 +121,21 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListSuccess(list: List<Task>)
     {
+        hideNoDataImage()
+
         taskAdapter.replaceList(list)
     }
 
     override fun onNoData()
     {
-        Toast.makeText(context, "There's no data", Toast.LENGTH_SHORT).show()
+        showNoDataImage()
     }
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         taskAdapter.removeItem(deletedTask)
+
+        if (taskAdapter.itemCount == 0) showNoDataImage()
 
         Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
