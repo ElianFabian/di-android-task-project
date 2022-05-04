@@ -74,11 +74,10 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = RecyclerViewAdapter(
-            recyclerView = binding.rvTasks,
-            itemLayout = R.layout.item_task,
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        )
+        taskAdapter = RecyclerViewAdapter(itemLayout = R.layout.item_task)
+
+        binding.rvTasks.adapter = taskAdapter
+        binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         taskAdapter.setOnBindViewHolderListener(this)
         taskAdapter.setOnItemClickListener(this)
