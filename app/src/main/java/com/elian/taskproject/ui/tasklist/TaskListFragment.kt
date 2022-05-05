@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -95,12 +94,12 @@ class TaskListFragment : BaseFragment(),
 
     private fun showNoDataImage()
     {
-        binding.ivNoData.visibility = ImageView.VISIBLE
+        binding.ivNoData.isVisible = true
     }
 
     private fun hideNoDataImage()
     {
-        binding.ivNoData.visibility = ImageView.GONE
+        binding.ivNoData.isVisible = false
     }
 
     //endregion
