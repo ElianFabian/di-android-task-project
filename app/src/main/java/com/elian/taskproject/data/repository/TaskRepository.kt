@@ -24,9 +24,7 @@ object TaskRepository :
 
     override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
     {
-        val taskList = taskDAO.selectAll()
-
-        val position = taskList.indexOf(task)
+        val position = taskDAO.selectAll().indexOf(task)
 
         taskDAO.delete(task)
         callback.onDeleteSuccess(task, position)
