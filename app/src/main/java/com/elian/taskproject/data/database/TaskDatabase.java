@@ -1,4 +1,4 @@
-package com.elian.taskproject.data;
+package com.elian.taskproject.data.database;
 
 import android.content.Context;
 

@@ -1,6 +1,6 @@
 package com.elian.taskproject.data.repository
 
-import com.elian.taskproject.data.TaskDatabase
+import com.elian.taskproject.data.database.TaskDatabase
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
 import com.elian.taskproject.ui.tasklist.ITaskListContract

@@ -2,7 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.elian.taskproject.data.TaskDatabase
+import com.elian.taskproject.data.database.TaskDatabase
 
 class MainActivity : AppCompatActivity()
 {
