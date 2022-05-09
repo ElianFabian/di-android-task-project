@@ -11,9 +11,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.elian.taskproject.data.dao.TaskDAO;
 import com.elian.taskproject.data.model.Task;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 // 1. Define the configuration of the database.
 
 @Database(version = 1, entities = { Task.class })
