@@ -1,6 +1,7 @@
 package com.elian.taskproject.ui.tasklist
 
 import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.data.repository.TaskRepository
 import com.elian.taskproject.data.repository.TaskStaticRepository
 
 class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
@@ -11,12 +12,12 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     override fun getList()
     {
-        TaskStaticRepository.getList(this)
+        TaskRepository.getList(this)
     }
 
     override fun delete(task: Task)
     {
-        TaskStaticRepository.delete(this, task)
+        TaskRepository.delete(this, task)
     }
 
     //endregion

@@ -1,7 +1,9 @@
 package com.elian.taskproject
 
 import android.app.Application
+import android.widget.Toast
 import com.elian.taskproject.data.TaskDatabase
+import com.elian.taskproject.data.model.Task
 
 // This class must be added into the AndroidManifest.xml in order to work
 /*
@@ -14,7 +16,7 @@ class TaskApplication : Application()
     override fun onCreate()
     {
         super.onCreate()
-
-        TaskDatabase.create(this)
+        
+        //TaskDatabase.create(this)
     }
 }

@@ -13,20 +13,20 @@ object TaskRepository :
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
-        if (TaskDatabase.getDatabase().taskDAO.selectAll().isEmpty())
+        if (TaskDatabase.getDatabase().dao.selectAll().isEmpty())
         {
             callback.onNoData()
         }
-        else callback.onListSuccess(TaskDatabase.getDatabase().taskDAO.selectAll())
+        else callback.onListSuccess(TaskDatabase.getDatabase().dao.selectAll())
     }
 
     override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
     {
-        val taskList = TaskDatabase.getDatabase().taskDAO.selectAll()
+        val taskList = TaskDatabase.getDatabase().dao.selectAll()
 
         val position = taskList.indexOf(task)
 
-        TaskDatabase.getDatabase().taskDAO.delete(task)
+        TaskDatabase.getDatabase().dao.delete(task)
         callback.onDeleteSuccess(task, position)
     }
 
@@ -36,13 +36,13 @@ object TaskRepository :
 
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
-        TaskDatabase.getDatabase().taskDAO.insert(task)
+        TaskDatabase.getDatabase().dao.insert(task)
         callback.onAddSuccess()
     }
 
     override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
     {
-        TaskDatabase.getDatabase().taskDAO.update(editedTask)
+        TaskDatabase.getDatabase().dao.update(editedTask)
         callback.onEditSuccess()
     }
 

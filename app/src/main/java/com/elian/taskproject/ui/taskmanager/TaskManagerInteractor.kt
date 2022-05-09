@@ -1,6 +1,7 @@
 package com.elian.taskproject.ui.taskmanager
 
 import com.elian.taskproject.data.model.Task
+import com.elian.taskproject.data.repository.TaskRepository
 import com.elian.taskproject.data.repository.TaskStaticRepository
 
 class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnInteractorListener) :
@@ -27,12 +28,12 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
 
     override fun add(task: Task)
     {
-        TaskStaticRepository.add(this, task)
+        TaskRepository.add(this, task)
     }
 
     override fun edit(editedTask: Task, position: Int)
     {
-        TaskStaticRepository.edit(this, editedTask, position)
+        TaskRepository.edit(this, editedTask, position)
     }
 
     //endregion

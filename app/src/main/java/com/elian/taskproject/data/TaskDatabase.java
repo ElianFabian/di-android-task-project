@@ -16,25 +16,24 @@ import java.util.concurrent.Executors;
 
 // 1. Define the configuration of the database.
 
-@Database(version = 1, entities = { Task.class }, exportSchema = false)
+@Database(version = 1, entities = { Task.class })
 public abstract class TaskDatabase extends RoomDatabase {
 
     // 2. Create the methods to get the DAO.
-    public abstract TaskDAO getTaskDAO();
+    public abstract TaskDAO getDao();
 
     private static volatile TaskDatabase INSTANCE;
-    private static final int NUMBER_OF_THREADS = 4;
-    public static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
 
     // Google version method
-    private static TaskDatabase getDatabase(final Context context) {
+    public static TaskDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (TaskDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TaskDatabase.class, "task")
+                            TaskDatabase.class, "task_database")
                             .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
                             .build();
                 }
             }
@@ -57,6 +56,7 @@ public abstract class TaskDatabase extends RoomDatabase {
                                 }
                             })
                             .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

@@ -73,7 +73,13 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
     {
-        binding.fab.setOnClickListener { presenter.edit(getTaskFromFields(), position) }
+        binding.fab.setOnClickListener()
+        {
+            presenter.edit(
+                getTaskFromFields().apply { id = selectedTask.id },
+                position
+            )
+        }
         fillFieldsWithSelectedTask(selectedTask)
     }
 
