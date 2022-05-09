@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 public abstract class TaskDatabase extends RoomDatabase {
 
     // 2. Create the methods to get the DAO.
-    public abstract TaskDAO taskDAO();
+    public abstract TaskDAO getTaskDAO();
 
     private static volatile TaskDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
