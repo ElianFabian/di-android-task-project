@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 
 // 1. Define the configuration of the database.
 
-@Database(version = 1, entities = { Task.class })
+@Database(version = 1, entities = { Task.class }, exportSchema = false)
 public abstract class TaskDatabase extends RoomDatabase {
 
     // 2. Create the methods to get the DAO.
