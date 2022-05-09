@@ -1,7 +1,9 @@
 package com.elian.taskproject.data.model
 
+import androidx.room.Entity
 import java.io.Serializable
 
+@Entity(tableName = "task_table")
 data class Task(
     var name: String,
     var description: String,
