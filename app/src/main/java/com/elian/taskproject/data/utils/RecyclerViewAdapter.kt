@@ -40,8 +40,8 @@ open class RecyclerViewAdapter<T>(
 
     fun replaceList(newList: List<T>)
     {
-        this.list.clear()
-        this.list.addAll(newList)
+        list.clear()
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 
