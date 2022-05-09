@@ -8,16 +8,18 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
     ITaskListContract.IInteractor,
     ITaskListContract.IOnRepositoryCallback
 {
+    private val repository = TaskRepository
+    
     //region ITaskListContract.IInteractor
 
     override fun getList()
     {
-        TaskRepository.getList(this)
+        repository.getList(this)
     }
 
     override fun delete(task: Task)
     {
-        TaskRepository.delete(this, task)
+        repository.delete(this, task)
     }
 
     //endregion

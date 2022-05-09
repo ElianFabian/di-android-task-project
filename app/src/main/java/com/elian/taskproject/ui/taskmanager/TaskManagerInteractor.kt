@@ -8,6 +8,8 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
     ITaskManagerContract.IInteractor,
     ITaskManagerContract.IOnRepositoryCallback
 {
+    private val repository = TaskRepository
+    
     //region ITaskManagerContract.IInteractor
 
     override fun validateFields(task: Task): Boolean
@@ -28,12 +30,12 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
 
     override fun add(task: Task)
     {
-        TaskRepository.add(this, task)
+        repository.add(this, task)
     }
 
     override fun edit(editedTask: Task, position: Int)
     {
-        TaskRepository.edit(this, editedTask, position)
+        repository.edit(this, editedTask, position)
     }
 
     //endregion
