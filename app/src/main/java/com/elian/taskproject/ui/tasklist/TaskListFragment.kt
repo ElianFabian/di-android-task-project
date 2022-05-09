@@ -167,18 +167,18 @@ class TaskListFragment : BaseFragment(),
 
     //region RecyclerViewAdapter.OnItemClickListener<>
 
-    override fun onItemClick(v: View?, selectedItem: Task, position: Int)
+    override fun onItemClick(v: View?, clickedItem: Task, position: Int)
     {
-        sendSelectedTask_To_TaskEditFragment(selectedItem, position)
+        sendSelectedTask_To_TaskEditFragment(clickedItem, position)
     }
 
     //endregion
 
     //region RecyclerViewAdapter.OnItemLongClickListener<>
 
-    override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
+    override fun onItemLongClick(v: View?, clickedItem: Task, position: Int): Boolean
     {
-        presenter.delete(selectedItem)
+        presenter.delete(clickedItem)
 
         return true
     }
