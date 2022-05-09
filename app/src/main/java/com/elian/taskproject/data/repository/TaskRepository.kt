@@ -25,7 +25,7 @@ object TaskRepository :
         val taskList = TaskDatabase.getDatabase().taskDAO.selectAll()
 
         val position = taskList.indexOf(task)
-        
+
         TaskDatabase.getDatabase().taskDAO.delete(task)
         callback.onDeleteSuccess(task, position)
     }
