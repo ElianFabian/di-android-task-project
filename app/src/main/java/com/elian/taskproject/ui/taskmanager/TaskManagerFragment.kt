@@ -108,19 +108,6 @@ class TaskManagerFragment : BaseFragment(),
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
     }
 
-////  As we use android:entries in the Spinner we don't have to use this function,
-////  but if we want more functionality we can then use it.
-//    private fun initSpinnerAdapter()
-//    {
-//        val spinnerAdapter = ArrayAdapter(
-//            activity as Context,
-//            android.R.layout.simple_spinner_dropdown_item,
-//            resources.getStringArray(R.array.importance)
-//        )
-//
-//        binding.spImportance.adapter = spinnerAdapter
-//    }
-
     //endregion
 
     //region ITaskManagerContract.IView
