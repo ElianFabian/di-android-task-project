@@ -8,6 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.elian.taskproject.data.dao.TaskDAO;
 import com.elian.taskproject.data.model.Task;
 
 import java.util.concurrent.ExecutorService;
@@ -19,6 +20,7 @@ import java.util.concurrent.Executors;
 public abstract class TaskDatabase extends RoomDatabase {
 
     // 2. Create the methods to get the DAO.
+    public abstract TaskDAO taskDAO();
 
     private static volatile TaskDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
