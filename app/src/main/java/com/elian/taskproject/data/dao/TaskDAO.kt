@@ -1,11 +1,9 @@
 package com.elian.taskproject.data.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.elian.taskproject.data.model.Task
 
+@Dao
 interface TaskDAO
 {
     @Query("SELECT * FROM task_table WHERE id = :id")
