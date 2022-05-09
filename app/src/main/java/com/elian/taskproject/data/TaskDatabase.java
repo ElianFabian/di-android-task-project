@@ -67,7 +67,7 @@ public abstract class TaskDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    /**
+    /*
      * Function when on create insert the data we need.
      */
 //    private static void prepopulate(Context context) {
