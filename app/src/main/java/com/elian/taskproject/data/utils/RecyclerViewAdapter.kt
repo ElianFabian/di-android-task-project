@@ -13,7 +13,6 @@ open class RecyclerViewAdapter<T>(
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter<T>.ViewHolder>()
 {
-
     private var onItemCLickListener = OnItemClickListener<T> { _, _, _ -> }
     private var onItemLongCLickListener = OnItemLongClickListener<T> { _, _, _ -> false }
     private var onBindViewHolderListener = OnBindViewHolderListener<T> { _, _, _ -> }
