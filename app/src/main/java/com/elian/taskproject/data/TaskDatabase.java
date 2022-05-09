@@ -8,11 +8,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.elian.taskproject.data.model.Task;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 // 1. Define the configuration of the database.
 
+@Database(version = 1, entities = { Task.class })
 public abstract class TaskDatabase extends RoomDatabase {
 
     // 2. Create the methods to get the DAO.
@@ -22,8 +25,8 @@ public abstract class TaskDatabase extends RoomDatabase {
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-
-    static TaskDatabase getDatabase(final Context context) {
+    // Google version method
+    private static TaskDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (TaskDatabase.class) {
                 if (INSTANCE == null) {
