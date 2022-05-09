@@ -10,25 +10,6 @@ object TaskStaticRepository :
 {
     private val taskList = arrayListOf<Task>()
 
-//    private var calendar: Calendar = Calendar.getInstance()
-
-    //region Methods
-
-    /**
-     * Returns a random date from the current date before or after the indicated amount of years.
-     */
-//    private fun getRandomDateAroundCurrentDate(years: Long = 10): Long
-//    {
-//        val oneYearInMillis = 31_556_900_000
-//
-//        val yearsInMillis = years * oneYearInMillis
-//        val range = -yearsInMillis..yearsInMillis
-//
-//        return calendar.timeInMillis + range.random()
-//    }
-
-    //endregion
-
     //region ITaskListContract.IRepository
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
