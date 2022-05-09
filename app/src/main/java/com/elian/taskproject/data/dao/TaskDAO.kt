@@ -9,7 +9,10 @@ import com.elian.taskproject.data.model.Task
 interface TaskDAO
 {
     @Query("SELECT * FROM task_table WHERE id = :id")
-    fun select(id: Long) : Task
+    fun select(id: Long): Task
+
+    @Query("SELECT * FROM task_table")
+    fun selectAll() : List<Task>
 
     @Insert
     fun insert(task: Task): Long
