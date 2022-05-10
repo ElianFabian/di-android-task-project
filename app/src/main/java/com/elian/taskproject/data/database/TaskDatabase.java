@@ -15,6 +15,8 @@ import com.elian.taskproject.data.model.Task;
 
 @Database(version = 1, entities = { Task.class })
 public abstract class TaskDatabase extends RoomDatabase {
+    
+    private static final String databaseName = "task_database";
 
     // 2. Create the methods to get the DAO.
     public abstract TaskDAO getDao();
@@ -28,7 +30,7 @@ public abstract class TaskDatabase extends RoomDatabase {
             synchronized (TaskDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TaskDatabase.class, "task_database")
+                            TaskDatabase.class, databaseName)
                             .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build();
@@ -44,7 +46,7 @@ public abstract class TaskDatabase extends RoomDatabase {
             synchronized (TaskDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TaskDatabase.class, "inventory")
+                            TaskDatabase.class, databaseName)
                             .addCallback(new Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
