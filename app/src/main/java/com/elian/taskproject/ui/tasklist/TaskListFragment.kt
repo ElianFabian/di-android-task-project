@@ -16,6 +16,7 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.extensions.navigate
 import java.util.*
+import kotlin.properties.Delegates
 
 class TaskListFragment : BaseFragment(),
     ITaskListContract.IView,
@@ -26,6 +27,9 @@ class TaskListFragment : BaseFragment(),
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: RecyclerViewAdapter<Task>
     override lateinit var presenter: ITaskListContract.IPresenter
+
+    private lateinit var deletedTask: Task
+    private var deletedTaskPosition by Delegates.notNull<Int>()
 
     private lateinit var importanceStringArray: Array<String>
 
@@ -131,6 +135,9 @@ class TaskListFragment : BaseFragment(),
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         taskAdapter.removeItem(deletedTask)
+
+        this.deletedTask = deletedTask
+        this.deletedTaskPosition = position
 
         if (taskAdapter.itemCount == 0) showNoDataImage()
 
