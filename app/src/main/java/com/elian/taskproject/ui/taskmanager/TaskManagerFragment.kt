@@ -22,6 +22,24 @@ class TaskManagerFragment : BaseFragment(),
     private lateinit var binding: FragmentTaskManagerBinding
     override lateinit var presenter: ITaskManagerContract.IPresenter
 
+    private val taskFromFields: Task
+        get() = with(binding)
+        {
+            var endDateEstimated: Long? = null
+
+            if (etDate.text.toString().isNotEmpty())
+            {
+                endDateEstimated = DataUtils.dateFormat.parse(etDate.text.toString())?.time
+            }
+
+            Task(
+                name = tieName.text.toString().trim(),
+                description = tieDescription.text.toString().trim(),
+                importance = Task.Importance.values()[spnImportance.selectedItemPosition],
+                estimatedEndDate = endDateEstimated
+            )
+        }
+
     //region Fragment Methods
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -68,7 +86,7 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForAddAction()
     {
-        binding.fab.setOnClickListener { presenter.add(getTaskFromFields()) }
+        binding.fab.setOnClickListener { presenter.add(taskFromFields) }
     }
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
@@ -76,28 +94,11 @@ class TaskManagerFragment : BaseFragment(),
         binding.fab.setOnClickListener()
         {
             presenter.edit(
-                getTaskFromFields().apply { id = selectedTask.id },
+                taskFromFields.apply { id = selectedTask.id },
                 position
             )
         }
         fillFieldsWithSelectedTask(selectedTask)
-    }
-
-    private fun getTaskFromFields(): Task = with(binding)
-    {
-        var endDateEstimated: Long? = null
-
-        if (etDate.text.toString().isNotEmpty())
-        {
-            endDateEstimated = DataUtils.dateFormat.parse(etDate.text.toString())?.time
-        }
-
-        Task(
-            name = tieName.text.toString().trim(),
-            description = tieDescription.text.toString().trim(),
-            importance = Task.Importance.values()[spnImportance.selectedItemPosition],
-            estimatedEndDate = endDateEstimated
-        )
     }
 
     private fun fillFieldsWithSelectedTask(task: Task) = with(binding)
