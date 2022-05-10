@@ -9,6 +9,8 @@ interface ITaskListContract
     {
         fun showProgress()
         fun hideProgress()
+        fun showNoDataImage()
+        fun hideNoDataImage()
     }
 
     interface IPresenter : IBasePresenter

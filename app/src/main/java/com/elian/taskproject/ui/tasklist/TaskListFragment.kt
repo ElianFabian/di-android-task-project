@@ -92,16 +92,6 @@ class TaskListFragment : BaseFragment(),
         })
     }
 
-    private fun showNoDataImage()
-    {
-        binding.ivNoData.isVisible = true
-    }
-
-    private fun hideNoDataImage()
-    {
-        binding.ivNoData.isVisible = false
-    }
-
     //endregion
 
     //region ITaskListContract.IView
@@ -114,6 +104,16 @@ class TaskListFragment : BaseFragment(),
     override fun hideProgress()
     {
         binding.progressBar.isVisible = false
+    }
+
+    override fun showNoDataImage()
+    {
+        binding.ivNoData.isVisible = true
+    }
+
+    override fun hideNoDataImage()
+    {
+        binding.ivNoData.isVisible = false
     }
 
     override fun onListSuccess(list: List<Task>)
