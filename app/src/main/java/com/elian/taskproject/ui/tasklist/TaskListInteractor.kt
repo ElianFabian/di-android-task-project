@@ -1,14 +1,13 @@
 package com.elian.taskproject.ui.tasklist
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.data.repository.TaskRepository
-import com.elian.taskproject.data.repository.TaskStaticRepository
+import com.elian.taskproject.data.repository.TaskRoomRepository
 
 class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
     ITaskListContract.IInteractor,
     ITaskListContract.IOnRepositoryCallback
 {
-    private val repository = TaskRepository
+    private val repository = TaskRoomRepository
     
     //region ITaskListContract.IInteractor
 

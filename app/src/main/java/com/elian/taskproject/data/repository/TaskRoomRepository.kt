@@ -5,7 +5,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
 import com.elian.taskproject.ui.tasklist.ITaskListContract
 
-object TaskRepository :
+object TaskRoomRepository :
     ITaskListContract.IRepository,
     ITaskManagerContract.IRepository
 {
