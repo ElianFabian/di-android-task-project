@@ -16,6 +16,7 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
         {
             interactor?.add(task)
         }
+        else view?.onAddFailure()
     }
 
     override fun edit(editedTask: Task, position: Int)
@@ -24,6 +25,7 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
         {
             interactor?.edit(editedTask, position)
         }
+        else view?.onEditFailure()
     }
 
     override fun onDestroy()
