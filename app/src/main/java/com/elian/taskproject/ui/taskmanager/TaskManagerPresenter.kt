@@ -14,18 +14,18 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
     {
         if (interactor?.validateFields(task) as Boolean)
         {
-            interactor?.add(task)
+            view?.onAddFailure()
         }
-        else view?.onAddFailure()
+        else interactor?.add(task)
     }
 
     override fun edit(editedTask: Task, position: Int)
     {
         if (interactor?.validateFields(editedTask) as Boolean)
         {
-            interactor?.edit(editedTask, position)
+            view?.onEditFailure()
         }
-        else view?.onEditFailure()
+        else interactor?.edit(editedTask, position)
     }
 
     override fun onDestroy()
