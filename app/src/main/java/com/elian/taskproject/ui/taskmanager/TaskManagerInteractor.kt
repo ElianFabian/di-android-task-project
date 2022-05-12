@@ -8,7 +8,7 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
     ITaskManagerContract.IOnRepositoryCallback
 {
     private val repository = TaskRoomRepository
-    
+
     //region ITaskManagerContract.IInteractor
 
     override fun validateFields(task: Task): Boolean
@@ -17,9 +17,9 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
 
         listener.apply()
         {
-            if (task.name.isEmpty()) onNameEmptyError().let { isError = true }
-            if (task.description.isEmpty()) onDescriptionEmptyError().let { isError = true }
-            if (task.estimatedEndDate == null) onDateEmptyError().let { isError = true }
+            if (task.name.isEmpty()) onNameEmptyError().also { isError = true }
+            if (task.description.isEmpty()) onDescriptionEmptyError().also { isError = true }
+            if (task.estimatedEndDate == null) onDateEmptyError().also { isError = true }
         }
 
         if (isError) onAddFailure()
