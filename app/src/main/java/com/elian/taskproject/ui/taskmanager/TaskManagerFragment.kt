@@ -91,14 +91,13 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
     {
+        fillFieldsWithSelectedTask(selectedTask)
+        
         binding.fab.setOnClickListener()
         {
-            presenter.edit(
-                taskFromFields.apply { id = selectedTask.id },
-                position
-            )
+            modifySelectedTaskWithFields(selectedTask)
+            presenter.edit(selectedTask, position)
         }
-        fillFieldsWithSelectedTask(selectedTask)
     }
 
     private fun fillFieldsWithSelectedTask(task: Task) = with(binding)
@@ -107,6 +106,14 @@ class TaskManagerFragment : BaseFragment(),
         tieDescription.setText(task.description)
         spnImportance.setSelection(task.importance.ordinal)
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
+    }
+    
+    private fun modifySelectedTaskWithFields(task: Task) = task.apply()
+    {
+        name = taskFromFields.name
+        description = taskFromFields.description
+        importance = taskFromFields.importance
+        estimatedEndDate = taskFromFields.estimatedEndDate
     }
 
     //endregion
