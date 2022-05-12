@@ -13,7 +13,7 @@ data class Task(
     var endDate: Long? = null,
 
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0,
+    val id: Long = 0,
 ) :
     Serializable
 {
