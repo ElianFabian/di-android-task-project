@@ -8,5 +8,6 @@ data class User(
     val email: String,
     val password: String,
 
+    @PrimaryKey
     var id: Long = 0,
 )
