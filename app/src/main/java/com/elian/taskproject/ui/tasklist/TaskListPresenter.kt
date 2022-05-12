@@ -37,6 +37,12 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
         view?.hideProgress()
     }
 
+    override fun onListFailure()
+    {
+        view?.onListFailure()
+        view?.hideProgress()
+    }
+
     override fun onNoData()
     {
         view?.onNoData()

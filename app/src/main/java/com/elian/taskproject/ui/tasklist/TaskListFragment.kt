@@ -127,6 +127,11 @@ class TaskListFragment : BaseFragment(),
         taskAdapter.replaceList(list)
     }
 
+    override fun onListFailure()
+    {
+        //TODO("Not yet implemented")
+    }
+
     override fun onNoData()
     {
         showNoDataImage()

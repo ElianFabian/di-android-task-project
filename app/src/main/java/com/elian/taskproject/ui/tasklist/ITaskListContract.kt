@@ -34,6 +34,7 @@ interface ITaskListContract
     interface IOnRepositoryCallback
     {
         fun onListSuccess(list: List<Task>)
+        fun onListFailure()
         fun onNoData()
 
         fun onDeleteSuccess(deletedTask: Task, position: Int)

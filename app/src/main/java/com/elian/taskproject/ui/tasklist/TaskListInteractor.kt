@@ -30,6 +30,11 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
         listener.onListSuccess(list)
     }
 
+    override fun onListFailure()
+    {
+        //TODO("Not yet implemented")
+    }
+
     override fun onNoData()
     {
         listener.onNoData()
