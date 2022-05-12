@@ -2,7 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.elian.taskproject.data.database.TaskDatabase
+import com.elian.taskproject.data.database.AppDatabase
 
 class MainActivity : AppCompatActivity()
 {
@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
-        TaskDatabase.create(this)
+        AppDatabase.create(this)
     }
 }

@@ -1,6 +1,6 @@
 package com.elian.taskproject.data.repository
 
-import com.elian.taskproject.data.database.TaskDatabase
+import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
 import com.elian.taskproject.ui.tasklist.ITaskListContract
@@ -9,7 +9,7 @@ object TaskRoomRepository :
     ITaskListContract.IRepository,
     ITaskManagerContract.IRepository
 {
-    private val taskDAO get() = TaskDatabase.getDatabase().dao
+    private val taskDAO get() = AppDatabase.getDatabase().taskDAO
 
     //region ITaskListContract.IRepository
 

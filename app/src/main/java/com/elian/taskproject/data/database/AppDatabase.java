@@ -13,24 +13,24 @@ import com.elian.taskproject.data.model.Task;
 
 // 1. Define the configuration of the database.
 
-@Database(version = 1, entities = { Task.class })
-public abstract class TaskDatabase extends RoomDatabase {
+@Database(version = 2, entities = { Task.class })
+public abstract class AppDatabase extends RoomDatabase {
     
-    private static final String databaseName = "task_database";
+    private static final String databaseName = "app_database";
 
     // 2. Create the methods to get the DAO.
-    public abstract TaskDAO getDao();
+    public abstract TaskDAO getTaskDAO();
 
-    private static volatile TaskDatabase INSTANCE;
+    private static volatile AppDatabase INSTANCE;
 
 
     // Google version method
-    public static TaskDatabase getDatabase(final Context context) {
+    public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (TaskDatabase.class) {
+            synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TaskDatabase.class, databaseName)
+                            AppDatabase.class, databaseName)
                             .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build();
@@ -43,10 +43,10 @@ public abstract class TaskDatabase extends RoomDatabase {
 
     public static void create(final Context context) {
         if (INSTANCE == null) {
-            synchronized (TaskDatabase.class) {
+            synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TaskDatabase.class, databaseName)
+                            AppDatabase.class, databaseName)
                             .addCallback(new Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -62,19 +62,7 @@ public abstract class TaskDatabase extends RoomDatabase {
         }
     }
 
-    public static TaskDatabase getDatabase() {
+    public static AppDatabase getDatabase() {
         return INSTANCE;
     }
-
-    /*
-     * Function when on create insert the data we need.
-     */
-//    private static void prepopulate(Context context) {
-//
-//        UserDao userDao = INSTANCE.userDao();
-//        User user = new User("moronlu18@gmail.com", "Lourdes18?");
-//        getDatabase().runInTransaction(() -> {
-//            userDao.insert(user);
-//        });
-//    }
 }
