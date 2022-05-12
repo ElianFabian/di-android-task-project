@@ -1,4 +1,4 @@
-package com.elian.taskproject.data.dao
+package com.elian.taskproject.data.database.dao
 
 import androidx.room.*
 import com.elian.taskproject.data.model.User

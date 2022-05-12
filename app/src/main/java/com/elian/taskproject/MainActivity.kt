@@ -2,9 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import com.elian.taskproject.data.dao.UserDAO
+import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.User
 import com.google.android.gms.tasks.Task

@@ -8,8 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.elian.taskproject.data.dao.TaskDAO;
-import com.elian.taskproject.data.dao.UserDAO;
+import com.elian.taskproject.data.database.dao.TaskDAO;
+import com.elian.taskproject.data.database.dao.UserDAO;
 import com.elian.taskproject.data.model.Task;
 import com.elian.taskproject.data.model.User;
 
