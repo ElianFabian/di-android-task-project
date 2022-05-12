@@ -2,6 +2,7 @@ package com.elian.taskproject.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "user_table")
 data class User(
@@ -10,6 +11,7 @@ data class User(
 
     @PrimaryKey
     val id: Long = 0,
-    
-    var firebaseId: String = ""
-)
+
+    var firebaseId: String = "",
+) :
+    Serializable
