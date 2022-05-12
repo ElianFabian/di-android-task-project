@@ -2,6 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.elian.taskproject.data.dao.UserDAO
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.User
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity()
         {
             createUser()
         }
+        Toast.makeText(this, userDAO.getUser().firebaseId, Toast.LENGTH_SHORT).show()
     }
 
     private fun createUser()
@@ -53,7 +55,6 @@ class MainActivity : AppCompatActivity()
                 {
                     user.firebaseId = it.result.id
                     this.updateUser(user)
-
                 }
             }
     }
