@@ -51,7 +51,6 @@ public abstract class AppDatabase extends RoomDatabase {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                     super.onCreate(db);
-                                    //databaseWriteExecutor.execute(() -> prepopulate(context));
                                 }
                             })
                             .fallbackToDestructiveMigration()
