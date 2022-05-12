@@ -13,9 +13,9 @@ import com.elian.taskproject.data.model.Task;
 
 // 1. Define the configuration of the database.
 
-@Database(version = 2, entities = { Task.class })
+@Database(version = 2, entities = { Task.class }, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-    
+
     private static final String databaseName = "app_database";
 
     // 2. Create the methods to get the DAO.
