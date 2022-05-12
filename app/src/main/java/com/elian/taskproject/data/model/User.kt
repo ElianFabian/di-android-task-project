@@ -9,5 +9,5 @@ data class User(
     val password: String,
 
     @PrimaryKey
-    var id: Long = 0,
+    val id: Long = 0,
 )
