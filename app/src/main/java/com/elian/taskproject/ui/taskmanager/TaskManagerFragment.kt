@@ -94,11 +94,7 @@ class TaskManagerFragment : BaseFragment(),
         binding.fab.setOnClickListener()
         {
             presenter.edit(
-                taskFromFields.apply()
-                {
-                    id = selectedTask.id
-                    firebaseId = selectedTask.firebaseId
-                },
+                taskFromFields.apply { id = selectedTask.id },
                 position
             )
         }
