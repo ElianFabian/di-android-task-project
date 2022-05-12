@@ -1,14 +1,14 @@
 package com.elian.taskproject.ui.tasklist
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.data.repository.TaskRoomRepository
+import com.elian.taskproject.data.repository.TaskFirebaseRepository
 
 class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
     ITaskListContract.IInteractor,
     ITaskListContract.IOnRepositoryCallback
 {
-    private val repository = TaskRoomRepository
-    
+    private val repository = TaskFirebaseRepository
+
     //region ITaskListContract.IInteractor
 
     override fun getList()
@@ -16,9 +16,9 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
         repository.getList(this)
     }
 
-    override fun delete(task: Task)
+    override fun delete(task: Task, position: Int)
     {
-        repository.delete(this, task)
+        repository.delete(this, task, position)
     }
 
     //endregion
@@ -43,6 +43,11 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         listener.onDeleteSuccess(deletedTask, position)
+    }
+
+    override fun onDeleteFailure()
+    {
+        //TODO("Not yet implemented")
     }
 
     //endregion

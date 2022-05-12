@@ -22,10 +22,8 @@ object TaskRoomRepository :
         else callback.onListSuccess(taskDAO.selectAll())
     }
 
-    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task)
+    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task, position: Int)
     {
-        val position = taskDAO.selectAll().indexOf(task)
-
         taskDAO.delete(task)
         callback.onDeleteSuccess(task, position)
     }

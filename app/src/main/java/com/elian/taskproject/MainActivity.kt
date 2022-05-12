@@ -2,6 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.elian.taskproject.data.dao.UserDAO
 import com.elian.taskproject.data.database.AppDatabase
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         AppDatabase.create(this)
 
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity()
         {
             createUser()
         }
-        Toast.makeText(this, userDAO.getUser().firebaseId, Toast.LENGTH_SHORT).show()
+        else setContentView(R.layout.activity_main)
     }
 
     private fun createUser()
@@ -39,8 +39,11 @@ class MainActivity : AppCompatActivity()
 
         val user = User(email = "$randomLetter$uuid@gmail.com")
 
-        userDAO.insert(user)
-        addUserToFirebase(user)
+        addUserToFirebase(user).addOnCompleteListener()
+        {
+            userDAO.insert(user)
+            setContentView(R.layout.activity_main)
+        }
     }
 
     private fun addUserToFirebase(user: User): Task<DocumentReference>
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity()
     private fun updateUser(user: User): Task<Void>
     {
         val documentPath = "users/${user.firebaseId}"
+
         return Firebase.firestore
             .document(documentPath)
             .set(user)

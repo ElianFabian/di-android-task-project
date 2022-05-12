@@ -149,6 +149,11 @@ class TaskListFragment : BaseFragment(),
         Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDeleteFailure()
+    {
+        //TODO("Not yet implemented")
+    }
+
     //endregion
 
     //region RecyclerViewAdapter.OnBindViewHolderListener<>
@@ -182,7 +187,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
     {
-        presenter.delete(selectedItem)
+        presenter.delete(selectedItem, position)
 
         return true
     }

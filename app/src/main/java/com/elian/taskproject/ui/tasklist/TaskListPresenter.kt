@@ -16,9 +16,9 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
         interactor?.getList()
     }
 
-    override fun delete(task: Task)
+    override fun delete(task: Task, position: Int)
     {
-        interactor?.delete(task)
+        interactor?.delete(task, position)
     }
 
     override fun onDestroy()
@@ -52,6 +52,11 @@ class TaskListPresenter(private var view: ITaskListContract.IView?) :
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         view?.onDeleteSuccess(deletedTask, position)
+    }
+
+    override fun onDeleteFailure()
+    {
+        //TODO("Not yet implemented")
     }
 
     //endregion
