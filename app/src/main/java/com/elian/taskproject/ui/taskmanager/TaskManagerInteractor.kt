@@ -13,18 +13,14 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
 
     override fun validateFields(task: Task): Boolean
     {
-        var isError = false
-
         listener.apply()
         {
-            if (task.name.isEmpty()) onNameEmptyError().also { isError = true }
-            if (task.description.isEmpty()) onDescriptionEmptyError().also { isError = true }
-            if (task.estimatedEndDate == null) onDateEmptyError().also { isError = true }
+            if (task.name.isEmpty()) onNameEmptyError().also { return true }
+            if (task.description.isEmpty()) onDescriptionEmptyError().also { return true }
+            if (task.estimatedEndDate == null) onDateEmptyError().also { return true }
         }
 
-        if (isError) onAddFailure()
-
-        return !isError
+        return false
     }
 
     override fun add(task: Task)
