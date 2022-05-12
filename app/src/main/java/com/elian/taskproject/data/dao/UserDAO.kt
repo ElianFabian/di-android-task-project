@@ -6,8 +6,8 @@ import com.elian.taskproject.data.model.User
 @Dao
 interface UserDAO
 {
-    @Query("SELECT * FROM user_table WHERE id = :id")
-    fun select(id: Long): User
+    @Query("SELECT * FROM user_table WHERE id = 0")
+    fun getUser(): User
 
     @Query("SELECT * FROM user_table")
     fun selectAll(): List<User>
