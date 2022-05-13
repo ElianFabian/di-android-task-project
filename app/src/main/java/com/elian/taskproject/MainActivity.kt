@@ -44,28 +44,10 @@ class MainActivity : AppCompatActivity()
         }
     }
 
-    private fun addUserToFirebase(user: User): Task<DocumentReference>
+    private fun addUserToFirebase(user: User): Task<Void>
     {
-        val collectionPath = "users"
+        val documentPath = "users/${user.email}"
 
-        return Firebase.firestore
-            .collection(collectionPath)
-            .add(user)
-            .addOnCompleteListener {
-                if (it.isSuccessful)
-                {
-                    user.firebaseId = it.result.id
-                    this.updateUser(user)
-                }
-            }
-    }
-
-    private fun updateUser(user: User): Task<Void>
-    {
-        val documentPath = "users/${user.firebaseId}"
-
-        return Firebase.firestore
-            .document(documentPath)
-            .set(user)
+        return Firebase.firestore.document(documentPath).set(user)
     }
 }

@@ -15,7 +15,7 @@ import com.elian.taskproject.data.model.User;
 
 // 1. Define the configuration of the database.
 
-@Database(version = 5, entities = { Task.class, User.class }, exportSchema = false)
+@Database(version = 6, entities = { Task.class, User.class }, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String databaseName = "app_database";

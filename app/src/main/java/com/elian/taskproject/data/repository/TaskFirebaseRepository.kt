@@ -13,7 +13,7 @@ object TaskFirebaseRepository :
 {
     private val firestore get() = Firebase.firestore
 
-    private val userId get() = AppDatabase.getDatabase().userDAO.getUser().firebaseId
+    private val userId get() = AppDatabase.getDatabase().userDAO.getUser().email
     private val taskCollectionPath = "users/${userId}/tasks"
 
     //region ITaskListContract.IRepository
