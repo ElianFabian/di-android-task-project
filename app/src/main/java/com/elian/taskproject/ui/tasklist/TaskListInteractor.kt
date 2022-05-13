@@ -7,7 +7,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
     ITaskListContract.IInteractor,
     ITaskListContract.IOnRepositoryCallback
 {
-    private val repository = TaskFirebaseRepository
+    private val repository: ITaskListContract.IRepository = TaskFirebaseRepository
 
     //region ITaskListContract.IInteractor
 
