@@ -51,18 +51,15 @@ object TaskFirebaseRepository :
 
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
-        firestore.collection(taskCollectionPath).add(task).addOnCompleteListener()
+        val documentPath = "${taskCollectionPath}/${task.firebaseId}"
+        
+        firestore.document(documentPath).set(task).addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
-                task.firebaseId = it.result.id
                 callback.onAddSuccess()
             }
             else callback.onAddFailure()
-
-            val documentPath = "$taskCollectionPath/${task.firebaseId}"
-
-            firestore.document(documentPath).set(task)
         }
     }
 
