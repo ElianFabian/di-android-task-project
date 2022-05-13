@@ -25,7 +25,9 @@ object TaskFirebaseRepository :
             if (it.isSuccessful)
             {
                 val tasks = it.result.toObjects(Task::class.java) as List<Task>
-                callback.onListSuccess(tasks)
+
+                if (tasks.isNotEmpty()) callback.onListSuccess(tasks)
+                else callback.onNoData()
             }
             else callback.onListFailure()
         }
@@ -52,7 +54,7 @@ object TaskFirebaseRepository :
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
         val documentPath = "${taskCollectionPath}/${task.firebaseId}"
-        
+
         firestore.document(documentPath).set(task).addOnCompleteListener()
         {
             if (it.isSuccessful)
