@@ -7,7 +7,7 @@ class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnIntera
     ITaskManagerContract.IInteractor,
     ITaskManagerContract.IOnRepositoryCallback
 {
-    private val repository = TaskRoomRepository
+    private val repository: ITaskManagerContract.IRepository = TaskRoomRepository
 
     //region ITaskManagerContract.IInteractor
 
