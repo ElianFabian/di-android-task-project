@@ -18,34 +18,29 @@ object TaskFirebaseRepository :
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
-        Firebase.firestore
-            .collection(taskCollectionPath)
-            .get().addOnCompleteListener()
+        Firebase.firestore.collection(taskCollectionPath).get().addOnCompleteListener()
+        {
+            if (it.isSuccessful)
             {
-                if (it.isSuccessful)
-                {
-                    val tasks = it.result.toObjects(Task::class.java) as List<Task>
-                    callback.onListSuccess(tasks)
-                }
-                else callback.onListFailure()
+                val tasks = it.result.toObjects(Task::class.java) as List<Task>
+                callback.onListSuccess(tasks)
             }
+            else callback.onListFailure()
+        }
     }
 
     override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${task.firebaseId}"
 
-        Firebase.firestore
-            .document(documentPath)
-            .delete()
-            .addOnCompleteListener()
+        Firebase.firestore.document(documentPath).delete().addOnCompleteListener()
+        {
+            if (it.isSuccessful)
             {
-                if (it.isSuccessful)
-                {
-                    callback.onDeleteSuccess(task, position)
-                }
-                else callback.onDeleteFailure()
+                callback.onDeleteSuccess(task, position)
             }
+            else callback.onDeleteFailure()
+        }
     }
 
     //endregion
@@ -54,38 +49,33 @@ object TaskFirebaseRepository :
 
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
-        Firebase.firestore
-            .collection(taskCollectionPath)
-            .add(task).addOnCompleteListener()
+        Firebase.firestore.collection(taskCollectionPath).add(task).addOnCompleteListener()
+        {
+            if (it.isSuccessful)
             {
-                if (it.isSuccessful)
-                {
-                    task.firebaseId = it.result.id
-                    callback.onAddSuccess()
-                }
-                else callback.onAddFailure()
-
-                val documentPath = "$taskCollectionPath/${task.firebaseId}"
-
-                Firebase.firestore.document(documentPath).set(task)
+                task.firebaseId = it.result.id
+                callback.onAddSuccess()
             }
+            else callback.onAddFailure()
+
+            val documentPath = "$taskCollectionPath/${task.firebaseId}"
+
+            Firebase.firestore.document(documentPath).set(task)
+        }
     }
 
     override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 
-        Firebase.firestore
-            .document(documentPath)
-            .set(editedTask)
-            .addOnCompleteListener()
+        Firebase.firestore.document(documentPath).set(editedTask).addOnCompleteListener()
+        {
+            if (it.isSuccessful)
             {
-                if (it.isSuccessful)
-                {
-                    callback.onEditSuccess()
-                }
-                else callback.onEditFailure()
+                callback.onEditSuccess()
             }
+            else callback.onEditFailure()
+        }
     }
 
     //endregion
