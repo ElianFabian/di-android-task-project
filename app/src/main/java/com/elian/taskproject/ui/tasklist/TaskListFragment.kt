@@ -24,6 +24,11 @@ class TaskListFragment : BaseFragment(),
     RecyclerViewAdapter.OnItemClickListener<Task>,
     RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
+
+    // Store the task list from the repository in memory in order to not get it
+    // from Firebase every single time
+    private var taskList = emptyList<Task>()
+
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: RecyclerViewAdapter<Task>
     override lateinit var presenter: ITaskListContract.IPresenter
@@ -79,6 +84,8 @@ class TaskListFragment : BaseFragment(),
     {
         taskAdapter = RecyclerViewAdapter(itemLayout = R.layout.item_task)
 
+        taskAdapter.replaceList(taskList)
+
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
@@ -124,7 +131,13 @@ class TaskListFragment : BaseFragment(),
     {
         hideNoDataImage()
 
-        taskAdapter.replaceList(list)
+        if (list.size - taskList.size == 1)
+        {
+            taskAdapter.addItem(list.last())
+        }
+        else taskAdapter.replaceList(list)
+
+        this.taskList = list
     }
 
     override fun onListFailure()
