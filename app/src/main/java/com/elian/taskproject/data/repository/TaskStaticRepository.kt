@@ -14,7 +14,7 @@ object TaskStaticRepository :
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
-        if (taskList.size == 0)
+        if (taskList.isEmpty())
         {
             callback.onNoData()
         }
