@@ -79,8 +79,6 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUI()
     {
-        //initSpinnerAdapter()
-
         binding.ibDate.setOnClickListener { showDatePickerDialog(this) }
     }
 
