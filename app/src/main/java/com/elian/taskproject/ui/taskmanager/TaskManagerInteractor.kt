@@ -3,6 +3,7 @@ package com.elian.taskproject.ui.taskmanager
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskFirebaseRepository
 import com.elian.taskproject.data.repository.TaskRoomRepository
+import com.elian.taskproject.data.repository.TaskStaticRepository
 
 class TaskManagerInteractor(private val listener: ITaskManagerContract.IOnInteractorListener) :
     ITaskManagerContract.IInteractor,
