@@ -11,6 +11,8 @@ object TaskFirebaseRepository :
     ITaskListContract.IRepository,
     ITaskManagerContract.IRepository
 {
+    private val firestore get() = Firebase.firestore
+
     private val userId get() = AppDatabase.getDatabase().userDAO.getUser().firebaseId
     private val taskCollectionPath = "users/${userId}/tasks"
 
@@ -18,7 +20,7 @@ object TaskFirebaseRepository :
 
     override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
     {
-        Firebase.firestore.collection(taskCollectionPath).get().addOnCompleteListener()
+        firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
@@ -33,7 +35,7 @@ object TaskFirebaseRepository :
     {
         val documentPath = "$taskCollectionPath/${task.firebaseId}"
 
-        Firebase.firestore.document(documentPath).delete().addOnCompleteListener()
+        firestore.document(documentPath).delete().addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
@@ -49,7 +51,7 @@ object TaskFirebaseRepository :
 
     override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
     {
-        Firebase.firestore.collection(taskCollectionPath).add(task).addOnCompleteListener()
+        firestore.collection(taskCollectionPath).add(task).addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
@@ -60,7 +62,7 @@ object TaskFirebaseRepository :
 
             val documentPath = "$taskCollectionPath/${task.firebaseId}"
 
-            Firebase.firestore.document(documentPath).set(task)
+            firestore.document(documentPath).set(task)
         }
     }
 
@@ -68,7 +70,7 @@ object TaskFirebaseRepository :
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 
-        Firebase.firestore.document(documentPath).set(editedTask).addOnCompleteListener()
+        firestore.document(documentPath).set(editedTask).addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
