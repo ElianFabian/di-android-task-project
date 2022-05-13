@@ -12,7 +12,7 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
 
     override fun add(task: Task)
     {
-        if (interactor?.validateFields(task) as Boolean)
+        if (interactor!!.validateFields(task))
         {
             view?.onAddFailure()
         }
@@ -21,7 +21,7 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
 
     override fun edit(editedTask: Task, position: Int)
     {
-        if (interactor?.validateFields(editedTask) as Boolean)
+        if (interactor!!.validateFields(editedTask))
         {
             view?.onEditFailure()
         }
