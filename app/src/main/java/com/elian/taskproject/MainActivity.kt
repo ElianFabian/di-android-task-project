@@ -6,7 +6,6 @@ import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.User
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -23,11 +22,11 @@ class MainActivity : AppCompatActivity()
 
         userDAO = AppDatabase.getDatabase().userDAO
 
-        if (userDAO.selectAll().isEmpty())
+        if (userDAO.userExists())
         {
-            createUser()
+            setContentView(R.layout.activity_main)
         }
-        else setContentView(R.layout.activity_main)
+        else createUser()
     }
 
     private fun createUser()
