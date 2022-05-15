@@ -24,6 +24,11 @@ class TaskListFragment : BaseFragment(),
     RecyclerViewAdapter.OnItemClickListener<Task>,
     RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
+
+    // Store the task list from the repository in memory in order to not get it
+    // from Firebase every single time
+    private var taskList = emptyList<Task>()
+
     private lateinit var binding: FragmentTaskListBinding
     private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
 
@@ -78,6 +83,8 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
+        taskAdapter.replaceList(taskList)
+
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
@@ -123,7 +130,18 @@ class TaskListFragment : BaseFragment(),
     {
         hideNoDataImage()
 
-        taskAdapter.replaceList(list)
+        if (list.size - taskList.size == 1)
+        {
+            taskAdapter.addItem(list.last())
+        }
+        else taskAdapter.replaceList(list)
+
+        this.taskList = list
+    }
+
+    override fun onListFailure()
+    {
+        Toast.makeText(context, "There was an error when getting the tasks.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNoData()
@@ -141,6 +159,11 @@ class TaskListFragment : BaseFragment(),
         if (taskAdapter.itemCount == 0) showNoDataImage()
 
         Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDeleteFailure()
+    {
+        Toast.makeText(context, "There was an error when deleting.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
@@ -176,7 +199,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
     {
-        presenter.onDelete(selectedItem)
+        presenter.onDelete(selectedItem, position)
 
         return true
     }

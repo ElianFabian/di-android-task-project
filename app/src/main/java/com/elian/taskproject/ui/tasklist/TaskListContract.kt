@@ -16,27 +16,29 @@ interface TaskListContract
     interface Presenter : BasePresenter
     {
         fun onGetList()
-        fun onDelete(task: Task)
+        fun onDelete(task: Task, position: Int)
     }
 
     interface Interactor
     {
         fun getList()
-        fun delete(task: Task)
+        fun delete(task: Task, position: Int)
     }
 
     interface Repository
     {
         fun getList(callback: OnRepositoryCallback)
-        fun delete(callback: OnRepositoryCallback, task: Task)
+        fun delete(callback: OnRepositoryCallback, task: Task, position: Int)
     }
 
     interface OnRepositoryCallback
     {
         fun onListSuccess(list: List<Task>)
+        fun onListFailure()
         fun onNoData()
 
         fun onDeleteSuccess(deletedTask: Task, position: Int)
+        fun onDeleteFailure()
     }
 
     interface OnInteractorListener : OnRepositoryCallback

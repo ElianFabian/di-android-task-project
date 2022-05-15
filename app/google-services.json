@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75889650510",
+    "project_id": "di-android-task-project",
+    "storage_bucket": "di-android-task-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75889650510:android:7e138464ccb75bc10fcc1f",
+        "android_client_info": {
+          "package_name": "com.elian.taskproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75889650510-klbmv804s914t5funh8fte3ftc4sth33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcAWrnrrQPPpJ67KzeNgr0tvW8m5tb3JA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75889650510-klbmv804s914t5funh8fte3ftc4sth33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

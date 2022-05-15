@@ -8,7 +8,7 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     TaskListContract.OnRepositoryCallback
 {
     private val repository: TaskListContract.Repository = TaskRoomRepository
-    
+
     //region TaskListContract.Interactor
 
     override fun getList()
@@ -16,9 +16,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.getList(this)
     }
 
-    override fun delete(task: Task)
+    override fun delete(task: Task, position: Int)
     {
-        repository.delete(this, task)
+        repository.delete(this, task, position)
     }
 
     //endregion
@@ -30,6 +30,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onListSuccess(list)
     }
 
+    override fun onListFailure()
+    {
+        listener.onListFailure()
+    }
+
     override fun onNoData()
     {
         listener.onNoData()
@@ -38,6 +43,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         listener.onDeleteSuccess(deletedTask, position)
+    }
+
+    override fun onDeleteFailure()
+    {
+        listener.onDeleteFailure()
     }
 
     //endregion

@@ -90,7 +90,7 @@ class TaskManagerFragment : BaseFragment(),
     private fun initUIForEditAction(selectedTask: Task, position: Int)
     {
         fillFieldsWithSelectedTask(selectedTask)
-        
+
         binding.fab.setOnClickListener()
         {
             modifySelectedTaskWithFields(selectedTask)

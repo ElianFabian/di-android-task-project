@@ -16,9 +16,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.getList()
     }
 
-    override fun onDelete(task: Task)
+    override fun onDelete(task: Task, position: Int)
     {
-        interactor?.delete(task)
+        interactor?.delete(task, position)
     }
 
     override fun onDestroy()
@@ -37,6 +37,12 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.hideProgress()
     }
 
+    override fun onListFailure()
+    {
+        view?.onListFailure()
+        view?.hideProgress()
+    }
+
     override fun onNoData()
     {
         view?.onNoData()
@@ -46,6 +52,11 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
         view?.onDeleteSuccess(deletedTask, position)
+    }
+
+    override fun onDeleteFailure()
+    {
+        //TODO("Not yet implemented")
     }
 
     //endregion
