@@ -34,7 +34,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     override fun onListFailure()
     {
-        //TODO("Not yet implemented")
+        listener.onListFailure()
     }
 
     override fun onNoData()
@@ -49,7 +49,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     override fun onDeleteFailure()
     {
-        //TODO("Not yet implemented")
+        listener.onDeleteFailure()
     }
 
     //endregion
