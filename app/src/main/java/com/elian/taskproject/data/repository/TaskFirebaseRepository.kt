@@ -2,23 +2,23 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.tasklist.ITaskListContract
-import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
+import com.elian.taskproject.ui.tasklist.TaskListContract
+import com.elian.taskproject.ui.taskmanager.TaskManagerContract
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 object TaskFirebaseRepository :
-    ITaskListContract.IRepository,
-    ITaskManagerContract.IRepository
+    TaskListContract.Repository,
+    TaskManagerContract.Repository
 {
     private val firestore get() = Firebase.firestore
 
     private val userId get() = AppDatabase.getDatabase().userDAO.getUser().email
     private val taskCollectionPath = "users/${userId}/tasks"
 
-    //region ITaskListContract.IRepository
+    //region TaskListContract.Repository
 
-    override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
+    override fun getList(callback: TaskListContract.OnRepositoryCallback)
     {
         firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
@@ -33,7 +33,7 @@ object TaskFirebaseRepository :
         }
     }
 
-    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${task.firebaseId}"
 
@@ -49,9 +49,9 @@ object TaskFirebaseRepository :
 
     //endregion
 
-    //region ITaskAddContract.IRepository
+    //region ITaskAddContract.Repository
 
-    override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnRepositoryCallback, task: Task)
     {
         val documentPath = "${taskCollectionPath}/${task.firebaseId}"
 
@@ -65,7 +65,7 @@ object TaskFirebaseRepository :
         }
     }
 
-    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnRepositoryCallback, editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 

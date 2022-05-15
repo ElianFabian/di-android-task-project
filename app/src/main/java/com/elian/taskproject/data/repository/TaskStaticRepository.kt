@@ -1,18 +1,18 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
-import com.elian.taskproject.ui.tasklist.ITaskListContract
+import com.elian.taskproject.ui.taskmanager.TaskManagerContract
+import com.elian.taskproject.ui.tasklist.TaskListContract
 
 object TaskStaticRepository :
-    ITaskListContract.IRepository,
-    ITaskManagerContract.IRepository
+    TaskListContract.Repository,
+    TaskManagerContract.Repository
 {
     private val taskList = arrayListOf<Task>()
 
-    //region ITaskListContract.IRepository
+    //region TaskListContract.Repository
 
-    override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
+    override fun getList(callback: TaskListContract.OnRepositoryCallback)
     {
         if (taskList.isEmpty())
         {
@@ -21,7 +21,7 @@ object TaskStaticRepository :
         else callback.onListSuccess(taskList)
     }
 
-    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
     {
         taskList.remove(task)
         callback.onDeleteSuccess(task, position)
@@ -29,15 +29,15 @@ object TaskStaticRepository :
 
     //endregion
 
-    //region ITaskAddContract.IRepository
+    //region ITaskAddContract.Repository
 
-    override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnRepositoryCallback, task: Task)
     {
         taskList.add(task)
         callback.onAddSuccess()
     }
 
-    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnRepositoryCallback, editedTask: Task, position: Int)
     {
         taskList[position] = editedTask
         callback.onEditSuccess()

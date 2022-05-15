@@ -1,11 +1,11 @@
 package com.elian.taskproject.ui.tasklist
 
-import com.elian.taskproject.base.IBasePresenter
+import com.elian.taskproject.base.BasePresenter
 import com.elian.taskproject.data.model.Task
 
-interface ITaskListContract
+interface TaskListContract
 {
-    interface IView : IOnRepositoryCallback
+    interface View : OnRepositoryCallback
     {
         fun showProgress()
         fun hideProgress()
@@ -13,25 +13,25 @@ interface ITaskListContract
         fun hideNoDataImage()
     }
 
-    interface IPresenter : IBasePresenter
+    interface Presenter : BasePresenter
     {
         fun getList()
         fun delete(task: Task, position: Int)
     }
 
-    interface IInteractor
+    interface Interactor
     {
         fun getList()
         fun delete(task: Task, position: Int)
     }
 
-    interface IRepository
+    interface Repository
     {
-        fun getList(callback: IOnRepositoryCallback)
-        fun delete(callback: IOnRepositoryCallback, task: Task, position: Int)
+        fun getList(callback: OnRepositoryCallback)
+        fun delete(callback: OnRepositoryCallback, task: Task, position: Int)
     }
 
-    interface IOnRepositoryCallback
+    interface OnRepositoryCallback
     {
         fun onListSuccess(list: List<Task>)
         fun onListFailure()
@@ -41,5 +41,5 @@ interface ITaskListContract
         fun onDeleteFailure()
     }
 
-    interface IOnInteractorListener : IOnRepositoryCallback
+    interface OnInteractorListener : OnRepositoryCallback
 }

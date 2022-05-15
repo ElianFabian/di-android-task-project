@@ -2,18 +2,18 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.taskmanager.ITaskManagerContract
-import com.elian.taskproject.ui.tasklist.ITaskListContract
+import com.elian.taskproject.ui.taskmanager.TaskManagerContract
+import com.elian.taskproject.ui.tasklist.TaskListContract
 
 object TaskRoomRepository :
-    ITaskListContract.IRepository,
-    ITaskManagerContract.IRepository
+    TaskListContract.Repository,
+    TaskManagerContract.Repository
 {
     private val taskDAO get() = AppDatabase.getDatabase().taskDAO
 
-    //region ITaskListContract.IRepository
+    //region TaskListContract.Repository
 
-    override fun getList(callback: ITaskListContract.IOnRepositoryCallback)
+    override fun getList(callback: TaskListContract.OnRepositoryCallback)
     {
         if (taskDAO.selectAll().isEmpty())
         {
@@ -22,7 +22,7 @@ object TaskRoomRepository :
         else callback.onListSuccess(taskDAO.selectAll())
     }
 
-    override fun delete(callback: ITaskListContract.IOnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
     {
         taskDAO.delete(task)
         callback.onDeleteSuccess(task, position)
@@ -30,15 +30,15 @@ object TaskRoomRepository :
 
     //endregion
 
-    //region ITaskAddContract.IRepository
+    //region ITaskAddContract.Repository
 
-    override fun add(callback: ITaskManagerContract.IOnRepositoryCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnRepositoryCallback, task: Task)
     {
         taskDAO.insert(task)
         callback.onAddSuccess()
     }
 
-    override fun edit(callback: ITaskManagerContract.IOnRepositoryCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnRepositoryCallback, editedTask: Task, position: Int)
     {
         taskDAO.update(editedTask)
         callback.onEditSuccess()

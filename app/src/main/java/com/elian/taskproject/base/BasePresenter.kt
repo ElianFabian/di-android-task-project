@@ -1,6 +1,6 @@
 package com.elian.taskproject.base
 
-interface IBasePresenter
+interface BasePresenter
 {
     fun onDestroy()
 }

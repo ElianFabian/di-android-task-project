@@ -19,7 +19,7 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class TaskListFragment : BaseFragment(),
-    ITaskListContract.IView,
+    TaskListContract.View,
     RecyclerViewAdapter.OnBindViewHolderListener<Task>,
     RecyclerViewAdapter.OnItemClickListener<Task>,
     RecyclerViewAdapter.OnItemLongClickListener<Task>
@@ -31,7 +31,7 @@ class TaskListFragment : BaseFragment(),
 
     private lateinit var binding: FragmentTaskListBinding
     private lateinit var taskAdapter: RecyclerViewAdapter<Task>
-    override lateinit var presenter: ITaskListContract.IPresenter
+    override lateinit var presenter: TaskListContract.Presenter
 
     private lateinit var deletedTask: Task
     private var deletedTaskPosition by Delegates.notNull<Int>()
@@ -105,7 +105,7 @@ class TaskListFragment : BaseFragment(),
 
     //endregion
 
-    //region ITaskListContract.IView
+    //region TaskListContract.View
 
     override fun showProgress()
     {

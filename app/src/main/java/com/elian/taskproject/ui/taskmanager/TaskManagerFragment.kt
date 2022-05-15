@@ -16,11 +16,11 @@ import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.util.*
 
 class TaskManagerFragment : BaseFragment(),
-    ITaskManagerContract.IView,
+    TaskManagerContract.View,
     DatePickerFragment.IOnDateSelectedListener
 {
     private lateinit var binding: FragmentTaskManagerBinding
-    override lateinit var presenter: ITaskManagerContract.IPresenter
+    override lateinit var presenter: TaskManagerContract.Presenter
 
     private val taskFromFields: Task
         get() = with(binding)
@@ -116,7 +116,7 @@ class TaskManagerFragment : BaseFragment(),
 
     //endregion
 
-    //region ITaskManagerContract.IView
+    //region TaskManagerContract.View
 
     override fun setNameEmptyError()
     {

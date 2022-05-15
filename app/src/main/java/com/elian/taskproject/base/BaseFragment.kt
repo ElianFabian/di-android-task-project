@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment()
 {
-    internal abstract val presenter: IBasePresenter
+    internal abstract val presenter: BasePresenter
 
     override fun onDestroy()
     {
