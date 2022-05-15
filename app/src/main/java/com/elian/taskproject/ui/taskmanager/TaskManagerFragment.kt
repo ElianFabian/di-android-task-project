@@ -17,7 +17,7 @@ import java.util.*
 
 class TaskManagerFragment : BaseFragment(),
     TaskManagerContract.View,
-    DatePickerFragment.IOnDateSelectedListener
+    DatePickerFragment.OnDateSelectedListener
 {
     private lateinit var binding: FragmentTaskManagerBinding
     override lateinit var presenter: TaskManagerContract.Presenter
@@ -166,7 +166,7 @@ class TaskManagerFragment : BaseFragment(),
 
     //endregion
 
-    //region DatePickerFragment.IOnDateSelectedListener
+    //region DatePickerFragment.OnDateSelectedListener
 
     override fun onDateSelected(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
     {
