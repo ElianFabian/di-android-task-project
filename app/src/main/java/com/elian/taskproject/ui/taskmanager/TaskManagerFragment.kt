@@ -106,12 +106,12 @@ class TaskManagerFragment : BaseFragment(),
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
     }
 
-    private fun modifySelectedTaskWithFields(task: Task) = task.apply()
+    private fun modifySelectedTaskWithFields(task: Task) = taskFromFields.apply()
     {
-        name = taskFromFields.name
-        description = taskFromFields.description
-        importance = taskFromFields.importance
-        estimatedEndDate = taskFromFields.estimatedEndDate
+        task.name = name
+        task.description = description
+        task.importance = importance
+        task.estimatedEndDate = estimatedEndDate
     }
 
     //endregion
