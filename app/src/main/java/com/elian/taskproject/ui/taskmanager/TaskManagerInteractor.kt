@@ -12,16 +12,13 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
 
     //region TaskManagerContract.Interactor
 
-    override fun validateFields(task: Task): Boolean
+    override fun validateFields(task: Task): Boolean = when
     {
-        listener.apply()
-        {
-            if (task.name.isEmpty()) onNameEmptyError().also { return true }
-            if (task.description.isEmpty()) onDescriptionEmptyError().also { return true }
-            if (task.estimatedEndDate == null) onDateEmptyError().also { return true }
-        }
+        task.name.isEmpty()           -> listener.onNameEmptyError().run { true }
+        task.description.isEmpty()    -> listener.onDescriptionEmptyError().run { true }
+        task.estimatedEndDate == null -> listener.onDateEmptyError().run { true }
 
-        return false
+        else                          -> false
     }
 
     override fun add(task: Task)
