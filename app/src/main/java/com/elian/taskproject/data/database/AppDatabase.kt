@@ -17,6 +17,7 @@ abstract class AppDatabase : RoomDatabase()
 
     companion object
     {
+        val databaseName = "app_database"
         val instance get() = INSTANCE as AppDatabase
 
         @Volatile
@@ -27,7 +28,7 @@ abstract class AppDatabase : RoomDatabase()
             synchronized(this)
             {
                 return INSTANCE
-                    ?: Room.databaseBuilder(context, AppDatabase::class.java, "app_database")
+                    ?: Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
                         .fallbackToDestructiveMigration()
                         .allowMainThreadQueries()
                         .build()
