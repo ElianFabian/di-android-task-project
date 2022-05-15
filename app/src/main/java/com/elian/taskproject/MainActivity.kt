@@ -2,10 +2,9 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.database.AppDatabase
+import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.model.User
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity()
 
         AppDatabase.create(this)
 
-        userDAO = AppDatabase.getDatabase().userDAO
+        userDAO = AppDatabase.instance.userDAO
 
         if (userDAO.userExists())
         {

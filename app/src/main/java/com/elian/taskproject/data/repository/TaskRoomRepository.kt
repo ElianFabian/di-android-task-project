@@ -9,7 +9,7 @@ object TaskRoomRepository :
     TaskListContract.Repository,
     TaskManagerContract.Repository
 {
-    private val taskDAO get() = AppDatabase.getDatabase().taskDAO
+    private val taskDAO get() = AppDatabase.instance.taskDAO
 
     //region TaskListContract.Repository
 
