@@ -142,7 +142,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListFailure()
     {
-        //TODO("Not yet implemented")
+        Toast.makeText(context, "There was an error when getting the tasks.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNoData()
@@ -164,7 +164,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onDeleteFailure()
     {
-        //TODO("Not yet implemented")
+        Toast.makeText(context, "There was an error when deleting.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
