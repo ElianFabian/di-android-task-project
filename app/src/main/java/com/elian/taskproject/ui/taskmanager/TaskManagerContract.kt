@@ -1,11 +1,11 @@
 package com.elian.taskproject.ui.taskmanager
 
-import com.elian.taskproject.base.IBasePresenter
+import com.elian.taskproject.base.BasePresenter
 import com.elian.taskproject.data.model.Task
 
-interface ITaskManagerContract
+interface TaskManagerContract
 {
-    interface IView : IOnRepositoryCallback
+    interface View : OnRepositoryCallback
     {
         fun setNameEmptyError()
         fun setDescriptionEmptyError()
@@ -13,13 +13,13 @@ interface ITaskManagerContract
         fun cleanInputFieldsErrors()
     }
 
-    interface IPresenter : IBasePresenter
+    interface Presenter : BasePresenter
     {
         fun add(task: Task)
         fun edit(editedTask: Task, position: Int)
     }
 
-    interface IInteractor
+    interface Interactor
     {
         fun add(task: Task)
         fun edit(editedTask: Task, position: Int)
@@ -32,13 +32,13 @@ interface ITaskManagerContract
         fun validateFields(task: Task): Boolean
     }
 
-    interface IRepository
+    interface Repository
     {
-        fun add(callback: IOnRepositoryCallback, task: Task)
-        fun edit(callback: IOnRepositoryCallback, editedTask: Task, position: Int)
+        fun add(callback: OnRepositoryCallback, task: Task)
+        fun edit(callback: OnRepositoryCallback, editedTask: Task, position: Int)
     }
 
-    interface IOnRepositoryCallback
+    interface OnRepositoryCallback
     {
         fun onAddSuccess()
         fun onEditSuccess()
@@ -47,7 +47,7 @@ interface ITaskManagerContract
         fun onEditFailure()
     }
 
-    interface IOnInteractorListener : IOnRepositoryCallback
+    interface OnInteractorListener : OnRepositoryCallback
     {
         fun onNameEmptyError()
         fun onDescriptionEmptyError()

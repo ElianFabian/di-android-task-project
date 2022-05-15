@@ -2,13 +2,13 @@ package com.elian.taskproject.ui.taskmanager
 
 import com.elian.taskproject.data.model.Task
 
-class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
-    ITaskManagerContract.IPresenter,
-    ITaskManagerContract.IOnInteractorListener
+class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
+    TaskManagerContract.Presenter,
+    TaskManagerContract.OnInteractorListener
 {
-    private var interactor: ITaskManagerContract.IInteractor? = TaskManagerInteractor(this)
+    private var interactor: TaskManagerContract.Interactor? = TaskManagerInteractor(this)
 
-    //region ITaskManagerListContract.IPresenter
+    //region ITaskManagerListContract.Presenter
 
     override fun add(task: Task)
     {
@@ -36,7 +36,7 @@ class TaskManagerPresenter(private var view: ITaskManagerContract.IView?) :
 
     //endregion
 
-    //region ITaskManagerContract.IOnInteractorListener
+    //region TaskManagerContract.OnInteractorListener
 
     override fun onNameEmptyError()
     {

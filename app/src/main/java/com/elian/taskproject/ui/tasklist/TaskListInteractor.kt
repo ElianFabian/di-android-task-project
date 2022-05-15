@@ -3,13 +3,13 @@ package com.elian.taskproject.ui.tasklist
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskRoomRepository
 
-class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorListener) :
-    ITaskListContract.IInteractor,
-    ITaskListContract.IOnRepositoryCallback
+class TaskListInteractor(private val listener: TaskListContract.OnInteractorListener) :
+    TaskListContract.Interactor,
+    TaskListContract.OnRepositoryCallback
 {
-    private val repository: ITaskListContract.IRepository = TaskRoomRepository
+    private val repository: TaskListContract.Repository = TaskRoomRepository
     
-    //region ITaskListContract.IInteractor
+    //region TaskListContract.Interactor
 
     override fun getList()
     {
@@ -23,7 +23,7 @@ class TaskListInteractor(private val listener: ITaskListContract.IOnInteractorLi
 
     //endregion
 
-    //region ITaskListContract.IOnRepositoryCallback
+    //region TaskListContract.OnRepositoryCallback
 
     override fun onListSuccess(list: List<Task>)
     {
