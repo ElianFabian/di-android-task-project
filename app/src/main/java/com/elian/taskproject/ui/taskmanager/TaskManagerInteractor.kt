@@ -40,14 +40,14 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
         listener.onAddSuccess()
     }
 
-    override fun onEditSuccess()
-    {
-        listener.onEditSuccess()
-    }
-
     override fun onAddFailure()
     {
         listener.onAddFailure()
+    }
+
+    override fun onEditSuccess()
+    {
+        listener.onEditSuccess()
     }
 
     override fun onEditFailure()
