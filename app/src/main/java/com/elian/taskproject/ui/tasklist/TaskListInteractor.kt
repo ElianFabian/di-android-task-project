@@ -7,7 +7,7 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     TaskListContract.Interactor,
     TaskListContract.OnRepositoryCallback
 {
-    private val repository: TaskListContract.Repository = TaskFirebaseRepository
+    private val repository: TaskListContract.Repository = TaskRoomRepository
 
     //region TaskListContract.Interactor
 
