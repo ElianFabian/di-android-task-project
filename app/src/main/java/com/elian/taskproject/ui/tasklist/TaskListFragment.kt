@@ -25,7 +25,8 @@ class TaskListFragment : BaseFragment(),
     RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
     private lateinit var binding: FragmentTaskListBinding
-    private lateinit var taskAdapter: RecyclerViewAdapter<Task>
+    private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
+
     override lateinit var presenter: TaskListContract.Presenter
 
     private lateinit var deletedTask: Task
@@ -77,8 +78,6 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = RecyclerViewAdapter(itemLayout = R.layout.item_task)
-
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
