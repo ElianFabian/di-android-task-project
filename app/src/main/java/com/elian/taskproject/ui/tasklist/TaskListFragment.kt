@@ -24,7 +24,6 @@ class TaskListFragment : BaseFragment(),
     RecyclerViewAdapter.OnItemClickListener<Task>,
     RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
-
     // Store the task list from the repository in memory in order to not get it
     // from Firebase every single time
     private var taskList = emptyList<Task>()
