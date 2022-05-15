@@ -15,8 +15,8 @@ interface TaskListContract
 
     interface Presenter : BasePresenter
     {
-        fun getList()
-        fun delete(task: Task, position: Int)
+        fun onGetList()
+        fun onDelete(task: Task, position: Int)
     }
 
     interface Interactor
