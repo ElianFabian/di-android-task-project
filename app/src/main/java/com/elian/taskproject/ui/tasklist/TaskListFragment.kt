@@ -24,19 +24,16 @@ class TaskListFragment : BaseFragment(),
     RecyclerViewAdapter.OnItemClickListener<Task>,
     RecyclerViewAdapter.OnItemLongClickListener<Task>
 {
-    // Store the task list from the repository in memory in order to not get it
-    // from Firebase every single time
-    private var taskList = emptyList<Task>()
+    override lateinit var presenter: TaskListContract.Presenter
 
     private lateinit var binding: FragmentTaskListBinding
-    private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
 
-    override lateinit var presenter: TaskListContract.Presenter
+    private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
+    private var taskList = emptyList<Task>()
+    private lateinit var importanceStringArray: Array<String>
 
     private lateinit var deletedTask: Task
     private var deletedTaskPosition by Delegates.notNull<Int>()
-
-    private lateinit var importanceStringArray: Array<String>
 
     //region Fragment Methods
 
