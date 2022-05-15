@@ -15,8 +15,8 @@ interface TaskManagerContract
 
     interface Presenter : BasePresenter
     {
-        fun add(task: Task)
-        fun edit(editedTask: Task, position: Int)
+        fun onAdd(task: Task)
+        fun onEdit(editedTask: Task, position: Int)
     }
 
     interface Interactor

@@ -84,7 +84,7 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForAddAction()
     {
-        binding.fab.setOnClickListener { presenter.add(taskFromFields) }
+        binding.fab.setOnClickListener { presenter.onAdd(taskFromFields) }
     }
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
@@ -94,7 +94,7 @@ class TaskManagerFragment : BaseFragment(),
         binding.fab.setOnClickListener()
         {
             modifySelectedTaskWithFields(selectedTask)
-            presenter.edit(selectedTask, position)
+            presenter.onEdit(selectedTask, position)
         }
     }
 
