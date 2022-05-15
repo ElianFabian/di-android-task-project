@@ -36,17 +36,12 @@ class MainActivity : AppCompatActivity()
 
         val user = User(email = "$randomLetter$uuid@gmail.com")
 
-        addUserToFirebase(user).addOnCompleteListener()
+        val documentPath = "users/${user.email}"
+
+        Firebase.firestore.document(documentPath).set(user).addOnCompleteListener()
         {
             userDAO.insert(user)
             setContentView(R.layout.activity_main)
         }
-    }
-
-    private fun addUserToFirebase(user: User): Task<Void>
-    {
-        val documentPath = "users/${user.email}"
-
-        return Firebase.firestore.document(documentPath).set(user)
     }
 }
