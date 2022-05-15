@@ -30,7 +30,8 @@ class TaskListFragment : BaseFragment(),
     private var taskList = emptyList<Task>()
 
     private lateinit var binding: FragmentTaskListBinding
-    private lateinit var taskAdapter: RecyclerViewAdapter<Task>
+    private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
+
     override lateinit var presenter: TaskListContract.Presenter
 
     private lateinit var deletedTask: Task
@@ -82,8 +83,6 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter = RecyclerViewAdapter(itemLayout = R.layout.item_task)
-
         taskAdapter.replaceList(taskList)
 
         binding.rvTasks.adapter = taskAdapter
