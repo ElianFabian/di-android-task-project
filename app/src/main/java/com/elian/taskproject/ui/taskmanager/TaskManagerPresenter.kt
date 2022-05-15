@@ -58,14 +58,14 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
         view?.onAddSuccess()
     }
 
-    override fun onEditSuccess()
-    {
-        view?.onEditSuccess()
-    }
-
     override fun onAddFailure()
     {
         view?.onAddFailure()
+    }
+
+    override fun onEditSuccess()
+    {
+        view?.onEditSuccess()
     }
 
     override fun onEditFailure()
