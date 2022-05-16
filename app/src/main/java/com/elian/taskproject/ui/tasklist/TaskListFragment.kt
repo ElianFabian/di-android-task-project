@@ -69,7 +69,7 @@ class TaskListFragment : BaseFragment(),
         {
             navigate(R.id.action_taskListFragment_to_taskManagerFragment)
         }
-        
+
         importanceStringArray = resources.getStringArray(R.array.frgTaskAdd_spnImportance_entries)
 
         initRecyclerViewAdapter()
