@@ -37,14 +37,9 @@ object TaskFirebaseRepository :
     {
         val documentPath = "$taskCollectionPath/${task.firebaseId}"
 
-        firestore.document(documentPath).delete().addOnCompleteListener()
-        {
-            if (it.isSuccessful)
-            {
-                callback.onDeleteSuccess(task, position)
-            }
-            else callback.onDeleteFailure()
-        }
+        firestore.document(documentPath).delete()
+            .addOnSuccessListener { callback.onDeleteSuccess(task, position) }
+            .addOnFailureListener { callback.onDeleteFailure() }
     }
 
     //endregion
@@ -55,28 +50,18 @@ object TaskFirebaseRepository :
     {
         val documentPath = "${taskCollectionPath}/${task.firebaseId}"
 
-        firestore.document(documentPath).set(task).addOnCompleteListener()
-        {
-            if (it.isSuccessful)
-            {
-                callback.onAddSuccess()
-            }
-            else callback.onAddFailure()
-        }
+        firestore.document(documentPath).set(task)
+            .addOnSuccessListener { callback.onAddSuccess() }
+            .addOnFailureListener { callback.onAddFailure() }
     }
 
     override fun edit(callback: TaskManagerContract.OnRepositoryCallback, editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 
-        firestore.document(documentPath).set(editedTask).addOnCompleteListener()
-        {
-            if (it.isSuccessful)
-            {
-                callback.onEditSuccess()
-            }
-            else callback.onEditFailure()
-        }
+        firestore.document(documentPath).set(editedTask)
+            .addOnSuccessListener { callback.onEditSuccess() }
+            .addOnFailureListener { callback.onEditFailure() }
     }
 
     //endregion
