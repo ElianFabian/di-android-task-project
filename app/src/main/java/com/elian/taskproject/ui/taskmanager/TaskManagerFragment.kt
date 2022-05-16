@@ -147,6 +147,11 @@ class TaskManagerFragment : BaseFragment(),
         Toast.makeText(context, "The task was successfully added.", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onAddFailure()
+    {
+        Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onEditFailure()
     {
         Toast.makeText(context, "Error when editing.", Toast.LENGTH_SHORT).show()
@@ -157,11 +162,6 @@ class TaskManagerFragment : BaseFragment(),
         NavHostFragment.findNavController(this).navigateUp()
 
         Toast.makeText(context, "The task was successfully edited.", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onAddFailure()
-    {
-        Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
     }
 
     //endregion
