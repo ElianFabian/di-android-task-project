@@ -1,4 +1,4 @@
-package com.elian.taskproject.data.utils
+package com.elian.taskproject.utils
 
 import android.view.LayoutInflater
 import android.view.View

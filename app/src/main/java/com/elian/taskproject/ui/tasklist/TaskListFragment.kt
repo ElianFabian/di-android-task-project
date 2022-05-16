@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.data.utils.RecyclerViewAdapter
+import com.elian.taskproject.utils.RecyclerViewAdapter
 import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.extensions.navigate
