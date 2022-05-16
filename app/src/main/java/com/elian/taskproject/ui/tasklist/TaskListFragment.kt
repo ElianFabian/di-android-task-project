@@ -65,16 +65,16 @@ class TaskListFragment : BaseFragment(),
 
     private fun initUI()
     {
+        binding.fab.setOnClickListener()
+        {
+            navigate(R.id.action_taskListFragment_to_taskManagerFragment)
+        }
+        
         importanceStringArray = resources.getStringArray(R.array.frgTaskAdd_spnImportance_entries)
 
         initRecyclerViewAdapter()
 
         presenter.onGetList()
-
-        binding.fab.setOnClickListener()
-        {
-            navigate(R.id.action_taskListFragment_to_taskManagerFragment)
-        }
     }
 
     private fun initRecyclerViewAdapter()
