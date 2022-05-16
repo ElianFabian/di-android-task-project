@@ -41,9 +41,9 @@ interface TaskManagerContract
     interface OnRepositoryCallback
     {
         fun onAddSuccess()
-        fun onEditSuccess()
-
         fun onAddFailure()
+
+        fun onEditSuccess()
         fun onEditFailure()
     }
 
