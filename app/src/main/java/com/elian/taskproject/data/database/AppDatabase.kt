@@ -17,7 +17,7 @@ abstract class AppDatabase : RoomDatabase()
 
     companion object
     {
-        val databaseName = "app_database"
+        const val databaseName = "app_database"
         val instance get() = INSTANCE as AppDatabase
 
         @Volatile
