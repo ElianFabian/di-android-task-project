@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
-import com.elian.taskproject.data.model.AppInformation
+import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
