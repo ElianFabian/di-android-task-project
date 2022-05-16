@@ -126,7 +126,9 @@ class TaskListFragment : BaseFragment(),
     {
         hideNoDataImage()
 
-        if (list.size - taskList.size == 1)
+        val isNewItemAdded = list.size - taskList.size == 1
+
+        if (isNewItemAdded)
         {
             taskAdapter.addItem(list.last())
         }
