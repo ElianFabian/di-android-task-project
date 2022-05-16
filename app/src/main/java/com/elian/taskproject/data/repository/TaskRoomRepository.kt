@@ -15,11 +15,13 @@ object TaskRoomRepository :
 
     override fun getList(callback: TaskListContract.OnRepositoryCallback)
     {
-        if (taskDAO.selectAll().isEmpty())
+        val list = taskDAO.selectAll()
+
+        if (list.isEmpty())
         {
             callback.onNoData()
         }
-        else callback.onListSuccess(taskDAO.selectAll())
+        else callback.onListSuccess(list)
     }
 
     override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
