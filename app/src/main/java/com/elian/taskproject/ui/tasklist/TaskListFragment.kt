@@ -152,7 +152,7 @@ class TaskListFragment : BaseFragment(),
         this.deletedTask = deletedTask
         this.deletedTaskPosition = position
 
-        showNoDataImage().takeIf { taskAdapter.itemCount == 0 }
+        if (taskAdapter.isEmpty) showNoDataImage()
 
         Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
