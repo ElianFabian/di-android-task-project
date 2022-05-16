@@ -91,8 +91,10 @@ class TaskManagerFragment : BaseFragment(),
     {
         binding.fab.setOnClickListener()
         {
-            modifySelectedTaskWithFields(selectedTask)
-            presenter.onEdit(selectedTask, position)
+            presenter.onEdit(
+                selectedTask.also { modifySelectedTaskWithFields(it) },
+                position
+            )
         }
 
         fillFieldsWithSelectedTask(selectedTask)
