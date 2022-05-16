@@ -91,10 +91,13 @@ class TaskManagerFragment : BaseFragment(),
     {
         binding.fab.setOnClickListener()
         {
-            presenter.onEdit(
-                selectedTask.also { modifySelectedTaskWithFields(it) },
-                position
-            )
+            selectedTask.apply()
+            {
+                presenter.onEdit(
+                    taskFromFields.copy(id = id, firebaseId = firebaseId),
+                    position
+                )
+            }
         }
 
         fillFieldsWithSelectedTask(selectedTask)
@@ -106,14 +109,6 @@ class TaskManagerFragment : BaseFragment(),
         tieDescription.setText(task.description)
         spnImportance.setSelection(task.importance.ordinal)
         etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
-    }
-
-    private fun modifySelectedTaskWithFields(task: Task) = with(taskFromFields)
-    {
-        task.name = name
-        task.description = description
-        task.importance = importance
-        task.estimatedEndDate = estimatedEndDate
     }
 
     //endregion
