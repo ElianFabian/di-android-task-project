@@ -147,12 +147,14 @@ class TaskListFragment : BaseFragment(),
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
-        taskAdapter.removeItem(deletedTask)
+        taskAdapter.apply()
+        {
+            removeItem(deletedTask)
+            if (isEmpty) showNoDataImage()
+        }
 
         this.deletedTask = deletedTask
         this.deletedTaskPosition = position
-
-        if (taskAdapter.isEmpty) showNoDataImage()
 
         Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
     }
