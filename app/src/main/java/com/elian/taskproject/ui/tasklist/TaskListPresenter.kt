@@ -56,7 +56,7 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
 
     override fun onDeleteFailure()
     {
-        //TODO("Not yet implemented")
+        view?.onDeleteFailure()
     }
 
     //endregion
