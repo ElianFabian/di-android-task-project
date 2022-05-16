@@ -9,6 +9,7 @@ interface TaskListContract
     {
         fun showProgress()
         fun hideProgress()
+
         fun showNoDataImage()
         fun hideNoDataImage()
     }
