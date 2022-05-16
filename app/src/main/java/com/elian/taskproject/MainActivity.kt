@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
+import com.elian.taskproject.data.model.AppInformation
 import com.elian.taskproject.data.model.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -17,12 +18,21 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
 
+        initApplication()
+    }
+
+    private fun initApplication()
+    {
         AppDatabase.create(this)
 
         userDAO = AppDatabase.instance.userDAO
 
-        if (userDAO.userExists())
+        val userExists = AppDatabase.executorService.submit(userDAO::userExists).get()
+
+        if (userExists)
         {
+            AppInformation.currentUser = AppDatabase.executorService.submit(userDAO::getUser).get()
+
             setContentView(R.layout.activity_main)
         }
         else createUser()
@@ -39,7 +49,10 @@ class MainActivity : AppCompatActivity()
 
         Firebase.firestore.document(documentPath).set(user).addOnCompleteListener()
         {
-            userDAO.insert(user)
+            AppInformation.currentUser = user
+
+            AppDatabase.executorService.execute { userDAO.insert(user) }
+
             setContentView(R.layout.activity_main)
         }
     }

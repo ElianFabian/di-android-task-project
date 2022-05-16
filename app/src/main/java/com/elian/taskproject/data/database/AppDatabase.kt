@@ -24,7 +24,7 @@ abstract class AppDatabase : RoomDatabase()
 
         private const val NUMBER_OF_THREADS = 4;
 
-        val databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
+        val executorService: ExecutorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
 
         @Volatile
         private var INSTANCE: AppDatabase? = null

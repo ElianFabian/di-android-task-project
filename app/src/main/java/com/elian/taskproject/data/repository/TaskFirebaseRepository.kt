@@ -1,6 +1,7 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
+import com.elian.taskproject.data.model.AppInformation
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.ui.tasklist.TaskListContract
 import com.elian.taskproject.ui.taskmanager.TaskManagerContract
@@ -13,8 +14,8 @@ object TaskFirebaseRepository :
 {
     private val firestore get() = Firebase.firestore
 
-    private val userId get() = AppDatabase.instance.userDAO.getUser().email
-    private val taskCollectionPath = "users/${userId}/tasks"
+    private val userId get() = AppInformation.currentUser.email
+    private val taskCollectionPath = "users/$userId/tasks"
 
     //region TaskListContract.Repository
 
