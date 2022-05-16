@@ -10,6 +10,7 @@ interface TaskManagerContract
         fun setNameEmptyError()
         fun setDescriptionEmptyError()
         fun setDateEmptyError()
+
         fun cleanInputFieldsErrors()
     }
 
