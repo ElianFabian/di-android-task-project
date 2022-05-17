@@ -35,7 +35,9 @@ class TaskListFragment : BaseFragment(),
     private val deletedTaskInfo = object
     {
         lateinit var task: Task
+            private set
         var position by Delegates.notNull<Int>()
+            private set
 
         fun set(deletedTask: Task, position: Int)
         {
@@ -154,9 +156,9 @@ class TaskListFragment : BaseFragment(),
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
-        taskAdapter.removeItem(deletedTask)
-
         deletedTaskInfo.set(deletedTask, position)
+
+        taskAdapter.removeItem(deletedTask)
 
         toast("The task number $position was successfully deleted.")
     }
