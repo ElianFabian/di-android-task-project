@@ -16,9 +16,9 @@ interface TaskListContract
         fun hideNoDataImage()
     }
 
-    interface Presenter : BasePresenter, OnInteractorListener, Actions
+    interface Presenter : BasePresenter, Actions, OnInteractorListener
 
-    interface Interactor : OnRepositoryCallback, Actions
+    interface Interactor : Actions, OnRepositoryCallback
 
     interface Repository
     {
@@ -26,6 +26,12 @@ interface TaskListContract
         fun delete(callback: OnRepositoryDeleteCallback, taskToDelete: Task, position: Int)
     }
 
+
+    interface Actions
+    {
+        fun getList()
+        fun delete(taskToDelete: Task, position: Int)
+    }
 
     interface OnInteractorListener : OnRepositoryCallback
 
@@ -44,11 +50,5 @@ interface TaskListContract
     {
         fun onDeleteSuccess(deletedTask: Task, position: Int)
         fun onDeleteFailure()
-    }
-
-    interface Actions
-    {
-        fun getList()
-        fun delete(taskToDelete: Task, position: Int)
     }
 }
