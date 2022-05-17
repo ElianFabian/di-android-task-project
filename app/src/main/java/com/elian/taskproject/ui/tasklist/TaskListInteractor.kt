@@ -4,8 +4,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskRoomRepository
 
 class TaskListInteractor(private val listener: TaskListContract.OnInteractorListener) :
-    TaskListContract.Interactor,
-    TaskListContract.OnRepositoryCallback
+    TaskListContract.Interactor
 {
     private val repository: TaskListContract.Repository = TaskRoomRepository
 
@@ -20,10 +19,6 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     {
         repository.delete(this, taskToDelete, position)
     }
-
-    //endregion
-
-    //region TaskListContract.OnRepositoryCallback
 
     override fun onListSuccess(listFromRepository: List<Task>)
     {

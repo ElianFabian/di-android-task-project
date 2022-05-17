@@ -14,13 +14,13 @@ interface TaskManagerContract
         fun cleanInputFieldsErrors()
     }
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter, OnInteractorListener
     {
         fun onAdd(task: Task)
         fun onEdit(editedTask: Task, position: Int)
     }
 
-    interface Interactor
+    interface Interactor : OnRepositoryCallback
     {
         fun add(task: Task)
         fun edit(editedTask: Task, position: Int)
@@ -39,6 +39,13 @@ interface TaskManagerContract
         fun edit(callback: OnRepositoryCallback, editedTask: Task, position: Int)
     }
 
+    interface OnInteractorListener : OnRepositoryCallback
+    {
+        fun onNameEmptyError()
+        fun onDescriptionEmptyError()
+        fun onDateEmptyError()
+    }
+
     interface OnRepositoryCallback
     {
         fun onAddSuccess()
@@ -46,12 +53,5 @@ interface TaskManagerContract
 
         fun onEditSuccess()
         fun onEditFailure()
-    }
-
-    interface OnInteractorListener : OnRepositoryCallback
-    {
-        fun onNameEmptyError()
-        fun onDescriptionEmptyError()
-        fun onDateEmptyError()
     }
 }

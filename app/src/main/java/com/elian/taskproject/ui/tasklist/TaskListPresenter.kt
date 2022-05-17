@@ -3,8 +3,7 @@ package com.elian.taskproject.ui.tasklist
 import com.elian.taskproject.data.model.Task
 
 class TaskListPresenter(private var view: TaskListContract.View?) :
-    TaskListContract.Presenter,
-    TaskListContract.OnInteractorListener
+    TaskListContract.Presenter
 {
     private var interactor: TaskListContract.Interactor? = TaskListInteractor(this)
 
@@ -26,10 +25,6 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view = null
         interactor = null
     }
-
-    //endregion
-
-    //region TaskListContract.OnInteractorListener
 
     override fun onListSuccess(listFromRepository: List<Task>)
     {

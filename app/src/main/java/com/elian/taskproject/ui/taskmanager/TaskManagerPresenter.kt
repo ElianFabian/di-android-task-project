@@ -3,8 +3,7 @@ package com.elian.taskproject.ui.taskmanager
 import com.elian.taskproject.data.model.Task
 
 class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
-    TaskManagerContract.Presenter,
-    TaskManagerContract.OnInteractorListener
+    TaskManagerContract.Presenter
 {
     private var interactor: TaskManagerContract.Interactor? = TaskManagerInteractor(this)
 
@@ -33,10 +32,6 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
         view = null
         interactor = null
     }
-
-    //endregion
-
-    //region TaskManagerContract.OnInteractorListener
 
     override fun onNameEmptyError()
     {

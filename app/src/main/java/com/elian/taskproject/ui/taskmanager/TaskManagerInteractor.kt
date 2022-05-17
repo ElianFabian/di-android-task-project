@@ -4,8 +4,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskRoomRepository
 
 class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteractorListener) :
-    TaskManagerContract.Interactor,
-    TaskManagerContract.OnRepositoryCallback
+    TaskManagerContract.Interactor
 {
     private val repository: TaskManagerContract.Repository = TaskRoomRepository
 
@@ -29,10 +28,6 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
     {
         repository.edit(this, editedTask, position)
     }
-
-    //endregion
-
-    //region TaskManagerContract.OnRepositoryCallback
 
     override fun onAddSuccess()
     {
