@@ -12,7 +12,7 @@ object TaskStaticRepository :
 
     //region TaskListContract.Repository
 
-    override fun getList(callback: TaskListContract.OnRepositoryCallback)
+    override fun getList(callback: TaskListContract.OnRepositoryGetListCallback)
     {
         if (taskList.isEmpty())
         {
@@ -21,7 +21,7 @@ object TaskStaticRepository :
         else callback.onListSuccess(taskList)
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryCallback, taskToDelete: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryDeleteCallback, taskToDelete: Task, position: Int)
     {
         taskList.remove(taskToDelete)
         callback.onDeleteSuccess(taskToDelete, position)
@@ -31,13 +31,13 @@ object TaskStaticRepository :
 
     //region ITaskAddContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnRepositoryCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnRepositoryAddCallback, task: Task)
     {
         taskList.add(task)
         callback.onAddSuccess()
     }
 
-    override fun edit(callback: TaskManagerContract.OnRepositoryCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnRepositoryEditCallback, editedTask: Task, position: Int)
     {
         taskList[position] = editedTask
         callback.onEditSuccess()
