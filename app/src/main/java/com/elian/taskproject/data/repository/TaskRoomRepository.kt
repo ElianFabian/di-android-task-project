@@ -22,7 +22,7 @@ object TaskRoomRepository :
 
     //region TaskListContract.Repository
 
-    override fun getList(callback: TaskListContract.OnRepositoryGetListCallback)
+    override fun getList(callback: TaskListContract.OnGetListCallback)
     {
         val list = submit { taskDAO.selectAll() }.get()
 
@@ -33,7 +33,7 @@ object TaskRoomRepository :
         else callback.onListSuccess(list)
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryDeleteCallback, taskToDelete: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)
     {
         execute { taskDAO.delete(taskToDelete) }
 
@@ -44,14 +44,14 @@ object TaskRoomRepository :
 
     //region ITaskAddContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnRepositoryAddCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
     {
         execute { taskDAO.insert(task) }
 
         callback.onAddSuccess()
     }
 
-    override fun edit(callback: TaskManagerContract.OnRepositoryEditCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnEditCallback, editedTask: Task, position: Int)
     {
         execute { taskDAO.update(editedTask) }
 

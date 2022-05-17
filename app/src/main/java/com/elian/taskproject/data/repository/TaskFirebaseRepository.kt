@@ -18,7 +18,7 @@ object TaskFirebaseRepository :
 
     //region TaskListContract.Repository
 
-    override fun getList(callback: TaskListContract.OnRepositoryGetListCallback)
+    override fun getList(callback: TaskListContract.OnGetListCallback)
     {
         firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
@@ -33,7 +33,7 @@ object TaskFirebaseRepository :
         }
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryDeleteCallback, taskToDelete: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToDelete.firebaseId}"
 
@@ -46,7 +46,7 @@ object TaskFirebaseRepository :
 
     //region ITaskAddContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnRepositoryAddCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
     {
         val documentPath = "${taskCollectionPath}/${task.firebaseId}"
 
@@ -55,7 +55,7 @@ object TaskFirebaseRepository :
             .addOnFailureListener { callback.onAddFailure() }
     }
 
-    override fun edit(callback: TaskManagerContract.OnRepositoryEditCallback, editedTask: Task, position: Int)
+    override fun edit(callback: TaskManagerContract.OnEditCallback, editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 

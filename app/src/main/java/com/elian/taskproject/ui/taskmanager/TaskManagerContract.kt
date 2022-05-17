@@ -28,8 +28,8 @@ interface TaskManagerContract
 
     interface Repository
     {
-        fun add(callback: OnRepositoryAddCallback, task: Task)
-        fun edit(callback: OnRepositoryEditCallback, editedTask: Task, position: Int)
+        fun add(callback: OnAddCallback, task: Task)
+        fun edit(callback: OnEditCallback, editedTask: Task, position: Int)
     }
 
 
@@ -47,16 +47,16 @@ interface TaskManagerContract
     }
 
     interface OnRepositoryCallback :
-        OnRepositoryAddCallback,
-        OnRepositoryEditCallback
+        OnAddCallback,
+        OnEditCallback
 
-    interface OnRepositoryAddCallback
+    interface OnAddCallback
     {
         fun onAddSuccess()
         fun onAddFailure()
     }
 
-    interface OnRepositoryEditCallback
+    interface OnEditCallback
     {
         fun onEditSuccess()
         fun onEditFailure()
