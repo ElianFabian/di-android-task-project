@@ -14,9 +14,9 @@ interface TaskManagerContract
         fun cleanInputFieldsErrors()
     }
 
-    interface Presenter : BasePresenter, OnInteractorListener, Actions
+    interface Presenter : BasePresenter, Actions, OnInteractorListener
 
-    interface Interactor : OnRepositoryCallback, Actions
+    interface Interactor : Actions, OnRepositoryCallback
     {
         /**
          * Validates the fields from the view given in a Task.
@@ -33,6 +33,12 @@ interface TaskManagerContract
     }
 
 
+    interface Actions
+    {
+        fun add(task: Task)
+        fun edit(editedTask: Task, position: Int)
+    }
+    
     interface OnInteractorListener : OnRepositoryCallback
     {
         fun onNameEmptyError()
@@ -54,11 +60,5 @@ interface TaskManagerContract
     {
         fun onEditSuccess()
         fun onEditFailure()
-    }
-
-    interface Actions
-    {
-        fun add(task: Task)
-        fun edit(editedTask: Task, position: Int)
     }
 }
