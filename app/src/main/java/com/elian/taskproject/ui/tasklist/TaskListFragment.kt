@@ -102,6 +102,8 @@ class TaskListFragment : BaseFragment(),
 
     //region TaskListContract.View
 
+    override val isListEmpty: Boolean get() = taskAdapter.isEmpty
+
     override fun showProgress()
     {
         binding.progressBar.isVisible = true
@@ -124,8 +126,6 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListSuccess(listFromRepository: List<Task>)
     {
-        hideNoDataImage()
-
         val isNewItemAdded = listFromRepository.size - taskList.size == 1
 
         if (isNewItemAdded)
@@ -144,16 +144,12 @@ class TaskListFragment : BaseFragment(),
 
     override fun onNoData()
     {
-        showNoDataImage()
+        Toast.makeText(context, "The task list is empty.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
-        taskAdapter.apply()
-        {
-            removeItem(deletedTask)
-            if (isEmpty) showNoDataImage()
-        }
+        taskAdapter.removeItem(deletedTask)
 
         this.deletedTask = deletedTask
         this.deletedTaskPosition = position

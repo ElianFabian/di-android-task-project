@@ -7,6 +7,8 @@ interface TaskListContract
 {
     interface View : OnRepositoryCallback
     {
+        val isListEmpty: Boolean
+
         fun showProgress()
         fun hideProgress()
 
