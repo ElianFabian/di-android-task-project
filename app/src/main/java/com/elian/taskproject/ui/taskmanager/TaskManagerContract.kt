@@ -28,9 +28,10 @@ interface TaskManagerContract
 
     interface Repository
     {
-        fun add(callback: OnRepositoryCallback, task: Task)
-        fun edit(callback: OnRepositoryCallback, editedTask: Task, position: Int)
+        fun add(callback: OnRepositoryAddCallback, task: Task)
+        fun edit(callback: OnRepositoryEditCallback, editedTask: Task, position: Int)
     }
+
 
     interface OnInteractorListener : OnRepositoryCallback
     {
@@ -39,11 +40,18 @@ interface TaskManagerContract
         fun onDateEmptyError()
     }
 
-    interface OnRepositoryCallback
+    interface OnRepositoryCallback :
+        OnRepositoryAddCallback,
+        OnRepositoryEditCallback
+
+    interface OnRepositoryAddCallback
     {
         fun onAddSuccess()
         fun onAddFailure()
+    }
 
+    interface OnRepositoryEditCallback
+    {
         fun onEditSuccess()
         fun onEditFailure()
     }
