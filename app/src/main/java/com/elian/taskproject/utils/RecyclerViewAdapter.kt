@@ -12,8 +12,8 @@ open class RecyclerViewAdapter<T>(
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter<T>.ViewHolder>()
 {
-    private var onItemCLickListener = OnItemClickListener<T> { _, _, _ -> }
-    private var onItemLongCLickListener = OnItemLongClickListener<T> { _, _, _ -> false }
+    private var onItemClickListener = OnItemClickListener<T> { _, _, _ -> }
+    private var onItemLongClickListener = OnItemLongClickListener<T> { _, _, _ -> false }
     private var onBindViewHolderListener = OnBindViewHolderListener<T> { _, _, _ -> }
 
     fun interface OnItemClickListener<T>
@@ -111,12 +111,12 @@ open class RecyclerViewAdapter<T>(
 
     fun setOnItemClickListener(listener: OnItemClickListener<T>)
     {
-        onItemCLickListener = listener
+        onItemClickListener = listener
     }
 
     fun setOnItemLongClickListener(listener: OnItemLongClickListener<T>)
     {
-        onItemLongCLickListener = listener
+        onItemLongClickListener = listener
     }
 
     fun setOnBindViewHolderListener(listener: OnBindViewHolderListener<T>)
@@ -155,12 +155,12 @@ open class RecyclerViewAdapter<T>(
     {
         override fun onClick(v: View?)
         {
-            onItemCLickListener.onItemClick(v, list[layoutPosition], layoutPosition)
+            onItemClickListener.onItemClick(v, list[layoutPosition], layoutPosition)
         }
 
         override fun onLongClick(v: View?): Boolean
         {
-            return onItemLongCLickListener.onItemLongClick(v, list[layoutPosition], layoutPosition)
+            return onItemLongClickListener.onItemLongClick(v, list[layoutPosition], layoutPosition)
         }
     }
 }
