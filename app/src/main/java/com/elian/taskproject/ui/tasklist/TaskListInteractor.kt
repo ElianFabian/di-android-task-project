@@ -16,9 +16,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.getList(this)
     }
 
-    override fun delete(task: Task, position: Int)
+    override fun delete(taskToDelete: Task, position: Int)
     {
-        repository.delete(this, task, position)
+        repository.delete(this, taskToDelete, position)
     }
 
     //endregion

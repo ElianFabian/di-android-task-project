@@ -33,12 +33,12 @@ object TaskFirebaseRepository :
         }
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, taskToDelete: Task, position: Int)
     {
-        val documentPath = "$taskCollectionPath/${task.firebaseId}"
+        val documentPath = "$taskCollectionPath/${taskToDelete.firebaseId}"
 
         firestore.document(documentPath).delete()
-            .addOnSuccessListener { callback.onDeleteSuccess(task, position) }
+            .addOnSuccessListener { callback.onDeleteSuccess(taskToDelete, position) }
             .addOnFailureListener { callback.onDeleteFailure() }
     }
 

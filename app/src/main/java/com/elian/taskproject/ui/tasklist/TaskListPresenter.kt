@@ -16,9 +16,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.getList()
     }
 
-    override fun onDelete(task: Task, position: Int)
+    override fun onDelete(taskToDelete: Task, position: Int)
     {
-        interactor?.delete(task, position)
+        interactor?.delete(taskToDelete, position)
     }
 
     override fun onDestroy()

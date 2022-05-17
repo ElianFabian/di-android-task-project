@@ -17,19 +17,19 @@ interface TaskListContract
     interface Presenter : BasePresenter
     {
         fun onGetList()
-        fun onDelete(task: Task, position: Int)
+        fun onDelete(taskToDelete: Task, position: Int)
     }
 
     interface Interactor
     {
         fun getList()
-        fun delete(task: Task, position: Int)
+        fun delete(taskToDelete: Task, position: Int)
     }
 
     interface Repository
     {
         fun getList(callback: OnRepositoryCallback)
-        fun delete(callback: OnRepositoryCallback, task: Task, position: Int)
+        fun delete(callback: OnRepositoryCallback, taskToDelete: Task, position: Int)
     }
 
     interface OnRepositoryCallback

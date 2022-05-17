@@ -33,11 +33,11 @@ object TaskRoomRepository :
         else callback.onListSuccess(list)
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, taskToDelete: Task, position: Int)
     {
-        execute { taskDAO.delete(task) }
+        execute { taskDAO.delete(taskToDelete) }
 
-        callback.onDeleteSuccess(task, position)
+        callback.onDeleteSuccess(taskToDelete, position)
     }
 
     //endregion

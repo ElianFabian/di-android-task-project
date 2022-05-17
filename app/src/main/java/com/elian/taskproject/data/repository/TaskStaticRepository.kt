@@ -21,10 +21,10 @@ object TaskStaticRepository :
         else callback.onListSuccess(taskList)
     }
 
-    override fun delete(callback: TaskListContract.OnRepositoryCallback, task: Task, position: Int)
+    override fun delete(callback: TaskListContract.OnRepositoryCallback, taskToDelete: Task, position: Int)
     {
-        taskList.remove(task)
-        callback.onDeleteSuccess(task, position)
+        taskList.remove(taskToDelete)
+        callback.onDeleteSuccess(taskToDelete, position)
     }
 
     //endregion
