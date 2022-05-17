@@ -78,8 +78,6 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter.replaceList(emptyList())
-
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
