@@ -122,19 +122,19 @@ class TaskListFragment : BaseFragment(),
         binding.ivNoData.isVisible = false
     }
 
-    override fun onListSuccess(list: List<Task>)
+    override fun onListSuccess(listFromRepository: List<Task>)
     {
         hideNoDataImage()
 
-        val isNewItemAdded = list.size - taskList.size == 1
+        val isNewItemAdded = listFromRepository.size - taskList.size == 1
 
         if (isNewItemAdded)
         {
-            taskAdapter.addItem(list.last())
+            taskAdapter.addItem(listFromRepository.last())
         }
-        else taskAdapter.replaceList(list)
+        else taskAdapter.replaceList(listFromRepository)
 
-        this.taskList = list
+        this.taskList = listFromRepository
     }
 
     override fun onListFailure()

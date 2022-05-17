@@ -31,9 +31,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
 
     //region TaskListContract.OnInteractorListener
 
-    override fun onListSuccess(list: List<Task>)
+    override fun onListSuccess(listFromRepository: List<Task>)
     {
-        view?.onListSuccess(list)
+        view?.onListSuccess(listFromRepository)
         view?.hideProgress()
     }
 

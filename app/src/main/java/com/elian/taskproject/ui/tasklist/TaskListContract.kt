@@ -34,7 +34,7 @@ interface TaskListContract
 
     interface OnRepositoryCallback
     {
-        fun onListSuccess(list: List<Task>)
+        fun onListSuccess(listFromRepository: List<Task>)
         fun onListFailure()
         fun onNoData()
 

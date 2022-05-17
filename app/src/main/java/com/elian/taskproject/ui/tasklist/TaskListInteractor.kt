@@ -25,9 +25,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
 
     //region TaskListContract.OnRepositoryCallback
 
-    override fun onListSuccess(list: List<Task>)
+    override fun onListSuccess(listFromRepository: List<Task>)
     {
-        listener.onListSuccess(list)
+        listener.onListSuccess(listFromRepository)
     }
 
     override fun onListFailure()
