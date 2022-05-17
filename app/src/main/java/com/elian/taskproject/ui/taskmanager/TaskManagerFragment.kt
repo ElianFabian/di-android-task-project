@@ -12,6 +12,7 @@ import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.utils.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
+import com.elian.taskproject.extensions.toast
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.util.*
 
@@ -141,24 +142,24 @@ class TaskManagerFragment : BaseFragment(),
     {
         NavHostFragment.findNavController(this).navigateUp()
 
-        Toast.makeText(context, "The task was successfully added.", Toast.LENGTH_SHORT).show()
+        toast("The task was successfully added.")
     }
 
     override fun onAddFailure()
     {
-        Toast.makeText(context, "Error when adding.", Toast.LENGTH_SHORT).show()
+        toast("Error when adding.")
     }
 
     override fun onEditFailure()
     {
-        Toast.makeText(context, "Error when editing.", Toast.LENGTH_SHORT).show()
+        toast("Error when editing.")
     }
 
     override fun onEditSuccess()
     {
         NavHostFragment.findNavController(this).navigateUp()
 
-        Toast.makeText(context, "The task was successfully edited.", Toast.LENGTH_SHORT).show()
+        toast("The task was successfully edited.")
     }
 
     //endregion

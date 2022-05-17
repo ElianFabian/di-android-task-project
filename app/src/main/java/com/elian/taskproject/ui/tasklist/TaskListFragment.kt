@@ -15,6 +15,7 @@ import com.elian.taskproject.utils.RecyclerViewAdapter
 import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.extensions.navigate
+import com.elian.taskproject.extensions.toast
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -136,12 +137,12 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListFailure()
     {
-        Toast.makeText(context, "There was an error when getting the tasks.", Toast.LENGTH_SHORT).show()
+        toast("There was an error when getting the tasks.")
     }
 
     override fun onNoData()
     {
-        Toast.makeText(context, "The task list is empty.", Toast.LENGTH_SHORT).show()
+        toast("The task list is empty.")
     }
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
@@ -151,12 +152,12 @@ class TaskListFragment : BaseFragment(),
         this.deletedTask = deletedTask
         this.deletedTaskPosition = position
 
-        Toast.makeText(context, "The task number $position was successfully deleted.", Toast.LENGTH_SHORT).show()
+        toast("The task number $position was successfully deleted.")
     }
 
     override fun onDeleteFailure()
     {
-        Toast.makeText(context, "There was an error when deleting.", Toast.LENGTH_SHORT).show()
+        toast("There was an error when deleting.")
     }
 
     //endregion
