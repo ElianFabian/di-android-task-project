@@ -22,18 +22,26 @@ interface TaskListContract
 
     interface Repository
     {
-        fun getList(callback: OnRepositoryCallback)
-        fun delete(callback: OnRepositoryCallback, taskToDelete: Task, position: Int)
+        fun getList(callback: OnRepositoryListCallback)
+        fun delete(callback: OnRepositoryDeleteCallback, taskToDelete: Task, position: Int)
     }
+
 
     interface OnInteractorListener : OnRepositoryCallback
 
-    interface OnRepositoryCallback
+    interface OnRepositoryCallback :
+        OnRepositoryListCallback,
+        OnRepositoryDeleteCallback
+
+    interface OnRepositoryListCallback
     {
         fun onListSuccess(listFromRepository: List<Task>)
         fun onListFailure()
         fun onNoData()
+    }
 
+    interface OnRepositoryDeleteCallback
+    {
         fun onDeleteSuccess(deletedTask: Task, position: Int)
         fun onDeleteFailure()
     }
