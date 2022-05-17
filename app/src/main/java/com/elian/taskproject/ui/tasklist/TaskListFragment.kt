@@ -29,7 +29,6 @@ class TaskListFragment : BaseFragment(),
     private lateinit var binding: FragmentTaskListBinding
 
     private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
-    private var taskList = emptyList<Task>()
     private lateinit var importanceStringArray: Array<String>
 
     private lateinit var deletedTask: Task
@@ -79,7 +78,7 @@ class TaskListFragment : BaseFragment(),
 
     private fun initRecyclerViewAdapter()
     {
-        taskAdapter.replaceList(taskList)
+        taskAdapter.replaceList(emptyList())
 
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -126,15 +125,13 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListSuccess(listFromRepository: List<Task>)
     {
-        val isNewItemAdded = listFromRepository.size - taskList.size == 1
+        val isNewItemAdded = listFromRepository.size - taskAdapter.itemCount == 1
 
         if (isNewItemAdded)
         {
             taskAdapter.addItem(listFromRepository.last())
         }
         else taskAdapter.replaceList(listFromRepository)
-
-        this.taskList = listFromRepository
     }
 
     override fun onListFailure()
