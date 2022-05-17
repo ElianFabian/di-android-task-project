@@ -31,8 +31,18 @@ class TaskListFragment : BaseFragment(),
     private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
     private lateinit var importanceStringArray: Array<String>
 
-    private lateinit var deletedTask: Task
-    private var deletedTaskPosition by Delegates.notNull<Int>()
+    // It's not currently being used because undo action is not yet implemented
+    private val deletedTaskInfo = object
+    {
+        lateinit var task: Task
+        var position by Delegates.notNull<Int>()
+
+        fun set(deletedTask: Task, position: Int)
+        {
+            this.task = deletedTask
+            this.position = position
+        }
+    }
 
     //region Fragment Methods
 
@@ -146,8 +156,7 @@ class TaskListFragment : BaseFragment(),
     {
         taskAdapter.removeItem(deletedTask)
 
-        this.deletedTask = deletedTask
-        this.deletedTaskPosition = position
+        deletedTaskInfo.set(deletedTask, position)
 
         toast("The task number $position was successfully deleted.")
     }
