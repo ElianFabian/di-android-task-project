@@ -128,11 +128,11 @@ class TaskListFragment : BaseFragment(),
     {
         val isNewItemAdded = listFromRepository.size - taskAdapter.itemCount == 1
 
-        if (isNewItemAdded)
+        taskAdapter.apply()
         {
-            taskAdapter.addItem(listFromRepository.last())
+            if (isNewItemAdded) addItem(listFromRepository.last())
+            else replaceList(listFromRepository)
         }
-        else taskAdapter.replaceList(listFromRepository)
     }
 
     override fun onListFailure()
