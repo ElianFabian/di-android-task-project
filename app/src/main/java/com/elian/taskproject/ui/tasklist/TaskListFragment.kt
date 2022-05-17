@@ -123,10 +123,10 @@ class TaskListFragment : BaseFragment(),
 
     override fun onListSuccess(listFromRepository: List<Task>)
     {
-        val isNewItemAdded = listFromRepository.size - taskAdapter.itemCount == 1
-
         taskAdapter.apply()
         {
+            val isNewItemAdded = listFromRepository.size - itemCount == 1
+
             if (isNewItemAdded) addItem(listFromRepository.last())
             else replaceList(listFromRepository)
         }
