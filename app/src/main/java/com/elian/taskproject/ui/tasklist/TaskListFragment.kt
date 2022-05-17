@@ -85,7 +85,7 @@ class TaskListFragment : BaseFragment(),
 
         initRecyclerViewAdapter()
 
-        presenter.onGetList()
+        presenter.getList()
     }
 
     private fun initRecyclerViewAdapter()
@@ -201,7 +201,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
     {
-        presenter.onDelete(selectedItem, position)
+        presenter.delete(selectedItem, position)
 
         return true
     }

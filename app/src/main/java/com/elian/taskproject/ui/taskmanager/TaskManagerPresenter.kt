@@ -9,7 +9,7 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
 
     //region ITaskManagerListContract.Presenter
 
-    override fun onAdd(task: Task)
+    override fun add(task: Task)
     {
         if (interactor!!.validateFields(task))
         {
@@ -18,7 +18,7 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
         else interactor?.add(task)
     }
 
-    override fun onEdit(editedTask: Task, position: Int)
+    override fun edit(editedTask: Task, position: Int)
     {
         if (interactor!!.validateFields(editedTask))
         {

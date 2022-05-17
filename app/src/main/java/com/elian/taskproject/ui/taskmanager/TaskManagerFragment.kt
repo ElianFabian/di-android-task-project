@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
@@ -85,7 +84,7 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUIForAddAction()
     {
-        binding.fab.setOnClickListener { presenter.onAdd(taskFromFields) }
+        binding.fab.setOnClickListener { presenter.add(taskFromFields) }
     }
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
@@ -94,7 +93,7 @@ class TaskManagerFragment : BaseFragment(),
         {
             selectedTask.apply()
             {
-                presenter.onEdit(
+                presenter.edit(
                     taskFromFields.copy(id = id, firebaseId = firebaseId),
                     position
                 )

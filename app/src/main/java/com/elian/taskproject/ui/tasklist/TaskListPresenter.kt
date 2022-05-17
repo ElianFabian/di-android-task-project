@@ -9,13 +9,13 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
 
     //region TaskListContract.Presenter
 
-    override fun onGetList()
+    override fun getList()
     {
         view?.showProgress()
         interactor?.getList()
     }
 
-    override fun onDelete(taskToDelete: Task, position: Int)
+    override fun delete(taskToDelete: Task, position: Int)
     {
         interactor?.delete(taskToDelete, position)
     }
