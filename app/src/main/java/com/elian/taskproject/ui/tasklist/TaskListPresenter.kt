@@ -26,16 +26,16 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor = null
     }
 
-    override fun onListSuccess(listFromRepository: List<Task>)
+    override fun onGetListSuccess(listFromRepository: List<Task>)
     {
         view?.hideProgress()
-        view?.onListSuccess(listFromRepository)
+        view?.onGetListSuccess(listFromRepository)
     }
 
-    override fun onListFailure()
+    override fun onGetListFailure()
     {
         view?.hideProgress()
-        view?.onListFailure()
+        view?.onGetListFailure()
     }
 
     override fun onNoData()

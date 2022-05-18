@@ -20,14 +20,14 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.delete(this, taskToDelete, position)
     }
 
-    override fun onListSuccess(listFromRepository: List<Task>)
+    override fun onGetListSuccess(listFromRepository: List<Task>)
     {
-        listener.onListSuccess(listFromRepository)
+        listener.onGetListSuccess(listFromRepository)
     }
 
-    override fun onListFailure()
+    override fun onGetListFailure()
     {
-        listener.onListFailure()
+        listener.onGetListFailure()
     }
 
     override fun onNoData()

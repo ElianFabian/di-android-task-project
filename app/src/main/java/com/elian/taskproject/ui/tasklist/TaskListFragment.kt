@@ -133,7 +133,7 @@ class TaskListFragment : BaseFragment(),
         binding.ivNoData.isVisible = false
     }
 
-    override fun onListSuccess(listFromRepository: List<Task>)
+    override fun onGetListSuccess(listFromRepository: List<Task>)
     {
         taskAdapter.apply()
         {
@@ -144,7 +144,7 @@ class TaskListFragment : BaseFragment(),
         }
     }
 
-    override fun onListFailure()
+    override fun onGetListFailure()
     {
         toast("There was an error when getting the tasks.")
     }

@@ -18,7 +18,7 @@ object TaskStaticRepository :
         {
             callback.onNoData()
         }
-        else callback.onListSuccess(taskList)
+        else callback.onGetListSuccess(taskList)
     }
 
     override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)

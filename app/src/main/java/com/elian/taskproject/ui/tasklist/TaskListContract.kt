@@ -41,8 +41,8 @@ interface TaskListContract
 
     interface OnGetListCallback
     {
-        fun onListSuccess(listFromRepository: List<Task>)
-        fun onListFailure()
+        fun onGetListSuccess(listFromRepository: List<Task>)
+        fun onGetListFailure()
         fun onNoData()
     }
 

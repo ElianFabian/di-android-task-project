@@ -30,7 +30,7 @@ object TaskRoomRepository :
         {
             callback.onNoData()
         }
-        else callback.onListSuccess(list)
+        else callback.onGetListSuccess(list)
     }
 
     override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)

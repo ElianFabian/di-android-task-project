@@ -26,10 +26,10 @@ object TaskFirebaseRepository :
             {
                 val tasks = it.result.toObjects(Task::class.java) as List<Task>
 
-                if (tasks.isNotEmpty()) callback.onListSuccess(tasks)
+                if (tasks.isNotEmpty()) callback.onGetListSuccess(tasks)
                 else callback.onNoData()
             }
-            else callback.onListFailure()
+            else callback.onGetListFailure()
         }
     }
 
