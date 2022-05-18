@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 
-open class RecyclerViewAdapter<T>(
+open class RecyclerViewAdapter<T : Any>(
     @LayoutRes private val itemLayout: Int,
     private val list: MutableList<T> = mutableListOf(),
 ) :
