@@ -44,6 +44,8 @@ class TaskListFragment : BaseFragment(),
             this.task = deletedTask
             this.position = position
         }
+
+        val isInitialized get() = ::task.isInitialized
     }
 
     //region Fragment Methods
