@@ -1,4 +1,4 @@
-package com.elian.taskproject.extensions
+package com.elian.taskproject.util.extensions
 
 import android.os.Bundle
 import android.widget.Toast

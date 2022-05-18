@@ -1,4 +1,4 @@
-package com.elian.taskproject.utils
+package com.elian.taskproject.util
 
 import java.text.SimpleDateFormat
 

@@ -9,9 +9,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
 import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.utils.DataUtils
+import com.elian.taskproject.util.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
-import com.elian.taskproject.extensions.toast
+import com.elian.taskproject.util.extensions.toast
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
 import java.util.*
 
