@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity()
 
         if (userExists)
         {
-            AppInformation.currentUser = AppDatabase.executorService.submit(userDAO::getUser).get()
+            val currentUser = AppDatabase.executorService.submit(userDAO::getUser).get()
+
+            AppInformation.currentUser = currentUser
 
             setContentView(R.layout.activity_main)
         }
@@ -45,12 +47,12 @@ class MainActivity : AppCompatActivity()
 
         val user = User(email = "$randomLetter$uuid@gmail.com")
 
+        AppInformation.currentUser = user
+
         val documentPath = "users/${user.email}"
 
         Firebase.firestore.document(documentPath).set(user).addOnCompleteListener()
         {
-            AppInformation.currentUser = user
-
             AppDatabase.executorService.execute { userDAO.insert(user) }
 
             setContentView(R.layout.activity_main)
