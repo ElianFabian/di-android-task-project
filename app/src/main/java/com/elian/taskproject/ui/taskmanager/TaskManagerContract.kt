@@ -38,7 +38,7 @@ interface TaskManagerContract
         fun add(task: Task)
         fun edit(editedTask: Task, position: Int)
     }
-    
+
     interface OnInteractorListener : OnRepositoryCallback
     {
         fun onNameEmptyError()
