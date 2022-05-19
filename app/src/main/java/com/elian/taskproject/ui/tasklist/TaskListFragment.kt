@@ -62,13 +62,7 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.action_undo -> if (deletedTasks.isNotEmpty())
-            {
-                val task = deletedTasks.keys.last()
-                val position = deletedTasks.values.last()
-
-                presenter.undo(task, position)
-            }
+            R.id.action_undo -> if (deletedTasks.isNotEmpty()) undoDeleteTask().also { return true }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -110,9 +104,17 @@ class TaskListFragment : BaseFragment(),
         })
     }
 
-    //endregion
+    private fun undoDeleteTask()
+    {
+        val task = deletedTasks.keys.last()
+        val position = deletedTasks.values.last()
 
-    //region TaskListContract.View
+        presenter.undo(task, position)
+    }
+
+//endregion
+
+//region TaskListContract.View
 
     override val isListEmpty: Boolean get() = taskAdapter.isEmpty
 
@@ -183,9 +185,9 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when undoing.")
     }
 
-    //endregion
+//endregion
 
-    //region RecyclerViewAdapter.OnBindViewHolderListener<>
+//region RecyclerViewAdapter.OnBindViewHolderListener<>
 
     override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
@@ -201,18 +203,18 @@ class TaskListFragment : BaseFragment(),
         }
     }
 
-    //endregion
+//endregion
 
-    //region RecyclerViewAdapter.OnItemClickListener<>
+//region RecyclerViewAdapter.OnItemClickListener<>
 
     override fun onItemClick(v: View?, selectedItem: Task, position: Int)
     {
         sendSelectedTask_To_TaskEditFragment(selectedItem, position)
     }
 
-    //endregion
+//endregion
 
-    //region RecyclerViewAdapter.OnItemLongClickListener<>
+//region RecyclerViewAdapter.OnItemLongClickListener<>
 
     override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
     {
@@ -221,5 +223,5 @@ class TaskListFragment : BaseFragment(),
         return true
     }
 
-    //endregion
+//endregion
 }
