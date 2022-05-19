@@ -2,6 +2,7 @@ package com.elian.taskproject.ui.tasklist
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -70,6 +71,17 @@ class TaskListFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        if (item.itemId == R.id.actionUndo)
+        {
+            //presenter.undo()
+            return true
+        }
+        
+        return super.onOptionsItemSelected(item)
     }
 
     //endregion
