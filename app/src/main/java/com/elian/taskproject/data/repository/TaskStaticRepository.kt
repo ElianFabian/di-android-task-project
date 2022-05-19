@@ -27,6 +27,12 @@ object TaskStaticRepository :
         callback.onDeleteSuccess(taskToDelete, position)
     }
 
+    override fun undo(callback: TaskListContract.OnUndoCallback, taskToUndo: Task, position: Int)
+    {
+        taskList.add(position, taskToUndo)
+        callback.onUndoSuccess(taskToUndo, position)
+    }
+
     //endregion
 
     //region ITaskAddContract.Repository

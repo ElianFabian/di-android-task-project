@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:id="@+id/actionUndo"
+            android:id="@+id/action_undo"
             android:icon="@drawable/ic_undo"
             android:title="@string/menu_toolbar_actionUndo_title"
             app:showAsAction="ifRoom" />

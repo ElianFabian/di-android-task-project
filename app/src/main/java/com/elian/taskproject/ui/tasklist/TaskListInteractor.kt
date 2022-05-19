@@ -20,6 +20,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.delete(this, taskToDelete, position)
     }
 
+    override fun undo(taskToUndo: Task, position: Int)
+    {
+        repository.undo(this, taskToUndo, position)
+    }
+
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
         listener.onGetListSuccess(listFromRepository)
@@ -43,6 +48,16 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     override fun onDeleteFailure()
     {
         listener.onDeleteFailure()
+    }
+
+    override fun onUndoSuccess(taskToUndo: Task, position: Int)
+    {
+        listener.onUndoSuccess(taskToUndo, position)
+    }
+
+    override fun onUndoFailure()
+    {
+       listener.onUndoFailure()
     }
 
     //endregion

@@ -17,7 +17,6 @@ import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
 import java.util.*
-import kotlin.properties.Delegates
 
 class TaskListFragment : BaseFragment(),
     TaskListContract.View,
@@ -32,27 +31,13 @@ class TaskListFragment : BaseFragment(),
     private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
     private lateinit var importanceStringArray: Array<String>
 
-    // It's not currently being used because undo action is not yet implemented
-    private val deletedTaskInfo = object
-    {
-        lateinit var task: Task
-            private set
-        var position by Delegates.notNull<Int>()
-            private set
-
-        fun set(deletedTask: Task, position: Int)
-        {
-            this.task = deletedTask
-            this.position = position
-        }
-
-        val isInitialized get() = ::task.isInitialized
-    }
+    private val deletedTasks = linkedMapOf<Task, Int>()
 
     //region Fragment Methods
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
+        setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
 
         presenter = TaskListPresenter(this)
@@ -75,12 +60,16 @@ class TaskListFragment : BaseFragment(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        if (item.itemId == R.id.actionUndo)
+        when (item.itemId)
         {
-            //presenter.undo()
-            return true
+            R.id.action_undo -> if (deletedTasks.isNotEmpty())
+            {
+                val position = deletedTasks.values.last()
+                val task = deletedTasks.keys.last()
+
+                presenter.undo(task, position)
+            }
         }
-        
         return super.onOptionsItemSelected(item)
     }
 
@@ -170,7 +159,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
     {
-        deletedTaskInfo.set(deletedTask, position)
+        deletedTasks[deletedTask] = position
 
         taskAdapter.removeItem(deletedTask)
 
@@ -180,6 +169,18 @@ class TaskListFragment : BaseFragment(),
     override fun onDeleteFailure()
     {
         toast("There was an error when deleting.")
+    }
+
+    override fun onUndoSuccess(taskToUndo: Task, position: Int)
+    {
+        taskAdapter.insertItem(position, taskToUndo)
+
+        deletedTasks.remove(taskToUndo)
+    }
+
+    override fun onUndoFailure()
+    {
+        toast("There was an error when undoing.")
     }
 
     //endregion

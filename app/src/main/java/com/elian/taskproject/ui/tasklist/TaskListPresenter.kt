@@ -20,6 +20,11 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.delete(taskToDelete, position)
     }
 
+    override fun undo(taskToUndo: Task, position: Int)
+    {
+        interactor?.undo(taskToUndo, position)
+    }
+
     override fun onDestroy()
     {
         view = null
@@ -55,6 +60,18 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onDeleteFailure()
     {
         view?.onDeleteFailure()
+    }
+
+    override fun onUndoSuccess(taskToUndo: Task, position: Int)
+    {
+        view?.onUndoSuccess(taskToUndo, position)
+
+        view?.apply { if (!isListEmpty) hideNoDataImage() }
+    }
+
+    override fun onUndoFailure()
+    {
+        view?.onUndoFailure()
     }
 
     //endregion

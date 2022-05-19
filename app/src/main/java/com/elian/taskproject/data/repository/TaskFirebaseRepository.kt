@@ -42,6 +42,15 @@ object TaskFirebaseRepository :
             .addOnFailureListener { callback.onDeleteFailure() }
     }
 
+    override fun undo(callback: TaskListContract.OnUndoCallback, taskToUndo: Task, position: Int)
+    {
+        val documentPath = "$taskCollectionPath/${taskToUndo.firebaseId}"
+
+        firestore.document(documentPath).set(taskToUndo)
+            .addOnSuccessListener { callback.onUndoSuccess(taskToUndo, position) }
+            .addOnFailureListener { callback.onUndoFailure() }
+    }
+
     //endregion
 
     //region ITaskAddContract.Repository
