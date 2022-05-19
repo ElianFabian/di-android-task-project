@@ -63,9 +63,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onDeleteFailure()
     }
 
-    override fun onUndoSuccess(undoneTask: Task, position: Int)
+    override fun onUndoSuccess(retrievedTask: Task, position: Int)
     {
-        view?.onUndoSuccess(undoneTask, position)
+        view?.onUndoSuccess(retrievedTask, position)
 
         view?.apply { if (!isListEmpty) hideNoDataImage() }
     }

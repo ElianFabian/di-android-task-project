@@ -24,7 +24,7 @@ interface TaskListContract
     {
         fun getList(callback: OnGetListCallback)
         fun delete(callback: OnDeleteCallback, taskToDelete: Task, position: Int)
-        fun undo(callback: OnUndoCallback, taskToUndo: Task, position: Int)
+        fun undo(callback: OnUndoCallback, taskToRetrieve: Task, position: Int)
     }
 
 
@@ -57,7 +57,7 @@ interface TaskListContract
 
     interface OnUndoCallback
     {
-        fun onUndoSuccess(undoneTask: Task, position: Int)
+        fun onUndoSuccess(retrievedTask: Task, position: Int)
         fun onUndoFailure()
     }
 }

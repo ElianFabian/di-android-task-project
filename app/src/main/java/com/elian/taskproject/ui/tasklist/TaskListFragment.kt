@@ -171,11 +171,11 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when deleting.")
     }
 
-    override fun onUndoSuccess(undoneTask: Task, position: Int)
+    override fun onUndoSuccess(retrievedTask: Task, position: Int)
     {
-        taskAdapter.insertItem(position, undoneTask)
+        taskAdapter.insertItem(position, retrievedTask)
 
-        deletedTasks.remove(undoneTask)
+        deletedTasks.remove(retrievedTask)
     }
 
     override fun onUndoFailure()

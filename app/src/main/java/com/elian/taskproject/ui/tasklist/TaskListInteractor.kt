@@ -51,9 +51,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onDeleteFailure()
     }
 
-    override fun onUndoSuccess(undoneTask: Task, position: Int)
+    override fun onUndoSuccess(retrievedTask: Task, position: Int)
     {
-        listener.onUndoSuccess(undoneTask, position)
+        listener.onUndoSuccess(retrievedTask, position)
     }
 
     override fun onUndoFailure()

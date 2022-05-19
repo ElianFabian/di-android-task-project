@@ -40,11 +40,11 @@ object TaskRoomRepository :
         callback.onDeleteSuccess(taskToDelete, position)
     }
 
-    override fun undo(callback: TaskListContract.OnUndoCallback, taskToUndo: Task, position: Int)
+    override fun undo(callback: TaskListContract.OnUndoCallback, taskToRetrieve: Task, position: Int)
     {
-        execute { taskDAO.insert(taskToUndo) }
+        execute { taskDAO.insert(taskToRetrieve) }
 
-        callback.onUndoSuccess(taskToUndo, position)
+        callback.onUndoSuccess(taskToRetrieve, position)
     }
 
     //endregion
