@@ -65,7 +65,7 @@ class TaskListFragment : BaseFragment(),
             if (deletedTasks.isNotEmpty()) undoDeleteTask(); true
         }
 
-        else             -> super.onOptionsItemSelected(item)
+        else             -> false
     }
 
 //endregion
