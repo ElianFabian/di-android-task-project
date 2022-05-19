@@ -62,7 +62,7 @@ class TaskListFragment : BaseFragment(),
     {
         R.id.action_undo ->
         {
-            if (deletedTasks.isNotEmpty()) undoDeleteTask(); true
+            undoDeleteTask(); true
         }
 
         else             -> false
@@ -107,6 +107,8 @@ class TaskListFragment : BaseFragment(),
 
     private fun undoDeleteTask()
     {
+        if (deletedTasks.isEmpty()) return
+
         val task = deletedTasks.keys.last()
         val position = deletedTasks.values.last()
 
