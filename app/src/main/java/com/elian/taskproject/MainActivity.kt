@@ -2,6 +2,7 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.AppInformation
@@ -19,6 +20,12 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
 
         initApplication()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
+        menuInflater.inflate(R.menu.action_undo, menu)
+        return true
     }
 
     private fun initApplication()
