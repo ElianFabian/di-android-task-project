@@ -16,4 +16,5 @@
         <item>Medio</item>
         <item>Alto</item>
     </string-array>
+    <string name="menu_toolbar_actionUndo_title">Deshacer</string>
 </resources>
