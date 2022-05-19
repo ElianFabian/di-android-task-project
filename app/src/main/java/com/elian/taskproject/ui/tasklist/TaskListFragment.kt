@@ -64,8 +64,8 @@ class TaskListFragment : BaseFragment(),
         {
             R.id.action_undo -> if (deletedTasks.isNotEmpty())
             {
-                val position = deletedTasks.values.last()
                 val task = deletedTasks.keys.last()
+                val position = deletedTasks.values.last()
 
                 presenter.undo(task, position)
             }
