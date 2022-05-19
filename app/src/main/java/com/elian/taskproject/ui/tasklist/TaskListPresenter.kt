@@ -41,8 +41,8 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onNoData()
     {
         view?.hideProgress()
-        view?.onNoData()
         view?.showNoDataImage()
+        view?.onNoData()
     }
 
     override fun onDeleteSuccess(deletedTask: Task, position: Int)
