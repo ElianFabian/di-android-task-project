@@ -21,9 +21,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.delete(taskToDelete, position)
     }
 
-    override fun undo(taskToUndo: Task, position: Int)
+    override fun undo(taskToRetrieve: Task, position: Int)
     {
-        interactor?.undo(taskToUndo, position)
+        interactor?.undo(taskToRetrieve, position)
     }
 
     override fun onDestroy()

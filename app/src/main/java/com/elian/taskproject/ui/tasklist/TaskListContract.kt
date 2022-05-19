@@ -32,7 +32,7 @@ interface TaskListContract
     {
         fun getList()
         fun delete(taskToDelete: Task, position: Int)
-        fun undo(taskToUndo: Task, position: Int)
+        fun undo(taskToRetrieve: Task, position: Int)
     }
 
     interface OnInteractorListener : OnRepositoryCallback

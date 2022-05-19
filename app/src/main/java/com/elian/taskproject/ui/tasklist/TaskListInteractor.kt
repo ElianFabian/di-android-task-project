@@ -21,9 +21,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.delete(this, taskToDelete, position)
     }
 
-    override fun undo(taskToUndo: Task, position: Int)
+    override fun undo(taskToRetrieve: Task, position: Int)
     {
-        repository.undo(this, taskToUndo, position)
+        repository.undo(this, taskToRetrieve, position)
     }
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
