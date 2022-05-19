@@ -16,9 +16,9 @@ interface TaskListContract
         fun hideNoDataImage()
     }
 
-    interface Presenter : BasePresenter, Actions, OnInteractorListener
+    interface Presenter : BasePresenter, Actions
 
-    interface Interactor : Actions, OnRepositoryCallback
+    interface Interactor : Actions
 
     interface Repository
     {
@@ -57,7 +57,7 @@ interface TaskListContract
 
     interface OnUndoCallback
     {
-        fun onUndoSuccess(taskToUndo: Task, position: Int)
+        fun onUndoSuccess(undoneTask: Task, position: Int)
         fun onUndoFailure()
     }
 }

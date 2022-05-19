@@ -14,9 +14,9 @@ interface TaskManagerContract
         fun cleanInputFieldsErrors()
     }
 
-    interface Presenter : BasePresenter, Actions, OnInteractorListener
+    interface Presenter : BasePresenter, Actions
 
-    interface Interactor : Actions, OnRepositoryCallback
+    interface Interactor : Actions
     {
         /**
          * Validates the fields from the view given in a Task.

@@ -4,7 +4,8 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskRoomRepository
 
 class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteractorListener) :
-    TaskManagerContract.Interactor
+    TaskManagerContract.Interactor,
+    TaskManagerContract.OnRepositoryCallback
 {
     private val repository: TaskManagerContract.Repository = TaskRoomRepository
 

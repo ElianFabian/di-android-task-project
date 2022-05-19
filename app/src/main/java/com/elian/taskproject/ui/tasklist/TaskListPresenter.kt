@@ -3,7 +3,8 @@ package com.elian.taskproject.ui.tasklist
 import com.elian.taskproject.data.model.Task
 
 class TaskListPresenter(private var view: TaskListContract.View?) :
-    TaskListContract.Presenter
+    TaskListContract.Presenter,
+    TaskListContract.OnInteractorListener
 {
     private var interactor: TaskListContract.Interactor? = TaskListInteractor(this)
 
@@ -62,9 +63,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onDeleteFailure()
     }
 
-    override fun onUndoSuccess(taskToUndo: Task, position: Int)
+    override fun onUndoSuccess(undoneTask: Task, position: Int)
     {
-        view?.onUndoSuccess(taskToUndo, position)
+        view?.onUndoSuccess(undoneTask, position)
 
         view?.apply { if (!isListEmpty) hideNoDataImage() }
     }

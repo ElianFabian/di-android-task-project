@@ -4,7 +4,8 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.data.repository.TaskRoomRepository
 
 class TaskListInteractor(private val listener: TaskListContract.OnInteractorListener) :
-    TaskListContract.Interactor
+    TaskListContract.Interactor,
+    TaskListContract.OnRepositoryCallback
 {
     private val repository: TaskListContract.Repository = TaskRoomRepository
 
@@ -50,14 +51,14 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onDeleteFailure()
     }
 
-    override fun onUndoSuccess(taskToUndo: Task, position: Int)
+    override fun onUndoSuccess(undoneTask: Task, position: Int)
     {
-        listener.onUndoSuccess(taskToUndo, position)
+        listener.onUndoSuccess(undoneTask, position)
     }
 
     override fun onUndoFailure()
     {
-       listener.onUndoFailure()
+        listener.onUndoFailure()
     }
 
     //endregion

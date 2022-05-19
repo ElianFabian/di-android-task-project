@@ -3,7 +3,8 @@ package com.elian.taskproject.ui.taskmanager
 import com.elian.taskproject.data.model.Task
 
 class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
-    TaskManagerContract.Presenter
+    TaskManagerContract.Presenter,
+    TaskManagerContract.OnInteractorListener
 {
     private var interactor: TaskManagerContract.Interactor? = TaskManagerInteractor(this)
 
