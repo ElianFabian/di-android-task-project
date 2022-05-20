@@ -16,4 +16,5 @@
         <item>Alto</item>
     </string-array>
     <string name="menu_toolbar_actionUndo_title">Deshacer</string>
+    <string name="menu_toolbar_actionRestore_title">Restaurar</string>
 </resources>

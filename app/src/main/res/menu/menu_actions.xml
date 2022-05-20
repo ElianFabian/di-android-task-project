@@ -6,4 +6,10 @@
             android:icon="@drawable/ic_undo"
             android:title="@string/menu_toolbar_actionUndo_title"
             app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/action_restore"
+            android:icon="@drawable/ic_restore"
+            android:title="@string/menu_toolbar_actionRestore_title"
+            app:showAsAction="ifRoom" />
 </menu>
