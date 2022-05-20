@@ -58,14 +58,13 @@ class TaskListFragment : BaseFragment(),
         initUI()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        R.id.action_undo ->
+        when (item.itemId)
         {
-            undoDeleteTask(); true
+            R.id.action_undo -> undoDeleteTask()
         }
-
-        else             -> false
+        return super.onOptionsItemSelected(item)
     }
 
     //endregion
