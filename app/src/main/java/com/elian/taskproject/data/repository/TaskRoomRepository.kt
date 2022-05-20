@@ -54,9 +54,10 @@ object TaskRoomRepository :
         oldState: Boolean, newState: Boolean,
     )
     {
+        taskToChangeCompletedState.isCompleted = newState
+
         execute { taskDAO.update(taskToChangeCompletedState) }
 
-        taskToChangeCompletedState.isCompleted = newState
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
