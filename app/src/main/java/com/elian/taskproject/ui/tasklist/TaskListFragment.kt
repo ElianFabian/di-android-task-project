@@ -206,20 +206,20 @@ class TaskListFragment : BaseFragment(),
         {
             tvName.text = item.name
             tvImportance.text = importanceStringArray[item.importance.ordinal]
-            swIsEndDate.isChecked = item.isCompleted
+            chkIsEndDate.isChecked = item.isCompleted
 
-            swIsEndDate.setOnClickListener()
+            chkIsEndDate.setOnClickListener()
             {
                 presenter.changeCompletedState(
                     taskToChangeCompletedState = item,
                     position = position,
                     oldState = item.isCompleted,
-                    newState = swIsEndDate.isChecked
+                    newState = chkIsEndDate.isChecked
                 )
 
                 // When calling the changeCompletedState() function the isCompleted property may
                 // or may not change. So we need to update the swIsEndDate.isChecked property.
-                swIsEndDate.isChecked = item.isCompleted
+                chkIsEndDate.isChecked = item.isCompleted
             }
         }
     }

@@ -7,7 +7,6 @@
     <string name="frgTaskAdd_ibDate_contentDescription">Botón para seleccionar una fecha</string>
     <string name="frgTaskAdd_tieDescription_hint">Descripción</string>
     <string name="frgTaskAdd_spnImportance_prompt">Importancia</string>
-    <string name="item_task__swIsEndDate_text">¿Es fecha fin?</string>
     <string name="error_emptyField">El campo no puede estar vacío</string>
 
 

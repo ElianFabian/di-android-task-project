@@ -18,8 +18,6 @@
         <item>High</item>
     </string-array>
 
-    <string name="item_task__swIsEndDate_text">Is end date?</string>
-
     <string name="error_emptyField">The field can\'t be empty</string>
     <string name="frgTaskAdd_ibDate_contentDescription">Button to select a date</string>
     <string name="menu_toolbar_actionUndo_title">Undo</string>
