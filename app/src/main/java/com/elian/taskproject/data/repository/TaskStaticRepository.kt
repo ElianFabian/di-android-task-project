@@ -33,6 +33,11 @@ object TaskStaticRepository :
         callback.onUndoSuccess(taskToRetrieve, position)
     }
 
+    override fun changeCompletedState(callback: TaskListContract.OnChangeCompletedStateCallback, taskToMark: Task, position: Int)
+    {
+        callback.onChangeCompletedStateSuccess(taskToMark, position)
+    }
+
     //endregion
 
     //region ITaskAddContract.Repository

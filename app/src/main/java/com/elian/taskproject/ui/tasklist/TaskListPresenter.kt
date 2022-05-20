@@ -26,6 +26,11 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.undo(taskToRetrieve, position)
     }
 
+    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int)
+    {
+        interactor?.changeCompletedState(taskToChangeCompletedState, position)
+    }
+
     override fun onDestroy()
     {
         view = null
@@ -73,6 +78,16 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onUndoFailure()
     {
         view?.onUndoFailure()
+    }
+
+    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    {
+        view?.onChangeCompletedStateSuccess(changeCompletedStateTask, position)
+    }
+
+    override fun onChangeCompletedStateFailure()
+    {
+        view?.onChangeCompletedStateFailure()
     }
 
     //endregion

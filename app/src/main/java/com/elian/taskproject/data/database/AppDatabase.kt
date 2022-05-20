@@ -11,7 +11,7 @@ import com.elian.taskproject.data.model.User
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-@Database(version = 6, entities = [Task::class, User::class], exportSchema = false)
+@Database(version = 7, entities = [Task::class, User::class], exportSchema = false)
 abstract class AppDatabase : RoomDatabase()
 {
     abstract val userDAO: UserDAO

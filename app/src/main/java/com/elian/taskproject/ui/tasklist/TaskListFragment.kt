@@ -187,6 +187,16 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when undoing.")
     }
 
+    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    {
+
+    }
+
+    override fun onChangeCompletedStateFailure()
+    {
+        toast("There was an error when changing the completed state.")
+    }
+
     //endregion
 
     //region RecyclerViewAdapter.OnBindViewHolderListener<>
@@ -197,10 +207,13 @@ class TaskListFragment : BaseFragment(),
         {
             tvName.text = item.name
             tvImportance.text = importanceStringArray[item.importance.ordinal]
+            swIsEndDate.isChecked = item.isCompleted
 
-            item.estimatedEndDate?.let()
+            swIsEndDate.setOnClickListener() 
             {
-                swIsEndDate.isChecked = it < Calendar.getInstance().timeInMillis
+                item.isCompleted = swIsEndDate.isChecked
+                
+                presenter.changeCompletedState(item, position)
             }
         }
     }

@@ -10,8 +10,8 @@ data class Task(
     var name: String = "",
     var description: String = "",
     var importance: Importance = Importance.LOW,
-    var estimatedEndDate: Long? = null,
     var endDate: Long? = null,
+    var isCompleted: Boolean = false,
 
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

@@ -26,6 +26,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.undo(this, taskToRetrieve, position)
     }
 
+    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int)
+    {
+        repository.changeCompletedState(this, taskToChangeCompletedState, position)
+    }
+
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
         listener.onGetListSuccess(listFromRepository)
@@ -59,6 +64,16 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     override fun onUndoFailure()
     {
         listener.onUndoFailure()
+    }
+
+    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    {
+        listener.onChangeCompletedStateSuccess(changeCompletedStateTask, position)
+    }
+
+    override fun onChangeCompletedStateFailure()
+    {
+        listener.onChangeCompletedStateFailure()
     }
 
     //endregion

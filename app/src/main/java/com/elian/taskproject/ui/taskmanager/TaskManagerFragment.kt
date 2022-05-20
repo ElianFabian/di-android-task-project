@@ -25,18 +25,18 @@ class TaskManagerFragment : BaseFragment(),
     private val taskFromFields: Task
         get() = with(binding)
         {
-            var estimatedEndDate: Long? = null
+            var endDate: Long? = null
 
             if (etDate.text.toString().isNotEmpty())
             {
-                estimatedEndDate = DataUtils.dateFormat.parse(etDate.text.toString())?.time
+                endDate = DataUtils.dateFormat.parse(etDate.text.toString())?.time
             }
 
             Task(
                 name = tieName.text.toString().trim(),
                 description = tieDescription.text.toString().trim(),
                 importance = Task.Importance.values()[spnImportance.selectedItemPosition],
-                estimatedEndDate = estimatedEndDate
+                endDate = endDate,
             )
         }
 
@@ -108,7 +108,7 @@ class TaskManagerFragment : BaseFragment(),
         tieName.setText(task.name)
         tieDescription.setText(task.description)
         spnImportance.setSelection(task.importance.ordinal)
-        etDate.setText(DataUtils.dateFormat.format(Date(task.estimatedEndDate as Long)))
+        etDate.setText(DataUtils.dateFormat.format(Date(task.endDate as Long)))
     }
 
     //endregion
