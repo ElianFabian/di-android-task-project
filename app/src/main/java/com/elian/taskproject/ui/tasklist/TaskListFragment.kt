@@ -108,10 +108,10 @@ class TaskListFragment : BaseFragment(),
     {
         if (deletedTasks.isEmpty()) return
 
-        val task = deletedTasks.keys.last()
+        val lastDeletedTask = deletedTasks.keys.last()
         val position = deletedTasks.values.last()
 
-        presenter.undo(task, position)
+        presenter.undo(lastDeletedTask, position)
     }
 
     //endregion
