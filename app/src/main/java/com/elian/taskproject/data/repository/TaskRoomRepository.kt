@@ -61,6 +61,17 @@ object TaskRoomRepository :
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
+    override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
+    {
+        completedTasks.forEach() 
+        {
+            it.isCompleted = false
+            execute { taskDAO.update(it) }
+        }
+
+        callback.onRestoreSuccess(completedTasks)
+    }
+
     //endregion
 
     //region ITaskAddContract.Repository

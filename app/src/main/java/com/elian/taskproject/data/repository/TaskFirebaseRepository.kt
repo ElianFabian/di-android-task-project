@@ -72,6 +72,24 @@ object TaskFirebaseRepository :
             }
     }
 
+    override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
+    {
+        completedTasks.forEach()
+        {
+            val documentPath = "$taskCollectionPath/${it.firebaseId}"
+
+            firestore.document(documentPath).set(it)
+                .addOnSuccessListener()
+                {
+                    callback.onRestoreSuccess(completedTasks)
+                }
+                .addOnFailureListener()
+                {
+                    callback.onRestoreFailure()
+                }
+        }
+    }
+
     //endregion
 
     //region ITaskAddContract.Repository

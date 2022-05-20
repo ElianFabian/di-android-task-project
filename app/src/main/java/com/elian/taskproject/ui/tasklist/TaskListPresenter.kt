@@ -31,6 +31,11 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.changeCompletedState(taskToChangeCompletedState, position, newState)
     }
 
+    override fun restore(completedTasks: List<Task>)
+    {
+        interactor?.restore(completedTasks)
+    }
+
     override fun onDestroy()
     {
         view = null
@@ -88,6 +93,16 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onCompletedStateChangedFailure()
     {
         view?.onCompletedStateChangedFailure()
+    }
+
+    override fun onRestoreSuccess(notCompletedTasks: List<Task>)
+    {
+        view?.onRestoreSuccess(notCompletedTasks)
+    }
+
+    override fun onRestoreFailure()
+    {
+        view?.onRestoreFailure()
     }
 
     //endregion

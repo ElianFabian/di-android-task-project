@@ -31,7 +31,7 @@ class TaskListFragment : BaseFragment(),
     private lateinit var importanceStringArray: Array<String>
 
     private val deletedTasks = linkedMapOf<Task, Int>()
-    private val completedTasks = linkedMapOf<Task, Int>()
+    private val completedTasks = mutableListOf<Task>()
 
     //region Fragment Methods
 
@@ -62,7 +62,8 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.action_undo -> undoDeleteTask()
+            R.id.action_undo    -> undoDeleteTask()
+            R.id.action_restore -> restoreAllDeletedTask()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -114,6 +115,13 @@ class TaskListFragment : BaseFragment(),
         presenter.undo(lastDeletedTask, position)
     }
 
+    private fun restoreAllDeletedTask()
+    {
+        if (completedTasks.isEmpty()) return
+
+        presenter.restore(completedTasks)
+    }
+
     //endregion
 
     //region TaskListContract.View
@@ -149,6 +157,10 @@ class TaskListFragment : BaseFragment(),
             if (isNewItemAdded) addItem(listFromRepository.last())
             else replaceList(listFromRepository)
         }
+
+        val completedTaskFromRepository = listFromRepository.filter { it.isCompleted }
+
+        completedTasks.addAll(completedTaskFromRepository)
     }
 
     override fun onGetListFailure()
@@ -189,12 +201,29 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
+        completedStateChangedTask.apply()
+        {
+            if (isCompleted) completedTasks.add(this)
+        }
 
+        taskAdapter.removeItem(completedStateChangedTask)
     }
 
     override fun onCompletedStateChangedFailure()
     {
         toast("There was an error when changing the completed state.")
+    }
+
+    override fun onRestoreSuccess(notCompletedTasks: List<Task>)
+    {
+        taskAdapter.insertItems(0, notCompletedTasks)
+
+        completedTasks.clear()
+    }
+
+    override fun onRestoreFailure()
+    {
+        toast("There was an error when restoring the completed tasks.")
     }
 
     //endregion
@@ -203,6 +232,14 @@ class TaskListFragment : BaseFragment(),
 
     override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
+        if (item.isCompleted)
+        {
+            view.isVisible = false
+            view.layoutParams = RecyclerView.LayoutParams(0, 0)
+
+            return
+        }
+
         ItemTaskBinding.bind(view).apply()
         {
             tvName.text = item.name
