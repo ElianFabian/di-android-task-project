@@ -26,9 +26,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.undo(taskToRetrieve, position)
     }
 
-    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int)
+    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, oldState: Boolean, newState: Boolean)
     {
-        interactor?.changeCompletedState(taskToChangeCompletedState, position)
+        interactor?.changeCompletedState(taskToChangeCompletedState, position, oldState, newState)
     }
 
     override fun onDestroy()

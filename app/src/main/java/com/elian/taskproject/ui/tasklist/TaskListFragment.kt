@@ -16,7 +16,6 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
-import java.util.*
 
 class TaskListFragment : BaseFragment(),
     TaskListContract.View,
@@ -211,9 +210,16 @@ class TaskListFragment : BaseFragment(),
 
             swIsEndDate.setOnClickListener()
             {
-                item.isCompleted = swIsEndDate.isChecked
+                presenter.changeCompletedState(
+                    taskToChangeCompletedState = item,
+                    position = position,
+                    oldState = item.isCompleted,
+                    newState = swIsEndDate.isChecked
+                )
 
-                presenter.changeCompletedState(item, position)
+                // When calling the changeCompletedState() function the isCompleted property may
+                // or may not change. So we need to update the swIsEndDate.isChecked property.
+                swIsEndDate.isChecked = item.isCompleted
             }
         }
     }
