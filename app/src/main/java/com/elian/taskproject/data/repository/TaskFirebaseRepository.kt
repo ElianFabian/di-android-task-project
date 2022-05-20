@@ -51,13 +51,13 @@ object TaskFirebaseRepository :
             .addOnFailureListener { callback.onUndoFailure() }
     }
 
-    override fun changeCompletedState(callback: TaskListContract.OnChangeCompletedStateCallback, taskToMark: Task, position: Int)
+    override fun changeCompletedState(callback: TaskListContract.OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int)
     {
-        val documentPath = "$taskCollectionPath/${taskToMark.firebaseId}"
+        val documentPath = "$taskCollectionPath/${taskToChangeCompletedState.firebaseId}"
 
         firestore.document(documentPath).update("completed", true)
-            .addOnSuccessListener { callback.onChangeCompletedStateSuccess(taskToMark, position) }
-            .addOnFailureListener { callback.onChangeCompletedStateFailure() }
+            .addOnSuccessListener { callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position) }
+            .addOnFailureListener { callback.onCompletedStateChangedFailure() }
     }
 
     //endregion

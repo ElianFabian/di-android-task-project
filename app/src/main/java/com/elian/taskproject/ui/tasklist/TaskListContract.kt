@@ -25,7 +25,7 @@ interface TaskListContract
         fun getList(callback: OnGetListCallback)
         fun delete(callback: OnDeleteCallback, taskToDelete: Task, position: Int)
         fun undo(callback: OnUndoCallback, taskToRetrieve: Task, position: Int)
-        fun changeCompletedState(callback: OnChangeCompletedStateCallback, taskToMark: Task, position: Int)
+        fun changeCompletedState(callback: OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int)
     }
 
 
@@ -43,7 +43,7 @@ interface TaskListContract
         OnGetListCallback,
         OnDeleteCallback,
         OnUndoCallback,
-        OnChangeCompletedStateCallback
+        OnCompletedStateChangedCallback
 
     interface OnGetListCallback
     {
@@ -64,9 +64,9 @@ interface TaskListContract
         fun onUndoFailure()
     }
 
-    interface OnChangeCompletedStateCallback
+    interface OnCompletedStateChangedCallback
     {
-        fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
-        fun onChangeCompletedStateFailure()
+        fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
+        fun onCompletedStateChangedFailure()
     }
 }

@@ -66,14 +66,14 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onUndoFailure()
     }
 
-    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        listener.onChangeCompletedStateSuccess(changeCompletedStateTask, position)
+        listener.onCompletedStateChangedSuccess(completedStateChangedTask, position)
     }
 
-    override fun onChangeCompletedStateFailure()
+    override fun onCompletedStateChangedFailure()
     {
-        listener.onChangeCompletedStateFailure()
+        listener.onCompletedStateChangedFailure()
     }
 
     //endregion

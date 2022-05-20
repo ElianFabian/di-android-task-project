@@ -47,11 +47,11 @@ object TaskRoomRepository :
         callback.onUndoSuccess(taskToRetrieve, position)
     }
 
-    override fun changeCompletedState(callback: TaskListContract.OnChangeCompletedStateCallback, taskToMark: Task, position: Int)
+    override fun changeCompletedState(callback: TaskListContract.OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int)
     {
-        execute { taskDAO.update(taskToMark) }
+        execute { taskDAO.update(taskToChangeCompletedState) }
 
-        callback.onChangeCompletedStateSuccess(taskToMark, position)
+        callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
     //endregion

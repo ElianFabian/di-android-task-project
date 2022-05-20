@@ -33,9 +33,9 @@ object TaskStaticRepository :
         callback.onUndoSuccess(taskToRetrieve, position)
     }
 
-    override fun changeCompletedState(callback: TaskListContract.OnChangeCompletedStateCallback, taskToMark: Task, position: Int)
+    override fun changeCompletedState(callback: TaskListContract.OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int)
     {
-        callback.onChangeCompletedStateSuccess(taskToMark, position)
+        callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
     //endregion

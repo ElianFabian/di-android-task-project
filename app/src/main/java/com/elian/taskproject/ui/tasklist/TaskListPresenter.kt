@@ -80,14 +80,14 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onUndoFailure()
     }
 
-    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        view?.onChangeCompletedStateSuccess(changeCompletedStateTask, position)
+        view?.onCompletedStateChangedSuccess(completedStateChangedTask, position)
     }
 
-    override fun onChangeCompletedStateFailure()
+    override fun onCompletedStateChangedFailure()
     {
-        view?.onChangeCompletedStateFailure()
+        view?.onCompletedStateChangedFailure()
     }
 
     //endregion

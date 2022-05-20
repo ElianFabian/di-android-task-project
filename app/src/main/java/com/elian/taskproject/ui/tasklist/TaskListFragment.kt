@@ -187,12 +187,12 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when undoing.")
     }
 
-    override fun onChangeCompletedStateSuccess(changeCompletedStateTask: Task, position: Int)
+    override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
 
     }
 
-    override fun onChangeCompletedStateFailure()
+    override fun onCompletedStateChangedFailure()
     {
         toast("There was an error when changing the completed state.")
     }
@@ -209,10 +209,10 @@ class TaskListFragment : BaseFragment(),
             tvImportance.text = importanceStringArray[item.importance.ordinal]
             swIsEndDate.isChecked = item.isCompleted
 
-            swIsEndDate.setOnClickListener() 
+            swIsEndDate.setOnClickListener()
             {
                 item.isCompleted = swIsEndDate.isChecked
-                
+
                 presenter.changeCompletedState(item, position)
             }
         }
