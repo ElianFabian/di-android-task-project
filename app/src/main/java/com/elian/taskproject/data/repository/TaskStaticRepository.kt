@@ -41,6 +41,8 @@ object TaskStaticRepository :
     )
     {
         taskToChangeCompletedState.isCompleted = newState
+        
+        taskList[position] = taskToChangeCompletedState
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
