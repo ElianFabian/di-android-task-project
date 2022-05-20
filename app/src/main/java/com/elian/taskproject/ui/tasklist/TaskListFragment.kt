@@ -234,7 +234,6 @@ class TaskListFragment : BaseFragment(),
     {
         if (item.isCompleted)
         {
-            view.isVisible = false
             view.layoutParams = RecyclerView.LayoutParams(0, 0)
 
             return
