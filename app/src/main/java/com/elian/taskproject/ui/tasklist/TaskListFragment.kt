@@ -37,6 +37,7 @@ class TaskListFragment : BaseFragment(),
     private lateinit var importanceStringArray: Array<String>
 
     private val deletedTasks = linkedMapOf<Task, Int>()
+    private val completedTasks = linkedMapOf<Task, Int>()
 
     //region Fragment Methods
 
@@ -194,7 +195,9 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-
+        // Someday I will implement this... (1)
+//        completedTasks[completedStateChangedTask] = position
+//        taskAdapter.removeItem(completedStateChangedTask)
     }
 
     override fun onCompletedStateChangedFailure()
@@ -208,6 +211,15 @@ class TaskListFragment : BaseFragment(),
 
     override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
+        // Someday I will implement this... (2)
+//        if (item.isCompleted)
+//        {
+//            view.isVisible = false
+//            view.layoutParams = RecyclerView.LayoutParams(0, 0)
+//
+//            return
+//        }
+
         ItemTaskBinding.bind(view).apply()
         {
             tvName.text = item.name
