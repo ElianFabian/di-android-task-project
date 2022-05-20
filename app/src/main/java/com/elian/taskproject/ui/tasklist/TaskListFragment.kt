@@ -217,8 +217,8 @@ class TaskListFragment : BaseFragment(),
                     newState = chkIsEndDate.isChecked
                 )
 
-                // When calling the changeCompletedState() function the isCompleted property may
-                // or may not change. So we need to update the swIsEndDate.isChecked property.
+                // In case the new state is not set then we have to also change
+                // the state in the UI.
                 chkIsEndDate.isChecked = item.isCompleted
             }
         }
