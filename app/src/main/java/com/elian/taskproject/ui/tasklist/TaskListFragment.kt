@@ -194,14 +194,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        // Deletes the task from the recycler when the task is marked as completed.
-//        if (completedStateChangedTask.isCompleted)
-//        {
-//            GlobalScope.launch(Dispatchers.Main) {
-//                delay(400)
-//                taskAdapter.removeItem(completedStateChangedTask)
-//            }
-//        }
+
     }
 
     override fun onCompletedStateChangedFailure()
