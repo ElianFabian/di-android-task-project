@@ -26,9 +26,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.undo(this, taskToRetrieve, position)
     }
 
-    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, oldState: Boolean, newState: Boolean)
+    override fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, newState: Boolean)
     {
-        repository.changeCompletedState(this, taskToChangeCompletedState, position, oldState, newState)
+        repository.changeCompletedState(this, taskToChangeCompletedState, position, newState)
     }
 
     override fun onGetListSuccess(listFromRepository: List<Task>)

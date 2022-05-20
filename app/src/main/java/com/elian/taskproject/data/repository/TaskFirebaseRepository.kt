@@ -55,7 +55,7 @@ object TaskFirebaseRepository :
         callback: TaskListContract.OnCompletedStateChangedCallback,
         taskToChangeCompletedState: Task,
         position: Int,
-        oldState: Boolean, newState: Boolean,
+        newState: Boolean,
     )
     {
         val documentPath = "$taskCollectionPath/${taskToChangeCompletedState.firebaseId}"
@@ -68,7 +68,6 @@ object TaskFirebaseRepository :
             }
             .addOnFailureListener()
             {
-                taskToChangeCompletedState.isCompleted = oldState
                 callback.onCompletedStateChangedFailure()
             }
     }

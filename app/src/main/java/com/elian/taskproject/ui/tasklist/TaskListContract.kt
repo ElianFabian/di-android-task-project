@@ -25,7 +25,7 @@ interface TaskListContract
         fun getList(callback: OnGetListCallback)
         fun delete(callback: OnDeleteCallback, taskToDelete: Task, position: Int)
         fun undo(callback: OnUndoCallback, taskToRetrieve: Task, position: Int)
-        fun changeCompletedState(callback: OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int, oldState: Boolean, newState: Boolean)
+        fun changeCompletedState(callback: OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int, newState: Boolean)
     }
 
 
@@ -34,7 +34,7 @@ interface TaskListContract
         fun getList()
         fun delete(taskToDelete: Task, position: Int)
         fun undo(taskToRetrieve: Task, position: Int)
-        fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, oldState: Boolean, newState: Boolean)
+        fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, newState: Boolean)
     }
 
     interface OnInteractorListener : OnRepositoryCallback

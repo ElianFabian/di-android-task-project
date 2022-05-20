@@ -51,7 +51,7 @@ object TaskRoomRepository :
         callback: TaskListContract.OnCompletedStateChangedCallback,
         taskToChangeCompletedState: Task,
         position: Int,
-        oldState: Boolean, newState: Boolean,
+        newState: Boolean,
     )
     {
         taskToChangeCompletedState.isCompleted = newState

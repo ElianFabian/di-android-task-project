@@ -16,12 +16,6 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.util.*
-import kotlin.concurrent.timerTask
 
 class TaskListFragment : BaseFragment(),
     TaskListContract.View,
@@ -220,7 +214,6 @@ class TaskListFragment : BaseFragment(),
                 presenter.changeCompletedState(
                     taskToChangeCompletedState = item,
                     position = position,
-                    oldState = item.isCompleted,
                     newState = chkIsEndDate.isChecked
                 )
 
