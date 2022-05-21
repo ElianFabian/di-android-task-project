@@ -24,4 +24,9 @@ data class Task(
     {
         LOW, MEDIUM, HIGH
     }
+    
+    fun markAsIncomplete()
+    {
+        isCompleted = false
+    }
 }
