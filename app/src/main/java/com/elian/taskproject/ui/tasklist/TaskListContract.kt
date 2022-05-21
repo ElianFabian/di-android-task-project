@@ -75,7 +75,7 @@ interface TaskListContract
 
     interface OnRestoreCallback
     {
-        fun onRestoreSuccess(notCompletedTasks: List<Task>)
+        fun onRestoreSuccess(uncompletedTasks: List<Task>)
         fun onRestoreFailure()
     }
 }

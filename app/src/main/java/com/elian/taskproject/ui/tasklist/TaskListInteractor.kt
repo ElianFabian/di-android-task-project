@@ -85,9 +85,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onCompletedStateChangedFailure()
     }
 
-    override fun onRestoreSuccess(notCompletedTasks: List<Task>)
+    override fun onRestoreSuccess(uncompletedTasks: List<Task>)
     {
-        listener.onRestoreSuccess(notCompletedTasks)
+        listener.onRestoreSuccess(uncompletedTasks)
     }
 
     override fun onRestoreFailure()

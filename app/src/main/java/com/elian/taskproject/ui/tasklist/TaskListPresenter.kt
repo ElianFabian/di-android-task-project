@@ -99,9 +99,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onCompletedStateChangedFailure()
     }
 
-    override fun onRestoreSuccess(notCompletedTasks: List<Task>)
+    override fun onRestoreSuccess(uncompletedTasks: List<Task>)
     {
-        view?.onRestoreSuccess(notCompletedTasks)
+        view?.onRestoreSuccess(uncompletedTasks)
     }
 
     override fun onRestoreFailure()

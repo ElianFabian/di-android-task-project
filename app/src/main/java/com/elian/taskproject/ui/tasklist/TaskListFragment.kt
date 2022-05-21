@@ -218,9 +218,9 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when changing the completed state.")
     }
 
-    override fun onRestoreSuccess(notCompletedTasks: List<Task>)
+    override fun onRestoreSuccess(uncompletedTasks: List<Task>)
     {
-        taskAdapter.insertItems(0, notCompletedTasks)
+        taskAdapter.insertItems(0, uncompletedTasks)
 
         completedTasks.clear()
     }
