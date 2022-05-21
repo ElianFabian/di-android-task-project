@@ -41,6 +41,10 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view = null
         interactor = null
     }
+    
+    //endregion
+    
+    //region TaskListContract.OnInteractorListener
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
@@ -104,6 +108,6 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     {
         view?.onRestoreFailure()
     }
-
+    
     //endregion
 }
