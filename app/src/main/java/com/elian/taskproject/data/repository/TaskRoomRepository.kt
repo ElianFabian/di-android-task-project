@@ -65,7 +65,7 @@ object TaskRoomRepository :
     {
         completedTasks.forEach()
         {
-            it.isCompleted = false
+            it.markAsIncomplete()
 
             execute { taskDAO.update(it) } // I tried to do an updateAll() function, but it didn't work
         }
