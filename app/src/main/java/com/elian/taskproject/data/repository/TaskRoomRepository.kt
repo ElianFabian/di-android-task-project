@@ -61,7 +61,7 @@ object TaskRoomRepository :
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
-    override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
+    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
     {
         completedTasks.forEach()
         {
@@ -70,7 +70,7 @@ object TaskRoomRepository :
             execute { taskDAO.update(it) } // I tried to do an updateAll() function, but it didn't work
         }
 
-        callback.onRestoreSuccess(completedTasks)
+        callback.onMarkAsIncompleteSuccess(completedTasks)
     }
 
     //endregion

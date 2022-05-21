@@ -31,9 +31,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.changeCompletedState(this, taskToChangeCompletedState, position, newState)
     }
 
-    override fun restore(completedTasks: List<Task>)
+    override fun markAsIncomplete(completedTasks: List<Task>)
     {
-        repository.restore(this, completedTasks)
+        repository.markAsIncomplete(this, completedTasks)
     }
     
     //endregion
@@ -85,14 +85,14 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onCompletedStateChangedFailure()
     }
 
-    override fun onRestoreSuccess(uncompletedTasks: List<Task>)
+    override fun onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete: List<Task>)
     {
-        listener.onRestoreSuccess(uncompletedTasks)
+        listener.onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete)
     }
 
-    override fun onRestoreFailure()
+    override fun onMarkAsIncompleteFailure()
     {
-        listener.onRestoreFailure()
+        listener.onMarkAsIncompleteFailure()
     }
     
     //endregion

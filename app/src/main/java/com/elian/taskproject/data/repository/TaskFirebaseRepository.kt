@@ -72,7 +72,7 @@ object TaskFirebaseRepository :
             }
     }
 
-    override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
+    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
     {
         completedTasks.forEach()
         {
@@ -81,11 +81,11 @@ object TaskFirebaseRepository :
             firestore.document(documentPath).set(it)
                 .addOnSuccessListener()
                 {
-                    callback.onRestoreSuccess(completedTasks)
+                    callback.onMarkAsIncompleteSuccess(completedTasks)
                 }
                 .addOnFailureListener()
                 {
-                    callback.onRestoreFailure()
+                    callback.onMarkAsIncompleteFailure()
                 }
         }
     }

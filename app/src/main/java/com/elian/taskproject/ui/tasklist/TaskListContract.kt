@@ -26,7 +26,7 @@ interface TaskListContract
         fun delete(callback: OnDeleteCallback, taskToDelete: Task, position: Int)
         fun undo(callback: OnUndoCallback, taskToRetrieve: Task, position: Int)
         fun changeCompletedState(callback: OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int, newState: Boolean)
-        fun restore(callback: OnRestoreCallback, completedTasks: List<Task>)
+        fun markAsIncomplete(callback: OnMarkAsIncompleteCallback, completedTasks: List<Task>)
     }
 
 
@@ -36,7 +36,7 @@ interface TaskListContract
         fun delete(taskToDelete: Task, position: Int)
         fun undo(taskToRetrieve: Task, position: Int)
         fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, newState: Boolean)
-        fun restore(completedTasks: List<Task>)
+        fun markAsIncomplete(completedTasks: List<Task>)
     }
 
     interface OnInteractorListener : OnRepositoryCallback
@@ -46,7 +46,7 @@ interface TaskListContract
         OnDeleteCallback,
         OnUndoCallback,
         OnCompletedStateChangedCallback,
-        OnRestoreCallback
+        OnMarkAsIncompleteCallback
 
     interface OnGetListCallback
     {
@@ -73,9 +73,9 @@ interface TaskListContract
         fun onCompletedStateChangedFailure()
     }
 
-    interface OnRestoreCallback
+    interface OnMarkAsIncompleteCallback
     {
-        fun onRestoreSuccess(uncompletedTasks: List<Task>)
-        fun onRestoreFailure()
+        fun onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete: List<Task>)
+        fun onMarkAsIncompleteFailure()
     }
 }

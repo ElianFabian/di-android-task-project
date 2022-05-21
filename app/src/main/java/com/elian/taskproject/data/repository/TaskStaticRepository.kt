@@ -46,12 +46,12 @@ object TaskStaticRepository :
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
-    override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
+    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
     {
         completedTasks.forEach { it.isCompleted = false }
 
         taskList.addAll(completedTasks)
-        callback.onRestoreSuccess(completedTasks)
+        callback.onMarkAsIncompleteSuccess(completedTasks)
     }
 
     //endregion
