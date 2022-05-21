@@ -32,7 +32,7 @@
                 tools:text="Importance" />
 
         <CheckBox
-                android:id="@+id/chkIsEndDate"
+                android:id="@+id/chk_is_completed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"/>
