@@ -29,6 +29,10 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
     {
         repository.edit(this, editedTask, position)
     }
+    
+    //endregion
+    
+    //region TaskManagerContract.OnRepositoryCallback
 
     override fun onAddSuccess()
     {
@@ -49,6 +53,6 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
     {
         listener.onEditFailure()
     }
-
+    
     //endregion
 }
