@@ -33,6 +33,10 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
         view = null
         interactor = null
     }
+    
+    //endregion
+    
+    //region ITaskManagerInteractorListener
 
     override fun onNameEmptyError()
     {
@@ -68,6 +72,6 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
     {
         view?.onEditFailure()
     }
-
+    
     //endregion
 }
