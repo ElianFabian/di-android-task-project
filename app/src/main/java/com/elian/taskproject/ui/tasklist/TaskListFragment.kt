@@ -16,6 +16,9 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
+import kotlinx.coroutines.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 class TaskListFragment : BaseFragment(),
     TaskListContract.View,
@@ -205,10 +208,16 @@ class TaskListFragment : BaseFragment(),
     {
         completedStateChangedTask.apply()
         {
-            if (isCompleted) completedTasks.add(this)
-        }
+            if (!isCompleted) return
 
-        taskAdapter.removeItem(completedStateChangedTask)
+            completedTasks.add(this)
+
+            GlobalScope.launch(Dispatchers.Main)
+            {
+                delay(timeMillis = 450)
+                taskAdapter.removeItem(this@apply)
+            }
+        }
     }
 
     override fun onCompletedStateChangedFailure()
