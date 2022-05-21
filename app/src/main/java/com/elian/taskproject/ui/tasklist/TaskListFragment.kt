@@ -96,29 +96,6 @@ class TaskListFragment : BaseFragment(),
         taskAdapter.setOnItemLongClickListener(this)
     }
 
-    private fun bindTaskViewHolder(view: View, item: Task, position: Int)
-    {
-        ItemTaskBinding.bind(view).apply()
-        {
-            tvName.text = item.name
-            tvImportance.text = importanceStringArray[item.importance.ordinal]
-            chkIsCompleted.isChecked = item.isCompleted
-
-            chkIsCompleted.setOnClickListener()
-            {
-                presenter.changeCompletedState(
-                    taskToChangeCompletedState = item,
-                    position = position,
-                    newState = chkIsCompleted.isChecked
-                )
-
-                // In case the new state is not set then we have to also change
-                // the state in the UI.
-                chkIsCompleted.isChecked = item.isCompleted
-            }
-        }
-    }
-
     private fun sendSelectedTask_To_TaskEditFragment(task: Task, position: Int)
     {
         navigate(R.id.action_taskListFragment_to_taskManagerFragment, Bundle().apply()
@@ -257,7 +234,25 @@ class TaskListFragment : BaseFragment(),
 
     override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
-        bindTaskViewHolder(view, item, position)
+        ItemTaskBinding.bind(view).apply()
+        {
+            tvName.text = item.name
+            tvImportance.text = importanceStringArray[item.importance.ordinal]
+            chkIsCompleted.isChecked = item.isCompleted
+
+            chkIsCompleted.setOnClickListener()
+            {
+                presenter.changeCompletedState(
+                    taskToChangeCompletedState = item,
+                    position = position,
+                    newState = chkIsCompleted.isChecked
+                )
+
+                // In case the new state is not set then we have to also change
+                // the state in the UI.
+                chkIsCompleted.isChecked = item.isCompleted
+            }
+        }
     }
 
     //endregion
