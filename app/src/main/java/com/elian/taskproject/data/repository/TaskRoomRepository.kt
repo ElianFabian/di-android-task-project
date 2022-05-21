@@ -67,7 +67,7 @@ object TaskRoomRepository :
         {
             it.isCompleted = false
 
-            execute { taskDAO.update(it) } // I tried to do a updateAll() function, but it didn't work
+            execute { taskDAO.update(it) } // I tried to do an updateAll() function, but it didn't work
         }
 
         callback.onRestoreSuccess(completedTasks)
