@@ -157,13 +157,7 @@ class TaskListFragment : BaseFragment(),
         val notCompletedTasksFromRepository = listFromRepository.filter { !it.isCompleted }
         val completedTasksFromRepository = listFromRepository.filter { it.isCompleted }
 
-        taskAdapter.apply()
-        {
-            val isNewItemAdded = listFromRepository.size - itemCount == 1
-
-            if (isNewItemAdded) addItem(listFromRepository.last())
-            else replaceList(notCompletedTasksFromRepository)
-        }
+        taskAdapter.replaceList(notCompletedTasksFromRepository)
 
         completedTasks.clear()
         completedTasks.addAll(completedTasksFromRepository)
