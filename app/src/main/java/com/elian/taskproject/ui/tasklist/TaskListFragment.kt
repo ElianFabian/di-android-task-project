@@ -81,12 +81,12 @@ class TaskListFragment : BaseFragment(),
 
         importanceStringArray = resources.getStringArray(R.array.frgTaskAdd_spnImportance_entries)
 
-        initRecyclerViewAdapter()
+        initTaskRecyclerViewAdapter()
 
         presenter.getList()
     }
 
-    private fun initRecyclerViewAdapter()
+    private fun initTaskRecyclerViewAdapter()
     {
         binding.rvTasks.adapter = taskAdapter
         binding.rvTasks.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
