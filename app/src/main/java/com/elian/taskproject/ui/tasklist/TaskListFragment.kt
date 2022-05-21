@@ -152,10 +152,10 @@ class TaskListFragment : BaseFragment(),
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
-        val notCompletedTasksFromRepository = listFromRepository.filter { !it.isCompleted }
+        val uncompletedTasksFromRepository = listFromRepository.filter { !it.isCompleted }
         val completedTasksFromRepository = listFromRepository.filter { it.isCompleted }
 
-        taskAdapter.replaceList(notCompletedTasksFromRepository)
+        taskAdapter.replaceList(uncompletedTasksFromRepository)
 
         completedTasks.clear()
         completedTasks.addAll(completedTasksFromRepository)
