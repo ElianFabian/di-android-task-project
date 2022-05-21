@@ -48,7 +48,7 @@ object TaskStaticRepository :
 
     override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
     {
-        completedTasks.forEach { it.isCompleted = false }
+        completedTasks.forEach { it.markAsIncomplete() }
 
         taskList.addAll(completedTasks)
         callback.onMarkAsIncompleteSuccess(completedTasks)
