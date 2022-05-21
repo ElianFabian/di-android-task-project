@@ -63,7 +63,7 @@ class TaskListFragment : BaseFragment(),
         when (item.itemId)
         {
             R.id.action_undo    -> undoDeleteTask()
-            R.id.action_restore -> restoreAllDeletedTask()
+            R.id.action_restore -> restoreAllCompletedTasks()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -138,7 +138,7 @@ class TaskListFragment : BaseFragment(),
         presenter.undo(lastDeletedTask, position)
     }
 
-    private fun restoreAllDeletedTask()
+    private fun restoreAllCompletedTasks()
     {
         if (completedTasks.isEmpty()) return
 
