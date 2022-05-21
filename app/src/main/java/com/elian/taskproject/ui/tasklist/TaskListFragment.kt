@@ -17,8 +17,6 @@ import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
 import kotlinx.coroutines.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class TaskListFragment : BaseFragment(),
     TaskListContract.View,
