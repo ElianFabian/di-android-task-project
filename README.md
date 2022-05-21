@@ -4,6 +4,7 @@ This app allows you to manage your tasks.
 
 This project is to practice concepts like creating a layout and managing recycler view with MVP (Model View Presenter).
 
+<br>
 
 <p float="center">
   <img height="635x" align="left" src="https://user-images.githubusercontent.com/86477169/169659147-18657a0b-8b00-4c10-95c3-628c1f8f6595.jpg">
