@@ -10,12 +10,12 @@ interface TaskDAO
     fun select(id: Long): Task
 
     @Query("SELECT * FROM task_table")
-    fun selectAll() : List<Task>
+    fun selectAll(): List<Task>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(task: Task): Long
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(task: Task)
 
     @Delete

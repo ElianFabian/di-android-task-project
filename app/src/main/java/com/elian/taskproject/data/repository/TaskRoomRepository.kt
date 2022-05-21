@@ -63,10 +63,11 @@ object TaskRoomRepository :
 
     override fun restore(callback: TaskListContract.OnRestoreCallback, completedTasks: List<Task>)
     {
-        completedTasks.forEach() 
+        completedTasks.forEach()
         {
             it.isCompleted = false
-            execute { taskDAO.update(it) }
+
+            execute { taskDAO.update(it) } // I tried to do a updateAll() function, but it didn't work
         }
 
         callback.onRestoreSuccess(completedTasks)

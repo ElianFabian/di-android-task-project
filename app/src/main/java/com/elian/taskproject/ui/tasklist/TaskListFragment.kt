@@ -173,17 +173,19 @@ class TaskListFragment : BaseFragment(),
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
+        val notCompletedTasksFromRepository = listFromRepository.filter { !it.isCompleted }
+        val completedTasksFromRepository = listFromRepository.filter { it.isCompleted }
+
         taskAdapter.apply()
         {
             val isNewItemAdded = listFromRepository.size - itemCount == 1
 
             if (isNewItemAdded) addItem(listFromRepository.last())
-            else replaceList(listFromRepository)
+            else replaceList(notCompletedTasksFromRepository)
         }
 
-        val completedTaskFromRepository = listFromRepository.filter { it.isCompleted }
-
-        completedTasks.addAll(completedTaskFromRepository)
+        completedTasks.clear()
+        completedTasks.addAll(completedTasksFromRepository)
     }
 
     override fun onGetListFailure()
@@ -255,13 +257,6 @@ class TaskListFragment : BaseFragment(),
 
     override fun onBindViewHolder(view: View, item: Task, position: Int)
     {
-        if (item.isCompleted)
-        {
-            view.layoutParams = RecyclerView.LayoutParams(0, 0)
-
-            return
-        }
-
         bindTaskViewHolder(view, item, position)
     }
 
