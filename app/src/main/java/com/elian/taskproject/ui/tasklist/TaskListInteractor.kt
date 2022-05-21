@@ -35,6 +35,10 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     {
         repository.restore(this, completedTasks)
     }
+    
+    //endregion
+    
+    //region TaskListContract.OnRepositoryCallback
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
@@ -90,6 +94,6 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     {
         listener.onRestoreFailure()
     }
-
+    
     //endregion
 }
