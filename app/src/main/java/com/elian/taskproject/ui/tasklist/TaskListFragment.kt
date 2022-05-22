@@ -225,7 +225,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted: List<Task>)
     {
-        taskAdapter.insertItems(0, tasksMarkedAsUncompleted.toList())
+        taskAdapter.insertItems(0, tasksMarkedAsUncompleted)
 
         completedTasks.clear()
     }
