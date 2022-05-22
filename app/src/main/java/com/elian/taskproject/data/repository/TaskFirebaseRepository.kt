@@ -72,20 +72,22 @@ object TaskFirebaseRepository :
             }
     }
 
-    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
+    override fun markAsUncompleted(callback: TaskListContract.OnMarkAsUncompletedCallback, completedTasks: List<Task>)
     {
         completedTasks.forEach()
         {
             val documentPath = "$taskCollectionPath/${it.firebaseId}"
 
+            val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
+
             firestore.document(documentPath).set(it)
                 .addOnSuccessListener()
                 {
-                    callback.onMarkAsIncompleteSuccess(completedTasks)
+                    callback.onMarkAsUncompletedSuccess(uncompletedTasks)
                 }
                 .addOnFailureListener()
                 {
-                    callback.onMarkAsIncompleteFailure()
+                    callback.onMarkAsUncompletedFailure()
                 }
         }
     }

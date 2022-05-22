@@ -121,7 +121,7 @@ class TaskListFragment : BaseFragment(),
     {
         if (completedTasks.isEmpty()) return
 
-        presenter.markAsIncomplete(completedTasks)
+        presenter.markAsUncompleted(completedTasks)
     }
 
     //endregion
@@ -218,14 +218,14 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when changing the completed state.")
     }
 
-    override fun onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete: List<Task>)
+    override fun onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted: List<Task>)
     {
-        taskAdapter.insertItems(0, tasksMarkedAsIncomplete)
+        taskAdapter.insertItems(0, tasksMarkedAsUncompleted)
 
         completedTasks.clear()
     }
 
-    override fun onMarkAsIncompleteFailure()
+    override fun onMarkAsUncompletedFailure()
     {
         toast("There was an error when restoring the completed tasks.")
     }

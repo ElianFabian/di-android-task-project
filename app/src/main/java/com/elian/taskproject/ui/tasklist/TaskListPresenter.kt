@@ -31,9 +31,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.changeCompletedState(taskToChangeCompletedState, position, newState)
     }
 
-    override fun markAsIncomplete(completedTasks: List<Task>)
+    override fun markAsUncompleted(completedTasks: List<Task>)
     {
-        interactor?.markAsIncomplete(completedTasks)
+        interactor?.markAsUncompleted(completedTasks)
     }
 
     override fun onDestroy()
@@ -41,9 +41,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view = null
         interactor = null
     }
-    
+
     //endregion
-    
+
     //region TaskListContract.OnInteractorListener
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
@@ -99,15 +99,15 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onCompletedStateChangedFailure()
     }
 
-    override fun onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete: List<Task>)
+    override fun onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted: List<Task>)
     {
-        view?.onMarkAsIncompleteSuccess(tasksMarkedAsIncomplete)
+        view?.onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted)
     }
 
-    override fun onMarkAsIncompleteFailure()
+    override fun onMarkAsUncompletedFailure()
     {
-        view?.onMarkAsIncompleteFailure()
+        view?.onMarkAsUncompletedFailure()
     }
-    
+
     //endregion
 }

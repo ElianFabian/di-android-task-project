@@ -16,7 +16,7 @@ data class Task(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
 
-    val firebaseId: String = UUID.randomUUID().toString()
+    val firebaseId: String = UUID.randomUUID().toString(),
 ) :
     Serializable
 {
@@ -24,8 +24,13 @@ data class Task(
     {
         LOW, MEDIUM, HIGH
     }
-    
-    fun markAsIncomplete()
+
+    fun markAsCompleted()
+    {
+        isCompleted = true
+    }
+
+    fun markAsUncompleted()
     {
         isCompleted = false
     }

@@ -61,16 +61,14 @@ object TaskRoomRepository :
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
-    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
+    override fun markAsUncompleted(callback: TaskListContract.OnMarkAsUncompletedCallback, completedTasks: List<Task>)
     {
-        completedTasks.forEach()
-        {
-            it.markAsIncomplete()
+        val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
 
-            execute { taskDAO.update(it) } // I tried to do an updateAll() function, but it didn't work
-        }
+        // I tried to do an updateAll() function, but it didn't work.
+        uncompletedTasks.forEach { execute { taskDAO.update(it) } }
 
-        callback.onMarkAsIncompleteSuccess(completedTasks)
+        callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
 
     //endregion

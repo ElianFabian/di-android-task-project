@@ -46,12 +46,12 @@ object TaskStaticRepository :
         callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
     }
 
-    override fun markAsIncomplete(callback: TaskListContract.OnMarkAsIncompleteCallback, completedTasks: List<Task>)
+    override fun markAsUncompleted(callback: TaskListContract.OnMarkAsUncompletedCallback, completedTasks: List<Task>)
     {
-        completedTasks.forEach { it.markAsIncomplete() }
+        val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
 
-        taskList.addAll(completedTasks)
-        callback.onMarkAsIncompleteSuccess(completedTasks)
+        taskList.addAll(uncompletedTasks)
+        callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
 
     //endregion
