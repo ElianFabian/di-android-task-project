@@ -94,7 +94,7 @@ class TaskManagerFragment : BaseFragment(),
             selectedTask.apply()
             {
                 presenter.edit(
-                    taskFromFields.copy(id = id, firebaseId = firebaseId),
+                    editedTask = taskFromFields.copy(id = id, firebaseId = firebaseId),
                     position
                 )
             }
