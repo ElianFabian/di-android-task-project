@@ -199,7 +199,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        // As there are only uncompleted tasks, we can safely remove the task from the set
+        // As there are only uncompleted tasks, we can safely remove the task from the list
         // without checking if it's completed or not.
 
         GlobalScope.launch(Dispatchers.Main)
