@@ -33,7 +33,7 @@ class TaskListFragment : BaseFragment(),
     private lateinit var importanceStringArray: Array<String>
 
     private val deletedTasks = linkedMapOf<Task, Int>()
-    private val completedTasks = mutableListOf<Task>()
+    private val completedTasks = mutableSetOf<Task>()
 
     //region Fragment Methods
 
@@ -121,7 +121,7 @@ class TaskListFragment : BaseFragment(),
     {
         if (completedTasks.isEmpty()) return
 
-        presenter.markAsUncompleted(completedTasks)
+        presenter.markAsUncompleted(completedTasks.toList())
     }
 
     //endregion
@@ -201,14 +201,16 @@ class TaskListFragment : BaseFragment(),
     {
         completedStateChangedTask.apply()
         {
-            if (!isCompleted) return
-
-            completedTasks.add(this)
-
             GlobalScope.launch(Dispatchers.Main)
             {
                 delay(timeMillis = 450)
+                completedTasks.add(this@apply)
                 taskAdapter.removeItem(this@apply)
+                
+                if (isCompleted) return@launch
+
+                taskAdapter.insertItem(position, this@apply)
+                completedTasks.remove(this@apply)
             }
         }
     }
@@ -220,7 +222,7 @@ class TaskListFragment : BaseFragment(),
 
     override fun onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted: List<Task>)
     {
-        taskAdapter.insertItems(0, tasksMarkedAsUncompleted)
+        taskAdapter.insertItems(0, tasksMarkedAsUncompleted.toList())
 
         completedTasks.clear()
     }
