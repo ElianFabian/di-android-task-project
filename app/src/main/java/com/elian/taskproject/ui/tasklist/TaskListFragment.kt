@@ -199,19 +199,16 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        completedStateChangedTask.apply()
+        GlobalScope.launch(Dispatchers.Main)
         {
-            GlobalScope.launch(Dispatchers.Main)
-            {
-                delay(timeMillis = 450)
-                completedTasks.add(this@apply)
-                taskAdapter.removeItem(this@apply)
-                
-                if (isCompleted) return@launch
+            delay(timeMillis = 450)
+            completedTasks.add(completedStateChangedTask)
+            taskAdapter.removeItem(completedStateChangedTask)
 
-                taskAdapter.insertItem(position, this@apply)
-                completedTasks.remove(this@apply)
-            }
+            if (completedStateChangedTask.isCompleted) return@launch
+
+            taskAdapter.insertItem(position, completedStateChangedTask)
+            completedTasks.remove(completedStateChangedTask)
         }
     }
 
