@@ -152,13 +152,13 @@ class TaskListFragment : BaseFragment(),
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
-        val uncompletedTasksFromRepository = listFromRepository.filter { !it.isCompleted }
-        val completedTasksFromRepository = listFromRepository.filter { it.isCompleted }
+        val uncompletedTasks = listFromRepository.filter { !it.isCompleted }
+        val completedTasks = listFromRepository.filter { it.isCompleted }
 
-        taskAdapter.replaceList(uncompletedTasksFromRepository)
+        taskAdapter.replaceList(uncompletedTasks)
 
-        completedTasks.clear()
-        completedTasks.addAll(completedTasksFromRepository)
+        this.completedTasks.clear()
+        this.completedTasks.addAll(completedTasks)
     }
 
     override fun onGetListFailure()
@@ -201,7 +201,7 @@ class TaskListFragment : BaseFragment(),
     {
         // As there are only uncompleted tasks, we can safely remove the task from the set
         // without checking if it's completed or not.
-        
+
         GlobalScope.launch(Dispatchers.Main)
         {
             delay(timeMillis = 450)
