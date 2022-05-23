@@ -176,8 +176,6 @@ class TaskListFragment : BaseFragment(),
         deletedTasks[deletedTask] = position
 
         taskAdapter.removeItem(deletedTask)
-
-        toast("The task number $position was successfully deleted.")
     }
 
     override fun onDeleteFailure()
