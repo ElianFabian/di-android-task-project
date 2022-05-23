@@ -66,11 +66,13 @@ class TaskManagerFragment : BaseFragment(),
 
         initUI()
 
-        if (selectedTask == null)
+        val isTaskToEdit = selectedTask != null
+
+        if (isTaskToEdit)
         {
-            initUIForAddAction()
+            initUIForEditAction(selectedTask!!, selectedTaskPosition!!)
         }
-        else initUIForEditAction(selectedTask, selectedTaskPosition!!)
+        else initUIForAddAction()
     }
 
     //endregion
