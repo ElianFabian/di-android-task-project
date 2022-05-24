@@ -12,20 +12,16 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
 
     override fun add(task: Task)
     {
-        if (interactor!!.validateFields(task))
-        {
-            view?.onAddFailure()
-        }
-        else interactor?.add(task)
+        if (interactor!!.validateFields(task)) return
+
+        interactor?.add(task)
     }
 
     override fun edit(editedTask: Task, position: Int)
     {
-        if (interactor!!.validateFields(editedTask))
-        {
-            view?.onEditFailure()
-        }
-        else interactor?.edit(editedTask, position)
+        if (interactor!!.validateFields(editedTask)) return
+
+        interactor?.edit(editedTask, position)
     }
 
     override fun onDestroy()
@@ -33,9 +29,9 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
         view = null
         interactor = null
     }
-    
+
     //endregion
-    
+
     //region ITaskManagerInteractorListener
 
     override fun onNameEmptyError()
@@ -72,6 +68,6 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
     {
         view?.onEditFailure()
     }
-    
+
     //endregion
 }
