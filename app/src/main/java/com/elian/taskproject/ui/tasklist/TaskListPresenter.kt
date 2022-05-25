@@ -14,6 +14,7 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     {
         view?.showProgress()
         interactor?.getList()
+        view?.hideProgress()
     }
 
     override fun delete(taskToDelete: Task, position: Int)
@@ -48,19 +49,16 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
 
     override fun onGetListSuccess(listFromRepository: List<Task>)
     {
-        view?.hideProgress()
         view?.onGetListSuccess(listFromRepository)
     }
 
     override fun onGetListFailure()
     {
-        view?.hideProgress()
         view?.onGetListFailure()
     }
 
     override fun onNoData()
     {
-        view?.hideProgress()
         view?.showNoDataImage()
         view?.onNoData()
     }
