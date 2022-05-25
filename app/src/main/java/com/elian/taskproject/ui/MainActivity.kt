@@ -1,8 +1,9 @@
-package com.elian.taskproject
+package com.elian.taskproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import com.elian.taskproject.R
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.AppInformation
