@@ -210,7 +210,7 @@ class TaskListFragment : BaseFragment(),
 
             // As it takes some time to delete the task (due to the delay)
             // we need to check if the task is completed because the user
-            // may have unchecked it before the animation is finished.
+            // may have unchecked it before the checked animation is finished.
             completedTasks.remove(completedStateChangedTask)
             taskAdapter.insertItem(position, completedStateChangedTask)
         }
