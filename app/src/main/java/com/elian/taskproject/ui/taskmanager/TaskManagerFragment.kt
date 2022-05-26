@@ -93,13 +93,12 @@ class TaskManagerFragment : BaseFragment(),
     {
         binding.fab.setOnClickListener()
         {
-            selectedTask.apply()
-            {
-                presenter.edit(
-                    editedTask = taskFromFields.copy(id = id, firebaseId = firebaseId),
-                    position
-                )
-            }
+            presenter.edit(
+                editedTask = taskFromFields.copy(
+                    id = selectedTask.id, firebaseId = selectedTask.firebaseId
+                ),
+                position
+            )
         }
 
         fillFieldsWithSelectedTask(selectedTask)
