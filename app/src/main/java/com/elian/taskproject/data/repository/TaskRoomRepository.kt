@@ -65,8 +65,7 @@ object TaskRoomRepository :
     {
         val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
 
-        // I tried to do an updateAll() function, but it didn't work.
-        uncompletedTasks.forEach { execute { taskDAO.update(it) } }
+        execute { taskDAO.updateAll(uncompletedTasks) }
 
         callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
