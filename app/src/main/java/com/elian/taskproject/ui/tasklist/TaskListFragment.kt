@@ -131,6 +131,55 @@ class TaskListFragment : BaseFragment(),
 
     //endregion
 
+    //region RecyclerViewAdapter.OnBindViewHolderListener<>
+
+    override fun onBindViewHolder(view: View, item: Task, position: Int)
+    {
+        ItemTaskBinding.bind(view).apply()
+        {
+            tvName.text = item.name
+            tvImportance.text = importanceStringArray[item.importance.ordinal]
+            chkIsCompleted.isChecked = item.isCompleted
+
+            chkIsCompleted.setOnClickListener()
+            {
+                // When the task is checked but it's not already gone from the recycler view
+                // we make sure the user can't uncheck the task or even click it to edit it or delete it.
+                view.setOnClickListener(null)
+                view.setOnLongClickListener(null)
+                chkIsCompleted.isClickable = false
+
+                presenter.changeCompletedState(
+                    taskToChangeCompletedState = item,
+                    position = position,
+                    newState = chkIsCompleted.isChecked
+                )
+            }
+        }
+    }
+
+    //endregion
+
+    //region RecyclerViewAdapter.OnItemClickListener<>
+
+    override fun onItemClick(v: View?, selectedItem: Task, position: Int)
+    {
+        sendSelectedTask_To_TaskEditFragment(selectedItem, position)
+    }
+
+    //endregion
+
+    //region RecyclerViewAdapter.OnItemLongClickListener<>
+
+    override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
+    {
+        presenter.delete(selectedItem, position)
+
+        return true
+    }
+
+    //endregion
+
     //region TaskListContract.View
 
     override val isListEmpty: Boolean get() = taskAdapter.isEmpty
@@ -226,55 +275,6 @@ class TaskListFragment : BaseFragment(),
     override fun onMarkAsUncompletedFailure()
     {
         toast("There was an error when restoring the completed tasks.")
-    }
-
-    //endregion
-
-    //region RecyclerViewAdapter.OnBindViewHolderListener<>
-
-    override fun onBindViewHolder(view: View, item: Task, position: Int)
-    {
-        ItemTaskBinding.bind(view).apply()
-        {
-            tvName.text = item.name
-            tvImportance.text = importanceStringArray[item.importance.ordinal]
-            chkIsCompleted.isChecked = item.isCompleted
-
-            chkIsCompleted.setOnClickListener()
-            {
-                // When the task is checked but it's not already gone from the recycler view
-                // we make sure the user can't uncheck the task or even click it to edit it or delete it.
-                view.setOnClickListener(null)
-                view.setOnLongClickListener(null)
-                chkIsCompleted.isClickable = false
-
-                presenter.changeCompletedState(
-                    taskToChangeCompletedState = item,
-                    position = position,
-                    newState = chkIsCompleted.isChecked
-                )
-            }
-        }
-    }
-
-    //endregion
-
-    //region RecyclerViewAdapter.OnItemClickListener<>
-
-    override fun onItemClick(v: View?, selectedItem: Task, position: Int)
-    {
-        sendSelectedTask_To_TaskEditFragment(selectedItem, position)
-    }
-
-    //endregion
-
-    //region RecyclerViewAdapter.OnItemLongClickListener<>
-
-    override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
-    {
-        presenter.delete(selectedItem, position)
-
-        return true
     }
 
     //endregion
