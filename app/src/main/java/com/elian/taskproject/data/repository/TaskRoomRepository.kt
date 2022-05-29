@@ -73,7 +73,7 @@ object TaskRoomRepository :
 
     //endregion
 
-    //region ITaskAddContract.Repository
+    //region TaskManagerContract.Repository
 
     override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
     {
