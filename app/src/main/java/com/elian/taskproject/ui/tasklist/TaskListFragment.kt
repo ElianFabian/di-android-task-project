@@ -3,6 +3,7 @@ package com.elian.taskproject.ui.tasklist
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
@@ -201,22 +202,12 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCompletedStateChangedSuccess(completedStateChangedTask: Task, position: Int)
     {
-        // As there are only uncompleted tasks, we can safely remove the task from the list
-        // without checking if it's completed or not.
-
-        GlobalScope.launch(Dispatchers.Main)
+        lifecycleScope.launch()
         {
-            delay(timeMillis = 450)
+            delay(450)
+
             completedTasks.add(completedStateChangedTask)
             taskAdapter.removeItem(completedStateChangedTask)
-
-            if (completedStateChangedTask.isCompleted) return@launch
-
-            // As it takes some time to delete the task (due to the delay)
-            // we need to check if the task is completed because the user
-            // may have unchecked it before the checked animation is finished.
-            completedTasks.remove(completedStateChangedTask)
-            taskAdapter.insertItem(position, completedStateChangedTask)
         }
     }
 
@@ -251,15 +242,17 @@ class TaskListFragment : BaseFragment(),
 
             chkIsCompleted.setOnClickListener()
             {
+                // When the task is checked but it's not already gone from the recycler view
+                // we make sure the user can't uncheck the task or even click it to edit it or delete it.
+                view.setOnClickListener(null)
+                view.setOnLongClickListener(null)
+                chkIsCompleted.isClickable = false
+
                 presenter.changeCompletedState(
                     taskToChangeCompletedState = item,
                     position = position,
                     newState = chkIsCompleted.isChecked
                 )
-
-                // In case the new state is not set then we have to also change
-                // the state in the UI.
-                chkIsCompleted.isChecked = item.isCompleted
             }
         }
     }

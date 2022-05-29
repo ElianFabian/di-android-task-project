@@ -42,6 +42,10 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
 
+    // Lifecycle coroutines
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+
     // Firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
