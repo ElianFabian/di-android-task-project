@@ -69,8 +69,9 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.action_undo    -> undoDeleteTask()
-            R.id.action_restore -> restoreAllCompletedTasks()
+            R.id.option_undo           -> undoDeleteTask()
+            R.id.option_restore        -> restoreAllCompletedTasks()
+            R.id.option_sort_ascending -> presenter.sortByNameAscending()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -275,6 +276,15 @@ class TaskListFragment : BaseFragment(),
     override fun onMarkAsUncompletedFailure()
     {
         toast("There was an error when restoring the completed tasks.")
+    }
+
+    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    {
+        taskAdapter.replaceList(tasksSortedByNameAscending)
+    }
+
+    override fun onSortByNameAscendingFailure()
+    {
     }
 
     //endregion

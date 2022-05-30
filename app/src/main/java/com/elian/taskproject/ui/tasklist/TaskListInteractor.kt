@@ -36,6 +36,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.markAsUncompleted(this, completedTasks)
     }
 
+    override fun sortByNameAscending()
+    {
+        repository.sortByNameAscending(this)
+    }
+
     //endregion
 
     //region TaskListContract.OnRepositoryCallback
@@ -93,6 +98,16 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     override fun onMarkAsUncompletedFailure()
     {
         listener.onMarkAsUncompletedFailure()
+    }
+
+    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    {
+        listener.onSortByNameAscendingSuccess(tasksSortedByNameAscending)
+    }
+
+    override fun onSortByNameAscendingFailure()
+    {
+        listener.onSortByNameAscendingFailure()
     }
 
     //endregion

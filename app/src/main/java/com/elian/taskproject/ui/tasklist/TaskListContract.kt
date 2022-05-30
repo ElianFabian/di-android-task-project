@@ -27,6 +27,7 @@ interface TaskListContract
         fun undo(callback: OnUndoCallback, taskToRetrieve: Task, position: Int)
         fun changeCompletedState(callback: OnCompletedStateChangedCallback, taskToChangeCompletedState: Task, position: Int, newState: Boolean)
         fun markAsUncompleted(callback: OnMarkAsUncompletedCallback, completedTasks: List<Task>)
+        fun sortByNameAscending(callback: OnSortByNameAscendingCallback)
     }
 
 
@@ -37,6 +38,7 @@ interface TaskListContract
         fun undo(taskToRetrieve: Task, position: Int)
         fun changeCompletedState(taskToChangeCompletedState: Task, position: Int, newState: Boolean)
         fun markAsUncompleted(completedTasks: List<Task>)
+        fun sortByNameAscending()
     }
 
     interface OnInteractorListener : OnRepositoryCallback
@@ -46,7 +48,8 @@ interface TaskListContract
         OnDeleteCallback,
         OnUndoCallback,
         OnCompletedStateChangedCallback,
-        OnMarkAsUncompletedCallback
+        OnMarkAsUncompletedCallback,
+        OnSortByNameAscendingCallback
 
     interface OnGetListCallback
     {
@@ -77,5 +80,11 @@ interface TaskListContract
     {
         fun onMarkAsUncompletedSuccess(tasksMarkedAsUncompleted: List<Task>)
         fun onMarkAsUncompletedFailure()
+    }
+
+    interface OnSortByNameAscendingCallback
+    {
+        fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+        fun onSortByNameAscendingFailure()
     }
 }

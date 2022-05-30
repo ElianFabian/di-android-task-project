@@ -20,6 +20,7 @@
 
     <string name="error_emptyField">The field can\'t be empty</string>
     <string name="frgTaskAdd_ibDate_contentDescription">Button to select a date</string>
-    <string name="menu_toolbar_actionUndo_title">Undo</string>
-    <string name="menu_toolbar_actionRestore_title">Restore</string>
+    <string name="menu_toolbar_option_undo_title">Undo</string>
+    <string name="menu_toolbar_option_restore_title">Restore</string>
+    <string name="menu_toolbar_option_sortAscending_title">Order ascending</string>
 </resources>

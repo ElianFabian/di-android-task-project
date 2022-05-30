@@ -70,6 +70,15 @@ object TaskRoomRepository :
         callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
 
+    override fun sortByNameAscending(callback: TaskListContract.OnSortByNameAscendingCallback)
+    {
+        val list = submit { taskDAO.selectAll() }.get()
+
+        val sortedList = list.sortedBy { it.name }
+
+        callback.onSortByNameAscendingSuccess(sortedList)
+    }
+
     //endregion
 
     //region TaskManagerContract.Repository

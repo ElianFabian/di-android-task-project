@@ -2,14 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:id="@+id/action_undo"
+            android:id="@+id/option_undo"
             android:icon="@drawable/ic_undo"
-            android:title="@string/menu_toolbar_actionUndo_title"
+            android:title="@string/menu_toolbar_option_undo_title"
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/action_restore"
+            android:id="@+id/option_restore"
             android:icon="@drawable/ic_restore"
-            android:title="@string/menu_toolbar_actionRestore_title"
+            android:title="@string/menu_toolbar_option_restore_title"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/option_sort_ascending"
+            android:icon="@drawable/ic_order_ascending"
+            android:title="@string/menu_toolbar_option_sortAscending_title"
             app:showAsAction="ifRoom" />
 </menu>

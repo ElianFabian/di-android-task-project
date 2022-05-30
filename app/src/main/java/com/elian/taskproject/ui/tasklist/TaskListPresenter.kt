@@ -37,6 +37,11 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         interactor?.markAsUncompleted(completedTasks)
     }
 
+    override fun sortByNameAscending()
+    {
+        interactor?.sortByNameAscending()
+    }
+
     override fun onDestroy()
     {
         view = null
@@ -105,6 +110,16 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
     override fun onMarkAsUncompletedFailure()
     {
         view?.onMarkAsUncompletedFailure()
+    }
+
+    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    {
+        view?.onSortByNameAscendingSuccess(tasksSortedByNameAscending)
+    }
+
+    override fun onSortByNameAscendingFailure()
+    {
+        view?.onSortByNameAscendingFailure()
     }
 
     //endregion

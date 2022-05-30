@@ -54,6 +54,13 @@ object TaskStaticRepository :
         callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
 
+    override fun sortByNameAscending(callback: TaskListContract.OnSortByNameAscendingCallback)
+    {
+        val sortedList = taskList.sortedBy { it.name }
+
+        callback.onSortByNameAscendingSuccess(sortedList)
+    }
+
     //endregion
 
     //region TaskManagerContract.Repository

@@ -15,6 +15,7 @@
         <item>Medio</item>
         <item>Alto</item>
     </string-array>
-    <string name="menu_toolbar_actionUndo_title">Deshacer</string>
-    <string name="menu_toolbar_actionRestore_title">Restaurar</string>
+    <string name="menu_toolbar_option_undo_title">Deshacer</string>
+    <string name="menu_toolbar_option_restore_title">Restaurar</string>
+    <string name="menu_toolbar_option_sortAscending_title">Ordenar ascendentemente</string>
 </resources>
