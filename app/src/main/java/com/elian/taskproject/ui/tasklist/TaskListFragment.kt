@@ -34,7 +34,7 @@ class TaskListFragment : BaseFragment(),
     private val deletedTasks = linkedMapOf<Task, Int>()
     private val completedTasks = mutableSetOf<Task>()
 
-    private val sortToggle = ToggleAction(
+    private val sortActions = ToggleAction(
         { presenter.sortByNameAscending() },
         { presenter.sortByNameDescending() }
     )
@@ -77,7 +77,7 @@ class TaskListFragment : BaseFragment(),
         {
             R.id.option_undo                  -> undoDeleteTask()
             R.id.option_restoreCompletedTasks -> restoreCompletedTasks()
-            R.id.option_sort_alphabetically   -> sortToggle.toggle()
+            R.id.option_sort_alphabetically   -> sortActions.toggle()
         }
         return super.onOptionsItemSelected(item)
     }
