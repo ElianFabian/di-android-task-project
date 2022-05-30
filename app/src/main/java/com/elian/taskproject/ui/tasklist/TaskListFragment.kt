@@ -75,9 +75,9 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.option_undo    -> undoDeleteTask()
-            R.id.option_restore -> restoreAllCompletedTasks()
-            R.id.option_sort    -> sortToggle.toggle()
+            R.id.option_undo                  -> undoDeleteTask()
+            R.id.option_restoreCompletedTasks -> restoreAllCompletedTasks()
+            R.id.option_sort_alphabetically   -> sortToggle.toggle()
         }
         return super.onOptionsItemSelected(item)
     }

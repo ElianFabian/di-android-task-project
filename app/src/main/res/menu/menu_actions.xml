@@ -8,13 +8,13 @@
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/option_restore"
+            android:id="@+id/option_restoreCompletedTasks"
             android:icon="@drawable/ic_restore"
-            android:title="@string/menu_toolbar_option_restore_title"
+            android:title="@string/menu_toolbar_option_restoreCompletedTasks_title"
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/option_sort"
+            android:id="@+id/option_sort_alphabetically"
             android:icon="@drawable/ic_sort_alphabetically"
             android:title="@string/menu_toolbar_option_sort_title"
             app:showAsAction="ifRoom" />
