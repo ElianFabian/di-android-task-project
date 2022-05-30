@@ -79,6 +79,15 @@ object TaskRoomRepository :
         callback.onSortByNameAscendingSuccess(sortedList)
     }
 
+    override fun sortByNameDescending(callback: TaskListContract.OnSortByNameDescendingCallback)
+    {
+        val list = submit { taskDAO.selectAll() }.get()
+
+        val sortedList = list.sortedByDescending { it.name }
+
+        callback.onSortByNameDescendingSuccess(sortedList)
+    }
+
     //endregion
 
     //region TaskManagerContract.Repository

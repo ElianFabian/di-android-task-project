@@ -14,8 +14,8 @@
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/option_sort_ascending"
-            android:icon="@drawable/ic_order_ascending"
-            android:title="@string/menu_toolbar_option_sortAscending_title"
+            android:id="@+id/option_sort"
+            android:icon="@drawable/ic_sort_alphabetically"
+            android:title="@string/menu_toolbar_option_sort_title"
             app:showAsAction="ifRoom" />
 </menu>

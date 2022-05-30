@@ -41,6 +41,11 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         repository.sortByNameAscending(this)
     }
 
+    override fun sortByNameDescending()
+    {
+        repository.sortByNameDescending(this)
+    }
+
     //endregion
 
     //region TaskListContract.OnRepositoryCallback
@@ -108,6 +113,16 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
     override fun onSortByNameAscendingFailure()
     {
         listener.onSortByNameAscendingFailure()
+    }
+
+    override fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+    {
+        listener.onSortByNameDescendingSuccess(tasksSortedByNameDescending)
+    }
+
+    override fun onSortByNameDescendingFailure()
+    {
+        listener.onSortByNameDescendingFailure()
     }
 
     //endregion

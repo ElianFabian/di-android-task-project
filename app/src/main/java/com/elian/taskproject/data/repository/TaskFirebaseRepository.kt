@@ -107,6 +107,21 @@ object TaskFirebaseRepository :
         }
     }
 
+    override fun sortByNameDescending(callback: TaskListContract.OnSortByNameDescendingCallback)
+    {
+        firestore.collection(taskCollectionPath).get().addOnCompleteListener()
+        {
+            if (it.isSuccessful)
+            {
+                val list = it.result.toObjects(Task::class.java)
+                val sortedList = list.sortedByDescending { task -> task.name }
+
+                callback.onSortByNameDescendingSuccess(sortedList)
+            }
+            else callback.onSortByNameDescendingFailure()
+        }
+    }
+
     //endregion
 
     //region TaskManagerContract.Repository

@@ -12,6 +12,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.util.RecyclerViewAdapter
 import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
+import com.elian.taskproject.util.ToggleAction
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
 import kotlinx.coroutines.*
@@ -32,6 +33,11 @@ class TaskListFragment : BaseFragment(),
 
     private val deletedTasks = linkedMapOf<Task, Int>()
     private val completedTasks = mutableSetOf<Task>()
+
+    private val sortToggle = ToggleAction(
+        { presenter.sortByNameAscending() },
+        { presenter.sortByNameDescending() }
+    )
 
     //region Fragment Methods
 
@@ -69,9 +75,9 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.option_undo           -> undoDeleteTask()
-            R.id.option_restore        -> restoreAllCompletedTasks()
-            R.id.option_sort_ascending -> presenter.sortByNameAscending()
+            R.id.option_undo    -> undoDeleteTask()
+            R.id.option_restore -> restoreAllCompletedTasks()
+            R.id.option_sort    -> sortToggle.toggle()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -82,6 +88,7 @@ class TaskListFragment : BaseFragment(),
 
     private fun initUI()
     {
+
         binding.fab.setOnClickListener()
         {
             navigate(R.id.action_taskListFragment_to_taskManagerFragment)
@@ -285,6 +292,17 @@ class TaskListFragment : BaseFragment(),
 
     override fun onSortByNameAscendingFailure()
     {
+        toast("There was an error when sorting the tasks by name.")
+    }
+
+    override fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+    {
+        taskAdapter.replaceList(tasksSortedByNameDescending)
+    }
+
+    override fun onSortByNameDescendingFailure()
+    {
+        toast("There was an error when sorting the tasks by name.")
     }
 
     //endregion
