@@ -75,9 +75,9 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.option_undo                  -> undoDeleteTask()
-            R.id.option_restoreCompletedTasks -> restoreCompletedTasks()
-            R.id.option_sort_alphabetically   -> sortActions.toggle()
+            R.id.option_undo                   -> undoDeleteTask()
+            R.id.option_markTasksAsUncompleted -> markTasksAsUncompleted()
+            R.id.option_sort_alphabetically    -> sortActions.toggle()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -130,7 +130,7 @@ class TaskListFragment : BaseFragment(),
         presenter.undo(lastDeletedTask, position)
     }
 
-    private fun restoreCompletedTasks()
+    private fun markTasksAsUncompleted()
     {
         if (completedTasks.isEmpty()) return
 

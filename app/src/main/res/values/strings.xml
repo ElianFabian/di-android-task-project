@@ -21,6 +21,6 @@
     <string name="error_emptyField">The field can\'t be empty</string>
     <string name="frgTaskAdd_ibDate_contentDescription">Button to select a date</string>
     <string name="menu_toolbar_option_undo_title">Undo</string>
-    <string name="menu_toolbar_option_restoreCompletedTasks_title">Restore completed tasks</string>
+    <string name="menu_toolbar_option_markTasksAsUncompleted_title">Mark tasks as uncompleted</string>
     <string name="menu_toolbar_option_sort_title">Sort</string>
 </resources>

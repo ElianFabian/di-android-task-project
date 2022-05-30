@@ -8,9 +8,9 @@
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/option_restoreCompletedTasks"
+            android:id="@+id/option_markTasksAsUncompleted"
             android:icon="@drawable/ic_restore"
-            android:title="@string/menu_toolbar_option_restoreCompletedTasks_title"
+            android:title="@string/menu_toolbar_option_markTasksAsUncompleted_title"
             app:showAsAction="ifRoom" />
 
     <item
