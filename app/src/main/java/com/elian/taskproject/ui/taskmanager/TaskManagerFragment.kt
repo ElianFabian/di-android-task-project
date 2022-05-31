@@ -109,7 +109,7 @@ class TaskManagerFragment : BaseFragment(),
         tieName.setText(task.name)
         tieDescription.setText(task.description)
         spnImportance.setSelection(task.importance.ordinal)
-        etDate.setText(DataUtils.dateFormat.format(Date(task.endDate as Long)))
+        etDate.setText(DataUtils.dateFormat.format(Date(task.endDate!!)))
     }
 
     //endregion
