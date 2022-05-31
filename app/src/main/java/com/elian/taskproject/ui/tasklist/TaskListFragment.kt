@@ -75,7 +75,7 @@ class TaskListFragment : BaseFragment(),
     {
         when (item.itemId)
         {
-            R.id.option_undo                   -> undoDeleteTask()
+            R.id.option_undo                   -> undo()
             R.id.option_markTasksAsUncompleted -> markTasksAsUncompleted()
             R.id.option_sort_alphabetically    -> sortByNameActions.toggle()
         }
@@ -119,7 +119,7 @@ class TaskListFragment : BaseFragment(),
         })
     }
 
-    private fun undoDeleteTask()
+    private fun undo()
     {
         if (deletedTasks.isEmpty()) return
 
