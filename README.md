@@ -1,8 +1,17 @@
-# android-task-project
+# di-android-task-project
 
 This app allows you to manage your tasks.
 
 This project is to practice concepts like creating a layout and using a recycler view with MVP (Model View Presenter).
+
+These are the operations you can do:
+- Add new tasks.
+- Edit them.
+- Delete them.
+- Undo (get back one by one the deleted tasks).
+- Mark them as completed.
+- Unmark them all and make them visible again in the task list.
+- Sort them alphabetically and in reverse order.
 
 <br>
 
