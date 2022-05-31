@@ -1,4 +1,4 @@
-# android-task-project
+# di-android-task-project
 
 This app allows you to manage your tasks.
 
