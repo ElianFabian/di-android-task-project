@@ -8,7 +8,7 @@ These are the operations you can do:
 - Add new tasks.
 - Edit them.
 - Delete them.
-- Undo the deletion.
+- Undo (get back one by one the deleted tasks).
 - Mark them as completed.
 - Unmark them all and make them visible again in the task list.
 - Sort them alphabetically and in reverse order.
