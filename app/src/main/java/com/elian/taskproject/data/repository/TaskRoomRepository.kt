@@ -74,7 +74,7 @@ object TaskRoomRepository :
     {
         val list = submit { taskDAO.selectAll() }.get()
 
-        val sortedList = list.sortedBy { it.name }
+        val sortedList = list.filter { !it.isCompleted }.sortedBy { it.name }
 
         callback.onSortByNameAscendingSuccess(sortedList)
     }
@@ -83,7 +83,7 @@ object TaskRoomRepository :
     {
         val list = submit { taskDAO.selectAll() }.get()
 
-        val sortedList = list.sortedByDescending { it.name }
+        val sortedList = list.filter { !it.isCompleted }.sortedByDescending { it.name }
 
         callback.onSortByNameDescendingSuccess(sortedList)
     }

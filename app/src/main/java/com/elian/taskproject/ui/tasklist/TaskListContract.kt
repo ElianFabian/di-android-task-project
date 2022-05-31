@@ -87,13 +87,13 @@ interface TaskListContract
 
     interface OnSortByNameAscendingCallback
     {
-        fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+        fun onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending: List<Task>)
         fun onSortByNameAscendingFailure()
     }
 
     interface OnSortByNameDescendingCallback
     {
-        fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+        fun onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending: List<Task>)
         fun onSortByNameDescendingFailure()
     }
 }

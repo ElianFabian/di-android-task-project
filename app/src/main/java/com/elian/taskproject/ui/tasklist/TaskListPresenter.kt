@@ -117,9 +117,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onMarkAsUncompletedFailure()
     }
 
-    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    override fun onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending: List<Task>)
     {
-        view?.onSortByNameAscendingSuccess(tasksSortedByNameAscending)
+        view?.onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending)
     }
 
     override fun onSortByNameAscendingFailure()
@@ -127,9 +127,9 @@ class TaskListPresenter(private var view: TaskListContract.View?) :
         view?.onSortByNameAscendingFailure()
     }
 
-    override fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+    override fun onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending: List<Task>)
     {
-        view?.onSortByNameDescendingSuccess(tasksSortedByNameDescending)
+        view?.onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending)
     }
 
     override fun onSortByNameDescendingFailure()

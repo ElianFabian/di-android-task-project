@@ -99,7 +99,7 @@ object TaskFirebaseRepository :
             if (it.isSuccessful)
             {
                 val list = it.result.toObjects(Task::class.java)
-                val sortedList = list.sortedBy { task -> task.name }
+                val sortedList = list.filter { task -> !task.isCompleted }.sortedBy { task -> task.name }
 
                 callback.onSortByNameAscendingSuccess(sortedList)
             }
@@ -114,7 +114,7 @@ object TaskFirebaseRepository :
             if (it.isSuccessful)
             {
                 val list = it.result.toObjects(Task::class.java)
-                val sortedList = list.sortedByDescending { task -> task.name }
+                val sortedList = list.filter { task -> !task.isCompleted }.sortedByDescending { task -> task.name }
 
                 callback.onSortByNameDescendingSuccess(sortedList)
             }

@@ -284,9 +284,9 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when restoring the completed tasks.")
     }
 
-    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    override fun onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending: List<Task>)
     {
-        taskAdapter.replaceList(tasksSortedByNameAscending)
+        taskAdapter.replaceList(uncompletedTasksSortedByNameAscending)
     }
 
     override fun onSortByNameAscendingFailure()
@@ -294,9 +294,9 @@ class TaskListFragment : BaseFragment(),
         toast("There was an error when sorting the tasks by name.")
     }
 
-    override fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+    override fun onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending: List<Task>)
     {
-        taskAdapter.replaceList(tasksSortedByNameDescending)
+        taskAdapter.replaceList(uncompletedTasksSortedByNameDescending)
     }
 
     override fun onSortByNameDescendingFailure()

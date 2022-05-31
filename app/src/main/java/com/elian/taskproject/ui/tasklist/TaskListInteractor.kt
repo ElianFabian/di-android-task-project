@@ -105,9 +105,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onMarkAsUncompletedFailure()
     }
 
-    override fun onSortByNameAscendingSuccess(tasksSortedByNameAscending: List<Task>)
+    override fun onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending: List<Task>)
     {
-        listener.onSortByNameAscendingSuccess(tasksSortedByNameAscending)
+        listener.onSortByNameAscendingSuccess(uncompletedTasksSortedByNameAscending)
     }
 
     override fun onSortByNameAscendingFailure()
@@ -115,9 +115,9 @@ class TaskListInteractor(private val listener: TaskListContract.OnInteractorList
         listener.onSortByNameAscendingFailure()
     }
 
-    override fun onSortByNameDescendingSuccess(tasksSortedByNameDescending: List<Task>)
+    override fun onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending: List<Task>)
     {
-        listener.onSortByNameDescendingSuccess(tasksSortedByNameDescending)
+        listener.onSortByNameDescendingSuccess(uncompletedTasksSortedByNameDescending)
     }
 
     override fun onSortByNameDescendingFailure()

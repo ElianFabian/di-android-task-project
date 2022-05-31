@@ -56,14 +56,14 @@ object TaskStaticRepository :
 
     override fun sortByNameAscending(callback: TaskListContract.OnSortByNameAscendingCallback)
     {
-        val sortedList = taskList.sortedBy { it.name }
+        val sortedList = taskList.filter { !it.isCompleted }.sortedBy { it.name }
 
         callback.onSortByNameAscendingSuccess(sortedList)
     }
 
     override fun sortByNameDescending(callback: TaskListContract.OnSortByNameDescendingCallback)
     {
-        val sortedList = taskList.sortedByDescending { it.name }
+        val sortedList = taskList.filter { !it.isCompleted }.sortedByDescending { it.name }
 
         callback.onSortByNameDescendingSuccess(sortedList)
     }
