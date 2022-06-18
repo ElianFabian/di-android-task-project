@@ -13,6 +13,7 @@ import com.elian.taskproject.util.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
 import com.elian.taskproject.util.extensions.toast
 import com.elian.taskproject.ui.datepicker.DatePickerFragment
+import com.elian.taskproject.util.ArgsKeys
 import java.util.*
 
 class TaskManagerFragment : BaseFragment(),
@@ -61,8 +62,8 @@ class TaskManagerFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectedTask = arguments?.getSerializable(getString(R.string.bundleKey_selectedTask)) as Task?
-        val selectedTaskPosition = arguments?.getInt(getString(R.string.bundleKey_selectedTask_position))
+        val selectedTask = arguments?.getSerializable(ArgsKeys.SelectedTask) as Task?
+        val selectedTaskPosition = arguments?.getInt(ArgsKeys.SelectedTaskPosition)
 
         initUI()
 
