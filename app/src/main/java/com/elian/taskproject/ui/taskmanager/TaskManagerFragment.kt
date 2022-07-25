@@ -120,10 +120,10 @@ class TaskManagerFragment : BaseFragment(),
     override fun onDateSelected(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
     {
         // 1 is added because month is in range 0 to 11
-        val monthWithFormat = String.format("%02d", month + 1)
-        val dayOfMonthWithFormat = String.format("%02d", dayOfMonth)
+        val monthFormatted = String.format("%02d", month + 1)
+        val dayOfMonthFormatted = String.format("%02d", dayOfMonth)
 
-        binding.etDate.setText("$year/$monthWithFormat/$dayOfMonthWithFormat")
+        binding.etDate.setText("$year/$monthFormatted/$dayOfMonthFormatted")
     }
 
     //endregion
