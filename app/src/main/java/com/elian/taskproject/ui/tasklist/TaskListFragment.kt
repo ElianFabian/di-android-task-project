@@ -28,7 +28,7 @@ class TaskListFragment : BaseFragment(),
 
     private lateinit var binding: FragmentTaskListBinding
 
-    private val taskAdapter = RecyclerViewAdapter<Task>(itemLayout = R.layout.item_task)
+    private val taskAdapter = RecyclerViewAdapter<Task>(R.layout.item_task)
 
     private lateinit var importanceStringArray: Array<String>
 
