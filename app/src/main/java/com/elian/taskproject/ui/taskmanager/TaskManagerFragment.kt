@@ -82,6 +82,11 @@ class TaskManagerFragment : BaseFragment(),
 
     private fun initUI()
     {
+        // For some reason it doesn't work if I put it in the layout file
+        // this is to avoid pasting text in it
+        binding.etDate.isClickable = false
+        binding.etDate.isLongClickable = false
+
         binding.ibDate.setOnClickListener { showDatePickerDialog(this) }
     }
 

@@ -109,7 +109,6 @@
             app:layout_constraintEnd_toStartOf="@id/ibDate"
             android:labelFor="@id/ibDate"
             android:focusable="false"
-            android:inputType="date"
             app:layout_constraintVertical_bias="0.33"
             android:contentDescription="@string/frgTaskAdd_etDate_contentDescription"
             android:minHeight="48dp"
