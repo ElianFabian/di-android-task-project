@@ -20,9 +20,9 @@ class TaskManagerInteractor(private val listener: TaskManagerContract.OnInteract
         else                       -> false
     }
 
-    override fun add(task: Task)
+    override fun add(taskToAdd: Task)
     {
-        repository.add(this, task)
+        repository.add(this, taskToAdd)
     }
 
     override fun edit(editedTask: Task, position: Int)

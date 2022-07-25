@@ -126,11 +126,11 @@ object TaskFirebaseRepository :
 
     //region TaskManagerContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnAddCallback, taskToAdd: Task)
     {
-        val documentPath = "${taskCollectionPath}/${task.firebaseId}"
+        val documentPath = "${taskCollectionPath}/${taskToAdd.firebaseId}"
 
-        firestore.document(documentPath).set(task)
+        firestore.document(documentPath).set(taskToAdd)
             .addOnSuccessListener { callback.onAddSuccess() }
             .addOnFailureListener { callback.onAddFailure() }
     }

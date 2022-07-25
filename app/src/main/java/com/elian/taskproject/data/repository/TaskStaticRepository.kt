@@ -72,9 +72,9 @@ object TaskStaticRepository :
 
     //region TaskManagerContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnAddCallback, taskToAdd: Task)
     {
-        taskList.add(task)
+        taskList.add(taskToAdd)
         callback.onAddSuccess()
     }
 

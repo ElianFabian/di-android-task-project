@@ -95,9 +95,9 @@ object TaskRoomRepository :
 
     //region TaskManagerContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnAddCallback, task: Task)
+    override fun add(callback: TaskManagerContract.OnAddCallback, taskToAdd: Task)
     {
-        execute { taskDAO.insert(task) }
+        execute { taskDAO.insert(taskToAdd) }
 
         callback.onAddSuccess()
     }
