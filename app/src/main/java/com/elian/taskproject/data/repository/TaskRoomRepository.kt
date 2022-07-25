@@ -2,8 +2,8 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.tasklist.TaskListContract
-import com.elian.taskproject.ui.taskmanager.TaskManagerContract
+import com.elian.taskproject.ui.task_list.TaskListContract
+import com.elian.taskproject.ui.task_manager.TaskManagerContract
 import java.util.concurrent.Callable
 import java.util.concurrent.Future
 

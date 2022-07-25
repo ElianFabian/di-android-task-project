@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui.tasklist
+package com.elian.taskproject.ui.task_list
 
 import android.os.Bundle
 import android.view.*

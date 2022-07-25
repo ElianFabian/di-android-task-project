@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui.taskmanager
+package com.elian.taskproject.ui.task_manager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.util.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
 import com.elian.taskproject.util.extensions.toast
-import com.elian.taskproject.ui.datepicker.DatePickerFragment
+import com.elian.taskproject.ui.date_picker.DatePickerFragment
 import com.elian.taskproject.util.ArgKeys
 import java.util.*
 

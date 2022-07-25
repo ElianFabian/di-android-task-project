@@ -2,8 +2,8 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.tasklist.TaskListContract
-import com.elian.taskproject.ui.taskmanager.TaskManagerContract
+import com.elian.taskproject.ui.task_list.TaskListContract
+import com.elian.taskproject.ui.task_manager.TaskManagerContract
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 

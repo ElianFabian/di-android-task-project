@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui.taskmanager
+package com.elian.taskproject.ui.task_manager
 
 import com.elian.taskproject.data.model.Task
 
