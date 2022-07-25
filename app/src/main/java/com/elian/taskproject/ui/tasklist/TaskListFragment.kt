@@ -36,8 +36,8 @@ class TaskListFragment : BaseFragment(),
     private val completedTasks = mutableSetOf<Task>()
 
     private val sortByNameActions = ToggleAction(
-        { presenter.sortByNameAscending() },
-        { presenter.sortByNameDescending() }
+        { presenter.sortByNameDescending() },
+        { presenter.sortByNameAscending() }
     )
 
     //region Fragment Methods
