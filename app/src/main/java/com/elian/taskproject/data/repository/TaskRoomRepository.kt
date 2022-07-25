@@ -13,7 +13,10 @@ object TaskRoomRepository :
 {
     private val taskDAO get() = AppDatabase.instance.taskDAO
 
-    private val execute = AppDatabase.executorService::execute
+    private fun execute(runnable: Runnable)
+    {
+        AppDatabase.executorService.execute(runnable)
+    }
 
     private fun <T> submit(callable: Callable<T>): Future<T>
     {
