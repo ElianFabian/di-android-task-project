@@ -8,7 +8,7 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
 {
     private var interactor: TaskManagerContract.Interactor? = TaskManagerInteractor(this)
 
-    //region ITaskManagerListContract.Presenter
+    //region TaskManagerListContract.Presenter
 
     override fun add(task: Task)
     {
@@ -32,7 +32,7 @@ class TaskManagerPresenter(private var view: TaskManagerContract.View?) :
 
     //endregion
 
-    //region ITaskManagerInteractorListener
+    //region TaskManagerInteractorListener
 
     override fun onNameEmptyError()
     {
