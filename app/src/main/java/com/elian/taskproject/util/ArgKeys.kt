@@ -1,6 +1,6 @@
 package com.elian.taskproject.util
 
-object ArgsKeys
+object ArgKeys
 {
     const val SelectedTask = "SelectedTask"
     const val SelectedTaskPosition = "SelectedTaskPosition"

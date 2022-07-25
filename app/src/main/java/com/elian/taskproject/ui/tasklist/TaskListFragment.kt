@@ -12,7 +12,7 @@ import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.util.RecyclerViewAdapter
 import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
-import com.elian.taskproject.util.ArgsKeys
+import com.elian.taskproject.util.ArgKeys
 import com.elian.taskproject.util.ToggleAction
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.util.extensions.toast
@@ -115,8 +115,8 @@ class TaskListFragment : BaseFragment(),
     {
         navigate(R.id.action_taskListFragment_to_taskManagerFragment, Bundle().apply()
         {
-            putSerializable(ArgsKeys.SelectedTask, task)
-            putInt(ArgsKeys.SelectedTaskPosition, position)
+            putSerializable(ArgKeys.SelectedTask, task)
+            putInt(ArgKeys.SelectedTaskPosition, position)
         })
     }
 
