@@ -83,7 +83,7 @@ class TaskListFragment : BaseFragment(),
         {
             R.id.option_undo                   -> undo()
             R.id.option_markTasksAsUncompleted -> markTasksAsUncompleted()
-            R.id.option_sort_alphabetically    -> sortByNameActions.toggle()
+            R.id.option_sortAlphabetically     -> sortByNameActions.toggle()
         }
         return false
     }
