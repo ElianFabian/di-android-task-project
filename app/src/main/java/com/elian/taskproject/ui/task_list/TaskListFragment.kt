@@ -2,7 +2,10 @@ package com.elian.taskproject.ui.task_list
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +25,8 @@ class TaskListFragment : BaseFragment(),
     TaskListContract.View,
     RecyclerViewAdapter.OnBindViewHolderListener<Task>,
     RecyclerViewAdapter.OnItemClickListener<Task>,
-    RecyclerViewAdapter.OnItemLongClickListener<Task>
+    RecyclerViewAdapter.OnItemLongClickListener<Task>,
+    MenuProvider
 {
     override lateinit var presenter: TaskListContract.Presenter
 
@@ -44,7 +48,6 @@ class TaskListFragment : BaseFragment(),
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
 
         presenter = TaskListPresenter(this)
@@ -62,25 +65,31 @@ class TaskListFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
+        val menuHost: MenuHost = requireActivity()
+
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         initUI()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
-    {
-        inflater.inflate(R.menu.menu_actions, menu)
+    //endregion
 
-        super.onCreateOptionsMenu(menu, inflater)
+    //region MenuProvider
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater)
+    {
+        menuInflater.inflate(R.menu.menu_actions, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean
     {
-        when (item.itemId)
+        when (menuItem.itemId)
         {
             R.id.option_undo                   -> undo()
             R.id.option_markTasksAsUncompleted -> markTasksAsUncompleted()
             R.id.option_sort_alphabetically    -> sortByNameActions.toggle()
         }
-        return super.onOptionsItemSelected(item)
+        return false
     }
 
     //endregion
