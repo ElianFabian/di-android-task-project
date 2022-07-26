@@ -65,10 +65,6 @@ class TaskListFragment : BaseFragment(),
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuHost: MenuHost = requireActivity()
-
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
         initUI()
     }
 
@@ -98,6 +94,10 @@ class TaskListFragment : BaseFragment(),
 
     private fun initUI()
     {
+        val menuHost = requireActivity() as MenuHost
+
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         binding.fab.setOnClickListener()
         {
             navigate(R.id.action_taskListFragment_to_taskManagerFragment)
