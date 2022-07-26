@@ -1,4 +1,8 @@
 plugins {
+    
+    // Dagger Hilt
+    id 'dagger.hilt.android.plugin'
+
     // Firebase
     id 'com.google.gms.google-services'
 
@@ -39,8 +43,14 @@ android {
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
 
 dependencies {
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.41"
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.43'
 
     // Lifecycle coroutines
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
@@ -57,6 +67,8 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Kapt
     kapt "androidx.room:room-compiler:2.4.2"
 
     implementation 'androidx.core:core-ktx:1.8.0'
