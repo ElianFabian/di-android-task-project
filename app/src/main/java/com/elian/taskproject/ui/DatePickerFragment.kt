@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui.date_picker
+package com.elian.taskproject.ui
 
 import android.app.DatePickerDialog
 import android.app.Dialog

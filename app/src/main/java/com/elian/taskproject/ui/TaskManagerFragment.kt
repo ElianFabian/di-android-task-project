@@ -1,27 +1,27 @@
-package com.elian.taskproject.ui.task_manager
+package com.elian.taskproject.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.elian.taskproject.R
-import com.elian.taskproject.base.BaseFragment
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.util.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
-import com.elian.taskproject.util.extensions.toast
-import com.elian.taskproject.ui.date_picker.DatePickerFragment
 import com.elian.taskproject.util.ArgKeys
+import com.elian.taskproject.view_model.TaskManagerViewModel
 import java.util.*
 
-class TaskManagerFragment : BaseFragment(),
-    TaskManagerContract.View,
+class TaskManagerFragment : Fragment(),
     DatePickerFragment.OnDateSelectedListener
 {
     private lateinit var binding: FragmentTaskManagerBinding
-    override lateinit var presenter: TaskManagerContract.Presenter
+
+    private val viewModel: TaskManagerViewModel by viewModels()
 
     private val taskFromFields: Task
         get() = with(binding)
@@ -47,7 +47,7 @@ class TaskManagerFragment : BaseFragment(),
     {
         super.onCreate(savedInstanceState)
 
-        presenter = TaskManagerPresenter(this)
+        initializeViewModel()
     }
 
     override fun onCreateView(
@@ -65,7 +65,7 @@ class TaskManagerFragment : BaseFragment(),
         val selectedTask = arguments?.getSerializable(ArgKeys.SelectedTask) as Task?
         val selectedTaskPosition = arguments?.getInt(ArgKeys.SelectedTaskPosition)
 
-        initUI()
+        initializeUI()
 
         val isTaskToEdit = selectedTask != null
 
@@ -80,7 +80,7 @@ class TaskManagerFragment : BaseFragment(),
 
     //region Methods
 
-    private fun initUI()
+    private fun initializeUI()
     {
         // For some reason it doesn't work if I put it in the layout file
         // this is to avoid pasting text in it
@@ -90,17 +90,30 @@ class TaskManagerFragment : BaseFragment(),
         binding.ibDate.setOnClickListener { showDatePickerDialog(this) }
     }
 
+    private fun initializeViewModel()
+    {
+        viewModel.apply()
+        {
+            onTaskAdded = ::onTaskAdded
+            onTaskUpdated = ::onTaskUpdated
+
+            onValidateTask = ::onValidateTask
+            onNameEmptyError = ::onNameEmptyError
+            onDateEmptyError = ::onDateEmptyError
+        }
+    }
+
     private fun initUIForAddAction()
     {
-        binding.fab.setOnClickListener { presenter.add(taskFromFields) }
+        binding.fab.setOnClickListener { viewModel.add(taskFromFields) }
     }
 
     private fun initUIForEditAction(selectedTask: Task, position: Int)
     {
         binding.fab.setOnClickListener()
         {
-            presenter.edit(
-                editedTask = taskFromFields.copy(
+            viewModel.update(
+                updatedTask = taskFromFields.copy(
                     id = selectedTask.id, firebaseId = selectedTask.firebaseId
                 ),
                 position
@@ -118,6 +131,13 @@ class TaskManagerFragment : BaseFragment(),
         etDate.setText(DataUtils.dateFormat.format(Date(task.endDate!!)))
     }
 
+    private fun cleanInputFieldsErrors() = with(binding)
+    {
+        tilName.error = null
+        tilDescription.error = null
+        etDate.error = null
+    }
+
     //endregion
 
     //region DatePickerFragment.OnDateSelectedListener
@@ -133,52 +153,31 @@ class TaskManagerFragment : BaseFragment(),
 
     //endregion
 
-    //region TaskManagerContract.View
+    //region Events
 
-    override fun setNameEmptyError()
+    private fun onNameEmptyError()
     {
         binding.tieName.error = getString(R.string.error_emptyField)
     }
 
-    override fun setDescriptionEmptyError()
-    {
-        binding.tieDescription.error = getString(R.string.error_emptyField)
-    }
-
-    override fun setDateEmptyError()
+    private fun onDateEmptyError()
     {
         binding.etDate.error = getString(R.string.error_emptyField)
     }
 
-    override fun cleanInputFieldsErrors() = with(binding)
+    private fun onValidateTask()
     {
-        tilName.error = null
-        tilDescription.error = null
-        etDate.error = null
+        cleanInputFieldsErrors()
     }
 
-    override fun onAddSuccess()
+    private fun onTaskAdded(addedTask: Task)
     {
         NavHostFragment.findNavController(this).navigateUp()
-
-        toast("The task was successfully added.")
     }
 
-    override fun onAddFailure()
-    {
-        toast("Error when adding.")
-    }
-
-    override fun onEditFailure()
-    {
-        toast("Error when editing.")
-    }
-
-    override fun onEditSuccess()
+    private fun onTaskUpdated(updatedTask: Task)
     {
         NavHostFragment.findNavController(this).navigateUp()
-
-        toast("The task was successfully edited.")
     }
 
     //endregion

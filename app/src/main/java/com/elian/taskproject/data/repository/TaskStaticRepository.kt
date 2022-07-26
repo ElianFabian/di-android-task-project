@@ -1,87 +1,63 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.task_manager.TaskManagerContract
-import com.elian.taskproject.ui.task_list.TaskListContract
+import com.elian.taskproject.domain.repository.TaskListRepository
+import com.elian.taskproject.domain.repository.TaskManagerRepository
 
 object TaskStaticRepository :
-    TaskListContract.Repository,
-    TaskManagerContract.Repository
+    TaskListRepository,
+    TaskManagerRepository
 {
     private val taskList = arrayListOf<Task>()
 
     //region TaskListContract.Repository
 
-    override fun getList(callback: TaskListContract.OnGetListCallback)
-    {
-        if (taskList.isEmpty())
-        {
-            callback.onNoData()
-        }
-        else callback.onGetListSuccess(taskList)
-    }
+    override fun getTaskList(): List<Task> = taskList
 
-    override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)
+    override fun delete(taskToDelete: Task, position: Int)
     {
         taskList.remove(taskToDelete)
-        callback.onDeleteSuccess(taskToDelete, position)
     }
 
-    override fun undo(callback: TaskListContract.OnUndoCallback, taskToRetrieve: Task, position: Int)
+    override fun undo(taskToRetrieve: Task, position: Int)
     {
         taskList.add(position, taskToRetrieve)
-        callback.onUndoSuccess(taskToRetrieve, position)
     }
 
-    override fun changeCompletedState(
-        callback: TaskListContract.OnCompletedStateChangedCallback,
-        taskToChangeCompletedState: Task,
-        position: Int,
-        newState: Boolean,
-    )
+    override fun checkTask(taskToCheck: Task, position: Int)
     {
-        taskToChangeCompletedState.isCompleted = newState
-
-        taskList[position] = taskToChangeCompletedState
-        callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
+        taskList[position] = taskToCheck
     }
 
-    override fun markAsUncompleted(callback: TaskListContract.OnMarkAsUncompletedCallback, completedTasks: List<Task>)
+    override fun uncheckTaskList(completedTasks: List<Task>)
     {
         val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
 
         taskList.addAll(uncompletedTasks)
-        callback.onMarkAsUncompletedSuccess(uncompletedTasks)
     }
 
-    override fun sortByNameAscending(callback: TaskListContract.OnSortByNameAscendingCallback)
+    override fun sortByNameAscending(): List<Task>
     {
-        val sortedList = taskList.filter { !it.isCompleted }.sortedBy { it.name }
-
-        callback.onSortByNameAscendingSuccess(sortedList)
+        return taskList.filter { !it.isCompleted }.sortedBy { it.name }
     }
 
-    override fun sortByNameDescending(callback: TaskListContract.OnSortByNameDescendingCallback)
+    override fun sortByNameDescending(): List<Task>
     {
-        val sortedList = taskList.filter { !it.isCompleted }.sortedByDescending { it.name }
-
-        callback.onSortByNameDescendingSuccess(sortedList)
+        return taskList.filter { !it.isCompleted }.sortedByDescending { it.name }
     }
 
     //endregion
 
     //region TaskManagerContract.Repository
 
-    override fun add(callback: TaskManagerContract.OnAddCallback, taskToAdd: Task)
+    override fun add(taskToAdd: Task)
     {
         taskList.add(taskToAdd)
-        callback.onAddSuccess()
     }
 
-    override fun edit(callback: TaskManagerContract.OnEditCallback, editedTask: Task, position: Int)
+    override fun update(editedTask: Task, position: Int)
     {
         taskList[position] = editedTask
-        callback.onEditSuccess()
     }
 
     //endregion

@@ -12,6 +12,8 @@ open class RecyclerViewAdapter<T : Any>(
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter<T>.ViewHolder>()
 {
+    val itemList get() = list
+    
     private var onItemClickListener: OnItemClickListener<T>? = null
     private var onItemLongClickListener: OnItemLongClickListener<T>? = null
     private var onBindViewHolderListener: OnBindViewHolderListener<T>? = null

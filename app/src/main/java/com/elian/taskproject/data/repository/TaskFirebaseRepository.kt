@@ -2,146 +2,119 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.ui.task_list.TaskListContract
-import com.elian.taskproject.ui.task_manager.TaskManagerContract
+import com.elian.taskproject.domain.repository.TaskListRepository
+import com.elian.taskproject.domain.repository.TaskManagerRepository
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 object TaskFirebaseRepository :
-    TaskListContract.Repository,
-    TaskManagerContract.Repository
+    TaskListRepository,
+    TaskManagerRepository
 {
     private val firestore get() = Firebase.firestore
 
     private val userId get() = AppInformation.currentUser.email
     private val taskCollectionPath = "users/$userId/tasks"
 
-    //region TaskListContract.Repository
+    //region TaskListRepository
 
-    override fun getList(callback: TaskListContract.OnGetListCallback)
+    override fun getTaskList(): List<Task>
     {
+        var taskList = emptyList<Task>()
+
         firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
-                val tasks = it.result.toObjects(Task::class.java)
-
-                if (tasks.isNotEmpty()) callback.onGetListSuccess(tasks)
-                else callback.onNoData()
+                taskList = it.result.toObjects(Task::class.java)
             }
-            else callback.onGetListFailure()
         }
+
+        return taskList
     }
 
-    override fun delete(callback: TaskListContract.OnDeleteCallback, taskToDelete: Task, position: Int)
+    override fun delete(taskToDelete: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToDelete.firebaseId}"
 
         firestore.document(documentPath).delete()
-            .addOnSuccessListener { callback.onDeleteSuccess(taskToDelete, position) }
-            .addOnFailureListener { callback.onDeleteFailure() }
     }
 
-    override fun undo(callback: TaskListContract.OnUndoCallback, taskToRetrieve: Task, position: Int)
+    override fun undo(taskToRetrieve: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToRetrieve.firebaseId}"
 
         firestore.document(documentPath).set(taskToRetrieve)
-            .addOnSuccessListener { callback.onUndoSuccess(taskToRetrieve, position) }
-            .addOnFailureListener { callback.onUndoFailure() }
     }
 
-    override fun changeCompletedState(
-        callback: TaskListContract.OnCompletedStateChangedCallback,
-        taskToChangeCompletedState: Task,
-        position: Int,
-        newState: Boolean,
+    override fun checkTask(taskToCheck: Task, position: Int,
     )
     {
-        val documentPath = "$taskCollectionPath/${taskToChangeCompletedState.firebaseId}"
+        val documentPath = "$taskCollectionPath/${taskToCheck.firebaseId}"
 
         firestore.document(documentPath).update("completed", true)
-            .addOnSuccessListener()
-            {
-                taskToChangeCompletedState.isCompleted = newState
-                callback.onCompletedStateChangedSuccess(taskToChangeCompletedState, position)
-            }
-            .addOnFailureListener()
-            {
-                callback.onCompletedStateChangedFailure()
-            }
     }
 
-    override fun markAsUncompleted(callback: TaskListContract.OnMarkAsUncompletedCallback, completedTasks: List<Task>)
+    override fun uncheckTaskList(completedTasks: List<Task>)
     {
         completedTasks.forEach()
         {
             val documentPath = "$taskCollectionPath/${it.firebaseId}"
 
-            val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
-
             firestore.document(documentPath).set(it)
-                .addOnSuccessListener()
-                {
-                    callback.onMarkAsUncompletedSuccess(uncompletedTasks)
-                }
-                .addOnFailureListener()
-                {
-                    callback.onMarkAsUncompletedFailure()
-                }
         }
     }
 
-    override fun sortByNameAscending(callback: TaskListContract.OnSortByNameAscendingCallback)
+    override fun sortByNameAscending(): List<Task>
     {
+        var sortedList = emptyList<Task>()
+
         firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
                 val list = it.result.toObjects(Task::class.java)
-                val sortedList = list.filter { task -> !task.isCompleted }.sortedBy { task -> task.name }
 
-                callback.onSortByNameAscendingSuccess(sortedList)
+                sortedList = list.filter { task -> !task.isCompleted }.sortedBy { task -> task.name }
             }
-            else callback.onSortByNameAscendingFailure()
         }
+
+        return sortedList
     }
 
-    override fun sortByNameDescending(callback: TaskListContract.OnSortByNameDescendingCallback)
+    override fun sortByNameDescending(): List<Task>
     {
+        var sortedList = emptyList<Task>()
+
         firestore.collection(taskCollectionPath).get().addOnCompleteListener()
         {
             if (it.isSuccessful)
             {
                 val list = it.result.toObjects(Task::class.java)
-                val sortedList = list.filter { task -> !task.isCompleted }.sortedByDescending { task -> task.name }
 
-                callback.onSortByNameDescendingSuccess(sortedList)
+                sortedList = list.filter { task -> !task.isCompleted }.sortedByDescending { task -> task.name }
             }
-            else callback.onSortByNameDescendingFailure()
         }
+
+        return sortedList
     }
 
     //endregion
 
-    //region TaskManagerContract.Repository
+    //region TaskManagerRepository
 
-    override fun add(callback: TaskManagerContract.OnAddCallback, taskToAdd: Task)
+    override fun add(taskToAdd: Task)
     {
         val documentPath = "${taskCollectionPath}/${taskToAdd.firebaseId}"
 
         firestore.document(documentPath).set(taskToAdd)
-            .addOnSuccessListener { callback.onAddSuccess() }
-            .addOnFailureListener { callback.onAddFailure() }
     }
 
-    override fun edit(callback: TaskManagerContract.OnEditCallback, editedTask: Task, position: Int)
+    override fun update(editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 
         firestore.document(documentPath).set(editedTask)
-            .addOnSuccessListener { callback.onEditSuccess() }
-            .addOnFailureListener { callback.onEditFailure() }
     }
 
     //endregion
