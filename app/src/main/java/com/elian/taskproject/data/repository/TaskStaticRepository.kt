@@ -12,7 +12,7 @@ object TaskStaticRepository :
 
     //region TaskListContract.Repository
 
-    override fun getTaskList(): List<Task> = taskList
+    override fun getTaskList(): List<Task> = taskList.toList()
 
     override fun delete(taskToDelete: Task, position: Int)
     {
