@@ -1,5 +1,6 @@
 package com.elian.taskproject.view_model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.elian.taskproject.data.model.Task
@@ -49,7 +50,7 @@ class TaskListViewModel : ViewModel()
     fun delete(taskToDelete: Task, position: Int)
     {
         repository.delete(taskToDelete, position)
-        
+
         uncheckedTaskList.remove(taskToDelete)
         deletedTasksByPosition[taskToDelete] = position
 
@@ -65,7 +66,7 @@ class TaskListViewModel : ViewModel()
         val position = deletedTasksByPosition.values.last()
 
         repository.undo(lastDeletedTask, position)
-        
+
         uncheckedTaskList.add(lastDeletedTask)
         deletedTasksByPosition.remove(lastDeletedTask)
 
@@ -76,7 +77,7 @@ class TaskListViewModel : ViewModel()
     fun checkTask(taskToCheck: Task, position: Int)
     {
         repository.checkTask(taskToCheck, position)
-        
+
         uncheckedTaskList.remove(taskToCheck)
         checkedTaskList.add(taskToCheck)
 
@@ -88,9 +89,8 @@ class TaskListViewModel : ViewModel()
     {
         if (checkedTaskList.isEmpty()) return
 
-        repository.uncheckTaskList(checkedTaskList)
+        val uncheckedList = repository.uncheckTaskList(checkedTaskList)
 
-        val uncheckedList = checkedTaskList.toList().onEach { it.uncheck() }
         uncheckedTaskList.addAll(uncheckedList)
         checkedTaskList.clear()
 
@@ -100,14 +100,14 @@ class TaskListViewModel : ViewModel()
 
     fun sortByNameAscending()
     {
-        val sortedList = repository.sortByNameAscending()
+        val sortedList = uncheckedTaskList.sortedBy { it.name }
 
         onSortTaskListByName.invoke(sortedList)
     }
 
     fun sortByNameDescending()
     {
-        val sortedList = repository.sortByNameDescending()
+        val sortedList = uncheckedTaskList.sortedByDescending { it.name }
 
         onSortTaskListByName.invoke(sortedList)
     }

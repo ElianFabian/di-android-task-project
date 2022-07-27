@@ -47,7 +47,8 @@ object TaskFirebaseRepository :
         firestore.document(documentPath).set(taskToRetrieve)
     }
 
-    override fun checkTask(taskToCheck: Task, position: Int,
+    override fun checkTask(
+        taskToCheck: Task, position: Int,
     )
     {
         val documentPath = "$taskCollectionPath/${taskToCheck.firebaseId}"
@@ -55,48 +56,22 @@ object TaskFirebaseRepository :
         firestore.document(documentPath).update("isChecked", true)
     }
 
-    override fun uncheckTaskList(checkedTaskList: List<Task>)
+    override fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
     {
+        val uncheckedTaskList = mutableListOf<Task>()
+
         checkedTaskList.forEach()
         {
             val documentPath = "$taskCollectionPath/${it.firebaseId}"
 
+            it.uncheck()
+
             firestore.document(documentPath).set(it)
-        }
-    }
 
-    override fun sortByNameAscending(): List<Task>
-    {
-        var sortedList = emptyList<Task>()
-
-        firestore.collection(taskCollectionPath).get().addOnCompleteListener()
-        {
-            if (it.isSuccessful)
-            {
-                val list = it.result.toObjects(Task::class.java)
-
-                sortedList = list.filter { task -> !task.isChecked }.sortedBy { task -> task.name }
-            }
+            uncheckedTaskList.add(it)
         }
 
-        return sortedList
-    }
-
-    override fun sortByNameDescending(): List<Task>
-    {
-        var sortedList = emptyList<Task>()
-
-        firestore.collection(taskCollectionPath).get().addOnCompleteListener()
-        {
-            if (it.isSuccessful)
-            {
-                val list = it.result.toObjects(Task::class.java)
-
-                sortedList = list.filter { task -> !task.isChecked }.sortedByDescending { task -> task.name }
-            }
-        }
-
-        return sortedList
+        return uncheckedTaskList
     }
 
     //endregion
