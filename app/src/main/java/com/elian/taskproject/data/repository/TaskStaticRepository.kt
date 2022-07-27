@@ -29,9 +29,9 @@ object TaskStaticRepository :
         taskList[position] = taskToCheck
     }
 
-    override fun uncheckTaskList(completedTasks: List<Task>)
+    override fun uncheckTaskList(completedTaskList: List<Task>)
     {
-        val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
+        val uncompletedTasks = completedTaskList.toList().onEach { task -> task.markAsUncompleted() }
 
         taskList.addAll(uncompletedTasks)
     }

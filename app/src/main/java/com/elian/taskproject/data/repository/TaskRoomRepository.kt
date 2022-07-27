@@ -47,11 +47,11 @@ object TaskRoomRepository :
         execute { taskDAO.update(taskToCheck) }
     }
 
-    override fun uncheckTaskList(completedTasks: List<Task>)
+    override fun uncheckTaskList(completedTaskList: List<Task>)
     {
-        val uncompletedTasks = completedTasks.toList().onEach { task -> task.markAsUncompleted() }
+        val uncompletedTaskList = completedTaskList.toList().onEach { task -> task.markAsUncompleted() }
 
-        execute { taskDAO.updateAll(uncompletedTasks) }
+        execute { taskDAO.updateAll(uncompletedTaskList) }
     }
 
     override fun sortByNameAscending(): List<Task>

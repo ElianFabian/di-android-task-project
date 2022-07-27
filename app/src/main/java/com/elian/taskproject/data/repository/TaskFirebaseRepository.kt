@@ -55,9 +55,9 @@ object TaskFirebaseRepository :
         firestore.document(documentPath).update("completed", true)
     }
 
-    override fun uncheckTaskList(completedTasks: List<Task>)
+    override fun uncheckTaskList(completedTaskList: List<Task>)
     {
-        completedTasks.forEach()
+        completedTaskList.forEach()
         {
             val documentPath = "$taskCollectionPath/${it.firebaseId}"
 
