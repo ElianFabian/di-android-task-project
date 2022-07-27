@@ -107,8 +107,6 @@ class TaskListFragment : Fragment(),
 
     private fun initializeViewModel()
     {
-        viewModel.setUncompletedTaskList(taskAdapter.itemList)
-
         viewModel.isLoading.observe(this, ::onLoadStateChanged)
 
         viewModel.apply()
