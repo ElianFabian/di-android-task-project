@@ -16,6 +16,6 @@
         <item>Alto</item>
     </string-array>
     <string name="menu_toolbar_option_undo_title">Deshacer</string>
-    <string name="menu_toolbar_option_markTasksAsUncompleted_title">Marcar tareas como incompletadas</string>
+    <string name="menu_toolbar_option_uncheckTasks_title">Marcar tareas como incompletadas</string>
     <string name="menu_toolbar_option_sort_title">Ordenar</string>
 </resources>

@@ -9,8 +9,8 @@ These are the operations you can do:
 - Edit them.
 - Delete them.
 - Undo (get back one by one the deleted tasks).
-- Mark them as completed.
-- Unmark them all and make them visible again in the task list.
+- Check them.
+- Uncheck them all and make them visible again in the task list.
 - Sort them alphabetically and in reverse order.
 
 <br>

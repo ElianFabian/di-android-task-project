@@ -52,12 +52,12 @@ object TaskFirebaseRepository :
     {
         val documentPath = "$taskCollectionPath/${taskToCheck.firebaseId}"
 
-        firestore.document(documentPath).update("completed", true)
+        firestore.document(documentPath).update("isChecked", true)
     }
 
-    override fun uncheckTaskList(completedTaskList: List<Task>)
+    override fun uncheckTaskList(checkedTaskList: List<Task>)
     {
-        completedTaskList.forEach()
+        checkedTaskList.forEach()
         {
             val documentPath = "$taskCollectionPath/${it.firebaseId}"
 
@@ -75,7 +75,7 @@ object TaskFirebaseRepository :
             {
                 val list = it.result.toObjects(Task::class.java)
 
-                sortedList = list.filter { task -> !task.isCompleted }.sortedBy { task -> task.name }
+                sortedList = list.filter { task -> !task.isChecked }.sortedBy { task -> task.name }
             }
         }
 
@@ -92,7 +92,7 @@ object TaskFirebaseRepository :
             {
                 val list = it.result.toObjects(Task::class.java)
 
-                sortedList = list.filter { task -> !task.isCompleted }.sortedByDescending { task -> task.name }
+                sortedList = list.filter { task -> !task.isChecked }.sortedByDescending { task -> task.name }
             }
         }
 

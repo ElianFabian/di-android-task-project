@@ -10,7 +10,7 @@
     <item
             android:id="@+id/option_uncheckTaskList"
             android:icon="@drawable/ic_restore"
-            android:title="@string/menu_toolbar_option_markTasksAsUncompleted_title"
+            android:title="@string/menu_toolbar_option_uncheckTasks_title"
             app:showAsAction="ifRoom" />
 
     <item

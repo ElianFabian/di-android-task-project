@@ -10,8 +10,8 @@ class TaskListViewModel : ViewModel()
 {
     private val repository: TaskListRepository = TaskRoomRepository
 
-    private val uncompletedTaskList = mutableListOf<Task>()
-    private val completedTaskList = mutableListOf<Task>()
+    private val uncheckedTaskList = mutableListOf<Task>()
+    private val checkedTaskList = mutableListOf<Task>()
     private val deletedTasksByPosition = linkedMapOf<Task, Int>()
 
     var isLoading = MutableLiveData<Boolean>()
@@ -34,16 +34,16 @@ class TaskListViewModel : ViewModel()
         {
             onGetTaskList.invoke(list)
 
-            val completedList = list.filter { it.isCompleted }
-            val uncompletedList = list.filter { !it.isCompleted }
+            val checkedList = list.filter { it.isChecked }
+            val uncheckedList = list.filter { !it.isChecked }
 
-            completedTaskList.clear()
-            uncompletedTaskList.clear()
-            completedTaskList.addAll(completedList)
-            uncompletedTaskList.addAll(uncompletedList)
+            checkedTaskList.clear()
+            uncheckedTaskList.clear()
+            checkedTaskList.addAll(checkedList)
+            uncheckedTaskList.addAll(uncheckedList)
         }
 
-        onTaskListStateChanged.invoke(uncompletedTaskList.isEmpty())
+        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun delete(taskToDelete: Task, position: Int)
@@ -52,10 +52,10 @@ class TaskListViewModel : ViewModel()
 
         onDeleteTask.invoke(taskToDelete, position)
 
-        uncompletedTaskList.remove(taskToDelete)
+        uncheckedTaskList.remove(taskToDelete)
         deletedTasksByPosition[taskToDelete] = position
 
-        onTaskListStateChanged.invoke(uncompletedTaskList.isEmpty())
+        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun undo()
@@ -69,10 +69,10 @@ class TaskListViewModel : ViewModel()
 
         onUndoDeleteTask.invoke(lastDeletedTask, position)
 
-        uncompletedTaskList.add(lastDeletedTask)
+        uncheckedTaskList.add(lastDeletedTask)
         deletedTasksByPosition.remove(lastDeletedTask)
 
-        onTaskListStateChanged.invoke(uncompletedTaskList.isEmpty())
+        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun checkTask(taskToCheck: Task, position: Int)
@@ -81,25 +81,25 @@ class TaskListViewModel : ViewModel()
 
         onCheckTask.invoke(taskToCheck, position)
 
-        uncompletedTaskList.remove(taskToCheck)
-        completedTaskList.add(taskToCheck)
+        uncheckedTaskList.remove(taskToCheck)
+        checkedTaskList.add(taskToCheck)
 
-        onTaskListStateChanged.invoke(uncompletedTaskList.isEmpty())
+        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun uncheckTaskList()
     {
-        if (completedTaskList.isEmpty()) return
+        if (checkedTaskList.isEmpty()) return
 
-        repository.uncheckTaskList(completedTaskList)
+        repository.uncheckTaskList(checkedTaskList)
 
-        val uncompletedList = completedTaskList.toList().onEach { it.markAsUncompleted() }
-        uncompletedTaskList.addAll(uncompletedList)
-        completedTaskList.clear()
+        val uncheckedList = checkedTaskList.toList().onEach { it.uncheck() }
+        uncheckedTaskList.addAll(uncheckedList)
+        checkedTaskList.clear()
 
-        onUncheckTaskList.invoke(uncompletedList)
+        onUncheckTaskList.invoke(uncheckedList)
 
-        onTaskListStateChanged.invoke(uncompletedTaskList.isEmpty())
+        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun sortByNameAscending()

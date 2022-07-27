@@ -11,7 +11,7 @@ data class Task(
     var description: String = "",
     var importance: Importance = Importance.LOW,
     var endDate: Long? = null,
-    var isCompleted: Boolean = false,
+    var isChecked: Boolean = false,
 
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
@@ -25,13 +25,13 @@ data class Task(
         LOW, MEDIUM, HIGH
     }
 
-    fun markAsCompleted()
+    fun check()
     {
-        isCompleted = true
+        isChecked = true
     }
 
-    fun markAsUncompleted()
+    fun uncheck()
     {
-        isCompleted = false
+        isChecked = false
     }
 }

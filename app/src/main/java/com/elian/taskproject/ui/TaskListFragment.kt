@@ -150,15 +150,15 @@ class TaskListFragment : Fragment(),
         {
             tvName.text = item.name
             tvImportance.text = importanceStringArray[item.importance.ordinal]
-            chkIsCompleted.isChecked = item.isCompleted
+            chkIsChecked.isChecked = item.isChecked
 
-            chkIsCompleted.setOnClickListener()
+            chkIsChecked.setOnClickListener()
             {
                 // When the task is checked but it's not already gone from the recycler view
                 // we make sure the user can't uncheck the task or even click it to edit it or delete it.
                 view.setOnClickListener(null)
                 view.setOnLongClickListener(null)
-                chkIsCompleted.isClickable = false
+                chkIsChecked.isClickable = false
 
                 viewModel.checkTask(item, position)
             }
@@ -183,9 +183,9 @@ class TaskListFragment : Fragment(),
 
     private fun onGetTaskList(taskList: List<Task>)
     {
-        val uncompletedTaskList = taskList.filter { !it.isCompleted }
+        val uncheckedTaskList = taskList.filter { !it.isChecked }
 
-        taskAdapter.replaceList(uncompletedTaskList)
+        taskAdapter.replaceList(uncheckedTaskList)
     }
 
     private fun onDelete(deletedTask: Task, position: Int)
@@ -198,14 +198,14 @@ class TaskListFragment : Fragment(),
         taskAdapter.insertItem(position, retrievedTask)
     }
 
-    private fun onCheckTask(completedTask: Task, position: Int)
+    private fun onCheckTask(checkedTask: Task, position: Int)
     {
-        taskAdapter.removeItem(completedTask)
+        taskAdapter.removeItem(checkedTask)
     }
 
-    private fun onUncheckTaskList(uncompletedTaskList: List<Task>)
+    private fun onUncheckTaskList(uncheckedTaskList: List<Task>)
     {
-        taskAdapter.insertItems(0, uncompletedTaskList)
+        taskAdapter.insertItems(0, uncheckedTaskList)
     }
 
     private fun onSortByName(taskListSortedByName: List<Task>)

@@ -26,24 +26,24 @@ object TaskStaticRepository :
 
     override fun checkTask(taskToCheck: Task, position: Int)
     {
-        taskToCheck.markAsCompleted()
+        taskToCheck.check()
         
         taskList[position] = taskToCheck
     }
 
-    override fun uncheckTaskList(completedTaskList: List<Task>)
+    override fun uncheckTaskList(checkedTaskList: List<Task>)
     {
-        taskList.replaceAll { it.apply { markAsUncompleted() } }
+        taskList.replaceAll { it.apply { uncheck() } }
     }
 
     override fun sortByNameAscending(): List<Task>
     {
-        return taskList.filter { !it.isCompleted }.sortedBy { it.name }
+        return taskList.filter { !it.isChecked }.sortedBy { it.name }
     }
 
     override fun sortByNameDescending(): List<Task>
     {
-        return taskList.filter { !it.isCompleted }.sortedByDescending { it.name }
+        return taskList.filter { !it.isChecked }.sortedByDescending { it.name }
     }
 
     //endregion

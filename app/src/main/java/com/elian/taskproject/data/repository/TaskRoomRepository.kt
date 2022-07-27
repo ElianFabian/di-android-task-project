@@ -42,30 +42,30 @@ object TaskRoomRepository :
 
     override fun checkTask(taskToCheck: Task, position: Int)
     {
-        taskToCheck.markAsCompleted()
+        taskToCheck.check()
 
         execute { taskDAO.update(taskToCheck) }
     }
 
-    override fun uncheckTaskList(completedTaskList: List<Task>)
+    override fun uncheckTaskList(checkedTaskList: List<Task>)
     {
-        val uncompletedTaskList = completedTaskList.toList().onEach { task -> task.markAsUncompleted() }
+        val uncheckedTaskList = checkedTaskList.toList().onEach { task -> task.uncheck() }
 
-        execute { taskDAO.updateAll(uncompletedTaskList) }
+        execute { taskDAO.updateAll(uncheckedTaskList) }
     }
 
     override fun sortByNameAscending(): List<Task>
     {
         val list = submit { taskDAO.selectAll() }.get()
 
-        return list.filter { !it.isCompleted }.sortedBy { it.name }
+        return list.filter { !it.isChecked }.sortedBy { it.name }
     }
 
     override fun sortByNameDescending(): List<Task>
     {
         val list = submit { taskDAO.selectAll() }.get()
 
-        return list.filter { !it.isCompleted }.sortedByDescending { it.name }
+        return list.filter { !it.isChecked }.sortedByDescending { it.name }
     }
 
     //endregion
