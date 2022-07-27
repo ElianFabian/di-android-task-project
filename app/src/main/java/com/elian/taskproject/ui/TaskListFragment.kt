@@ -34,9 +34,6 @@ class TaskListFragment : Fragment(),
 
     private lateinit var importanceStringArray: Array<String>
 
-    private val deletedTasksByPosition = linkedMapOf<Task, Int>()
-    private val completedTaskSet = mutableSetOf<Task>()
-
     private val sortByNameActions = ToggleAction(
         { viewModel.sortByNameDescending() },
         { viewModel.sortByNameAscending() }
@@ -68,7 +65,7 @@ class TaskListFragment : Fragment(),
 
     //endregion
 
-    //region MenuProvider
+    //region MenuProvider Methods
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater)
     {
@@ -79,8 +76,8 @@ class TaskListFragment : Fragment(),
     {
         when (menuItem.itemId)
         {
-            R.id.option_undo               -> undo()
-            R.id.option_uncheckTaskList    -> uncheckTaskList()
+            R.id.option_undo               -> viewModel.undo()
+            R.id.option_uncheckTaskList    -> viewModel.uncheckTaskList()
             R.id.option_sortAlphabetically -> sortByNameActions.toggle()
         }
         return false
@@ -145,23 +142,6 @@ class TaskListFragment : Fragment(),
         })
     }
 
-    private fun undo()
-    {
-        if (deletedTasksByPosition.isEmpty()) return
-
-        val lastDeletedTask = deletedTasksByPosition.keys.last()
-        val position = deletedTasksByPosition.values.last()
-
-        viewModel.undo(lastDeletedTask, position)
-    }
-
-    private fun uncheckTaskList()
-    {
-        if (completedTaskSet.isEmpty()) return
-
-        viewModel.uncheckTaskList(completedTaskSet.toList())
-    }
-
     //endregion
 
     //region RecyclerViewAdapter
@@ -205,40 +185,29 @@ class TaskListFragment : Fragment(),
 
     private fun onGetTaskList(taskList: List<Task>)
     {
-        val completedTaskList = taskList.filter { it.isCompleted }
         val uncompletedTaskList = taskList.filter { !it.isCompleted }
 
         taskAdapter.replaceList(uncompletedTaskList)
-
-        this.completedTaskSet.clear()
-        this.completedTaskSet.addAll(completedTaskList)
     }
 
     private fun onDelete(deletedTask: Task, position: Int)
     {
-        deletedTasksByPosition[deletedTask] = position
-
         taskAdapter.removeItem(deletedTask)
     }
 
     private fun onUndo(retrievedTask: Task, position: Int)
     {
         taskAdapter.insertItem(position, retrievedTask)
-
-        deletedTasksByPosition.remove(retrievedTask)
     }
 
     private fun onCheckTask(completedTask: Task, position: Int)
     {
-        completedTaskSet.add(completedTask)
         taskAdapter.removeItem(completedTask)
     }
 
-    private fun onUncheckTaskList(uncheckedTaskList: List<Task>)
+    private fun onUncheckTaskList(uncompletedTaskList: List<Task>)
     {
-        taskAdapter.insertItems(0, uncheckedTaskList)
-
-        completedTaskSet.clear()
+        taskAdapter.insertItems(0, uncompletedTaskList)
     }
 
     private fun onSortByName(taskListSortedByName: List<Task>)

@@ -12,6 +12,9 @@ class TaskListViewModel : ViewModel()
 
     private lateinit var taskList: List<Task>
 
+    private val deletedTasksByPosition = linkedMapOf<Task, Int>()
+    private val completedTaskSet = mutableSetOf<Task>()
+
     var isLoading = MutableLiveData<Boolean>()
 
     var onGetTaskList: (List<Task>) -> Unit = { }
@@ -38,6 +41,10 @@ class TaskListViewModel : ViewModel()
         if (list.isNotEmpty())
         {
             onGetTaskList.invoke(list)
+
+            val completedTaskList = list.filter { it.isCompleted }
+
+            completedTaskList.forEach { completedTaskSet.add(it) }
         }
 
         onTaskListStateChanged.invoke(taskList.isEmpty())
@@ -49,14 +56,23 @@ class TaskListViewModel : ViewModel()
 
         onDeleteTask.invoke(taskToDelete, position)
 
+        deletedTasksByPosition[taskToDelete] = position
+
         onTaskListStateChanged.invoke(taskList.isEmpty())
     }
 
-    fun undo(taskToRetrieve: Task, position: Int)
+    fun undo()
     {
-        repository.undo(taskToRetrieve, position)
+        if (deletedTasksByPosition.isEmpty()) return
 
-        onUndoDeleteTask.invoke(taskToRetrieve, position)
+        val lastDeletedTask = deletedTasksByPosition.keys.last()
+        val position = deletedTasksByPosition.values.last()
+
+        repository.undo(lastDeletedTask, position)
+
+        onUndoDeleteTask.invoke(lastDeletedTask, position)
+
+        deletedTasksByPosition.remove(lastDeletedTask)
 
         onTaskListStateChanged.invoke(taskList.isEmpty())
     }
@@ -67,14 +83,20 @@ class TaskListViewModel : ViewModel()
 
         onCheckTask.invoke(taskToCheck, position)
 
+        completedTaskSet.add(taskToCheck)
+
         onTaskListStateChanged.invoke(taskList.isEmpty())
     }
 
-    fun uncheckTaskList(listOfCompletedTasks: List<Task>)
+    fun uncheckTaskList()
     {
-        repository.uncheckTaskList(listOfCompletedTasks)
+        if (completedTaskSet.isEmpty()) return
 
-        onUncheckTaskList.invoke(listOfCompletedTasks)
+        repository.uncheckTaskList(completedTaskSet.toList())
+
+        onUncheckTaskList.invoke(completedTaskSet.toList())
+
+        completedTaskSet.clear()
 
         onTaskListStateChanged.invoke(taskList.isEmpty())
     }
