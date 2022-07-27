@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
 
-        initApplication()
+        initializeApplication()
     }
 
-    private fun initApplication()
+    private fun initializeApplication()
     {
         AppDatabase.create(this)
 
