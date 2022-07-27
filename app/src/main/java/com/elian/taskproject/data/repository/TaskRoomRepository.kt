@@ -42,7 +42,7 @@ object TaskRoomRepository :
 
     override fun checkTask(taskToCheck: Task, position: Int)
     {
-        taskToCheck.isCompleted = true
+        taskToCheck.markAsCompleted()
 
         execute { taskDAO.update(taskToCheck) }
     }
