@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elian.taskproject.R
@@ -17,13 +18,13 @@ import com.elian.taskproject.databinding.FragmentTaskListBinding
 import com.elian.taskproject.databinding.ItemTaskBinding
 import com.elian.taskproject.util.ArgKeys
 import com.elian.taskproject.util.ToggleAction
+import com.elian.taskproject.util.createSwipeComponent
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.view_model.TaskListViewModel
 
 class TaskListFragment : Fragment(),
     RecyclerViewAdapter.OnBindViewHolderListener<Task>,
     RecyclerViewAdapter.OnItemClickListener<Task>,
-    RecyclerViewAdapter.OnItemLongClickListener<Task>,
     MenuProvider
 {
     private lateinit var binding: FragmentTaskListBinding
@@ -128,7 +129,16 @@ class TaskListFragment : Fragment(),
 
         taskAdapter.setOnBindViewHolderListener(this)
         taskAdapter.setOnItemClickListener(this)
-        taskAdapter.setOnItemLongClickListener(this)
+
+        val swipeToDelete = createSwipeComponent(ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) { viewHolder, _ ->
+
+            val position = viewHolder.layoutPosition
+            val task = taskAdapter.getItem(position)
+
+            viewModel.delete(task, position)
+        }
+
+        swipeToDelete.attachToRecyclerView(binding.rvTasks)
     }
 
     private fun sendTaskToTaskManager(task: Task, position: Int)
@@ -168,13 +178,6 @@ class TaskListFragment : Fragment(),
     override fun onItemClick(v: View?, selectedItem: Task, position: Int)
     {
         sendTaskToTaskManager(selectedItem, position)
-    }
-
-    override fun onItemLongClick(v: View?, selectedItem: Task, position: Int): Boolean
-    {
-        viewModel.delete(selectedItem, position)
-
-        return true
     }
 
     //endregion
