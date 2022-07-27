@@ -77,7 +77,7 @@ class TaskListFragment : Fragment(),
         when (menuItem.itemId)
         {
             R.id.option_undo               -> viewModel.undo()
-            R.id.option_uncheckTaskList    -> viewModel.uncheckTaskList()
+            R.id.option_uncheckTaskList    -> viewModel.uncheckList()
             R.id.option_sortAlphabetically -> sortByNameActions.toggle()
         }
         return false
@@ -117,7 +117,7 @@ class TaskListFragment : Fragment(),
             onCheckTask = ::onCheckTask
             onUncheckTaskList = ::onUncheckTaskList
             onSortTaskListByName = ::onSortByName
-            onTaskListStateChanged = ::onTaskListStateChanged
+            onUncheckedTaskListStateChanged = ::onUncheckedTaskListStateChanged
         }
     }
 
@@ -218,7 +218,7 @@ class TaskListFragment : Fragment(),
         binding.progressBar.isVisible = isLoading
     }
 
-    private fun onTaskListStateChanged(isEmpty: Boolean)
+    private fun onUncheckedTaskListStateChanged(isEmpty: Boolean)
     {
         binding.ivNoData.isVisible = isEmpty
     }

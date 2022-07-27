@@ -21,7 +21,7 @@ class TaskListViewModel : ViewModel()
     var onUndoDeleteTask: (Task, Int) -> Unit = { _, _ -> }
     var onCheckTask: (Task, Int) -> Unit = { _, _ -> }
     var onUncheckTaskList: (List<Task>) -> Unit = { }
-    var onTaskListStateChanged: (Boolean) -> Unit = { }
+    var onUncheckedTaskListStateChanged: (Boolean) -> Unit = { }
     var onSortTaskListByName: (List<Task>) -> Unit = { }
 
     fun getTaskList()
@@ -43,19 +43,18 @@ class TaskListViewModel : ViewModel()
             uncheckedTaskList.addAll(uncheckedList)
         }
 
-        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun delete(taskToDelete: Task, position: Int)
     {
         repository.delete(taskToDelete, position)
-
-        onDeleteTask.invoke(taskToDelete, position)
-
+        
         uncheckedTaskList.remove(taskToDelete)
         deletedTasksByPosition[taskToDelete] = position
 
-        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onDeleteTask.invoke(taskToDelete, position)
+        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun undo()
@@ -66,28 +65,26 @@ class TaskListViewModel : ViewModel()
         val position = deletedTasksByPosition.values.last()
 
         repository.undo(lastDeletedTask, position)
-
-        onUndoDeleteTask.invoke(lastDeletedTask, position)
-
+        
         uncheckedTaskList.add(lastDeletedTask)
         deletedTasksByPosition.remove(lastDeletedTask)
 
-        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onUndoDeleteTask.invoke(lastDeletedTask, position)
+        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun checkTask(taskToCheck: Task, position: Int)
     {
         repository.checkTask(taskToCheck, position)
-
-        onCheckTask.invoke(taskToCheck, position)
-
+        
         uncheckedTaskList.remove(taskToCheck)
         checkedTaskList.add(taskToCheck)
 
-        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onCheckTask.invoke(taskToCheck, position)
+        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
-    fun uncheckTaskList()
+    fun uncheckList()
     {
         if (checkedTaskList.isEmpty()) return
 
@@ -98,8 +95,7 @@ class TaskListViewModel : ViewModel()
         checkedTaskList.clear()
 
         onUncheckTaskList.invoke(uncheckedList)
-
-        onTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun sortByNameAscending()
