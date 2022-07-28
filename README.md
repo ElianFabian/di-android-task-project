@@ -7,10 +7,10 @@ This project is to practice concepts like creating a layout and using a recycler
 These are the operations you can do:
 - Add new tasks.
 - Edit them.
-- Delete them.
+- Delete them by swaping them.
 - Undo (get back one by one the deleted tasks).
-- Mark them as completed.
-- Unmark them all and make them visible again in the task list.
+- Check them as completed.
+- Uncheck them all and make them visible again in the task list.
 - Sort them alphabetically and in reverse order.
 
 <br>
