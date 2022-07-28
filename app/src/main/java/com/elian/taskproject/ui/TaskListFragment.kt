@@ -113,11 +113,11 @@ class TaskListFragment : Fragment(),
         viewModel.apply()
         {
             onGetTaskList = ::onGetTaskList
-            onDeleteTask = ::onDelete
-            onUndoDeleteTask = ::onUndo
+            onDeleteTask = ::onDeleteTask
+            onUndoDeleteTask = ::onUndoDeleteTask
             onCheckTask = ::onCheckTask
             onUncheckTaskList = ::onUncheckTaskList
-            onSortTaskListByName = ::onSortByName
+            onSortTaskListByName = ::onSortTaskListByName
             onUncheckedTaskListStateChanged = ::onUncheckedTaskListStateChanged
         }
     }
@@ -191,12 +191,12 @@ class TaskListFragment : Fragment(),
         taskAdapter.replaceList(uncheckedTaskList)
     }
 
-    private fun onDelete(deletedTask: Task, position: Int)
+    private fun onDeleteTask(deletedTask: Task, position: Int)
     {
         taskAdapter.removeItem(deletedTask)
     }
 
-    private fun onUndo(retrievedTask: Task, position: Int)
+    private fun onUndoDeleteTask(retrievedTask: Task, position: Int)
     {
         taskAdapter.insertItem(position, retrievedTask)
     }
@@ -211,7 +211,7 @@ class TaskListFragment : Fragment(),
         taskAdapter.insertItems(0, uncheckedTaskList)
     }
 
-    private fun onSortByName(taskListSortedByName: List<Task>)
+    private fun onSortTaskListByName(taskListSortedByName: List<Task>)
     {
         taskAdapter.replaceList(taskListSortedByName)
     }
