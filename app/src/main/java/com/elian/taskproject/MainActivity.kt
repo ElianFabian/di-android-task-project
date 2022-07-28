@@ -1,4 +1,4 @@
-package com.elian.taskproject.ui
+package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,6 @@ import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.User
-import com.elian.taskproject.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
