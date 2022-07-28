@@ -18,5 +18,5 @@ These are the operations you can do:
 <p float="center">
   <img height="635x" align="left" src="https://user-images.githubusercontent.com/86477169/170997454-1265f8c7-71dc-448a-b8f4-d2169ef636eb.jpg">
   <img height="635x" src="https://user-images.githubusercontent.com/86477169/170997441-e81672d1-e759-487b-9b79-9e5bb976a311.jpg">
-  <img height="635x" align="center|top" src="https://user-images.githubusercontent.com/86477169/169659219-5b6d572d-b03d-4985-8fdf-9684305dfca5.jpg">
+  <img height="635x" align="center|top" src="https://user-images.githubusercontent.com/86477169/181398924-efe41382-f86b-4733-9318-21a1229c21af.jpg">
 </p>
