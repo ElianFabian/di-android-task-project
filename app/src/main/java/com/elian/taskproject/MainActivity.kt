@@ -2,15 +2,16 @@ package com.elian.taskproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.UserDAO
 import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity()
 {
     private lateinit var userDAO: UserDAO

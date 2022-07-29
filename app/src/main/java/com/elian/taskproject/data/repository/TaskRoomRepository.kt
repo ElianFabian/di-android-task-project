@@ -2,14 +2,11 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.domain.repository.TaskListRepository
-import com.elian.taskproject.domain.repository.TaskManagerRepository
-import java.util.concurrent.Callable
+import com.elian.taskproject.domain.repository.TaskRepository
+import java.util.concurrent.Callable    
 import java.util.concurrent.Future
 
-object TaskRoomRepository :
-    TaskListRepository,
-    TaskManagerRepository
+class TaskRoomRepository : TaskRepository
 {
     private val taskDAO get() = AppDatabase.instance.taskDAO
 
@@ -23,7 +20,6 @@ object TaskRoomRepository :
         return AppDatabase.executorService.submit(callable)
     }
 
-    //region TaskListRepository
 
     override fun getTaskList(): List<Task>
     {
@@ -56,10 +52,6 @@ object TaskRoomRepository :
         return uncheckedTaskList
     }
 
-    //endregion
-
-    //region TaskManagerRepository
-
     override fun add(taskToAdd: Task)
     {
         execute { taskDAO.insert(taskToAdd) }
@@ -69,6 +61,4 @@ object TaskRoomRepository :
     {
         execute { taskDAO.update(editedTask) }
     }
-
-    //endregion
 }

@@ -2,21 +2,17 @@ package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.AppInformation
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.domain.repository.TaskListRepository
-import com.elian.taskproject.domain.repository.TaskManagerRepository
+import com.elian.taskproject.domain.repository.TaskRepository
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-object TaskFirebaseRepository :
-    TaskListRepository,
-    TaskManagerRepository
+class TaskFirebaseRepository : TaskRepository
 {
     private val firestore get() = Firebase.firestore
 
     private val userId get() = AppInformation.currentUser.email
     private val taskCollectionPath = "users/$userId/tasks"
 
-    //region TaskListRepository
 
     override fun getTaskList(): List<Task>
     {

@@ -1,16 +1,12 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.domain.repository.TaskListRepository
-import com.elian.taskproject.domain.repository.TaskManagerRepository
+import com.elian.taskproject.domain.repository.TaskRepository
 
-object TaskStaticRepository :
-    TaskListRepository,
-    TaskManagerRepository
+class TaskStaticRepository : TaskRepository
 {
     private val taskList = arrayListOf<Task>()
 
-    //region TaskListContract.Repository
 
     override fun getTaskList(): List<Task> = taskList.toList()
 
@@ -38,10 +34,6 @@ object TaskStaticRepository :
         return taskList.filter { it.isChecked }
     }
 
-    //endregion
-
-    //region TaskManagerContract.Repository
-
     override fun add(taskToAdd: Task)
     {
         taskList.add(taskToAdd)
@@ -51,6 +43,4 @@ object TaskStaticRepository :
     {
         taskList[position] = editedTask
     }
-
-    //endregion
 }

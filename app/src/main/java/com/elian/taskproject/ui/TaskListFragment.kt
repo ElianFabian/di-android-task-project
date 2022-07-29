@@ -21,7 +21,9 @@ import com.elian.taskproject.util.ToggleAction
 import com.elian.taskproject.util.createSwipeComponent
 import com.elian.taskproject.util.extensions.navigate
 import com.elian.taskproject.view_model.TaskListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TaskListFragment : Fragment(),
     RecyclerViewAdapter.OnBindViewHolderListener<Task>,
     RecyclerViewAdapter.OnItemClickListener<Task>,

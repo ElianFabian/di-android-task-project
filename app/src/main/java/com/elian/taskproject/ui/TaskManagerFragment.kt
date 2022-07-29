@@ -14,8 +14,10 @@ import com.elian.taskproject.util.DataUtils
 import com.elian.taskproject.databinding.FragmentTaskManagerBinding
 import com.elian.taskproject.util.ArgKeys
 import com.elian.taskproject.view_model.TaskManagerViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class TaskManagerFragment : Fragment(),
     DatePickerFragment.OnDateSelectedListener
 {

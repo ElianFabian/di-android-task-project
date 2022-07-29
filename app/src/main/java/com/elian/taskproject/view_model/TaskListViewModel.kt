@@ -3,13 +3,13 @@ package com.elian.taskproject.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.data.repository.TaskRoomRepository
-import com.elian.taskproject.domain.repository.TaskListRepository
+import com.elian.taskproject.domain.repository.TaskRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TaskListViewModel : ViewModel()
+@HiltViewModel
+class TaskListViewModel @Inject constructor(private val repository: TaskRepository) : ViewModel()
 {
-    private val repository: TaskListRepository = TaskRoomRepository
-
     private val uncheckedTaskList = mutableListOf<Task>()
     private val checkedTaskList = mutableListOf<Task>()
     private val deletedTasksByPosition = linkedMapOf<Task, Int>()

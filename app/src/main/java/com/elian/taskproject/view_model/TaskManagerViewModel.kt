@@ -2,13 +2,13 @@ package com.elian.taskproject.view_model
 
 import androidx.lifecycle.ViewModel
 import com.elian.taskproject.data.model.Task
-import com.elian.taskproject.data.repository.TaskRoomRepository
-import com.elian.taskproject.domain.repository.TaskManagerRepository
+import com.elian.taskproject.domain.repository.TaskRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TaskManagerViewModel : ViewModel()
+@HiltViewModel
+class TaskManagerViewModel @Inject constructor(private val repository: TaskRepository) : ViewModel()
 {
-    private val repository: TaskManagerRepository = TaskRoomRepository
-
     var onTaskAdded: (Task) -> Unit = {}
     var onTaskUpdated: (Task) -> Unit = {}
 
