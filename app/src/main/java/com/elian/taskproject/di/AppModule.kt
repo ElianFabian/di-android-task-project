@@ -39,39 +39,4 @@ object AppModule
     @Singleton
     @Provides
     fun provideTaskRepository(taskDAO: TaskDAO): TaskRepository = TaskRoomRepository(taskDAO)
-
-    @Singleton
-    @Provides
-    fun provideCurrentUser(userDAO: UserDAO) = getCurrentUser(userDAO)
-}
-
-private fun createUser(): User
-{
-    val randomLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".random()
-    val uuid = UUID.randomUUID().toString().replace("-", "")
-
-    return User(email = "$randomLetter$uuid@gmail.com")
-}
-
-private fun getCurrentUser(userDAO: UserDAO): User
-{
-    val userExists = AppDatabase.executorService.submit(userDAO::userExists).get()
-
-    if (userExists)
-    {
-        return AppDatabase.executorService.submit(userDAO::getUser).get()
-    }
-    else
-    {
-        val newUser = createUser()
-
-        val documentPath = "users/${newUser.email}"
-
-        Firebase.firestore.document(documentPath).set(newUser).addOnCompleteListener()
-        {
-            AppDatabase.executorService.execute { userDAO.insert(newUser) }
-        }
-
-        return newUser
-    }
 }
