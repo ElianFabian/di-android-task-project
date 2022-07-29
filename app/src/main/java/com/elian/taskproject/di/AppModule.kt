@@ -34,9 +34,5 @@ object AppModule
 
     @Singleton
     @Provides
-    fun provideUserDAO(database: AppDatabase) = database.userDAO
-
-    @Singleton
-    @Provides
     fun provideTaskRepository(taskDAO: TaskDAO): TaskRepository = TaskRoomRepository(taskDAO)
 }
