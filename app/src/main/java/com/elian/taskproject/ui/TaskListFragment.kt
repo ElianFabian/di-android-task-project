@@ -210,7 +210,7 @@ class TaskListFragment : Fragment(),
 
     private fun onUncheckTaskList(uncheckedTaskList: List<Task>)
     {
-        taskAdapter.insertItems(0, uncheckedTaskList)
+        taskAdapter.insertItemList(0, uncheckedTaskList)
     }
 
     private fun onSortTaskListByName(taskListSortedByName: List<Task>)
