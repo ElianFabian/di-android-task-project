@@ -4,18 +4,13 @@ import android.content.Context
 import androidx.room.Room
 import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.TaskDAO
-import com.elian.taskproject.data.database.dao.UserDAO
-import com.elian.taskproject.data.model.User
 import com.elian.taskproject.data.repository.TaskRoomRepository
 import com.elian.taskproject.domain.repository.TaskRepository
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import java.util.*
 import javax.inject.Singleton
 
 @Module
