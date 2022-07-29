@@ -1,15 +1,15 @@
 package com.elian.taskproject.data.repository
 
 import com.elian.taskproject.data.database.AppDatabase
+import com.elian.taskproject.data.database.dao.TaskDAO
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.domain.repository.TaskRepository
 import java.util.concurrent.Callable    
 import java.util.concurrent.Future
+import javax.inject.Inject
 
-class TaskRoomRepository : TaskRepository
+class TaskRoomRepository @Inject constructor(private val taskDAO: TaskDAO) : TaskRepository
 {
-    private val taskDAO get() = AppDatabase.instance.taskDAO
-
     private fun execute(runnable: Runnable)
     {
         AppDatabase.executorService.execute(runnable)
