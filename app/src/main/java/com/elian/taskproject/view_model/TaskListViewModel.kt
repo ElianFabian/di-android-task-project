@@ -3,9 +3,11 @@ package com.elian.taskproject.view_model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.domain.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,7 +17,7 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
     private val checkedTaskList = mutableListOf<Task>()
     private val deletedTasksByPosition = linkedMapOf<Task, Int>()
 
-    private val _isLoading= MutableLiveData(false)
+    private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
     var onGetTaskList: (List<Task>) -> Unit = { }
@@ -26,31 +28,35 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
     var onUncheckedTaskListStateChanged: (Boolean) -> Unit = { }
     var onSortTaskListByName: (List<Task>) -> Unit = { }
 
+
     fun getTaskList()
     {
-        _isLoading.postValue(true)
-        val list = repository.getTaskList()
-        _isLoading.postValue(false)
-
-        if (list.isNotEmpty())
+        viewModelScope.launch()
         {
-            onGetTaskList.invoke(list)
+            _isLoading.postValue(true)
+            val list = repository.getTaskList()
+            _isLoading.postValue(false)
 
-            val checkedList = list.filter { it.isChecked }
-            val uncheckedList = list.filter { !it.isChecked }
+            if (list.isNotEmpty())
+            {
+                onGetTaskList.invoke(list)
 
-            checkedTaskList.clear()
-            uncheckedTaskList.clear()
-            checkedTaskList.addAll(checkedList)
-            uncheckedTaskList.addAll(uncheckedList)
+                val checkedList = list.filter { it.isChecked }
+                val uncheckedList = list.filter { !it.isChecked }
+
+                checkedTaskList.clear()
+                uncheckedTaskList.clear()
+                checkedTaskList.addAll(checkedList)
+                uncheckedTaskList.addAll(uncheckedList)
+            }
+
+            onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
         }
-
-        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
     }
 
     fun delete(taskToDelete: Task, position: Int)
     {
-        repository.delete(taskToDelete, position)
+        viewModelScope.launch { repository.delete(taskToDelete, position) }
 
         uncheckedTaskList.remove(taskToDelete)
         deletedTasksByPosition[taskToDelete] = position
@@ -66,7 +72,7 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
         val lastDeletedTask = deletedTasksByPosition.keys.last()
         val position = deletedTasksByPosition.values.last()
 
-        repository.undo(lastDeletedTask, position)
+        viewModelScope.launch { repository.undo(lastDeletedTask, position) }
 
         uncheckedTaskList.add(lastDeletedTask)
         deletedTasksByPosition.remove(lastDeletedTask)
@@ -77,7 +83,7 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
 
     fun checkTask(taskToCheck: Task, position: Int)
     {
-        repository.checkTask(taskToCheck, position)
+        viewModelScope.launch { repository.checkTask(taskToCheck, position) }
 
         uncheckedTaskList.remove(taskToCheck)
         checkedTaskList.add(taskToCheck)
@@ -90,13 +96,16 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
     {
         if (checkedTaskList.isEmpty()) return
 
-        val uncheckedList = repository.uncheckTaskList(checkedTaskList)
+        viewModelScope.launch()
+        {
+            val uncheckedList = repository.uncheckTaskList(checkedTaskList)
 
-        uncheckedTaskList.addAll(uncheckedList)
-        checkedTaskList.clear()
+            uncheckedTaskList.addAll(uncheckedList)
+            checkedTaskList.clear()
 
-        onUncheckTaskList.invoke(uncheckedList)
-        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+            onUncheckTaskList.invoke(uncheckedList)
+            onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        }
     }
 
     fun sortByNameAscending()

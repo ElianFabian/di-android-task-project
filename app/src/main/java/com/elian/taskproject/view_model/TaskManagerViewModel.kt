@@ -1,9 +1,11 @@
 package com.elian.taskproject.view_model
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.domain.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +22,7 @@ class TaskManagerViewModel @Inject constructor(private val repository: TaskRepos
     {
         if (validateTask(taskToAdd)) return
 
-        repository.add(taskToAdd)
+        viewModelScope.launch { repository.add(taskToAdd) }
 
         onTaskAdded.invoke(taskToAdd)
     }
@@ -29,7 +31,7 @@ class TaskManagerViewModel @Inject constructor(private val repository: TaskRepos
     {
         if (validateTask(updatedTask)) return
 
-        repository.update(updatedTask, position)
+        viewModelScope.launch { repository.update(updatedTask, position) }
 
         onTaskUpdated.invoke(updatedTask)
     }

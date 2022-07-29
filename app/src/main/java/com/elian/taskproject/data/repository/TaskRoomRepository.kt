@@ -4,61 +4,50 @@ import com.elian.taskproject.data.database.AppDatabase
 import com.elian.taskproject.data.database.dao.TaskDAO
 import com.elian.taskproject.data.model.Task
 import com.elian.taskproject.domain.repository.TaskRepository
-import java.util.concurrent.Callable    
+import java.util.concurrent.Callable
 import java.util.concurrent.Future
 import javax.inject.Inject
 
 class TaskRoomRepository @Inject constructor(private val taskDAO: TaskDAO) : TaskRepository
 {
-    private fun execute(runnable: Runnable)
+    override suspend fun getTaskList(): List<Task>
     {
-        AppDatabase.executorService.execute(runnable)
+        return taskDAO.selectAll()
     }
 
-    private fun <T> submit(callable: Callable<T>): Future<T>
+    override suspend fun delete(taskToDelete: Task, position: Int)
     {
-        return AppDatabase.executorService.submit(callable)
+        taskDAO.delete(taskToDelete)
     }
 
-
-    override fun getTaskList(): List<Task>
+    override suspend fun undo(taskToRetrieve: Task, position: Int)
     {
-        return submit { taskDAO.selectAll() }.get()
+        taskDAO.insert(taskToRetrieve)
     }
 
-    override fun delete(taskToDelete: Task, position: Int)
-    {
-        execute { taskDAO.delete(taskToDelete) }
-    }
-
-    override fun undo(taskToRetrieve: Task, position: Int)
-    {
-        execute { taskDAO.insert(taskToRetrieve) }
-    }
-
-    override fun checkTask(taskToCheck: Task, position: Int)
+    override suspend fun checkTask(taskToCheck: Task, position: Int)
     {
         taskToCheck.check()
 
-        execute { taskDAO.update(taskToCheck) }
+        taskDAO.update(taskToCheck)
     }
 
-    override fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
+    override suspend fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
     {
         val uncheckedTaskList = checkedTaskList.toList().onEach { it.uncheck() }
 
-        execute { taskDAO.updateAll(uncheckedTaskList) }
+        taskDAO.updateAll(uncheckedTaskList)
 
         return uncheckedTaskList
     }
 
-    override fun add(taskToAdd: Task)
+    override suspend fun add(taskToAdd: Task)
     {
-        execute { taskDAO.insert(taskToAdd) }
+        taskDAO.insert(taskToAdd)
     }
 
-    override fun update(editedTask: Task, position: Int)
+    override suspend fun update(editedTask: Task, position: Int)
     {
-        execute { taskDAO.update(editedTask) }
+        taskDAO.update(editedTask)
     }
 }

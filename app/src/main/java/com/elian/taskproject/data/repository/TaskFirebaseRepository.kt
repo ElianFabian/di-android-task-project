@@ -14,7 +14,7 @@ class TaskFirebaseRepository : TaskRepository
     private val taskCollectionPath = "users/$userId/tasks"
 
 
-    override fun getTaskList(): List<Task>
+    override suspend fun getTaskList(): List<Task>
     {
         var taskList = emptyList<Task>()
 
@@ -29,30 +29,28 @@ class TaskFirebaseRepository : TaskRepository
         return taskList
     }
 
-    override fun delete(taskToDelete: Task, position: Int)
+    override suspend fun delete(taskToDelete: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToDelete.firebaseId}"
 
         firestore.document(documentPath).delete()
     }
 
-    override fun undo(taskToRetrieve: Task, position: Int)
+    override suspend fun undo(taskToRetrieve: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToRetrieve.firebaseId}"
 
         firestore.document(documentPath).set(taskToRetrieve)
     }
 
-    override fun checkTask(
-        taskToCheck: Task, position: Int,
-    )
+    override suspend fun checkTask(taskToCheck: Task, position: Int)
     {
         val documentPath = "$taskCollectionPath/${taskToCheck.firebaseId}"
 
         firestore.document(documentPath).update("isChecked", true)
     }
 
-    override fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
+    override suspend fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
     {
         val uncheckedTaskList = mutableListOf<Task>()
 
@@ -70,14 +68,14 @@ class TaskFirebaseRepository : TaskRepository
         return uncheckedTaskList
     }
 
-    override fun add(taskToAdd: Task)
+    override suspend fun add(taskToAdd: Task)
     {
         val documentPath = "${taskCollectionPath}/${taskToAdd.firebaseId}"
 
         firestore.document(documentPath).set(taskToAdd)
     }
 
-    override fun update(editedTask: Task, position: Int)
+    override suspend fun update(editedTask: Task, position: Int)
     {
         val documentPath = "${taskCollectionPath}/${editedTask.firebaseId}"
 

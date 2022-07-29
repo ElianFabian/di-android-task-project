@@ -18,9 +18,5 @@ abstract class AppDatabase : RoomDatabase()
     companion object
     {
         const val name = "app_database"
-
-        private const val NUMBER_OF_THREADS = 4
-
-        val executorService: ExecutorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
     }
 }

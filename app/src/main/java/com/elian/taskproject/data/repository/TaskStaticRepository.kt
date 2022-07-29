@@ -8,38 +8,38 @@ class TaskStaticRepository : TaskRepository
     private val taskList = arrayListOf<Task>()
 
 
-    override fun getTaskList(): List<Task> = taskList.toList()
+    override suspend fun getTaskList(): List<Task> = taskList.toList()
 
-    override fun delete(taskToDelete: Task, position: Int)
+    override suspend fun delete(taskToDelete: Task, position: Int)
     {
         taskList.remove(taskToDelete)
     }
 
-    override fun undo(taskToRetrieve: Task, position: Int)
+    override suspend fun undo(taskToRetrieve: Task, position: Int)
     {
         taskList.add(position, taskToRetrieve)
     }
 
-    override fun checkTask(taskToCheck: Task, position: Int)
+    override suspend fun checkTask(taskToCheck: Task, position: Int)
     {
         taskToCheck.check()
 
         taskList[position] = taskToCheck
     }
 
-    override fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
+    override suspend fun uncheckTaskList(checkedTaskList: List<Task>): List<Task>
     {
         taskList.replaceAll { it.apply { uncheck() } }
 
         return taskList.filter { it.isChecked }
     }
 
-    override fun add(taskToAdd: Task)
+    override suspend fun add(taskToAdd: Task)
     {
         taskList.add(taskToAdd)
     }
 
-    override fun update(editedTask: Task, position: Int)
+    override suspend fun update(editedTask: Task, position: Int)
     {
         taskList[position] = editedTask
     }

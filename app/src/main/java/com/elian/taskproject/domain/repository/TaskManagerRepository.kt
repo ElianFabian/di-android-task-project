@@ -4,6 +4,6 @@ import com.elian.taskproject.data.model.Task
 
 interface TaskManagerRepository
 {
-    fun add(taskToAdd: Task)
-    fun update(editedTask: Task, position: Int)
+    suspend fun add(taskToAdd: Task)
+    suspend fun update(editedTask: Task, position: Int)
 }
