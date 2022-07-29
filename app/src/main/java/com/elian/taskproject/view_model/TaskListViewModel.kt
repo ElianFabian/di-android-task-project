@@ -1,5 +1,6 @@
 package com.elian.taskproject.view_model
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.elian.taskproject.data.model.Task
@@ -14,7 +15,8 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
     private val checkedTaskList = mutableListOf<Task>()
     private val deletedTasksByPosition = linkedMapOf<Task, Int>()
 
-    var isLoading = MutableLiveData<Boolean>()
+    private val _isLoading= MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
 
     var onGetTaskList: (List<Task>) -> Unit = { }
     var onDeleteTask: (Task, Int) -> Unit = { _, _ -> }
@@ -26,9 +28,9 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
 
     fun getTaskList()
     {
-        isLoading.postValue(true)
+        _isLoading.postValue(true)
         val list = repository.getTaskList()
-        isLoading.postValue(false)
+        _isLoading.postValue(false)
 
         if (list.isNotEmpty())
         {
