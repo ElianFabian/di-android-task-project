@@ -39,7 +39,7 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
 
             if (list.isNotEmpty())
             {
-                onGetTaskList.invoke(list)
+                onGetTaskList(list)
 
                 val checkedList = list.filter { it.isChecked }
                 val uncheckedList = list.filter { !it.isChecked }
@@ -50,7 +50,7 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
                 uncheckedTaskList.addAll(uncheckedList)
             }
 
-            onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+            onUncheckedTaskListStateChanged(uncheckedTaskList.isEmpty())
         }
     }
 
@@ -61,8 +61,8 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
         uncheckedTaskList.remove(taskToDelete)
         deletedTasksByPosition[taskToDelete] = position
 
-        onDeleteTask.invoke(taskToDelete, position)
-        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onDeleteTask(taskToDelete, position)
+        onUncheckedTaskListStateChanged(uncheckedTaskList.isEmpty())
     }
 
     fun undo()
@@ -77,8 +77,8 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
         uncheckedTaskList.add(lastDeletedTask)
         deletedTasksByPosition.remove(lastDeletedTask)
 
-        onUndoDeleteTask.invoke(lastDeletedTask, position)
-        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onUndoDeleteTask(lastDeletedTask, position)
+        onUncheckedTaskListStateChanged(uncheckedTaskList.isEmpty())
     }
 
     fun checkTask(taskToCheck: Task, position: Int)
@@ -88,8 +88,8 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
         uncheckedTaskList.remove(taskToCheck)
         checkedTaskList.add(taskToCheck)
 
-        onCheckTask.invoke(taskToCheck, position)
-        onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+        onCheckTask(taskToCheck, position)
+        onUncheckedTaskListStateChanged(uncheckedTaskList.isEmpty())
     }
 
     fun uncheckList()
@@ -103,8 +103,8 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
             uncheckedTaskList.addAll(uncheckedList)
             checkedTaskList.clear()
 
-            onUncheckTaskList.invoke(uncheckedList)
-            onUncheckedTaskListStateChanged.invoke(uncheckedTaskList.isEmpty())
+            onUncheckTaskList(uncheckedList)
+            onUncheckedTaskListStateChanged(uncheckedTaskList.isEmpty())
         }
     }
 
@@ -112,13 +112,13 @@ class TaskListViewModel @Inject constructor(private val repository: TaskReposito
     {
         val sortedList = uncheckedTaskList.sortedBy { it.name }
 
-        onSortTaskListByName.invoke(sortedList)
+        onSortTaskListByName(sortedList)
     }
 
     fun sortByNameDescending()
     {
         val sortedList = uncheckedTaskList.sortedByDescending { it.name }
 
-        onSortTaskListByName.invoke(sortedList)
+        onSortTaskListByName(sortedList)
     }
 }

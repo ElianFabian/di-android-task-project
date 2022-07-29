@@ -24,7 +24,7 @@ class TaskManagerViewModel @Inject constructor(private val repository: TaskRepos
 
         viewModelScope.launch { repository.add(taskToAdd) }
 
-        onTaskAdded.invoke(taskToAdd)
+        onTaskAdded(taskToAdd)
     }
 
     fun update(updatedTask: Task, position: Int)
@@ -33,7 +33,7 @@ class TaskManagerViewModel @Inject constructor(private val repository: TaskRepos
 
         viewModelScope.launch { repository.update(updatedTask, position) }
 
-        onTaskUpdated.invoke(updatedTask)
+        onTaskUpdated(updatedTask)
     }
 
     /**
@@ -41,7 +41,7 @@ class TaskManagerViewModel @Inject constructor(private val repository: TaskRepos
      */
     private fun validateTask(task: Task): Boolean
     {
-        onValidateTask.invoke()
+        onValidateTask()
 
         return when
         {
