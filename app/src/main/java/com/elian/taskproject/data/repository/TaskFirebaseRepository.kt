@@ -70,10 +70,6 @@ class TaskFirebaseRepository : TaskRepository
         return uncheckedTaskList
     }
 
-    //endregion
-
-    //region TaskManagerRepository
-
     override fun add(taskToAdd: Task)
     {
         val documentPath = "${taskCollectionPath}/${taskToAdd.firebaseId}"
@@ -87,6 +83,4 @@ class TaskFirebaseRepository : TaskRepository
 
         firestore.document(documentPath).set(editedTask)
     }
-
-    //endregion
 }
