@@ -93,7 +93,6 @@ class TaskListFragment : Fragment(),
     private fun initializeUI()
     {
         val menuHost = requireActivity() as MenuHost
-
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         binding.fab.setOnClickListener()
