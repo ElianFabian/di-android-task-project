@@ -2,7 +2,7 @@
 
 This app allows you to manage your tasks.
 
-This project is to practice concepts like creating a layout and using a recycler view with MVP (Model View Presenter).
+This project is to practice concepts like creating a layout and using a recycler view with MVVM (Model View Viewmodel) using depedency injection.
 
 These are the operations you can do:
 - Add new tasks.
